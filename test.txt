@@ -1,0 +1,3 @@
+id,timestamp_start,timestamp_end,name,department,birthday month
+1,1,1,John Smith,Accounting,November
+2,2,2,Erica Meyers,IT,March
