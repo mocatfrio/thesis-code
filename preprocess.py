@@ -2,7 +2,7 @@
 # input   : products.csv, customers.csv
 # output  : gridproducts.txt, gridcustomers.txt, gridinfo.txt
 #
-# 5. tentukan grid size (static aja dulu 3x3) 
+# 5. tentukan grid size (3x3) 
 # 6. hitung vector position dari masing2 ob data 
 # 
 # ob masing-masing position di simpen ke array sementara
@@ -45,10 +45,11 @@ class DataObject:
   def displayDimensionCount(self):
     print("Total dimensi : ", self.dimension_count)
 
-class GridIndex:
+class Grid:
   def __init__ (self, dimension, size, max_value):
     self.dimension = dimension
     self.size = size
+
 
 
 
