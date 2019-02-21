@@ -49,7 +49,7 @@ class Grid:
   def __init__ (self, dimension, size, max_value):
     self.dimension = dimension
     self.size = size
-
+    self.
 
 
 
