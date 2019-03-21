@@ -1,0 +1,168 @@
+----------------------
+| DATA PREPROCESSING |
+----------------------
+
+Proses yg dilakukan:
+# Menyiapkan struktur data
+# Menyiapkan data yang dibutuhkan (product dan customer)
+
+1. input data product, customer (bentuk csv) 
+    SD I                    : object, instansiasi array
+    Visualisasi             : contoh data product/customer    
+        ------------------------
+        Class Customer
+        ------------------------
+        | id | ts_in | ts_out |       value       |     dsl_result      |
+                              | dim1 | dim2 | ... | 1     | 2     | ... | 
+        -----------------------------------------------------------------
+        | 1  | 5     | 10     | 6    | 6    |     | *p[x] | *p[y] |
+        | 2  | 3     | 12     | 4    | 18   |     | *p[x] | -     |
+        | ...                               |     | -     | -     |
+        
+        ------------------------
+        Class Product
+        ------------------------
+        | id | ts_in | ts_out |       value       |
+                              | dim1 | dim2 | ... | 
+        -------------------------------------------
+        | 1  | 5     | 10     | 6    | 6    |     |
+        | 2  | 3     | 12     | 4    | 18   |     |
+        | ...                               |     |
+
+    informasi yg disimpan   :
+      - id 
+      - timestamp in
+      - timestamp out
+      - value semua dimensi (disimpen dalam array) --> bisa diappend secara dinamis
+      - jumlah dimensi
+      - dsl_result (khusus Customer) --> pointer ke class product
+
+2. list semua event (timestamp keluar masuk semua product dan customer)
+    SD II                   : queue
+    Visualisasi             : 
+        -----------------
+        Class EventQueue
+        -----------------
+        | e_id | timestamp | owner        | action
+        -------------------------------------------
+        |  1   |           | customer[4]  | in
+        |  2   |           | product[9]   | in
+        |  3   |           | product[10]  | in
+        |  4   |           | product[1]   | in
+        |  5   |           | customer[2]  | in
+        |  ... |    ...    |  ...         | ...
+        |  15  |           | product[10]  | out
+    
+    informasi yg disimpan   :
+      - id event (1,2,3,4,5,...)
+      - timestamp asli (0 - 10000000)
+      - owner (product[x], customer[x])
+      - action (out, in)
+
+3. Sorting queue (berdasarkan timestamp asli-nya) secara ascending
+
+4. Membuat pandora box (timeline score probabilitas produk)
+    SD III                  : array 2 dimensi 
+    Visualisasi             :
+        -----------------
+        Class PandoraBox
+        -----------------
+           | 1   | 2  | 3 | 4 | 5 | 6 |   --> event_id    
+        -------------------------------
+        p1 |0,25 |    |   |   |   |   |
+        p2 |     |    |   |   |   |   |
+        p3 |     |    |   |   |   |   |
+        p4 |     |    |   |   |   |   |
+        ^
+        product_id
+
+    Informasi yg disimpan   :
+      - score probabilitas (1/dsl_result) per produk yg diakumulasi dari setiap perhitungan di thread c
+
+5. Mencatat relasi dominansi antar produk
+    SD IV                   : array 2 dimensi
+    Visualisasi             :
+        ------------------------
+        Class DominanceRelation
+        ------------------------
+           |c1 | c2    | c3 | c4 | c5 | c6 |   --> customer_id    
+        -------------------------------------
+        p1 |   | p2    |    |    |    |    |
+        p2 |   |       |    |    |    |    |
+        p3 |   | p5,p6 |    |    |    |    |
+        p4 |   |       |    |    |    |    | 
+        ^
+        product_id
+
+    Informasi yg disimpan   :
+        - product_id yang didominasi
+
+----------------
+| PRECOMPUTING |
+----------------
+
+Proses yg dilakukan:
+# Menghitung dynamic skyline (DSL) --> cek dominasi dinamis
+# Menghitung score probabilitas p[x] dan menyimpannya pada PandoraBox
+# Membuat thread setiap c in customer
+# Membunuh thread
+
+4. for every EventQueue.dequeue(): //mengeluarkan event
+    e_id = EventQueue.dequeue() //catat id event
+    if product[x] in:
+        for every thread c yg hidup:
+            if cekDominasi(p[x], c[x].dsl_result) != 0:
+                insert p[x] to c[x].dsl_result
+                countProbability(p[x], c[x].dsl_result, e_id)
+
+    else if product[x] out:
+        for every thread c yg hidup:
+            cekRelasiDominasi(product[x])
+            if p[x] dominating p[y]:
+
+                
+    else if customer[x] in:
+        makeNewThread(customer[x])
+
+    else if customer[x] out:
+        killThread(customer[x])
+
+5. cekDominasi(p[x], c[x].dsl_result):
+    if dsl_result==NULL:
+        countInitialDSL()
+    else:
+        make array_temp // untuk menghitung DSL sementara
+        insert dsl_result values to array_temp
+        for every dsl_result, bandingkan nilai p[y] in dsl_result dan nilai p[x]:
+            if p[x] dominated by p[y] as dsl_result:
+                return 0
+            else if p[x] dominating p[y] as dsl_result:
+                delete p[y] from dsl_result
+                catat relasi dominasi: p[y] didominasi oleh p[x] --> catet dimana enaknya?
+        return p[x] //jika p[x] mendominasi, di return 
+
+6. initialDSL():
+    bingung mekanisme perhitungan initial DSL
+
+7. countProbability():
+    prob = 1/jumlah c[x].dsl_result
+    PandoraBox[e_id][x] += prob
+
+// mengecek apakah
+8. cekRiwayatDominasi(id_product, id_customer, customer[id].dsl_result):
+    if DominanceRelation[id_customer][id_product]: //cek apakah ada nilainya
+        bikin array_temp
+        masukkan value produk2 yg didominasi ke dalam array_temp
+        masukkan value dsl_result ke dalam array_temp
+        
+
+    else 
+        return 0 //tidak mendominasi siapa2
+
+## tanya selanjutnya
+1. detail mekanisme perhitungan initial DSL
+2. enaknya pencatatan informasi relasi dominasi
+
+----------------
+| MAIN PROGRAM |
+----------------        
