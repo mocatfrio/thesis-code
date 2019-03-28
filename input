@@ -1,7 +1,7 @@
 2
 product
-dataset/product.csv
+../dataset/product.csv
 ,
 customer
-dataset/customer.csv
+../dataset/customer.csv
 ,
