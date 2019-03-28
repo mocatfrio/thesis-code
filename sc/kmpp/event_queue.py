@@ -1,4 +1,7 @@
+import logging
 from operator import itemgetter
+
+logging.basicConfig(level=logging.DEBUG)
 
 class EventQueue:
   def __init__(self):
@@ -20,6 +23,4 @@ class EventQueue:
 
   def sort_queue(self):
     self.events = sorted(self.events, key=itemgetter(0,3,1), reverse=True)
-
-  def display_queue(self):
-    return '{}'.format(self.events)
+    logging.debug('event queue: {}'.format(self.events))

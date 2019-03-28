@@ -1,8 +1,10 @@
 """
 Semua kelas dan fungsi yang berhubungan dengan data
 """
-
+import logging
 import csv
+
+logging.basicConfig(level=logging.DEBUG)
 
 class Data:
   total_data = 0
@@ -12,23 +14,19 @@ class Data:
     self.timestamp_in = timestamp_in
     self.timestamp_out = timestamp_out
     self.values = []
-    self.dimension = 0
     Data.total_data += 1
 
   def add_value(self, value=None):
     self.values.append(int(value))
 
   def count_dimension(self):
-    self.dimension = len(self.values)
+    return len(self.values)
     
   def display_data(self):
-    return 'ID : {}\nTimestamp start : {}\nTimestamp end : {}\nValues : {}\n'.format(self.id, self.timestamp_in, self.timestamp_out, self.values)
+    logging.debug('ID : {}\tTimestamp : {} - {}\tValues : {}'.format(self.id, self.timestamp_in, self.timestamp_out, self.values))
 
-  def display_total_data():
-    return 'Total data : {}'.format(Data.total_data)
-
-  def display_dimension(self):
-    return 'Total dimensi : {}'.format(self.dimension)
+  def get_total_data():
+    return Data.total_data
 
 class Product(Data):
   def __init__(self, id, timestamp_in, timestamp_out):
@@ -52,6 +50,7 @@ def input_csv(data_name, file, delimiter, event_queue):
   list = []
   row_count = 0
 
+  logging.debug('input data {} ({})'.format(data_name, file))
   with open(file, 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=delimiter)
     for row in csv_reader:
@@ -75,4 +74,5 @@ def input_csv(data_name, file, delimiter, event_queue):
       for j in range(0,2):
         event_queue.enqueue(row[csv_reader.fieldnames[2]] if j == 0 else row[csv_reader.fieldnames[1]], 0 if data_name == "customer" else 1, row[csv_reader.fieldnames[0]], j)
   
+  logging.debug('input data {} ({}) selesai'.format(data_name, file))
   return list
