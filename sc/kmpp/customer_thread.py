@@ -1,9 +1,6 @@
-"""
-Semua kelas dan fungsi berkaitan dengan customer threading
-"""
-
 import threading
 import logging
+from kmpp.dynamic_skyline import *
 
 class CustomerThread(threading.Thread):
   def __init__(self, customer_id, customer_list=None, product_list=None, product_active=None):
@@ -29,36 +26,23 @@ class CustomerThread(threading.Thread):
 
   def run(self):
     while not self._kill.is_set():
-      logging.debug('({})\t\tstarting'.format(self.name))
+      logging.debug('({})\t\tStarting'.format(self.name))
+      # jika belum diinisialisasi
       if not self._init_dsl:
         if self.product_active is not None:
-          logging.debug('({})\t\tinit dynamic skyline'.format(self.name))
-          init_dynamic_skyline(self.thread_id, self.name, self.product_active, self.product_list, self.customer_list)
+          logging.debug('({})\t\tInit dynamic skyline'.format(self.name))
+          init_dynamic_skyline(self.thread_id, self.product_active, self.product_list, self.customer_list, self.name)
         self._init_dsl = True
       killed = self._kill.wait(2)
-      logging.debug('({})\t\tkilled? {}'.format(self.name, killed))
+      logging.debug('({})\t\tKilled? {}'.format(self.name, killed))
       if killed:
-        logging.debug('({})\t\texiting'.format(self.name))
+        logging.debug('({})\t\tExiting'.format(self.name))
         break
       else:
-        logging.debug('({})\t\tprocess_product? {}'.format(self.name, product_action))
+        logging.debug('({})\t\tProcess product? {}'.format(self.name, product_action))
         if product_action:
-          logging.debug('({})\t\tlets process the product'.format(self.name))
+          logging.debug('({})\t\tLets process the product'.format(self.name))
         
-        
-def init_dynamic_skyline(customer_id, thread_name, product_active, product_list, customer_list):
-  product_values = []
-  customer_values = customer_list[customer_id-1].values 
-  count_product_active = product_active.copy()
-
-  # ambil nilai produk
-  while count_product_active:
-    product = count_product_active.pop()
-    product_values.append(product_list[product-1].values)
-
-  logging.debug('({})\t\tproduct values : {}'.format(thread_name, product_values))
-  logging.debug('({})\t\tcustomer values : {}'.format(thread_name, customer_values))
-
 def find_thread(threads, filter):
   counter = 0
   for thread in threads:

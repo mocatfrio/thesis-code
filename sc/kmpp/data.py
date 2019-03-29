@@ -1,6 +1,3 @@
-"""
-Semua kelas dan fungsi yang berhubungan dengan data
-"""
 import logging
 import csv
 

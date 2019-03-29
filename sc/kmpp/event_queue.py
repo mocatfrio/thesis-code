@@ -1,8 +1,6 @@
 import logging
 from operator import itemgetter
 
-logging.basicConfig(level=logging.DEBUG)
-
 class EventQueue:
   def __init__(self):
     self.events = []
