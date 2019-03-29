@@ -7,7 +7,9 @@ from kmpp.pandora_box import *
 from kmpp.customer_thread import *
 
 # logging.basicConfig(level=logging.DEBUG)
-logging.basicConfig(filename='kmpp.log', filemode='a', level=logging.DEBUG)
+logging.basicConfig(filename='/home/mocatfrio/Documents/thesis-code/kmpp.log', 
+                    filemode='w', 
+                    level=logging.DEBUG)
 
 if __name__ == '__main__':
   event_queue = EventQueue()
@@ -48,12 +50,12 @@ if __name__ == '__main__':
     elif queue[1] == 1 and queue[3] == 1:
       logging.debug('(main program)\t[Product {} in] Processing product'.format(queue[2]))
       product_active.append(queue[2])
-      logging.debug('(main program)\t[Product {}] Masuk ke produk aktif: {}'.format(queue[2], product_active))
+      logging.debug('(main program)\t[Product {} in] Masuk ke produk aktif: {}'.format(queue[2], product_active))
 
     elif queue[1] == 1 and queue[3] == 0:
-      logging.debug('(main program)\t[Product {}] Processing product'.format(queue[2]))
+      logging.debug('(main program)\t[Product {} out] Processing product'.format(queue[2]))
       product_active.remove(queue[2])
-      logging.debug('(main program)\t[Product {}] Hapus dari produk aktif: {}'.format(queue[2], product_active))
+      logging.debug('(main program)\t[Product {} out] Hapus dari produk aktif: {}'.format(queue[2], product_active))
 
   for thread in threads:
     thread.join()

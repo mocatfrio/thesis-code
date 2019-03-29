@@ -20,5 +20,5 @@ class EventQueue:
     return self.events.pop()
 
   def sort_queue(self):
-    self.events = sorted(self.events, key=itemgetter(0,3,1), reverse=True)
+    self.events = sorted(self.events, key=itemgetter(0,3,1,2), reverse=True)
     logging.debug('event queue: {}'.format(self.events))

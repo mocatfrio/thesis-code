@@ -1,8 +1,6 @@
 import logging
 import csv
 
-logging.basicConfig(level=logging.DEBUG)
-
 class Data:
   total_data = 0
 
