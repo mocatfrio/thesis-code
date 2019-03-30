@@ -28,18 +28,23 @@ class Product(Data):
     Data.__init__(self, id, timestamp_in, timestamp_out)
 
 class Customer(Data):
-  total_dsl = 0
-
   def __init__(self, id, timestamp_in, timestamp_out):
     Data.__init__(self, id, timestamp_in, timestamp_out)    
     self.dsl_results = []
 
-  def add_dsl_result(self, dsl_result):
-    self.dsl_results.append(dsl_result)
-    self.total_dsl += 1
+  def add_dsl(self, dsl):
+    self.dsl_results = dsl
+    logging.debug('Adding p{} | dsl_results : {}'.format(dsl, self.dsl_results))
+
+  def remove_dsl(self, dsl):
+    self.dsl_results.remove(dsl)
+    logging.debug('Removing p{} | dsl_results : {}'.format(dsl, self.dsl_results))
+
+  def get_total_dsl(self):
+    return len(self.dsl_results)
 
   def count_probability(self):
-    return 1/total_dsl
+    return 1/len(self.dsl_results)
 
 def input_csv(data_name, file, delimiter, event_queue):
   list = []
