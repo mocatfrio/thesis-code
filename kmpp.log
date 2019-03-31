@@ -1,285 +1,846 @@
-DEBUG:root:input data product (../dataset/product.csv)
-DEBUG:root:input data product (../dataset/product.csv) selesai
-DEBUG:root:input data customer (../dataset/customer.csv)
-DEBUG:root:input data customer (../dataset/customer.csv) selesai
-DEBUG:root:(main program)	Data Product
-DEBUG:root:ID : 1	Timestamp : 5 - 10	Values : [6, 6]
-DEBUG:root:ID : 2	Timestamp : 3 - 12	Values : [4, 18]
-DEBUG:root:ID : 3	Timestamp : 10 - 15	Values : [6, 20]
-DEBUG:root:ID : 4	Timestamp : 7 - 9	Values : [9, 15]
-DEBUG:root:ID : 5	Timestamp : 19 - 20	Values : [12, 18]
-DEBUG:root:ID : 6	Timestamp : 8 - 19	Values : [16, 14]
-DEBUG:root:ID : 7	Timestamp : 4 - 13	Values : [12, 6]
-DEBUG:root:ID : 8	Timestamp : 6 - 16	Values : [16, 6]
-DEBUG:root:ID : 9	Timestamp : 14 - 20	Values : [20, 8]
-DEBUG:root:ID : 10	Timestamp : 6 - 10	Values : [20, 20]
-DEBUG:root:(main program)	Data Customer
-DEBUG:root:ID : 1	Timestamp : 13 - 18	Values : [2, 8]
-DEBUG:root:ID : 2	Timestamp : 5 - 19	Values : [4, 10]
-DEBUG:root:ID : 3	Timestamp : 2 - 12	Values : [6, 16]
-DEBUG:root:ID : 4	Timestamp : 3 - 9	Values : [8, 18]
-DEBUG:root:ID : 5	Timestamp : 8 - 20	Values : [10, 10]
-DEBUG:root:ID : 6	Timestamp : 5 - 12	Values : [16, 14]
-DEBUG:root:ID : 7	Timestamp : 9 - 11	Values : [12, 2]
-DEBUG:root:ID : 8	Timestamp : 6 - 20	Values : [18, 6]
-DEBUG:root:ID : 9	Timestamp : 4 - 13	Values : [18, 18]
-DEBUG:root:ID : 10	Timestamp : 10 - 19	Values : [20, 13]
-DEBUG:root:event queue: [[20, 1, 9, 0], [20, 1, 5, 0], [20, 0, 8, 0], [20, 0, 5, 0], [19, 1, 5, 1], [19, 1, 6, 0], [19, 0, 10, 0], [19, 0, 2, 0], [18, 0, 1, 0], [16, 1, 8, 0], [15, 1, 3, 0], [14, 1, 9, 1], [13, 0, 1, 1], [13, 1, 7, 0], [13, 0, 9, 0], [12, 1, 2, 0], [12, 0, 6, 0], [12, 0, 3, 0], [11, 0, 7, 0], [10, 1, 3, 1], [10, 0, 10, 1], [10, 1, 10, 0], [10, 1, 1, 0], [9, 0, 7, 1], [9, 1, 4, 0], [9, 0, 4, 0], [8, 1, 6, 1], [8, 0, 5, 1], [7, 1, 4, 1], [6, 1, 10, 1], [6, 1, 8, 1], [6, 0, 8, 1], [5, 1, 1, 1], [5, 0, 6, 1], [5, 0, 2, 1], [4, 1, 7, 1], [4, 0, 9, 1], [3, 1, 2, 1], [3, 0, 4, 1], [2, 0, 3, 1]]
-DEBUG:root:(main program)	Dequeue event [2, 0, 3, 1]
-DEBUG:root:(main program)	[Customer 3 in] Make thread
-DEBUG:root:(thread_c3)		Starting
-DEBUG:root:(main program)	Dequeue event [3, 0, 4, 1]
-DEBUG:root:(main program)	[Customer 4 in] Make thread
-DEBUG:root:(thread_c4)		Starting
-DEBUG:root:(main program)	Dequeue event [3, 1, 2, 1]
-DEBUG:root:(main program)	[Product 2 in] Processing product
-DEBUG:root:(main program)	[Product 2 in] Masuk ke produk aktif: [2]
-DEBUG:root:(main program)	Dequeue event [4, 0, 9, 1]
-DEBUG:root:(main program)	[Customer 9 in] Make thread
-DEBUG:root:(thread_c9)		Starting
-DEBUG:root:(main program)	Dequeue event [4, 1, 7, 1]
-DEBUG:root:(thread_c9)		Init dynamic skyline
-DEBUG:root:(main program)	[Product 7 in] Processing product
-DEBUG:root:(thread_c9)		Product values : [[4, 18]]
-DEBUG:root:(main program)	[Product 7 in] Masuk ke produk aktif: [2, 7]
-DEBUG:root:(thread_c9)		Customer values : [18, 18]
-DEBUG:root:(main program)	Dequeue event [5, 0, 2, 1]
-DEBUG:root:(thread_c9)		Product values sorted : [[4, 18]]
-DEBUG:root:(main program)	[Customer 2 in] Make thread
-DEBUG:root:(thread_c9)		[0] Now diff : [14, 0]
-DEBUG:root:(thread_c2)		Starting
-DEBUG:root:(main program)	Dequeue event [5, 0, 6, 1]
-DEBUG:root:(thread_c9)		Hasil Dynamic Skyline : [[4, 18]]
-DEBUG:root:(thread_c2)		Init dynamic skyline
-DEBUG:root:(main program)	[Customer 6 in] Make thread
-DEBUG:root:(thread_c2)		Product values : [[12, 6], [4, 18]]
-DEBUG:root:(thread_c6)		Starting
-DEBUG:root:(thread_c6)		Init dynamic skyline
-DEBUG:root:(main program)	Dequeue event [5, 1, 1, 1]
-DEBUG:root:(thread_c2)		Customer values : [4, 10]
-DEBUG:root:(thread_c6)		Product values : [[12, 6], [4, 18]]
-DEBUG:root:(main program)	[Product 1 in] Processing product
-DEBUG:root:(thread_c2)		Product values sorted : [[4, 18], [12, 6]]
-DEBUG:root:(thread_c6)		Customer values : [16, 14]
-DEBUG:root:(main program)	[Product 1 in] Masuk ke produk aktif: [2, 7, 1]
-DEBUG:root:(thread_c2)		[0] Now diff : [0, 8]
-DEBUG:root:(thread_c2)		[1] Next diff : [8, 4]
-DEBUG:root:(main program)	Dequeue event [6, 0, 8, 1]
-DEBUG:root:(thread_c2)		[p0] saling mendominasi [p1]
-DEBUG:root:(thread_c6)		Product values sorted : [[4, 18], [12, 6]]
-DEBUG:root:(main program)	[Customer 8 in] Make thread
-DEBUG:root:(thread_c2)		[1] Now diff : [8, 4]
-DEBUG:root:(thread_c6)		[0] Now diff : [12, 4]
-DEBUG:root:(thread_c8)		Starting
-DEBUG:root:(thread_c2)		Hasil Dynamic Skyline : [[4, 18], [12, 6]]
-DEBUG:root:(main program)	Dequeue event [6, 1, 8, 1]
-DEBUG:root:(thread_c6)		[1] Next diff : [4, 8]
-DEBUG:root:(thread_c8)		Init dynamic skyline
-DEBUG:root:(main program)	[Product 8 in] Processing product
-DEBUG:root:(thread_c6)		[p0] saling mendominasi [p1]
-DEBUG:root:(thread_c8)		Product values : [[6, 6], [12, 6], [4, 18]]
-DEBUG:root:(main program)	[Product 8 in] Masuk ke produk aktif: [2, 7, 1, 8]
-DEBUG:root:(thread_c6)		[1] Now diff : [4, 8]
-DEBUG:root:(thread_c8)		Customer values : [18, 6]
-DEBUG:root:(main program)	Dequeue event [6, 1, 10, 1]
-DEBUG:root:(thread_c6)		Hasil Dynamic Skyline : [[4, 18], [12, 6]]
-DEBUG:root:(thread_c8)		Product values sorted : [[4, 18], [6, 6], [12, 6]]
-DEBUG:root:(main program)	[Product 10 in] Processing product
-DEBUG:root:(thread_c8)		[0] Now diff : [14, 12]
-DEBUG:root:(main program)	[Product 10 in] Masuk ke produk aktif: [2, 7, 1, 8, 10]
-DEBUG:root:(thread_c8)		[1] Next diff : [12, 0]
-DEBUG:root:(main program)	Dequeue event [7, 1, 4, 1]
-DEBUG:root:(thread_c8)		[p0] didominasi [p1]
-DEBUG:root:(main program)	[Product 4 in] Processing product
-DEBUG:root:(thread_c8)		[2] Next diff : [6, 0]
-DEBUG:root:(main program)	[Product 4 in] Masuk ke produk aktif: [2, 7, 1, 8, 10, 4]
-DEBUG:root:(thread_c8)		[p0] didominasi [p2]
-DEBUG:root:(main program)	Dequeue event [8, 0, 5, 1]
-DEBUG:root:(thread_c8)		[1] Now diff : [12, 0]
-DEBUG:root:(main program)	[Customer 5 in] Make thread
-DEBUG:root:(thread_c8)		[2] Next diff : [6, 0]
-DEBUG:root:(thread_c5)		Starting
-DEBUG:root:(main program)	Dequeue event [8, 1, 6, 1]
-DEBUG:root:(thread_c8)		[p1] didominasi [p2]
-DEBUG:root:(thread_c5)		Init dynamic skyline
-DEBUG:root:(main program)	[Product 6 in] Processing product
-DEBUG:root:(thread_c8)		[2] Now diff : [6, 0]
-DEBUG:root:(thread_c5)		Product values : [[9, 15], [20, 20], [16, 6], [6, 6], [12, 6], [4, 18]]
-DEBUG:root:(main program)	[Product 6 in] Masuk ke produk aktif: [2, 7, 1, 8, 10, 4, 6]
-DEBUG:root:(thread_c8)		Hasil Dynamic Skyline : [[12, 6]]
-DEBUG:root:(thread_c5)		Customer values : [10, 10]
-DEBUG:root:(main program)	Dequeue event [9, 0, 4, 0]
-DEBUG:root:(thread_c5)		Product values sorted : [[4, 18], [6, 6], [9, 15], [12, 6], [16, 6], [20, 20]]
-DEBUG:root:(main program)	[Customer 4 out] Kill thread
-DEBUG:root:(thread_c5)		[0] Now diff : [6, 8]
-DEBUG:root:(main program)	Dequeue event [9, 1, 4, 0]
-DEBUG:root:(thread_c5)		[1] Next diff : [4, 4]
-DEBUG:root:(thread_c4)		Killed? True
-DEBUG:root:(main program)	[Product 4 out] Processing product
-DEBUG:root:(thread_c5)		[p0] didominasi [p1]
-DEBUG:root:(thread_c4)		Exiting
-DEBUG:root:(main program)	[Product 4 out] Hapus dari produk aktif: [2, 7, 1, 8, 10, 6]
-DEBUG:root:(thread_c5)		[2] Next diff : [1, 5]
-DEBUG:root:(main program)	Dequeue event [9, 0, 7, 1]
-DEBUG:root:(thread_c5)		[p0] didominasi [p2]
-DEBUG:root:(main program)	[Customer 7 in] Make thread
-DEBUG:root:(thread_c5)		[3] Next diff : [2, 4]
-DEBUG:root:(thread_c5)		[p0] didominasi [p3]
-DEBUG:root:(thread_c5)		[4] Next diff : [6, 4]
-DEBUG:root:(thread_c5)		[p0] didominasi [p4]
-DEBUG:root:(thread_c5)		[5] Next diff : [10, 10]
-DEBUG:root:(thread_c5)		[p0] mendominasi [p5]
-DEBUG:root:(thread_c5)		[1] Now diff : [4, 4]
-DEBUG:root:(thread_c5)		[2] Next diff : [1, 5]
-DEBUG:root:(thread_c5)		[p1] saling mendominasi [p2]
-DEBUG:root:(thread_c5)		[3] Next diff : [2, 4]
-DEBUG:root:(thread_c5)		[p1] didominasi [p3]
-DEBUG:root:(thread_c5)		[4] Next diff : [6, 4]
-DEBUG:root:(thread_c5)		[p1] mendominasi [p4]
-DEBUG:root:(thread_c5)		[2] Now diff : [1, 5]
-DEBUG:root:(thread_c5)		[3] Next diff : [2, 4]
-DEBUG:root:(thread_c5)		[p2] saling mendominasi [p3]
-DEBUG:root:(thread_c5)		[3] Now diff : [2, 4]
-DEBUG:root:(thread_c5)		Hasil Dynamic Skyline : [[9, 15], [12, 6]]
-DEBUG:root:(thread_c7)		Starting
-DEBUG:root:(main program)	Dequeue event [10, 1, 1, 0]
-DEBUG:root:(thread_c7)		Init dynamic skyline
-DEBUG:root:(main program)	[Product 1 out] Processing product
-DEBUG:root:(thread_c7)		Product values : [[16, 14], [20, 20], [16, 6], [6, 6], [12, 6], [4, 18]]
-DEBUG:root:(main program)	[Product 1 out] Hapus dari produk aktif: [2, 7, 8, 10, 6]
-DEBUG:root:(thread_c7)		Customer values : [12, 2]
-DEBUG:root:(main program)	Dequeue event [10, 1, 10, 0]
-DEBUG:root:(thread_c7)		Product values sorted : [[4, 18], [6, 6], [12, 6], [16, 6], [16, 14], [20, 20]]
-DEBUG:root:(main program)	[Product 10 out] Processing product
-DEBUG:root:(thread_c7)		[0] Now diff : [8, 16]
-DEBUG:root:(main program)	[Product 10 out] Hapus dari produk aktif: [2, 7, 8, 6]
-DEBUG:root:(thread_c7)		[1] Next diff : [6, 4]
-DEBUG:root:(main program)	Dequeue event [10, 0, 10, 1]
-DEBUG:root:(thread_c7)		[p0] didominasi [p1]
-DEBUG:root:(thread_c7)		[2] Next diff : [0, 4]
-DEBUG:root:(thread_c7)		[p0] didominasi [p2]
-DEBUG:root:(thread_c7)		[3] Next diff : [4, 4]
-DEBUG:root:(thread_c7)		[p0] didominasi [p3]
-DEBUG:root:(thread_c7)		[4] Next diff : [4, 12]
-DEBUG:root:(thread_c7)		[p0] didominasi [p4]
-DEBUG:root:(thread_c7)		[5] Next diff : [8, 18]
-DEBUG:root:(thread_c7)		[p0] mendominasi [p5]
-DEBUG:root:(thread_c7)		[1] Now diff : [6, 4]
-DEBUG:root:(thread_c7)		[2] Next diff : [0, 4]
-DEBUG:root:(thread_c7)		[p1] didominasi [p2]
-DEBUG:root:(thread_c7)		[3] Next diff : [4, 4]
-DEBUG:root:(thread_c7)		[p1] didominasi [p3]
-DEBUG:root:(thread_c7)		[4] Next diff : [4, 12]
-DEBUG:root:(thread_c7)		[p1] saling mendominasi [p4]
-DEBUG:root:(thread_c7)		[2] Now diff : [0, 4]
-DEBUG:root:(thread_c7)		[3] Next diff : [4, 4]
-DEBUG:root:(thread_c7)		[p2] mendominasi [p3]
-DEBUG:root:(main program)	[Customer 10 in] Make thread
-DEBUG:root:(thread_c7)		[4] Next diff : [4, 12]
-DEBUG:root:(thread_c10)		Starting
-DEBUG:root:(thread_c7)		[p2] mendominasi [p4]
-DEBUG:root:(main program)	Dequeue event [10, 1, 3, 1]
-DEBUG:root:(thread_c10)		Init dynamic skyline
-DEBUG:root:(thread_c7)		Hasil Dynamic Skyline : [[12, 6]]
-DEBUG:root:(main program)	[Product 3 in] Processing product
-DEBUG:root:(thread_c10)		Product values : [[16, 14], [16, 6], [12, 6], [4, 18]]
-DEBUG:root:(main program)	[Product 3 in] Masuk ke produk aktif: [2, 7, 8, 6, 3]
-DEBUG:root:(thread_c10)		Customer values : [20, 13]
-DEBUG:root:(main program)	Dequeue event [11, 0, 7, 0]
-DEBUG:root:(thread_c10)		Product values sorted : [[4, 18], [12, 6], [16, 6], [16, 14]]
-DEBUG:root:(main program)	[Customer 7 out] Kill thread
-DEBUG:root:(thread_c10)		[0] Now diff : [16, 5]
-DEBUG:root:(main program)	Dequeue event [12, 0, 3, 0]
-DEBUG:root:(thread_c7)		Killed? True
-DEBUG:root:(thread_c10)		[1] Next diff : [8, 7]
-DEBUG:root:(main program)	[Customer 3 out] Kill thread
-DEBUG:root:(thread_c7)		Exiting
-DEBUG:root:(thread_c10)		[p0] saling mendominasi [p1]
-DEBUG:root:(main program)	Dequeue event [12, 0, 6, 0]
-DEBUG:root:(thread_c3)		Killed? True
-DEBUG:root:(thread_c10)		[2] Next diff : [4, 7]
-DEBUG:root:(main program)	[Customer 6 out] Kill thread
-DEBUG:root:(thread_c3)		Exiting
-DEBUG:root:(thread_c10)		[p0] saling mendominasi [p2]
-DEBUG:root:(thread_c10)		[3] Next diff : [4, 1]
-DEBUG:root:(thread_c6)		Killed? True
-DEBUG:root:(thread_c10)		[p0] didominasi [p3]
-DEBUG:root:(main program)	Dequeue event [12, 1, 2, 0]
-DEBUG:root:(thread_c6)		Exiting
-DEBUG:root:(thread_c10)		[1] Now diff : [8, 7]
-DEBUG:root:(main program)	[Product 2 out] Processing product
-DEBUG:root:(thread_c10)		[2] Next diff : [4, 7]
-DEBUG:root:(main program)	[Product 2 out] Hapus dari produk aktif: [7, 8, 6, 3]
-DEBUG:root:(thread_c10)		[p1] didominasi [p2]
-DEBUG:root:(main program)	Dequeue event [13, 0, 9, 0]
-DEBUG:root:(thread_c10)		[3] Next diff : [4, 1]
-DEBUG:root:(main program)	[Customer 9 out] Kill thread
-DEBUG:root:(thread_c10)		[p1] didominasi [p3]
-DEBUG:root:(main program)	Dequeue event [13, 1, 7, 0]
-DEBUG:root:(thread_c9)		Killed? True
-DEBUG:root:(thread_c10)		[2] Now diff : [4, 7]
-DEBUG:root:(main program)	[Product 7 out] Processing product
-DEBUG:root:(thread_c9)		Exiting
-DEBUG:root:(thread_c10)		[3] Next diff : [4, 1]
-DEBUG:root:(main program)	[Product 7 out] Hapus dari produk aktif: [8, 6, 3]
-DEBUG:root:(thread_c10)		[p2] didominasi [p3]
-DEBUG:root:(main program)	Dequeue event [13, 0, 1, 1]
-DEBUG:root:(thread_c10)		[3] Now diff : [4, 1]
-DEBUG:root:(main program)	[Customer 1 in] Make thread
-DEBUG:root:(thread_c10)		Hasil Dynamic Skyline : [[16, 14]]
-DEBUG:root:(thread_c1)		Starting
-DEBUG:root:(main program)	Dequeue event [14, 1, 9, 1]
-DEBUG:root:(thread_c1)		Init dynamic skyline
-DEBUG:root:(main program)	[Product 9 in] Processing product
-DEBUG:root:(thread_c1)		Product values : [[6, 20], [16, 14], [16, 6]]
-DEBUG:root:(main program)	[Product 9 in] Masuk ke produk aktif: [8, 6, 3, 9]
-DEBUG:root:(thread_c1)		Customer values : [2, 8]
-DEBUG:root:(main program)	Dequeue event [15, 1, 3, 0]
-DEBUG:root:(thread_c1)		Product values sorted : [[6, 20], [16, 6], [16, 14]]
-DEBUG:root:(main program)	[Product 3 out] Processing product
-DEBUG:root:(thread_c1)		[0] Now diff : [4, 12]
-DEBUG:root:(main program)	[Product 3 out] Hapus dari produk aktif: [8, 6, 9]
-DEBUG:root:(thread_c1)		[1] Next diff : [14, 2]
-DEBUG:root:(main program)	Dequeue event [16, 1, 8, 0]
-DEBUG:root:(thread_c1)		[p0] saling mendominasi [p1]
-DEBUG:root:(main program)	[Product 8 out] Processing product
-DEBUG:root:(thread_c1)		[2] Next diff : [14, 6]
-DEBUG:root:(main program)	[Product 8 out] Hapus dari produk aktif: [6, 9]
-DEBUG:root:(thread_c1)		[p0] saling mendominasi [p2]
-DEBUG:root:(main program)	Dequeue event [18, 0, 1, 0]
-DEBUG:root:(thread_c1)		[1] Now diff : [14, 2]
-DEBUG:root:(main program)	[Customer 1 out] Kill thread
-DEBUG:root:(thread_c1)		[2] Next diff : [14, 6]
-DEBUG:root:(main program)	Dequeue event [19, 0, 2, 0]
-DEBUG:root:(thread_c1)		[p1] mendominasi [p2]
-DEBUG:root:(main program)	[Customer 2 out] Kill thread
-DEBUG:root:(thread_c1)		Hasil Dynamic Skyline : [[6, 20], [16, 6]]
-DEBUG:root:(main program)	Dequeue event [19, 0, 10, 0]
-DEBUG:root:(thread_c2)		Killed? True
-DEBUG:root:(thread_c1)		Killed? True
-DEBUG:root:(main program)	[Customer 10 out] Kill thread
-DEBUG:root:(thread_c2)		Exiting
-DEBUG:root:(thread_c1)		Exiting
-DEBUG:root:(main program)	Dequeue event [19, 1, 6, 0]
-DEBUG:root:(thread_c10)		Killed? True
-DEBUG:root:(main program)	[Product 6 out] Processing product
-DEBUG:root:(thread_c10)		Exiting
-DEBUG:root:(main program)	[Product 6 out] Hapus dari produk aktif: [9]
-DEBUG:root:(main program)	Dequeue event [19, 1, 5, 1]
-DEBUG:root:(main program)	[Product 5 in] Processing product
-DEBUG:root:(main program)	[Product 5 in] Masuk ke produk aktif: [9, 5]
-DEBUG:root:(main program)	Dequeue event [20, 0, 5, 0]
-DEBUG:root:(main program)	[Customer 5 out] Kill thread
-DEBUG:root:(main program)	Dequeue event [20, 0, 8, 0]
-DEBUG:root:(thread_c5)		Killed? True
-DEBUG:root:(main program)	[Customer 8 out] Kill thread
-DEBUG:root:(thread_c5)		Exiting
-DEBUG:root:(main program)	Dequeue event [20, 1, 5, 0]
-DEBUG:root:(thread_c8)		Killed? True
-DEBUG:root:(main program)	[Product 5 out] Processing product
-DEBUG:root:(thread_c8)		Exiting
-DEBUG:root:(main program)	[Product 5 out] Hapus dari produk aktif: [9]
-DEBUG:root:(main program)	Dequeue event [20, 1, 9, 0]
-DEBUG:root:(main program)	[Product 9 out] Processing product
-DEBUG:root:(main program)	[Product 9 out] Hapus dari produk aktif: []
-DEBUG:root:(main program)	Exiting the main program
+[DEBUG] (MainThread) input data product (../dataset/product.csv)
+[DEBUG] (MainThread) input data product (../dataset/product.csv) selesai
+[DEBUG] (MainThread) input data customer (../dataset/customer.csv)
+[DEBUG] (MainThread) input data customer (../dataset/customer.csv) selesai
+[DEBUG] (MainThread) Data Product
+[DEBUG] (MainThread) ID : 1	Timestamp : 5 - 10	Values : [6, 6]
+[DEBUG] (MainThread) ID : 2	Timestamp : 3 - 12	Values : [4, 18]
+[DEBUG] (MainThread) ID : 3	Timestamp : 10 - 15	Values : [6, 20]
+[DEBUG] (MainThread) ID : 4	Timestamp : 7 - 9	Values : [9, 15]
+[DEBUG] (MainThread) ID : 5	Timestamp : 19 - 20	Values : [12, 18]
+[DEBUG] (MainThread) ID : 6	Timestamp : 8 - 19	Values : [16, 14]
+[DEBUG] (MainThread) ID : 7	Timestamp : 4 - 13	Values : [12, 6]
+[DEBUG] (MainThread) ID : 8	Timestamp : 6 - 16	Values : [16, 6]
+[DEBUG] (MainThread) ID : 9	Timestamp : 14 - 20	Values : [20, 8]
+[DEBUG] (MainThread) ID : 10	Timestamp : 6 - 10	Values : [20, 20]
+[DEBUG] (MainThread) Data Customer
+[DEBUG] (MainThread) ID : 1	Timestamp : 13 - 18	Values : [2, 8]
+[DEBUG] (MainThread) ID : 2	Timestamp : 5 - 19	Values : [4, 10]
+[DEBUG] (MainThread) ID : 3	Timestamp : 2 - 12	Values : [6, 16]
+[DEBUG] (MainThread) ID : 4	Timestamp : 3 - 9	Values : [8, 18]
+[DEBUG] (MainThread) ID : 5	Timestamp : 8 - 20	Values : [10, 10]
+[DEBUG] (MainThread) ID : 6	Timestamp : 5 - 12	Values : [16, 14]
+[DEBUG] (MainThread) ID : 7	Timestamp : 9 - 11	Values : [12, 2]
+[DEBUG] (MainThread) ID : 8	Timestamp : 6 - 20	Values : [18, 6]
+[DEBUG] (MainThread) ID : 9	Timestamp : 4 - 13	Values : [18, 18]
+[DEBUG] (MainThread) ID : 10	Timestamp : 10 - 19	Values : [20, 13]
+[DEBUG] (MainThread) Event queue: [[20, 1, 9, 0], [20, 1, 5, 0], [20, 0, 8, 0], [20, 0, 5, 0], [19, 1, 5, 1], [19, 1, 6, 0], [19, 0, 10, 0], [19, 0, 2, 0], [18, 0, 1, 0], [16, 1, 8, 0], [15, 1, 3, 0], [14, 1, 9, 1], [13, 0, 1, 1], [13, 1, 7, 0], [13, 0, 9, 0], [12, 1, 2, 0], [12, 0, 6, 0], [12, 0, 3, 0], [11, 0, 7, 0], [10, 1, 3, 1], [10, 0, 10, 1], [10, 1, 10, 0], [10, 1, 1, 0], [9, 0, 7, 1], [9, 1, 4, 0], [9, 0, 4, 0], [8, 1, 6, 1], [8, 0, 5, 1], [7, 1, 4, 1], [6, 1, 10, 1], [6, 1, 8, 1], [6, 0, 8, 1], [5, 1, 1, 1], [5, 0, 6, 1], [5, 0, 2, 1], [4, 1, 7, 1], [4, 0, 9, 1], [3, 1, 2, 1], [3, 0, 4, 1], [2, 0, 3, 1]]
+[DEBUG] (thread_cNone) Starting
+[DEBUG] (MainThread) Dequeue event [2, 0, 3, 1]
+[DEBUG] (MainThread) [C-3 in] Make thread
+[DEBUG] (thread_c3) Starting
+[DEBUG] (MainThread) Dequeue event [3, 0, 4, 1]
+[DEBUG] (MainThread) [C-4 in] Make thread
+[DEBUG] (thread_c4) Starting
+[DEBUG] (MainThread) Dequeue event [3, 1, 2, 1]
+[DEBUG] (MainThread) [P-2 in] Processing product | waiting for lock
+[DEBUG] (MainThread) [P-2 in] Processing product | unlocked
+[DEBUG] (MainThread) [P-2 in] Masuk ke produk aktif: {2: [4, 18]}
+[DEBUG] (MainThread) Dequeue event [4, 0, 9, 1]
+[DEBUG] (MainThread) [C-9 in] Make thread
+[DEBUG] (thread_c9) Starting
+[DEBUG] (MainThread) Dequeue event [4, 1, 7, 1]
+[DEBUG] (thread_c9) Init dynamic skyline
+[DEBUG] (MainThread) [P-7 in] Processing product | waiting for lock
+[DEBUG] (thread_c9) Product values : [[4, 18]]
+[DEBUG] (thread_c9) Customer values : [18, 18]
+[DEBUG] (thread_c9) Product values sorted : [[4, 18]]
+[DEBUG] (thread_c9) [0] Now diff : [14, 0]
+[DEBUG] (thread_c9) Hasil Dynamic Skyline : [2]
+[DEBUG] (thread_c9) [C-9] Adding P-2 (dsl_results : [2])
+[DEBUG] (thread_c9) [C-9] Probability: 1.0 (dsl_results : [2])
+[DEBUG] (thread_c9) dsl = [2]
+[DEBUG] (MainThread) [P-7 in] Processing product | unlocked
+[DEBUG] (thread_c9) Insert PandoraBox [2][4] + 1.0 = 0
+[DEBUG] (MainThread) [P-7 in] Masuk ke produk aktif: {2: [4, 18], 7: [12, 6]}
+[DEBUG] (MainThread) Dequeue event [5, 0, 2, 1]
+[DEBUG] (MainThread) [C-2 in] Make thread
+[DEBUG] (thread_c2) Starting
+[DEBUG] (MainThread) Dequeue event [5, 0, 6, 1]
+[DEBUG] (thread_c2) Init dynamic skyline
+[DEBUG] (MainThread) [C-6 in] Make thread
+[DEBUG] (thread_c2) Product values : [[4, 18], [12, 6]]
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c2) Customer values : [4, 10]
+[DEBUG] (MainThread) Dequeue event [5, 1, 1, 1]
+[DEBUG] (thread_c6) Init dynamic skyline
+[DEBUG] (thread_c2) Product values sorted : [[4, 18], [12, 6]]
+[DEBUG] (MainThread) [P-1 in] Processing product | waiting for lock
+[DEBUG] (thread_c6) Product values : [[4, 18], [12, 6]]
+[DEBUG] (thread_c2) [0] Now diff : [0, 8]
+[DEBUG] (thread_c6) Customer values : [16, 14]
+[DEBUG] (thread_c2) [1] Next diff : [8, 4]
+[DEBUG] (thread_c6) Product values sorted : [[4, 18], [12, 6]]
+[DEBUG] (thread_c2) [P-0] saling mendominasi [P-1]
+[DEBUG] (thread_c6) [0] Now diff : [12, 4]
+[DEBUG] (thread_c2) [1] Now diff : [8, 4]
+[DEBUG] (thread_c6) [1] Next diff : [4, 8]
+[DEBUG] (thread_c2) Hasil Dynamic Skyline : [2, 7]
+[DEBUG] (thread_c6) [P-0] saling mendominasi [P-1]
+[DEBUG] (thread_c2) [C-2] Adding P-2 (dsl_results : [2])
+[DEBUG] (thread_c6) [1] Now diff : [4, 8]
+[DEBUG] (thread_c2) [C-2] Adding P-7 (dsl_results : [2, 7])
+[DEBUG] (thread_c6) Hasil Dynamic Skyline : [2, 7]
+[DEBUG] (thread_c2) [C-2] Probability: 0.5 (dsl_results : [2, 7])
+[DEBUG] (thread_c6) [C-6] Adding P-2 (dsl_results : [2])
+[DEBUG] (thread_c2) dsl = [2, 7]
+[DEBUG] (MainThread) [P-1 in] Processing product | unlocked
+[DEBUG] (MainThread) [P-1 in] Masuk ke produk aktif: {1: [6, 6], 2: [4, 18], 7: [12, 6]}
+[DEBUG] (thread_c2) Insert PandoraBox [2][5] + 0.5 = 0
+[DEBUG] (MainThread) Dequeue event [6, 0, 8, 1]
+[DEBUG] (thread_c6) [C-6] Adding P-7 (dsl_results : [2, 7])
+[DEBUG] (thread_c2) Insert PandoraBox [7][5] + 0.5 = 0
+[DEBUG] (MainThread) [C-8 in] Make thread
+[DEBUG] (thread_c6) [C-6] Probability: 0.5 (dsl_results : [2, 7])
+[DEBUG] (thread_c8) Starting
+[DEBUG] (MainThread) Dequeue event [6, 1, 8, 1]
+[DEBUG] (thread_c6) dsl = [2, 7]
+[DEBUG] (thread_c8) Init dynamic skyline
+[DEBUG] (MainThread) [P-8 in] Processing product | waiting for lock
+[DEBUG] (thread_c6) Insert PandoraBox [2][5] + 0.5 = 0
+[DEBUG] (thread_c8) Product values : [[6, 6], [4, 18], [12, 6]]
+[DEBUG] (MainThread) [P-8 in] Processing product | unlocked
+[DEBUG] (thread_c6) Insert PandoraBox [7][5] + 0.5 = 0
+[DEBUG] (thread_c8) Customer values : [18, 6]
+[DEBUG] (MainThread) [P-8 in] Masuk ke produk aktif: {8: [16, 6], 1: [6, 6], 2: [4, 18], 7: [12, 6]}
+[DEBUG] (thread_c8) Product values sorted : [[4, 18], [6, 6], [12, 6]]
+[DEBUG] (MainThread) Dequeue event [6, 1, 10, 1]
+[DEBUG] (thread_c8) [0] Now diff : [14, 12]
+[DEBUG] (MainThread) [P-10 in] Processing product | waiting for lock
+[DEBUG] (thread_c8) [1] Next diff : [12, 0]
+[DEBUG] (thread_c8) [P-0] didominasi [P-1]
+[DEBUG] (thread_c8) [2] Next diff : [6, 0]
+[DEBUG] (thread_c8) [P-0] didominasi [P-2]
+[DEBUG] (thread_c8) [1] Now diff : [12, 0]
+[DEBUG] (thread_c8) [2] Next diff : [6, 0]
+[DEBUG] (thread_c8) [P-1] didominasi [P-2]
+[DEBUG] (thread_c8) [2] Now diff : [6, 0]
+[DEBUG] (thread_c8) Hasil Dynamic Skyline : [7]
+[DEBUG] (thread_c8) [C-8] Adding P-7 (dsl_results : [7])
+[DEBUG] (thread_c8) [C-8] Probability: 1.0 (dsl_results : [7])
+[DEBUG] (thread_c8) dsl = [7]
+[DEBUG] (MainThread) [P-10 in] Processing product | unlocked
+[DEBUG] (thread_c8) Insert PandoraBox [7][6] + 1.0 = 0
+[DEBUG] (MainThread) [P-10 in] Masuk ke produk aktif: {8: [16, 6], 1: [6, 6], 2: [4, 18], 10: [20, 20], 7: [12, 6]}
+[DEBUG] (MainThread) Dequeue event [7, 1, 4, 1]
+[DEBUG] (MainThread) [P-4 in] Processing product | waiting for lock
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c9) Starting
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c3) Killed? False
+[DEBUG] (thread_c3) Lets process the product
+[DEBUG] (thread_c3) Starting
+[DEBUG] (thread_c2) Killed? False
+[DEBUG] (thread_c2) Lets process the product
+[DEBUG] (thread_c2) Starting
+[DEBUG] (thread_c6) Killed? False
+[DEBUG] (thread_c6) Lets process the product
+[DEBUG] (thread_c6) Starting
+[DEBUG] (thread_c8) Killed? False
+[DEBUG] (thread_c8) Lets process the product
+[DEBUG] (thread_c8) Starting
+[DEBUG] (thread_c9) Killed? False
+[DEBUG] (thread_c9) Lets process the product
+[DEBUG] (thread_c9) Starting

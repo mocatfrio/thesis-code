@@ -3,17 +3,20 @@ import logging
 from kmpp.dynamic_skyline import *
 
 class CustomerThread(threading.Thread):
-  def __init__(self, customer_id, customer_list=None, product_list=None, product_active=None):
+  mutex = threading.Lock()
+
+  def __init__(self, customer_id=None, customer_list=None, pandora_box=None, event_id=None, product_active=None):
     threading.Thread.__init__(self)
     self._kill = threading.Event()
     self._product_in = threading.Event()
     self._product_out = threading.Event()
     self._init_dsl = False
-    self.thread_id = int(customer_id)
+    self.thread_id = customer_id
     self.name = "thread_c" + str(customer_id)
     self.customer_list = customer_list
-    self.product_list = product_list
     self.product_active = product_active
+    self.pandora_box = pandora_box
+    self.event_id = event_id
 
   def kill_thread(self):
     self._kill.set()
@@ -23,29 +26,31 @@ class CustomerThread(threading.Thread):
 
   def process_product_out(self):
     self._product_out.set()
+  
+  def lock_mutex(self):
+    CustomerThread.mutex.acquire()
+
+  def unlock_mutex(self):
+    CustomerThread.mutex.release()
 
   def run(self):
     while not self._kill.is_set():
-      logging.debug('({})\t\tStarting'.format(self.name))
+      logging.debug('Starting')
       # jika belum diinisialisasi
       if not self._init_dsl:
         if self.product_active is not None:
-          logging.debug('({})\t\tInit dynamic skyline'.format(self.name))
-          init_dynamic_skyline(self.thread_id, self.product_active, self.product_list, self.customer_list, self.name)
+          logging.debug('Init dynamic skyline')
+          dsl_result, probability = init_dynamic_skyline(self.thread_id, self.product_active, self.customer_list)
+          self.unlock_mutex()
+          self.pandora_box.add_score(dsl_result, self.event_id, probability)
+        else:
+          self.unlock_mutex()
         self._init_dsl = True
       killed = self._kill.wait(2)
-      logging.debug('({})\t\tKilled? {}'.format(self.name, killed))
+      logging.debug('Killed? {}'.format(killed))
       if killed:
-        logging.debug('({})\t\tExiting'.format(self.name))
+        logging.debug('Exiting')
         break
       else:
-        logging.debug('({})\t\tProcess product? {}'.format(self.name, product_action))
-        if product_action:
-          logging.debug('({})\t\tLets process the product'.format(self.name))
+        logging.debug('Lets process the product')
         
-def find_thread(threads, filter):
-  counter = 0
-  for thread in threads:
-    if filter(thread):
-      return counter
-    counter += 1

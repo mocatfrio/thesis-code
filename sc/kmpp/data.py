@@ -1,5 +1,6 @@
 import logging
 import csv
+from collections import OrderedDict
 
 class Data:
   total_data = 0
@@ -32,19 +33,23 @@ class Customer(Data):
     Data.__init__(self, id, timestamp_in, timestamp_out)    
     self.dsl_results = []
 
-  def add_dsl(self, dsl):
-    self.dsl_results = dsl
-    logging.debug('Adding p{} | dsl_results : {}'.format(dsl, self.dsl_results))
+  def add_dsl(self, dsl_result):
+    for dsl in dsl_result:
+      self.dsl_results.append(dsl)
+      logging.debug('[C-{}] Adding P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
+    # self.dsl_results = list(OrderedDict.fromkeys(self.dsl_results))
 
   def remove_dsl(self, dsl):
     self.dsl_results.remove(dsl)
-    logging.debug('Removing p{} | dsl_results : {}'.format(dsl, self.dsl_results))
+    logging.debug('[C-{}] Removing P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
 
   def get_total_dsl(self):
     return len(self.dsl_results)
 
   def count_probability(self):
-    return 1/len(self.dsl_results)
+    probability = 1.0/len(self.dsl_results)
+    logging.debug('[C-{}] Probability: {} (dsl_results : {})'.format(self.id, probability, self.dsl_results))
+    return probability
 
 def input_csv(data_name, file, delimiter, event_queue):
   list = []

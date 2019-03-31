@@ -21,4 +21,10 @@ class EventQueue:
 
   def sort_queue(self):
     self.events = sorted(self.events, key=itemgetter(0,3,1,2), reverse=True)
-    logging.debug('event queue: {}'.format(self.events))
+    logging.debug('Event queue: {}'.format(self.events))
+
+  def get_total_queue(self):
+    return len(self.events)
+
+  def get_max_timestamp(self):
+    return self.events[0][0]
