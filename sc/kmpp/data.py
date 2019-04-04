@@ -18,8 +18,13 @@ class Data:
   def count_dimension(self):
     return len(self.values)
     
+<<<<<<< HEAD
   def get_data(self):
     return 'ID : {}\tTimestamp : {} - {}\tValues : {}'.format(self.id, self.timestamp_in, self.timestamp_out, self.values)
+=======
+  def display_data(self):
+    logging.debug('ID : {}\tTimestamp : {} - {}\tValues : {}'.format(self.id, self.timestamp_in, self.timestamp_out, self.values))
+>>>>>>> 21b379e784cc4ec6a53a19da9bfdb905928da0a7
 
   def get_total_data():
     return Data.total_data

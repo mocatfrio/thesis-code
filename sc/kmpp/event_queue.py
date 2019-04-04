@@ -21,9 +21,13 @@ class EventQueue:
 
   def sort_queue(self):
     self.events = sorted(self.events, key=itemgetter(0,3,1,2), reverse=True)
+<<<<<<< HEAD
 
   def get_queue(self):
     return self.events
+=======
+    logging.debug('Event queue: {}'.format(self.events))
+>>>>>>> 21b379e784cc4ec6a53a19da9bfdb905928da0a7
 
   def get_total_queue(self):
     return len(self.events)
