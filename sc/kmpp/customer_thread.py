@@ -4,17 +4,18 @@ import time
 from kmpp.dynamic_skyline import *
 
 class CustomerThread(threading.Thread):
-  def __init__(self, customer_id=None, customer_list=None, pandora_box=None, timestamp=None, product_active=None):
+  customer_list = None
+  product_list = None
+  pandora_box = None
+
+  def __init__(self, customer_id=None, timestamp=None, product=None):
     threading.Thread.__init__(self)
     self._kill = threading.Event()
-    self._process_product = threading.Event()
-    self._init_dsl = False
-    self._status = False
+    self._event = threading.Event()
+    self._work = threading.Event()
     self.thread_id = customer_id
     self.name = "thread_c" + str(customer_id)
-    self.customer_list = customer_list
-    self.product_active = product_active
-    self.pandora_box = pandora_box
+    self.product = product
     self.timestamp = timestamp
     self.action = 0
 
@@ -22,46 +23,36 @@ class CustomerThread(threading.Thread):
     self._kill.set()
 
   def notify(self, timestamp, product, action):
-    self._process_product.set()
+    self._event.set()
     self.timestamp = timestamp
-    self.product_active = product
+    self.product = product
     self.action = action
-
-  def is_initialized(self):
-    return self._init_dsl == True
   
-  def is_done(self):
-    return self._status == True
-
-  def reset_status(self):
-    self._status = False
-    self._process_product.clear()
+  def is_working(self):
+    return self._work.is_set()
 
   def run(self):
     logging.debug('Starting')
+    # init dsl
+    if self.product is not None:
+      logging.debug('Init dynamic skyline')
+      init_dynamic_skyline(self.thread_id, self.product, customer_list, self.timestamp, pandora_box)
     while not self._kill.is_set():
-      if not self._init_dsl:
-        if self.product_active is not None:
-          logging.debug('Init dynamic skyline')
-          dsl_result, probability = init_dynamic_skyline(self.thread_id, self.product_active, self.customer_list)
-          self.pandora_box.add_score(dsl_result, self.timestamp, probability)
-        self._init_dsl = True      
-      else:
-        if self._process_product.is_set():
-          if self.action == 1:
-            logging.debug("Process product in")
-            if self.customer_list[self.thread_id-1].get_total_dsl() == 0:
-              dsl_result = []
-              for key in self.product_active.keys():
-                dsl_result.append(key) 
-              self.customer_list[self.thread_id-1].add_dsl(dsl_result)
-              probability = self.customer_list[self.thread_id-1].count_probability()
-              self.pandora_box.add_score(dsl_result, self.timestamp, probability)
-            else:
-              pass              
-          else: 
-            logging.debug("Process product out")
-          self._status = True
-      time.sleep(2)
+      event = self._event.wait(3)
+      if event:
+        self._work.set()
+        if self.action == 1: #product in
+          logging.debug('Product in')
+          if customer_list[self.thread_id-1].is_empty():
+            dsl_result = []
+            for key in self.product.keys():
+              dsl_result.append(key) 
+            process_dsl_result(self.thread_id, customer_list, dsl_result, self.timestamp, pandora_box)
+          else:
+            pass 
+        elif self.action == 1: 
+          logging.debug('Product out')
+        self._event.clear()
+        self._work.clear()
       logging.debug('Killed? {}'.format(self._kill.is_set()))  
     logging.debug('Exiting')

@@ -32,6 +32,9 @@ class Customer(Data):
   def __init__(self, id, timestamp_in, timestamp_out):
     Data.__init__(self, id, timestamp_in, timestamp_out)    
     self.dsl_results = []
+  
+  def is_empty(self):
+    return self.dsl_results == []
 
   def add_dsl(self, dsl_result):
     for dsl in dsl_result:

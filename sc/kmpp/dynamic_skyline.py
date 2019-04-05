@@ -1,23 +1,25 @@
 import logging
 from operator import itemgetter
 
-def init_dynamic_skyline(customer_id, product_active, customer_list):
+def init_dynamic_skyline(customer_id, product, customer_list, timestamp, pandora_box):
   # get the value
   customer_values = customer_list[customer_id-1].values 
   product_values = []
-  for key, value in product_active.items():
+  for key, value in product.items():
     product_values.append(value)
 
   logging.debug('Product values : {}'.format(product_values))
   logging.debug('Customer values : {}'.format(customer_values))
 
-  dsl_result = find_dynamic_skyline(product_values, customer_values, product_active)
+  dsl_result = find_dynamic_skyline(product_values, customer_values, product)
+  process_dsl_result(customer_id, customer_list, dsl_result, timestamp, pandora_box)
+  
+def process_dsl_result(customer_id, customer_list, dsl_result, timestamp, pandora_box):
   customer_list[customer_id-1].add_dsl(dsl_result)
   probability = customer_list[customer_id-1].count_probability()
+  pandora_box.add_score(dsl_result, timestamp, probability)
 
-  return dsl_result, probability
-  
-def find_dynamic_skyline(product_values, customer_values, product_active):
+def find_dynamic_skyline(product_values, customer_values, product):
   dimension = len(product_values[0])
   rows = len(product_values)
   product_values = sorted(product_values)
@@ -52,17 +54,17 @@ def find_dynamic_skyline(product_values, customer_values, product_active):
               dominated += 1
           if equal == dimension:
             if dominate >= 1:
-              if dominated >= 1:
-                logging.debug('[P-{}] saling mendominasi [P-{}]'.format(row, next_row))
-              else:
-                logging.debug('[P-{}] mendominasi [P-{}]'.format(row, next_row))
+              if dominated < 1:
                 product_values[next_row] = [None for x in product_values[next_row]]
+                logging.debug('[P-{}] mendominasi [P-{}]'.format(row, next_row))
+              else:
+                logging.debug('[P-{}] saling mendominasi [P-{}]'.format(row, next_row))
           else:
-            if dominate >= 1:
-              logging.debug('[P-{}] saling mendominasi [P-{}]'.format(row, next_row))
-            else:
-              logging.debug('[P-{}] didominasi [P-{}]'.format(row, next_row))
+            if dominate < 1:
               product_values[row] = [None for x in product_values[row]] 
+              logging.debug('[P-{}] didominasi [P-{}]'.format(row, next_row))
+            else:
+              logging.debug('[P-{}] saling mendominasi [P-{}]'.format(row, next_row))    
         else:
           continue
     else:
@@ -76,7 +78,7 @@ def find_dynamic_skyline(product_values, customer_values, product_active):
 
   # cari product id
   for dsl in dsl_result:
-    for key, value in product_active.items():
+    for key, value in product.items():
       if value == dsl:
         dsl_result[dsl_result.index(dsl)] = key
   logging.debug('Hasil Dynamic Skyline : {}'.format(dsl_result))
