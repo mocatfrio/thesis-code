@@ -15,6 +15,7 @@ class CustomerThread(threading.Thread):
     self._work = threading.Event()
     self.thread_id = customer_id
     self.name = "thread_c" + str(customer_id)
+    self.customer_values = customer_list[customer_id-1].values
     self.product = product
     self.timestamp = timestamp
     self.action = 0
@@ -36,7 +37,7 @@ class CustomerThread(threading.Thread):
     # init dsl
     if self.product is not None:
       logging.debug('Init dynamic skyline')
-      init_dynamic_skyline(self.thread_id, self.product, customer_list, self.timestamp, pandora_box)
+      init_dynamic_skyline(self.thread_id, self.product, self.customer_values, customer_list, self.timestamp, pandora_box)
     while not self._kill.is_set():
       event = self._event.wait(3)
       if event:
@@ -49,6 +50,8 @@ class CustomerThread(threading.Thread):
               dsl_result.append(key) 
             process_dsl_result(self.thread_id, customer_list, dsl_result, self.timestamp, pandora_box)
           else:
+            take_value(customer_list, product_list)
+
             pass 
         elif self.action == 1: 
           logging.debug('Product out')

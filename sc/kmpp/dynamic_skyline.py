@@ -1,9 +1,8 @@
 import logging
 from operator import itemgetter
 
-def init_dynamic_skyline(customer_id, product, customer_list, timestamp, pandora_box):
+def init_dynamic_skyline(customer_id, product, customer_values, customer_list, timestamp, pandora_box):
   # get the value
-  customer_values = customer_list[customer_id-1].values 
   product_values = []
   for key, value in product.items():
     product_values.append(value)
@@ -84,3 +83,8 @@ def find_dynamic_skyline(product_values, customer_values, product):
   logging.debug('Hasil Dynamic Skyline : {}'.format(dsl_result))
   
   return dsl_result
+
+def take_value(customer_list, product_list):
+  product_values = []
+
+  return product_value
