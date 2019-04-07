@@ -1,11 +1,11 @@
-import logging
-import csv
+import logging, csv
 from collections import OrderedDict
+from logging_custom.logging import logger
 
 class Data:
   total_data = 0
 
-  def __init__(self, id=None, timestamp_in=None, timestamp_out=None):
+  def __init__(self, id, timestamp_in, timestamp_out):
     self.id = id
     self.timestamp_in = timestamp_in
     self.timestamp_out = timestamp_out
@@ -17,6 +17,9 @@ class Data:
 
   def count_dimension(self):
     return len(self.values)
+
+  def get_values(self):
+    return self.values
     
   def get_data(self):
     return 'ID : {}\tTimestamp : {} - {}\tValues : {}'.format(self.id, self.timestamp_in, self.timestamp_out, self.values)
@@ -39,26 +42,28 @@ class Customer(Data):
   def add_dsl(self, dsl_result):
     for dsl in dsl_result:
       self.dsl_results.append(dsl)
-      logging.debug('[C-{}] Adding P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
-    # self.dsl_results = list(OrderedDict.fromkeys(self.dsl_results))
+      logger.debug('[C-{}] Adding P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
 
   def remove_dsl(self, dsl):
     self.dsl_results.remove(dsl)
-    logging.debug('[C-{}] Removing P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
+    logger.debug('[C-{}] Removing P-{} (dsl_results : {})'.format(self.id, dsl, self.dsl_results))
+
+  def get_dsl(self):
+    return self.dsl_results
 
   def get_total_dsl(self):
     return len(self.dsl_results)
 
   def count_probability(self):
     probability = 1.0/len(self.dsl_results)
-    logging.debug('[C-{}] Probability: {} (dsl_results : {})'.format(self.id, probability, self.dsl_results))
+    logger.debug('[C-{}] Probability: {} (dsl_results : {})'.format(self.id, probability, self.dsl_results))
     return probability
 
 def input_csv(data_name, file, delimiter, event_queue):
   list = []
   row_count = 0
 
-  logging.debug('input data {} ({})'.format(data_name, file))
+  logger.debug('input data {} ({})'.format(data_name, file))
   with open(file, 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=delimiter)
     for row in csv_reader:
@@ -82,5 +87,5 @@ def input_csv(data_name, file, delimiter, event_queue):
       for j in range(0,2):
         event_queue.enqueue(row[csv_reader.fieldnames[2]] if j == 0 else row[csv_reader.fieldnames[1]], 0 if data_name == "customer" else 1, row[csv_reader.fieldnames[0]], j)
   
-  logging.debug('input data {} ({}) selesai'.format(data_name, file))
+  logger.debug('input data {} ({}) selesai'.format(data_name, file))
   return list
