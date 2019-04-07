@@ -1,3 +1,5 @@
+# source ; https://gist.github.com/NelsonMinar/74d94f8bcb78fae150e3
+
 import logging, os
 
 logger = logging.getLogger("kmpp")
