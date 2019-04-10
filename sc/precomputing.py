@@ -1,4 +1,3 @@
-import threading, logging
 from kmpp.data import *
 from kmpp.event_queue import *
 from kmpp.pandora_box import *
@@ -7,69 +6,66 @@ from logging_custom.logging import logger
 
 if __name__ == '__main__':
   event_queue = EventQueue()
-  product_active = {}
+  prod_active = {}
 
-  product_list = input_csv('product', '../dataset/product.csv', ',', event_queue)
-  customer_list = input_csv('customer', '../dataset/customer.csv', ',', event_queue)
+  prod_list = input_csv('product', '../dataset/product.csv', ',', event_queue)
+  cust_list = input_csv('customer', '../dataset/customer.csv', ',', event_queue)
   event_queue.sort_queue()
 
-  logger.debug('Queue')
+  logger.info('Queue')
   for row in event_queue.get_queue():
-    logger.debug(row)
+    logger.info(row)
   
-  pandora_box = PandoraBox(len(product_list)+2, event_queue.get_max_timestamp()+2)
+  pandora_box = PandoraBox(len(prod_list) + 2, event_queue.get_max_timestamp() + 2)
   
   threads = {}
-  CustomerThread.product_list = product_list
-  CustomerThread.customer_list = customer_list
-  CustomerThread.pandora_box = pandora_box
+  CustThread.prod_list = prod_list
+  CustThread.cust_list = cust_list
+  CustThread.pandora_box = pandora_box
 
-  logger.debug('Data Product')
-  for product in product_list:
-    logger.debug(product.get_data())
-  logger.debug('Data Customer')
-  for customer in customer_list:
-    logger.debug(customer.get_data())
+  logger.info('Data Product')
+  for id in range(1, len(prod_list)):
+    logger.info(prod_list[id].get_data())
+  logger.info('Data Customer')
+  for id in range(1, len(cust_list)): 
+    logger.info(cust_list[id].get_data())
 
   # mengeluarkan event
   while not event_queue.is_empty():
-    queue = event_queue.dequeue()
-    logger.debug('Dequeue event {}'.format(queue))
+    event = event_queue.dequeue()
+    logger.info('Dequeue event {}'.format(event))
     
-    if queue[1] == 0 and queue[3] == 1:
-      logger.debug('[C-{} in] Make thread'.format(queue[2]))
-      if product_active:
-        product = product_active.copy()
-        threads[queue[2]] = CustomerThread(int(queue[2]), queue[0], product)
-      else:
-        threads[queue[2]] = CustomerThread(int(queue[2]), queue[0])
-      threads[queue[2]].start()
-
-    elif queue[1] == 0 and queue[3] == 0:
-      logger.debug('[C-{} out] Kill thread'.format(queue[2]))
-      threads[queue[2]].kill_thread()
-
-    elif queue[1] == 1 and queue[3] == 1:
-      while all(thread.is_working() for key, thread in threads.items()):
-        logger.debug('Wait...')
-
-      product = {}
-      product[queue[2]] = product_list[queue[2]-1].values
-      product_active.update(product)
-      logger.debug('[P-{} in] Masuk ke produk aktif: {}'.format(queue[2], product_active))
-
-      for key, thread in threads.items():
-        thread.notify(queue[0], product, queue[3])
-
-    elif queue[1] == 1 and queue[3] == 0:
-      del product_active[queue[2]]
-      logger.debug('[P-{} out] Hapus dari produk aktif: {}'.format(queue[2], product_active))
+    if event[1] == 0:
+      if event[3] == 1:
+        logger.info('[C-{} in] Make thread'.format(event[2]))
+        if prod_active:
+          prod_items = prod_active.copy()
+          threads[event[2]] = CustThread(int(event[2]), event[0], prod_items)
+        else:
+          threads[event[2]] = CustThread(int(event[2]), event[0])
+        threads[event[2]].start()
+      elif event[3] == 0:
+        logger.info('[C-{} out] Kill thread'.format(event[2]))
+        threads[event[2]].kill_thread()
+    elif event[1] == 1:
+      if event[3] == 1:
+        while not all(thread.is_done() for key, thread in threads.items()):
+          logger.info('Wait...')
+        prod_items = {}
+        prod_items[event[2]] = prod_list[event[2]].get_values()
+        prod_active.update(prod_items)
+        logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(event[2], prod_active))
+        for key, thread in threads.items():
+          thread.notify(event[0], prod_items, event[3])
+      elif event[3] == 0:
+        del prod_active[event[2]]
+        logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(event[2], prod_active))
 
   for key, thread in threads.items():
     thread.join()
 
-  logger.debug('Pandora Box')
+  logger.info('Pandora Box')
   for row in pandora_box.get_pandora_box():
-    logger.debug(row)
+    logger.info(row)
 
-  logger.debug('Exiting the main program')  
+  logger.info('Exiting the main program') 
