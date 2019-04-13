@@ -34,7 +34,6 @@ class MultiHandler(logging.Handler):
       self.release()
 
   def emit(self, record):
-    # No lock here; following code for StreamHandler and FileHandler
     try:
       fp = self._get_or_open(record.threadName)
       msg = self.format(record)
