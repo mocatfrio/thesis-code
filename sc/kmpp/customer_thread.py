@@ -63,7 +63,7 @@ class CustThread(threading.Thread):
   def update_pandora_box(self):
     CustThread.pandora_box.add_score(list(self.dsl_results.keys()), self.ts, self.count_probability(), self.last_updated)
     for dsl in list(self.dsl_results.keys()):
-      self.last_updated[dsl] = self.ts
+      self.last_updated[dsl] = [self.ts, self.count_probability()]
       logger.info('Last update 2 pbox[{}] = {}'.format(dsl, self.last_updated.get(dsl)))
 
   def run(self):
@@ -86,6 +86,7 @@ class CustThread(threading.Thread):
         elif self.act == 1: 
           logger.info('Product {} out'.format(self.prod_active[0]))
           if self.prod_active[0] in self.dsl_results:
+            self.update_pandora_box()
             del self.dsl_results[self.prod_active[0]]
             logger.info('DSL Results: {}'.format(self.dsl_results))
             self.prod_active = get_close_domination(self.dom_relation, self.prod_active[0], self.prod_active[1])
@@ -191,16 +192,20 @@ def get_values(data, keys):
 
 def get_close_domination(dom_relation, prod, prod_active):
   dominated = []
+  temp = []
   if prod in dom_relation:
     dominated = list(dom_relation.get(prod))
     for dom in dominated:
       for key, value in dom_relation.items():
-        if dom == value:
-          dominated.remove(dom)
+        if dom != value:
+          temp.append(dom)
           break
-    for dom in dominated:
-      if not dom in prod_active:
-        dominated.remove(dom)
+    logger.info('dominated1 = {}'.format(temp))
+    dominated = []    
+    for t in temp:
+      if t not in prod_active:
+        dominated.append(t)
+    logger.info('dominated2 = {}'.format(dominated))      
   logger.info('product active now: {}'.format(prod_active))
   logger.info('Close domination: {} - {}'.format(prod, dominated))
   return dominated

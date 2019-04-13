@@ -13,20 +13,19 @@ class PandoraBox:
     for i in range(0, len(dsl)):
       id = dsl[i]
       if id in last_updated:
-        last_ts = last_updated.get(id)
+        last_ts = list(last_updated.get(id))[0]
       else:
         last_ts = 0
       logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
       if last_ts > 0:
-        self.update_score(id, last_ts, ts)
+        self.update_score(id, last_ts, ts, list(last_updated.get(id))[1])
       self.box[id][ts] += score
       logger.info('Insert PandoraBox [{}][{}] + {} = {}'. format(id, ts, score, self.box[id][ts]))
 
-  def update_score(self, id, last_ts, now_ts):
-    score = self.box[id][last_ts]
+  def update_score(self, id, last_ts, now_ts, prob):
     for i in range(last_ts + 1, now_ts):
-      self.box[id][i] += score
-      logger.info('Update score pbox[{}][{}] + {} = {}'.format(id, i, score, self.box[id][i]))    
+      self.box[id][i] += prob
+      logger.info('Update score pbox[{}][{}] + {} = {}'.format(id, i, prob, self.box[id][i]))    
 
   def display(self):
     logger.info('Pandora Box')

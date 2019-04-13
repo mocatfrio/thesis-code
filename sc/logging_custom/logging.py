@@ -43,7 +43,7 @@ class MultiHandler(logging.Handler):
     except:
       self.handleError(record)
 
-log_format = '[%(levelname).1s] %(threadName)12s: %(message)s'
+log_format = '%(asctime)s [%(levelname).1s] %(threadName)12s: %(message)s'
 stderr_handler = logging.StreamHandler()
 stderr_handler.setFormatter(logging.Formatter(log_format))
 logging.getLogger().addHandler(stderr_handler)
