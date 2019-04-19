@@ -12,7 +12,6 @@ class CustThread(threading.Thread):
     threading.Thread.__init__(self)
     self._kill = threading.Event()
     self._event = threading.Event()
-    self._work = threading.Event()
     self.id = cust_id
     self.name = "thread_c" + str(cust_id)
     self.timestamp = timestamp
@@ -29,16 +28,13 @@ class CustThread(threading.Thread):
     self.prod_active = prod_active
 
   def notify(self, timestamp, product, act):
-    self._event.set()
-    self.timestamp = timestamp
-    self.product = product
-    self.act = act
-  
-  def is_done(self):
-    return self._work.is_set() == False
+    if not self._kill.is_set():
+      self._event.set()
+      self.timestamp = timestamp
+      self.product = product
+      self.act = act
 
   def get_last_event(self):
-    logger.info('{} : last event {}'.format(self.name, self.last_event))
     return self.last_event
 
   def kill_thread(self, timestamp):
@@ -66,20 +62,17 @@ class CustThread(threading.Thread):
 
   def run(self):
     logger.info('{} starting..., ts: {}'.format(self.name, self.timestamp))
-    self._work.set()
     if self.prod_active:
       logger.info("========================================================================")          
       logger.info('Initial dynamic skyline')
       self.process(self.prod_active)
     self.last_event = 'init'
-    self._work.clear()
     while not self._kill.is_set():
       if self._kill.is_set():
         break
       else:
         event = self._event.wait(3)
         if event:
-          self._work.set()
           if self.act == 0: 
             logger.info("========================================================================")
             logger.info('Product {} in, ts: {}'.format(self.product, self.timestamp))
@@ -105,7 +98,6 @@ class CustThread(threading.Thread):
             CustThread.pandora_box.add_score(self.dsl_results, self.timestamp, self.count_probability(), self.last_updated)
             self.last_event = 'killed'
           self._event.clear()
-          self._work.clear()
     logger.info('{} killed'.format(self.name))
 
 def check(val, array):

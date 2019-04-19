@@ -10,7 +10,6 @@ def product_in(id, threads, prod_active, timestamp, act, last_event):
   logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(id, prod_active))  
   for thread in threads.values():
     thread.notify(timestamp, [id], act)
-  wait_thread(threads)  
 
 def product_out(id, threads, prod_active, timestamp, act, last_event):
   wait_thread_event(threads, last_event)  
@@ -40,14 +39,8 @@ def insert_thread_data(prod_data, cust_data, pandora_box):
   CustThread.cust_data = cust_data
   CustThread.pandora_box = pandora_box 
 
-def wait_thread(threads):
-  while True:
-    if all(thread.is_done() for thread in threads.values()):
-      break
-
 def wait_thread_event(threads, last_event):
   while True:
-    logger.info('{}'.format(last_event))
     if all(thread.get_last_event() == last_event or thread.get_last_event() == 'init' or thread.get_last_event() == 'killed' for thread in threads.values()):
       break
 

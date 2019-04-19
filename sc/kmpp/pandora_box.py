@@ -17,11 +17,12 @@ class PandoraBox:
       except:
         last_ts = 0
         logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
-      if last_ts > 0:
-        self.update_score(id, last_ts, ts, list(last_updated.get(id))[1])
-      if last_ts != ts:
-        self.box[id][ts] += score
-        logger.info('Add score pbox[{}][{}] + {} = {}'. format(id, ts, score, self.box[id][ts]))
+      finally:
+        if last_ts > 0:
+          self.update_score(id, last_ts, ts, list(last_updated.get(id))[1])
+        if last_ts != ts:
+          self.box[id][ts] += score
+          logger.info('Add score pbox[{}][{}] + {} = {}'. format(id, ts, score, self.box[id][ts]))
 
   def update_score(self, id, last_ts, now_ts, prob):
     for i in range(last_ts + 1, now_ts):
