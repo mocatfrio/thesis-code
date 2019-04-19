@@ -1,6 +1,6 @@
 import csv
 from collections import OrderedDict
-from logging_custom.logging import logger
+from .logging import logger
 
 class Data:
   def __init__(self):
