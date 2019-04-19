@@ -53,11 +53,8 @@ class CustThread(threading.Thread):
     except:
       return 0
 
-  def process(self):
-    if self.act == None:
-      prod_values = get_values(CustThread.prod_data, self.prod_active)
-    else:
-      prod_values = get_values(CustThread.prod_data, self.product)      
+  def process(self, arg):
+    prod_values = get_values(CustThread.prod_data, arg)     
     self.dsl_results, self.dom_relation = get_dynamic_skyline(self.dsl_results, self.cust_values, prod_values, self.dom_relation)      
     self.update_pandora_box()
 
@@ -73,7 +70,7 @@ class CustThread(threading.Thread):
     if self.prod_active:
       logger.info("========================================================================")          
       logger.info('Initial dynamic skyline')
-      self.process()
+      self.process(self.prod_active)
     self.last_event = 'init'
     self._work.clear()
     while not self._kill.is_set():
@@ -86,7 +83,7 @@ class CustThread(threading.Thread):
           if self.act == 0: 
             logger.info("========================================================================")
             logger.info('Product {} in, ts: {}'.format(self.product, self.timestamp))
-            self.process()
+            self.process(self.product)
             self.last_event = 'p' + str(self.product[0]) + 'i'
           elif self.act == 1: 
             logger.info("========================================================================")            
@@ -94,13 +91,13 @@ class CustThread(threading.Thread):
             index = check(self.product, self.dsl_results)
             if not index is None:
               if list(self.last_updated.get(self.product[0]))[0] != self.timestamp:
-                CustThread.pandora_box.add_score(self.dsl_results, self.timestamp, self.count_probability(), self.last_updated)
+                self.update_pandora_box()    
               del self.dsl_results[index]
               del self.last_updated[self.product[0]]
               logger.info('DSL Results: {}'.format(self.dsl_results))
-              self.prod_active = get_close_domination(self.dom_relation, self.product[0], self.prod_active)
-              if self.prod_active:
-                self.process()  
+              if self.product[0] in self.dom_relation:
+                close_dominated = get_close_domination(self.dom_relation, self.product[0], self.prod_active)
+                self.process(close_dominated)
             self.last_event = 'p' + str(self.product[0]) + 'o'              
           elif self.act == 2:
             logger.info("========================================================================")    
@@ -212,21 +209,28 @@ def get_values(data, keys):
   return prod_values
 
 def get_close_domination(dom_relation, prod, prod_active):
-  dominated = []
+  logger.info('dom relation dict = {}'.format(dom_relation))  
+  close_dominated = list(dom_relation.get(prod)) 
+  logger.info('close dominated (1) = {}'.format(close_dominated))
+  del dom_relation[prod]
+  # convert dict to list
+  dom_rel = []
+  for value in dom_relation.values():
+    dom_rel.append(value)
+  logger.info('dom relation array = {}'.format(dom_rel))
+  # cari produk yang hanya didominasi oleh dia
+  for close_dom in close_dominated:
+    for dom in dom_rel:
+      for d in dom:
+        if close_dom == d:
+          close_dominated.remove(close_dom)
+  logger.info('close dominated (2) = {}'.format(close_dominated))
+  # cari yang masih aktif 
   new = []
-  if prod in dom_relation:
-    dominated = list(dom_relation.get(prod))
-    for dom in dominated:
-      for value in dom_relation.values():
-        if dom != value:
-          new.append(dom)
-          break
-    logger.info('dominated1 = {}'.format(new))
-    dominated = []    
-    for t in new:
-      if t not in prod_active:
-        dominated.append(t)
-    logger.info('dominated2 = {}'.format(dominated))      
+  for close_dom in close_dominated:
+    if close_dom in prod_active:
+      new.append(close_dom)
   logger.info('product active now: {}'.format(prod_active))
-  logger.info('Close domination: {} - {}'.format(prod, dominated))
-  return dominated
+  logger.info('close dominated (3) = {}'.format(new))      
+  logger.info('Close domination: {} - {}'.format(prod, new))
+  return new
