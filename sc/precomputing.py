@@ -5,19 +5,22 @@ from kmpp.customer_thread import CustThread
 from kmpp.logging import logger
 
 def product_in(id, threads, prod_active, timestamp, act, last_event):
-  wait_thread_event(threads, last_event)
-  prod_active.append(id)    
-  logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(id, prod_active))  
-  for thread in threads.values():
-    thread.notify(timestamp, [id], act)
+  try:
+    wait_thread_event(threads, last_event)
+  finally:
+    prod_active.append(id)    
+    logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(id, prod_active))  
+    for thread in threads.values():
+      thread.notify(timestamp, [id], act)
 
 def product_out(id, threads, prod_active, timestamp, act, last_event):
-  wait_thread_event(threads, last_event)  
-  for thread in threads.values():
-    thread.notify(timestamp, [id], act)
-    thread.update_prod_active(prod_active.copy())
-  prod_active.remove(id)
-  logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(id, prod_active))
+  try:
+    wait_thread_event(threads, last_event)  
+  finally:
+    for thread in threads.values():
+      thread.notify(timestamp, [id], act, prod_active.copy())
+    prod_active.remove(id)
+    logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(id, prod_active))
 
 def customer_in(id, threads, prod_active, timestamp, last_event):
   try:
@@ -41,7 +44,7 @@ def insert_thread_data(prod_data, cust_data, pandora_box):
 
 def wait_thread_event(threads, last_event):
   while True:
-    if all(thread.get_last_event() == last_event or thread.get_last_event() == 'init' or thread.get_last_event() == 'killed' for thread in threads.values()):
+    if all(thread.get_last_event() == last_event or thread.get_last_event() == 0 or thread.get_last_event() == 1 for thread in threads.values()):
       break
 
 if __name__ == '__main__':

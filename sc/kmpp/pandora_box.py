@@ -3,6 +3,7 @@ from .logging import logger
 class PandoraBox:
   def __init__(self, total_prod, max_ts):
     self.box = [[0 for col in range(0, max_ts)] for row in range(0, total_prod)]
+    # Fill the first row and first column
     for i in range(1, len(self.box)):
       self.box[i][0] = i
     for i in range(1, len(self.box[0])):
@@ -13,11 +14,10 @@ class PandoraBox:
       id = dsl[i][0]
       try:
         last_ts = list(last_updated.get(id))[0]
-        logger.info('Last update 1 pbox[{}] = {}'.format(id, list(last_updated.get(id))))
       except:
         last_ts = 0
-        logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
       finally:
+        logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
         if last_ts > 0:
           self.update_score(id, last_ts, ts, list(last_updated.get(id))[1])
         if last_ts != ts:
