@@ -2,14 +2,14 @@ from kmpp.data import Data, input_csv
 from kmpp.event_queue import EventQueue
 from kmpp.pandora_box import *
 from kmpp.customer_thread import CustThread
-from kmpp.logging import logger
+# from kmpp.logging import logger
 
 def product_in(id, threads, prod_active, timestamp, act, last_event):
   try:
     wait_thread_event(threads, last_event)
   finally:
     prod_active.append(id)    
-    logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(id, prod_active))  
+    # logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(id, prod_active))  
     for thread in threads.values():
       thread.notify(timestamp, [id], act)
 
@@ -20,13 +20,13 @@ def product_out(id, threads, prod_active, timestamp, act, last_event):
     for thread in threads.values():
       thread.notify(timestamp, [id], act, prod_active.copy())
     prod_active.remove(id)
-    logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(id, prod_active))
+    # logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(id, prod_active))
 
 def customer_in(id, threads, prod_active, timestamp, last_event):
   try:
     wait_thread_event(threads, last_event)  
   finally:
-    logger.info('[C-{} in] Make thread'.format(id))
+    # logger.info('[C-{} in] Make thread'.format(id))
     threads[id] = CustThread(int(id), timestamp, prod_active.copy())
     threads[id].start()
 
@@ -34,7 +34,7 @@ def customer_out(id, threads, timestamp, last_event):
   while True:
     if threads[id].get_last_event() == last_event:
       break
-  logger.info('[C-{} out] Kill thread'.format(id))
+  # logger.info('[C-{} out] Kill thread'.format(id))
   threads[id].kill_thread(timestamp)
 
 def insert_thread_data(prod_data, cust_data, pandora_box):
@@ -89,6 +89,6 @@ if __name__ == '__main__':
   for thread in threads.values():
     thread.join()
   
-  pandora_box.display()
+  # pandora_box.display()
 
-  logger.info('Exiting the main program') 
+  # logger.info('Exiting the main program') 

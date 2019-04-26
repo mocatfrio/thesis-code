@@ -1,4 +1,4 @@
-from .logging import logger
+# from .logging import logger
 
 class PandoraBox:
   def __init__(self, total_prod, max_ts):
@@ -17,19 +17,19 @@ class PandoraBox:
       except:
         last_ts = 0
       finally:
-        logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
+        # logger.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
         if last_ts > 0:
           self.update_score(id, last_ts, ts, list(last_updated.get(id))[1])
         if last_ts != ts:
           self.box[id][ts] += score
-          logger.info('Add score pbox[{}][{}] + {} = {}'. format(id, ts, score, self.box[id][ts]))
+          # logger.info('Add score pbox[{}][{}] + {} = {}'. format(id, ts, score, self.box[id][ts]))
 
   def update_score(self, id, last_ts, now_ts, prob):
     for i in range(last_ts + 1, now_ts):
       self.box[id][i] += prob
-      logger.info('Update score pbox[{}][{}] + {} = {}'.format(id, i, prob, self.box[id][i]))
+      # logger.info('Update score pbox[{}][{}] + {} = {}'.format(id, i, prob, self.box[id][i]))
 
-  def display(self):
-    logger.info('Pandora Box')
-    for row in self.box:
-      logger.info(row)
+  # def display(self):
+  #   # logger.info('Pandora Box')
+  #   for row in self.box:
+  #     # logger.info(row)

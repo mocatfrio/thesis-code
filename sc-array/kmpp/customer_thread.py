@@ -1,6 +1,6 @@
 import threading
 from operator import itemgetter
-from .logging import logger
+# from .logging import logger
 
 class CustThread(threading.Thread):
   prod_data = None
@@ -49,20 +49,20 @@ class CustThread(threading.Thread):
 
   def init_dynamic_skyline(self):
     if self.prod_active:
-      logger.info("========================================================================")          
-      logger.info('Initial dynamic skyline')
+      # logger.info("========================================================================")          
+      # logger.info('Initial dynamic skyline')
       self.process(self.prod_active)
     self.last_event = 0
   
   def process_product_in(self):
-    logger.info("========================================================================")
-    logger.info('Product {} in, ts: {}'.format(self.product, self.timestamp))
+    # logger.info("========================================================================")
+    # logger.info('Product {} in, ts: {}'.format(self.product, self.timestamp))
     self.process(self.product)
     self.last_event = 'p' + str(self.product[0]) + 'i'
 
   def process_product_out(self):
-    logger.info("========================================================================")            
-    logger.info('Product {} out, ts: {}'.format(self.product, self.timestamp))
+    # logger.info("========================================================================")            
+    # logger.info('Product {} out, ts: {}'.format(self.product, self.timestamp))
     # cek jika product out adalah dsl
     index = check(self.product, self.dsl_results)
     # jika product out adalah dsl
@@ -80,8 +80,8 @@ class CustThread(threading.Thread):
     self.last_event = 'p' + str(self.product[0]) + 'o'
   
   def process_kill(self):
-    logger.info("========================================================================")    
-    logger.info('{} killed..., ts: {}'.format(self.name, self.timestamp))
+    # logger.info("========================================================================")    
+    # logger.info('{} killed..., ts: {}'.format(self.name, self.timestamp))
     self.update_pandora_box()
     self.last_event = 1
 
@@ -100,10 +100,10 @@ class CustThread(threading.Thread):
     if not self._kill.is_set():
       for dsl in self.dsl_results:
         self.last_updated[dsl[0]] = [self.timestamp, self.count_probability()]
-        logger.info('Last update 2 pbox[{}] = {}'.format(dsl[0], self.last_updated.get(dsl[0])))
+        # logger.info('Last update 2 pbox[{}] = {}'.format(dsl[0], self.last_updated.get(dsl[0])))
 
   def run(self):
-    logger.info('{} starting..., ts: {}'.format(self.name, self.timestamp))
+    # logger.info('{} starting..., ts: {}'.format(self.name, self.timestamp))
     # thread init
     self.init_dynamic_skyline()
     while not self._kill.is_set():
@@ -122,12 +122,12 @@ class CustThread(threading.Thread):
           elif self.act == 2:
             self.process_kill()
           self._event.clear()
-    logger.info('{} exiting'.format(self.name))
+    # logger.info('{} exiting'.format(self.name))
 
 def get_dynamic_skyline(current_dsl, cust_values, prod_values, dom_relation):
   prod_values = sorted(prod_values, key=itemgetter(1))
-  logger.info('Customer values : {}'.format(cust_values))
-  logger.info('Product values  : {}'.format(prod_values))
+  # logger.info('Customer values : {}'.format(cust_values))
+  # logger.info('Product values  : {}'.format(prod_values))
   # calc all diff
   for prod in prod_values:
     prod[1] = calc_diff(prod[1], cust_values)
@@ -138,28 +138,29 @@ def get_dynamic_skyline(current_dsl, cust_values, prod_values, dom_relation):
     for dsl in current_dsl:
       dsl.append(0)
     dsl_results, dom_relation = compare(prod_values, current_dsl, dom_relation)
-  logger.info('Close domination relationship: {}'.format(dom_relation))  
+  # logger.info('Close domination relationship: {}'.format(dom_relation))  
   return dsl_results, dom_relation    
 
 def compare(val_a, val_b, dom):
   for i in range(0, len(val_a)):
     for j in range(0, len(val_b)):
-      logger.info('[P-{}] diff : {} vs [P-{}] diff: {}'.format(val_a[i][0], val_a[i][1], val_b[j][0], val_b[j][1]))
+      # logger.info('[P-{}] diff : {} vs [P-{}] diff: {}'.format(val_a[i][0], val_a[i][1], val_b[j][0], val_b[j][1]))
       stat = check_dynamic_domination(val_a[i][1], val_b[j][1])
       if stat == 1:
         val_b[j][2] = 1
         dom = update_domination_relation(dom, val_a[i][0], val_b[j][0])
-        logger.info('[P-{}] mendominasi [P-{}]'.format(val_a[i][0], val_b[j][0]))
+        # logger.info('[P-{}] mendominasi [P-{}]'.format(val_a[i][0], val_b[j][0]))
       elif stat == 2:
         val_a[i][2] = 1
         dom = update_domination_relation(dom, val_b[j][0], val_a[i][0])
-        logger.info('[P-{}] didominasi [P-{}]'.format(val_a[i][0], val_b[j][0]))
+        # logger.info('[P-{}] didominasi [P-{}]'.format(val_a[i][0], val_b[j][0]))
       else:
-        logger.info('[P-{}] saling mendominasi dengan [P-{}]'.format(val_a[i][0], val_b[j][0]))
+        pass
+        # logger.info('[P-{}] saling mendominasi dengan [P-{}]'.format(val_a[i][0], val_b[j][0]))
   dsl = get_dsl_result(val_a)  
   if val_b != val_a:
     dsl.extend(get_dsl_result(val_b))
-  logger.info('DSL Result : {}'.format(dsl))
+  # logger.info('DSL Result : {}'.format(dsl))
   return dsl, dom  
 
 def get_dsl_result(val):
@@ -220,30 +221,30 @@ def get_values(data, keys):
   return prod_values
 
 def get_close_domination(dom_relation, prod, prod_active):
-  logger.info('dom relation dict = {}'.format(dom_relation))  
+  # logger.info('dom relation dict = {}'.format(dom_relation))  
   close_dominated = list(dom_relation.get(prod)) 
-  logger.info('close dominated (1) = {}'.format(close_dominated))
+  # logger.info('close dominated (1) = {}'.format(close_dominated))
   del dom_relation[prod]
   # convert dict to list
   dom_rel = []
   for value in dom_relation.values():
     dom_rel.append(value)
-  logger.info('dom relation array = {}'.format(dom_rel))
+  # logger.info('dom relation array = {}'.format(dom_rel))
   # cari produk yang hanya didominasi oleh dia
   for close_dom in close_dominated:
     for dom in dom_rel:
       for d in dom:
         if close_dom == d:
           close_dominated.remove(close_dom)
-  logger.info('close dominated (2) = {}'.format(close_dominated))
+  # logger.info('close dominated (2) = {}'.format(close_dominated))
   # cari yang masih aktif 
   new_close_dom = []
   for close_dom in close_dominated:
     if close_dom in prod_active:
       new_close_dom.append(close_dom)
-  logger.info('product active now: {}'.format(prod_active))
-  logger.info('close dominated (3) = {}'.format(new_close_dom))      
-  logger.info('Close domination: {} - {}'.format(prod, new_close_dom))
+  # logger.info('product active now: {}'.format(prod_active))
+  # logger.info('close dominated (3) = {}'.format(new_close_dom))      
+  # logger.info('Close domination: {} - {}'.format(prod, new_close_dom))
   return new_close_dom
 
 def check(val, array):

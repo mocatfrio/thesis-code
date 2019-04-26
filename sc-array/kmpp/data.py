@@ -1,6 +1,6 @@
 import csv
 from collections import OrderedDict
-from .logging import logger
+# from .logging import logger
 
 class Data:
   def __init__(self):
@@ -11,7 +11,7 @@ class Data:
 
   def add_value(self, id, value):
     self.data[id].append(value)
-    logger.info('ID : {}\tTimestamp : {} - {}\tValues : {}'.format(id, self.data.get(id)[0], self.data.get(id)[1], self.data.get(id)[2])) 
+    # logger.info('ID : {}\tTimestamp : {} - {}\tValues : {}'.format(id, self.data.get(id)[0], self.data.get(id)[1], self.data.get(id)[2])) 
     
   def get_total_data(self):
     return len(self.data)
@@ -20,7 +20,7 @@ class Data:
     return self.data.get(id)[2]
 
 def input_csv(type, file, event_queue, data_obj):
-  logger.info('input data ({})'.format(file))
+  # logger.info('input data ({})'.format(file))
   with open(file, 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
     for row in csv_reader:
@@ -35,4 +35,4 @@ def input_csv(type, file, event_queue, data_obj):
       # insert event to the queue
       for i in range(0, 2):
         event_queue.enqueue(int(row[csv_reader.fieldnames[1]]) if i == 0 else int(row[csv_reader.fieldnames[2]]), 0 if type == 'p' else 1, int(row[csv_reader.fieldnames[0]]), i)
-  logger.info('input data ({}) selesai'.format(file))
+  # logger.info('input data ({}) selesai'.format(file))

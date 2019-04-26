@@ -1,5 +1,5 @@
 from operator import itemgetter
-from .logging import logger
+from .custom_logger import logger
 
 class EventQueue:
   def __init__(self):
