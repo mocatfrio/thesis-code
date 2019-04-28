@@ -54,44 +54,44 @@ class CustThread(threading.Thread):
       for dsl in self.dsl_result:
         self.dsl_result[dsl] = update_dict(self.dsl_result[dsl], 'last_ts', self.timestamp)
         self.dsl_result[dsl] = update_dict(self.dsl_result[dsl], 'last_prob', self.count_probability())
-        # logger.info('Last update 2 pbox[{}] = timestamp: {} | probability: {}'.format(dsl, self.dsl_result[dsl]['last_ts'], self.dsl_result[dsl]['last_prob']))
+        logger.info('Last update 2 pbox[{}] = timestamp: {} | probability: {}'.format(dsl, self.dsl_result[dsl]['last_ts'], self.dsl_result[dsl]['last_prob']))
 
   def init_dynamic_skyline(self):
     if self.prod_active:
-      # logger.info("========================================================================")
-      # logger.info('Initial dynamic skyline')
+      logger.info("========================================================================")
+      logger.info('Initial dynamic skyline')
       self.process(self.prod_active)
     self.last_event = 0
   
   def process_product_in(self):
-    # logger.info("========================================================================")
-    # logger.info('Product {} in, ts: {}'.format(self.input['product'], self.timestamp))
+    logger.info("========================================================================")
+    logger.info('Product {} in, ts: {}'.format(self.input['product'], self.timestamp))
     self.process(self.input['product'])
     self.last_event = 'p' + str(self.input['product']) + 'i'
 
   def process_product_out(self):
-    # logger.info("========================================================================")
-    # logger.info('Product {} out, ts: {}'.format(self.input['product'], self.timestamp))
+    logger.info("========================================================================")
+    logger.info('Product {} out, ts: {}'.format(self.input['product'], self.timestamp))
     if self.input['product'] in self.dsl_result:
       if self.dsl_result[self.input['product']]['last_ts'] != self.timestamp:
         self.update_pandora_box()
       active_child = None
       if 'dominating' in self.dsl_result[self.input['product']]:
         active_child = get_active_child(self.dsl_result[self.input['product']], self.prod_active)
-        # logger.info('Active child of [P-{}] : {}'.format(self.input['product'], active_child))
+        logger.info('Active child of [P-{}] : {}'.format(self.input['product'], active_child))
       del self.dsl_result[self.input['product']]
       if active_child:
         self.process(active_child)
     self.last_event = 'p' + str(self.input['product']) + 'o'
   
   def process_kill(self):
-    # logger.info("========================================================================")    
-    # logger.info('{} killed..., ts: {}'.format(self.name, self.timestamp))
+    logger.info("========================================================================")    
+    logger.info('{} killed..., ts: {}'.format(self.name, self.timestamp))
     self.update_pandora_box()
     self.last_event = 1
 
   def run(self):
-    # logger.info('{} starting..., ts: {}'.format(self.name, self.timestamp))
+    logger.info('{} starting..., ts: {}'.format(self.name, self.timestamp))
     self.init_dynamic_skyline()
     while not self._kill.is_set():
       if self._kill.is_set():
@@ -106,18 +106,18 @@ class CustThread(threading.Thread):
           elif self.input['act'] == 2:
             self.process_kill()
           self._event.clear()
-    # logger.info('{} exiting'.format(self.name))
+    logger.info('{} exiting'.format(self.name))
 
 def find_dynamic_skyline(current_dsl, cust_value, prod_value):
-  # logger.info('Customer value : {}'.format(cust_value))
+  logger.info('Customer value : {}'.format(cust_value))
   for id in prod_value.keys():
     prod_value[id]['diff'] = calc_diff(prod_value[id]['value'], cust_value)
-  # logger.info('Product value : {}'.format(prod_value))  
-  # logger.info('Current DSL : {}'.format(current_dsl))  
+  logger.info('Product value : {}'.format(prod_value))  
+  logger.info('Current DSL : {}'.format(current_dsl))  
   current_dsl.update(prod_value)
-  # logger.info('Current DSL + Product value : {}'.format(current_dsl))  
+  logger.info('Current DSL + Product value : {}'.format(current_dsl))  
   dsl_cand = sorted(current_dsl, key=lambda x: (current_dsl[x]['diff']))
-  # logger.info('Current DSL sorted : {}'.format(dsl_cand))  
+  logger.info('Current DSL sorted : {}'.format(dsl_cand))  
   if len(prod_value) == 1:
     index = dsl_cand.index(list(prod_value.keys())[0])
     for i in range(0, index):
@@ -137,7 +137,7 @@ def find_dynamic_skyline(current_dsl, cust_value, prod_value):
           continue
         if is_dominating(current_dsl[dsl_cand[i]], current_dsl[dsl_cand[j]]):
           current_dsl, dsl_cand[j] = update_cand(dsl_cand[i], dsl_cand[j], current_dsl)
-  # logger.info('DSL Result : {}'.format(current_dsl))    
+  logger.info('DSL Result : {}'.format(current_dsl))    
   return current_dsl    
 
 def is_dominating(subject, target):
@@ -190,10 +190,10 @@ def get_value(data, prod_id):
 
 def get_active_child(dsl, prod_active):
   active = []
-  # logger.info('Dominating : {}'.format(dsl['dominating']))  
-  # logger.info('Product active now : {}'.format(prod_active))
+  logger.info('Dominating : {}'.format(dsl['dominating']))  
+  logger.info('Product active now : {}'.format(prod_active))
   for dom in dsl['dominating']:
     if dom in prod_active:
       active.append(dom)
-  # logger.info('Active child = {}'.format(active))      
+  logger.info('Active child = {}'.format(active))      
   return active

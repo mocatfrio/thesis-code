@@ -2,8 +2,14 @@ import csv
 from .custom_logger import logger
 
 class PandoraBox:
-  def __init__(self, total_prod, max_ts):
-    self.box = [[0 for col in range(0, max_ts)] for row in range(0, total_prod)]
+  def __init__(self, total_prod=None, max_ts=None):
+    try:
+      self.box = [[0 for col in range(0, max_ts)] for row in range(0, total_prod)]
+    except:
+      self.box = []
+
+  def insert_score(self, prod_score):
+    self.box.append(prod_score)
 
   def add_score(self, dsl, timestamp, score):
     for id in dsl.keys():
@@ -28,9 +34,19 @@ class PandoraBox:
     logger.info('Pandora Box')
     for row in self.box:
       logger.info(row)
+  
+  def get_score(self, prod_id, ts_start, ts_end):
+    total_score = 0
+    try:
+      for i in range(ts_start, ts_end + 1):
+        total_score += self.box[prod_id][i]
+    except:
+      print('out of list')
+    finally:
+      return total_score
 
   def export_csv(self):
-    with open('../dataset/pandora_box.csv', 'w') as csvFile:
+    with open('../output/pandora_box.csv', 'w') as csvFile:
       writer = csv.writer(csvFile)
       writer.writerows(self.box)
     csvFile.close()

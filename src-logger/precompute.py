@@ -56,11 +56,11 @@ def input_csv(name, file, event_queue):
   logger.info('Data ({}) succesfully inputed'.format(name))
   return data
 
-# def print_data(data):
-#   for key, values in data.items():
-    # logger.info('{}'.format(key))
-#     for k, v in values.items():
-      # logger.info('{} : {}'.format(k, v))
+def print_data(data):
+  for key, values in data.items():
+    logger.info('{}'.format(key))
+    for k, v in values.items():
+      logger.info('{} : {}'.format(k, v))
 
 def insert_thread_data(data, pandora_box):
   CustThread.data = data
@@ -80,7 +80,7 @@ if __name__ == "__main__":
   dataset = ['../dataset/product.csv', '../dataset/customer.csv']
   data['product'] = input_csv('product', dataset[0], event_queue)
   data['customer'] = input_csv('customer', dataset[1], event_queue)
-  # print_data(data)
+  print_data(data)
   
   event_queue.sort_queue()
   pandora_box = PandoraBox(len(data['product']) + 1, event_queue.get_max_timestamp() + 1)
