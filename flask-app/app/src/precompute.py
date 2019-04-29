@@ -91,4 +91,6 @@ def kmpp_precompute(product_dataset, customer_product):
   for thread in threads.values():
     thread.join()
     
-  pandora_box.export_csv()
+  pandora_file = pandora_box.export_csv()
+
+  return pandora_file

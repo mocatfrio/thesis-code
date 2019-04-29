@@ -26,23 +26,21 @@
       <div class="col-6">
         <ul class="nav nav-pills pills-red nav-justified">
           <li class="nav-item">
-            <a class="nav-link {{ 'active' if active_page == 'dataset' else '' }}" href="{{ request.script_root }}/dataset">Dataset</a>
+            <a class="nav-link {{ 'active' if active_page == 'dataset' else '' }}" href="{{ request.script_root }}/precompute">Precompute</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ 'active' if active_page == 'input' else '' }}" href="{{ request.script_root }}/input">Input</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ 'active' if active_page == 'output' else '' }}" href="#">Output</a>
           </li>
         </ul>
       </div>
     </div>
     <main>
-      <div class="card">
+      <div class="card" style="margin: 0 0 20px 0">
         <div class="card-body">
           {% block content %}{% endblock %}
         </div>
       </div>
+      {% block content_table %}{% endblock %}
     </main>
     <footer class="footer footer-custom">
       <div class="container text-center mt-100 mb-20">
@@ -52,7 +50,6 @@
       </div>
     </footer>
   </div>
-
 
   <!-- load script -->
   <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
