@@ -1,0 +1,18 @@
+/* CUSTOM */
+
+.jumbotron-custom {
+    background-color: #f4d742 !important;
+  }
+  
+  .container-custom {
+    padding-top: 90px;
+  }
+  
+  .footer-custom {
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+  
+  .mb-20 {
+    padding-bottom: 20px;
+  }
