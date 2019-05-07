@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% set active_page = "dataset" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-8">
+    {% with messages = get_flashed_messages() %}
+      {% if messages[0] == 'not allowed' %}
+        <div class="alert alert-danger" role="alert">
+          Filetype not allowed, please use CSV file
+        </div>
+      {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="dataset">Dataset Produk</label>
+        <input type="file" class="form-control-file" id="dataset" name="p_dataset" required>
+      </div>
+      <div class="form-group">
+        <label for="dataset">Dataset Pelanggan</label>
+        <input type="file" class="form-control-file" id="dataset" name="c_dataset" required>
+      </div>
+      <div class="form-group">
+        <label for="algorithm">Algoritme</label>
+        <select class="custom-select form-control" id="algorithm" name="algorithm" required>
+          <option selected>Pilih Algoritme</option>
+          <option value="kmpp">Algoritme k-MPPTS</option>
+          <option value="bf">Brute Force</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block content_table %}
+{% if result %}
+<div class="card">
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover" id="table-police">
+            <thead>
+              <tr>
+                <th class="text-center align-middle">No.</th>
+                <th class="text-center align-middle">Product</th>
+                <th class="text-center align-middle">Market Contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for res in result %}
+                <tr>
+                  <td class="text-center">{{ loop.index }}</td>
+                  <td>{{ res['id'] }}</td>
+                  <td>{{ res['market_contr'] }}</td>
+                </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
