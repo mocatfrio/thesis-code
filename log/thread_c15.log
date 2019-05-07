@@ -1,0 +1,18 @@
+b'[I]   thread_c15: thread_c15 starting..., ts: 233'
+b'[I]   thread_c15: ========================================================================'
+b'[I]   thread_c15: Initial dynamic skyline'
+b'[I]   thread_c15: Customer value : [215, 95]'
+b"[I]   thread_c15: Product value : {8: {'value': [77, 73], 'diff': [138, 22]}}"
+b'[I]   thread_c15: Current DSL : {}'
+b"[I]   thread_c15: Current DSL + Product value : {8: {'value': [77, 73], 'diff': [138, 22]}}"
+b'[I]   thread_c15: Current DSL sorted : [8]'
+b"[I]   thread_c15: DSL Result : {8: {'value': [77, 73], 'diff': [138, 22]}}"
+b'[I]   thread_c15: Last update 1 pbox[8] = 0'
+b'[I]   thread_c15: Add score pbox[8][233] + 1.0 = 1.0'
+b'[I]   thread_c15: Last update 2 pbox[8] = timestamp: 233 | probability: 1.0'
+b'[I]   thread_c15: ========================================================================'
+b'[I]   thread_c15: Product 8 out, ts: 235'
+b'[I]   thread_c15: Last update 1 pbox[8] = 233'
+b'[I]   thread_c15: Update score pbox[8][234] + 1.0 = 1.0'
+b'[I]   thread_c15: Add score pbox[8][235] + 1.0 = 2.0'
+b'[I]   thread_c15: Last update 2 pbox[8] = timestamp: 256 | probability: 1.0'

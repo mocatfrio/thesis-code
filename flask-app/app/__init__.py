@@ -1,8 +1,9 @@
 from flask import Flask, url_for
+import os
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = '/Users/mocatfrio/Documents/thesis/tugas-akhir/csv'
+UPLOAD_FOLDER = os.getcwd() + '/upload'
 
 app.secret_key = "mocatfrio"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER

@@ -1,0 +1,49 @@
+b'[I]    thread_c3: thread_c3 starting..., ts: 64'
+b'[I]    thread_c3: ========================================================================'
+b'[I]    thread_c3: Initial dynamic skyline'
+b'[I]    thread_c3: Customer value : [135, 162]'
+b"[I]    thread_c3: Product value : {19: {'value': [123, 226], 'diff': [12, 64]}}"
+b'[I]    thread_c3: Current DSL : {}'
+b"[I]    thread_c3: Current DSL + Product value : {19: {'value': [123, 226], 'diff': [12, 64]}}"
+b'[I]    thread_c3: Current DSL sorted : [19]'
+b"[I]    thread_c3: DSL Result : {19: {'value': [123, 226], 'diff': [12, 64]}}"
+b'[I]    thread_c3: Last update 1 pbox[19] = 0'
+b'[I]    thread_c3: Add score pbox[19][64] + 1.0 = 1.0'
+b'[I]    thread_c3: Last update 2 pbox[19] = timestamp: 64 | probability: 1.0'
+b'[I]    thread_c3: ========================================================================'
+b'[I]    thread_c3: Product 4 in, ts: 65'
+b'[I]    thread_c3: Customer value : [135, 162]'
+b"[I]    thread_c3: Product value : {4: {'value': [66, 192], 'diff': [69, 30]}}"
+b"[I]    thread_c3: Current DSL : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 64, 'last_prob': 1.0}}"
+b"[I]    thread_c3: Current DSL + Product value : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 64, 'last_prob': 1.0}, 4: {'value': [66, 192], 'diff': [69, 30]}}"
+b'[I]    thread_c3: Current DSL sorted : [19, 4]'
+b"[I]    thread_c3: DSL Result : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 64, 'last_prob': 1.0}, 4: {'value': [66, 192], 'diff': [69, 30]}}"
+b'[I]    thread_c3: Last update 1 pbox[19] = 64'
+b'[I]    thread_c3: Add score pbox[19][65] + 0.5 = 0.5'
+b'[I]    thread_c3: Last update 1 pbox[4] = 0'
+b'[I]    thread_c3: Add score pbox[4][65] + 0.5 = 0.5'
+b'[I]    thread_c3: Last update 2 pbox[19] = timestamp: 65 | probability: 0.5'
+b'[I]    thread_c3: Last update 2 pbox[4] = timestamp: 65 | probability: 0.5'
+b'[I]    thread_c3: ========================================================================'
+b'[I]    thread_c3: Product 11 in, ts: 69'
+b'[I]    thread_c3: Customer value : [135, 162]'
+b"[I]    thread_c3: Product value : {11: {'value': [123, 98], 'diff': [12, 64]}}"
+b"[I]    thread_c3: Current DSL : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 65, 'last_prob': 0.5}, 4: {'value': [66, 192], 'diff': [69, 30], 'last_ts': 65, 'last_prob': 0.5}}"
+b"[I]    thread_c3: Current DSL + Product value : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 65, 'last_prob': 0.5}, 4: {'value': [66, 192], 'diff': [69, 30], 'last_ts': 65, 'last_prob': 0.5}, 11: {'value': [123, 98], 'diff': [12, 64]}}"
+b'[I]    thread_c3: Current DSL sorted : [19, 11, 4]'
+b"[I]    thread_c3: DSL Result : {19: {'value': [123, 226], 'diff': [12, 64], 'last_ts': 65, 'last_prob': 0.5}, 4: {'value': [66, 192], 'diff': [69, 30], 'last_ts': 65, 'last_prob': 0.5}, 11: {'value': [123, 98], 'diff': [12, 64]}}"
+b'[I]    thread_c3: Last update 1 pbox[19] = 65'
+b'[I]    thread_c3: Update score pbox[19][66] + 0.5 = 0.5'
+b'[I]    thread_c3: Update score pbox[19][67] + 0.5 = 0.5'
+b'[I]    thread_c3: Update score pbox[19][68] + 0.5 = 0.5'
+b'[I]    thread_c3: Add score pbox[19][69] + 0.3333333333333333 = 0.3333333333333333'
+b'[I]    thread_c3: Last update 1 pbox[4] = 65'
+b'[I]    thread_c3: Update score pbox[4][66] + 0.5 = 1.5'
+b'[I]    thread_c3: Update score pbox[4][67] + 0.5 = 1.5'
+b'[I]    thread_c3: Update score pbox[4][68] + 0.5 = 1.5'
+b'[I]    thread_c3: Add score pbox[4][69] + 0.3333333333333333 = 0.8333333333333333'
+b'[I]    thread_c3: Last update 1 pbox[11] = 0'
+b'[I]    thread_c3: Add score pbox[11][69] + 0.3333333333333333 = 0.8333333333333333'
+b'[I]    thread_c3: Last update 2 pbox[19] = timestamp: 69 | probability: 0.3333333333333333'
+b'[I]    thread_c3: Last update 2 pbox[4] = timestamp: 69 | probability: 0.3333333333333333'
+b'[I]    thread_c3: Last update 2 pbox[11] = timestamp: 69 | probability: 0.3333333333333333'

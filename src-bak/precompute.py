@@ -32,7 +32,7 @@ def customer_in(cust_id, threads, prod_active, timestamp, last_event):
 
 def customer_out(cust_id, threads, timestamp, last_event):
   while True:
-    if threads[cust_id].get_last_event() == last_event:
+    if threads[cust_id].get_last_event() == last_event or threads[cust_id].get_last_event() == 0 or threads[cust_id].get_last_event() == 1:
       break
   logger.info('[C-{} out] Kill thread'.format(cust_id))
   threads[cust_id].kill_thread(timestamp)
@@ -46,10 +46,10 @@ def input_csv(name, file, event_queue):
       col_cnt = len(csv_reader.fieldnames)
       id = int(row[csv_reader.fieldnames[0]])
       data[id] = {}
-      data[id]['ts_in'] = int(row[csv_reader.fieldnames[1]])
-      data[id]['ts_out'] = int(row[csv_reader.fieldnames[2]])
+      data[id]['ts_in'] = int(row[csv_reader.fieldnames[2]])
+      data[id]['ts_out'] = int(row[csv_reader.fieldnames[3]])
       data[id]['value'] = []
-      for i in range(3, col_cnt):
+      for i in range(4, col_cnt):
         data[id]['value'].append(int(row[csv_reader.fieldnames[i]]))
       for i in range(0, 2):
         event_queue.enqueue(data[id]['ts_in'] if i == 0 else data[id]['ts_out'], 0 if name == 'product' else 1, id, i)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
   prod_active = []
   last_event = None
 
-  dataset = ['../dataset/product.csv', '../dataset/customer.csv']
+  dataset = ['../dataset/dataset_product_20_2.csv', '../dataset/dataset_customer_20_2.csv']
   data['product'] = input_csv('product', dataset[0], event_queue)
   data['customer'] = input_csv('customer', dataset[1], event_queue)
   print_data(data)

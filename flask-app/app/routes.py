@@ -59,7 +59,7 @@ def input():
             result = ss.kmpp_solution(PANDORA_FILE, k_product, time_start, time_end)
             result_json = json.dumps(result)
             loaded_r = json.loads(result_json)
-            return render_template("input.html", title = "Input", result = loaded_r)
+            return render_template("input.html", title = "Input", result = loaded_r, param = [k_product, time_start, time_end]) 
         else:
             flash('error')
             return redirect(request.url)

@@ -18,16 +18,16 @@
     <form action="{{ url_for('input') }}" method="POST">
       <div class="form-group">
         <label for="num-of-product">Jumlah Produk</label>
-        <input type="text" class="form-control" id="num-of-product" placeholder="Masukkan jumlah produk yang ingin dicari" name="num-of-product" required>
+        <input type="text" class="form-control" id="num-of-product" placeholder="Masukkan jumlah produk yang ingin dicari" name="num-of-product" value="{{ param[0] if param else '' }}" required>
       </div>
       <div class="form-group">
         <label for="interval">Interval Waktu</label>
         <div class="row justify-content-center">
           <div class="col-6">
-            <input type="text" class="form-control" id="time-start" placeholder="Masukkan waktu awal" name="time-start" required>
+            <input type="text" class="form-control" id="time-start" placeholder="Masukkan waktu awal" name="time-start" value="{{ param[1] if param else '' }}" required>
           </div>
           <div class="col-6">
-            <input type="text" class="form-control" id="time-end" placeholder="Masukkan waktu akhir" name="time-end" required>
+            <input type="text" class="form-control" id="time-end" placeholder="Masukkan waktu akhir" name="time-end" value="{{ param[2] if param else '' }}" required>
           </div>
         </div>
       </div>
