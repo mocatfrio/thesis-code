@@ -77,7 +77,7 @@ if __name__ == "__main__":
   prod_active = []
   last_event = None
 
-  dataset = ['../dataset/dataset_product_20_2.csv', '../dataset/dataset_customer_20_2.csv']
+  dataset = ['../dataset/anti_correlated/dataset_product_100_4.csv', '../dataset/anti_correlated/dataset_customer_100_4.csv']
   data['product'] = input_csv('product', dataset[0], event_queue)
   data['customer'] = input_csv('customer', dataset[1], event_queue)
   print_data(data)
