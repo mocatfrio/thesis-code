@@ -38,7 +38,7 @@ class PandoraBox:
       return total_score
 
   def export_csv(self):
-    pandora_file = app.config['UPLOAD_FOLDER'] + '/' + 'pandora_box.csv'
+    pandora_file = app.config['PANDORA_FILE']
     with open(pandora_file, 'w') as csvFile:
       writer = csv.writer(csvFile)
       writer.writerows(self.box)

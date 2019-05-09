@@ -2,6 +2,7 @@ import csv
 from app.src.kmpp.customer_thread import CustThread
 from app.src.kmpp.pandora_box import PandoraBox
 from app.src.kmpp.event_queue import EventQueue
+from app.src.kmpp.logger import Logger
 
 def product_in(prod_id, threads, prod_active, timestamp, act, last_event):
   try:
@@ -59,6 +60,11 @@ def wait_thread_event(threads, last_event):
       break
 
 def kmpp_precompute(product_dataset, customer_product):
+  logger = Logger('kmppts', 'precomputing')
+  logger.set_time(0)
+  logger.set_data_info(product_dataset.split('_'))
+  print ('Precompute started')
+
   event_queue = EventQueue()
   data = {}
   prod_active = []
@@ -92,5 +98,10 @@ def kmpp_precompute(product_dataset, customer_product):
     thread.join()
     
   pandora_file = pandora_box.export_csv()
+
+  logger.set_time(1)
+  logger.set_runtime()
+  logger.set_mem_usage()
+  logger.export_log()
 
   return pandora_file

@@ -1,7 +1,11 @@
 import csv
 from app.src.kmpp.pandora_box import PandoraBox
+from app.src.kmpp.logger import Logger
 
 def kmpp_solution(file, k_product, time_start, time_end):
+    logger = Logger('kmppts', 'query')
+    logger.set_time(0)
+    
     pandora_box = PandoraBox()
     market_contr = {}
     output = []
@@ -37,5 +41,11 @@ def kmpp_solution(file, k_product, time_start, time_end):
         product['id'] = sorted_prod[i]
         product['market_contr']= market_contr[sorted_prod[i]]
         output.append(product)
+
+    logger.set_time(1)
+    logger.set_runtime()
+    logger.set_mem_usage()
+    logger.set_query_info(k_product, time_start, time_end)
+    logger.export_log()
 
     return output

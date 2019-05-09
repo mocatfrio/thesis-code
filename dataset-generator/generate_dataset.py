@@ -73,7 +73,7 @@ if __name__ == "__main__":
         
     if not os.path.exists(new_path):
         os.mkdir(new_path)
-    csvfile = new_path + "dataset_" + data_name + "_" + str(num_of_rows) + "_" + str(num_of_dim) + ".csv"
+    csvfile = new_path + data_name + '_' + dataset_type + '_' + str(num_of_rows) + "_" + str(num_of_dim) + ".csv"
     with open(csvfile, "w") as output:
         writer = csv.writer(output, lineterminator='\n')
         writer.writerows(res)

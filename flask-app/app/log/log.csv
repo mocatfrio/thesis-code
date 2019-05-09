@@ -1,0 +1,4 @@
+process,ts_start,ts_end,algorithm,data_type,num_of_rows,num_of_dimensions,query_info,run_time,mem_usage
+precomputing,2019-05-09__12:09:07,2019-05-09__12:09:11,kmppts,i,100,2,-,0:00:03.739597,29.233152
+query,2019-05-09__12:09:17,2019-05-09__12:09:17,kmppts,i,100,2,k : 3 | time intvl : 10-50,0:00:00.016770,30.081024
+query,2019-05-09__12:09:55,2019-05-09__12:09:55,kmppts,i,100,2,k : 4 | time intvl : 100-130,0:00:00.031092,30.171136
