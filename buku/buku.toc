@@ -15,66 +15,66 @@
 \contentsline {section}{\numberline {1.4}Tujuan}{3}{section.1.4}
 \contentsline {section}{\numberline {1.5}Manfaat}{4}{section.1.5}
 \contentsline {section}{\numberline {1.6}Metodologi}{4}{section.1.6}
-\contentsline {section}{\numberline {1.7}Sistematika Penulisan}{5}{section.1.7}
-\contentsline {chapter}{\numberline {II}TINJAUAN PUSTAKA}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Daftar Simbol}{7}{section.2.1}
-\contentsline {section}{\numberline {2.2}Data}{8}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Data Multidimensi}{8}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Data Serial Waktu}{9}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Data Multidimensi dengan Serial Waktu}{9}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}\textit {Skyline}}{10}{section.2.3}
-\contentsline {section}{\numberline {2.4}Dominansi Dinamis}{11}{section.2.4}
-\contentsline {section}{\numberline {2.5}\textit {Dynamic Skyline}}{13}{section.2.5}
-\contentsline {section}{\numberline {2.6}\textit {Reverse Skyline}}{14}{section.2.6}
-\contentsline {section}{\numberline {2.7}Kueri \textit {k-Most Promising Products} (k-MPP)}{16}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}\textit {Uniform Product Adoption} (UPA)}{16}{subsection.2.7.1}
-\contentsline {subsubsection}{\numberline {2.7.1.1}\textit {Market Contribution}}{16}{subsubsection.2.7.1.1}
-\contentsline {subsection}{\numberline {2.7.2}Strategi Pemilihan Produk}{17}{subsection.2.7.2}
-\contentsline {section}{\numberline {2.8}Kueri \textit {k-Most Promising Products} (k-MPP) Berbasis Interval Waktu}{18}{section.2.8}
-\contentsline {section}{\numberline {2.9}Python}{18}{section.2.9}
-\contentsline {section}{\numberline {2.10}Flask}{19}{section.2.10}
-\contentsline {chapter}{\numberline {III}ANALISIS DAN PERANCANGAN SISTEM}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}Daftar Istilah}{21}{section.3.1}
-\contentsline {section}{\numberline {3.2}Analisis Sistem}{21}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Analisis Permasalahan}{21}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Deskripsi Umum Sistem}{21}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Perancangan Sistem}{22}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}\textit {Data Preprocessing}}{22}{subsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Struktur Data}{22}{subsubsection.3.3.1.1}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Komputasi \textit {Dynamic Skyline}}{22}{subsubsection.3.3.1.2}
-\contentsline {subsection}{\numberline {3.3.2}Proses Utama}{22}{subsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.2.1}Pemrosesan Kueri \textit {k-Most Promising Products (k-MPP)}}{22}{subsubsection.3.3.2.1}
-\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Rancangan Data}{23}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Data Masukan}{24}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Data Keluaran}{24}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritma}{24}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}\textit {Header} yang Diperlukan}{24}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Variabel Global}{25}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Implementasi Fungsi Main}{25}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Implementasi Struct Node}{27}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Implementasi Fungsi Newnode}{27}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Implementasi Fungsi Build}{28}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Implementasi Fungsi Getsize}{28}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Implementasi Fungsi Split}{29}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Implementasi Fungsi Random}{30}{subsection.4.3.9}
-\contentsline {subsection}{\numberline {4.3.10}Implementasi Fungsi Concate}{31}{subsection.4.3.10}
-\contentsline {subsection}{\numberline {4.3.11}Implementasi Fungsi Insert}{32}{subsection.4.3.11}
-\contentsline {subsection}{\numberline {4.3.12}Implementasi Fungsi Mutable Begin}{32}{subsection.4.3.12}
-\contentsline {subsection}{\numberline {4.3.13}Implementasi Fungsi Mutable End}{33}{subsection.4.3.13}
-\contentsline {subsection}{\numberline {4.3.14}Implementasi Fungsi Print}{35}{subsection.4.3.14}
-\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{37}{chapter.5}
-\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{37}{section.5.1}
-\contentsline {section}{\numberline {5.2}Uji Coba Kebenaran}{37}{section.5.2}
-\contentsline {section}{\numberline {5.3}Uji Coba Kinerja}{44}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Operasi 1 Menggabungkan \textit {Rope} pada Posisi Awal}{44}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Operasi 2 Menggabungkan \textit {Rope} pada Posisi Akhir}{44}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Operasi 3 Mencetak Karakter pada Indeks ke-Y}{46}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{47}{section.5.4}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN}{51}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{51}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{52}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{53}{appendix*.28}
+\contentsline {section}{\numberline {1.7}Sistematika Penulisan}{6}{section.1.7}
+\contentsline {chapter}{\numberline {II}TINJAUAN PUSTAKA}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Daftar Simbol}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Data}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Data Multidimensi}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Data Serial Waktu}{11}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Data Multidimensi dengan Serial Waktu}{11}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}\textit {Skyline}}{12}{section.2.3}
+\contentsline {section}{\numberline {2.4}Dominansi Dinamis}{13}{section.2.4}
+\contentsline {section}{\numberline {2.5}\textit {Dynamic Skyline}}{15}{section.2.5}
+\contentsline {section}{\numberline {2.6}\textit {Reverse Skyline}}{16}{section.2.6}
+\contentsline {section}{\numberline {2.7}Kueri \textit {k-Most Promising Products} (k-MPP)}{18}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}\textit {Uniform Product Adoption} (UPA)}{18}{subsection.2.7.1}
+\contentsline {subsubsection}{\numberline {2.7.1.1}\textit {Market Contribution}}{18}{subsubsection.2.7.1.1}
+\contentsline {subsection}{\numberline {2.7.2}Strategi Pemilihan Produk}{19}{subsection.2.7.2}
+\contentsline {section}{\numberline {2.8}Kueri \textit {k-Most Promising Products} (k-MPP) Berbasis Interval Waktu}{20}{section.2.8}
+\contentsline {section}{\numberline {2.9}Python}{20}{section.2.9}
+\contentsline {section}{\numberline {2.10}Flask}{21}{section.2.10}
+\contentsline {chapter}{\numberline {III}ANALISIS DAN PERANCANGAN SISTEM}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Daftar Istilah}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Analisis Sistem}{23}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Analisis Permasalahan}{23}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Deskripsi Umum Sistem}{23}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Perancangan Sistem}{24}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}\textit {Data Preprocessing}}{24}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Struktur Data}{24}{subsubsection.3.3.1.1}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Komputasi \textit {Dynamic Skyline}}{24}{subsubsection.3.3.1.2}
+\contentsline {subsection}{\numberline {3.3.2}Proses Utama}{24}{subsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}Pemrosesan Kueri \textit {k-Most Promising Products (k-MPP)}}{24}{subsubsection.3.3.2.1}
+\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Rancangan Data}{25}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Data Masukan}{26}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Data Keluaran}{26}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritma}{26}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}\textit {Header} yang Diperlukan}{26}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Variabel Global}{27}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Implementasi Fungsi Main}{27}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Implementasi Struct Node}{29}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Implementasi Fungsi Newnode}{29}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Implementasi Fungsi Build}{30}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Implementasi Fungsi Getsize}{30}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Implementasi Fungsi Split}{31}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Implementasi Fungsi Random}{32}{subsection.4.3.9}
+\contentsline {subsection}{\numberline {4.3.10}Implementasi Fungsi Concate}{33}{subsection.4.3.10}
+\contentsline {subsection}{\numberline {4.3.11}Implementasi Fungsi Insert}{34}{subsection.4.3.11}
+\contentsline {subsection}{\numberline {4.3.12}Implementasi Fungsi Mutable Begin}{34}{subsection.4.3.12}
+\contentsline {subsection}{\numberline {4.3.13}Implementasi Fungsi Mutable End}{35}{subsection.4.3.13}
+\contentsline {subsection}{\numberline {4.3.14}Implementasi Fungsi Print}{37}{subsection.4.3.14}
+\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{39}{section.5.1}
+\contentsline {section}{\numberline {5.2}Uji Coba Kebenaran}{39}{section.5.2}
+\contentsline {section}{\numberline {5.3}Uji Coba Kinerja}{46}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Operasi 1 Menggabungkan \textit {Rope} pada Posisi Awal}{46}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Operasi 2 Menggabungkan \textit {Rope} pada Posisi Akhir}{46}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Operasi 3 Mencetak Karakter pada Indeks ke-Y}{48}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{49}{section.5.4}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN}{53}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{53}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{54}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{55}{appendix*.28}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{BIODATA PENULIS}{55}{appendix*.29}
+\contentsline {chapter}{BIODATA PENULIS}{57}{appendix*.29}
