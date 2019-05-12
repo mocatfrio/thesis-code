@@ -1,0 +1,257 @@
+\documentclass[11pt,a5paper,twoside,bahasa,listof=nochaptergap]{book}
+\usepackage[tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.0cm]{geometry}
+\setcounter{secnumdepth}{5}
+\usepackage[titletoc]{appendix}
+\usepackage{csvsimple,longtable,booktabs}
+\usepackage{listings}
+\usepackage{diagbox}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,fit,matrix,positioning,shadows}
+\tikzset
+{
+	treenode/.style = {circle, draw=black, align=center, minimum size=1cm},
+	splitnode/.style = {circle, draw=black, align=center, minimum size=1cm, fill=black!30!white},
+	subtree/.style  = {isosceles triangle, draw=black, align=center, minimum height=0.5cm, minimum width=1cm, shape border rotate=90, anchor=north}
+	missing/ 
+}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage[titles]{tocloft}
+
+
+\begingroup
+\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+\globaldefs\@ne \let\c@loldepth\@ne
+\newlistof{listings}{lol}{\lstlistlistingname}
+\newlistentry{lstlisting}{lol}{0}
+\makeatother
+\endgroup
+
+\cftsetindents{lstlisting}{0in}{1.3in}
+
+\lstset{ %
+	numbers=left,
+	xleftmargin=2mm,
+	xrightmargin=2mm,
+	frame=single,
+	framesep=2mm,
+	basicstyle=\footnotesize\ttfamily,
+	framexleftmargin=2em,
+	captionpos=b,
+	belowcaptionskip=4pt,
+	frame=single,
+	breaklines=true,
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\usepackage{color, colortbl}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\usepackage{rotating}
+\usepackage{mdframed}
+\usepackage{clrscode3e}
+\usepackage[parfill]{parskip}
+\usepackage{graphics}
+\usepackage{fontspec}
+\setsansfont{Trebuchet MS}
+\setmainfont{Times New Roman}
+\setmonofont{Courier New}
+\usepackage{tocbibind}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{minted}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage[verbose]{wrapfig}
+\usepackage{changepage}
+\usepackage{eso-pic}
+\usepackage{ragged2e}
+\usepackage{xesearch}
+\usepackage[bahasa]{babel}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage[font=small]{caption}
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array,etoolbox}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\preto\tabular{\setcounter{magicrownumbers}{0}}
+\preto\longtable{\setcounter{magicrownumbers}{0}}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+
+\newcommand\nc[1]{%
+	\multicolumn{1}{c}{#1}%
+}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\lhead[\thepage]{}
+\rhead[]{\thepage}
+\pagestyle{fancy}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\filcenter\fontsize{11}{11}\bfseries}{\chaptername \ \thechapter}{0pt}{\filcenter\fontsize{11}{11}\bfseries\uppercase}
+\titlespacing*{\chapter}{0pt}{-0.5cm}{40pt}
+\titlespacing*{\section}{0pt}{11pt}{0pt}
+\titlespacing*{\subsection}{0pt}{11pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{11pt}{0pt}
+\titleformat*{\section}{\fontsize{11}{11}\bfseries}
+\titleformat*{\subsection}{\fontsize{11}{11}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{11}{11}\bfseries}
+
+
+\addto\captionsbahasa{%
+	\renewcommand\bibname{DAFTAR PUSTAKA}%
+	\renewcommand\contentsname{DAFTAR ISI}%
+	\renewcommand\listtablename{DAFTAR TABEL}%
+	\renewcommand\listfigurename{DAFTAR GAMBAR}%
+	\renewcommand\chaptername{BAB}%
+}
+
+\setlength{\parindent}{1cm}
+
+\usepackage{chngcntr}
+\renewcommand{\lstlistingname}{Kode Sumber}
+\renewcommand{\lstlistlistingname}{DAFTAR KODE SUMBER}
+\renewcommand*\thechapter{\arabic{chapter}}
+\renewcommand\cftlstlistingpresnum{Kode Sumber }
+\newcommand{\var}[2]{\newcommand{#1}{#2}}
+\include{variabel}
+
+\usepackage{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
+\captionsetup[lstlisting]{labelsep=space}
+
+\setlength\cftparskip{-2pt}
+\setlength\cftbeforechapskip{0pt}
+\setlength{\lineskip}{0pt}
+
+% Pemenggalan Tambahan
+\include{pemenggalan}
+
+\makeatletter
+\def\emptypage@emptypage{%
+	\begin{center}
+		\emph{Halaman ini sengaja dikosongkan}
+	\end{center}
+	\newpage%
+}%
+\def\cleardoublepage{%
+	\clearpage%
+	\if@twoside%
+	\ifodd\c@page%
+	% do nothing
+	\else%
+	\emptypage@emptypage%
+	\fi%
+	\fi%
+}%
+\makeatother
+\raggedbottom
+
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappresnum}{BAB }
+\renewcommand{\cfttabpresnum}{Tabel }
+\cftsetindents{tab}{1em}{4.7em}
+\renewcommand{\cftfigpresnum}{Gambar }
+\cftsetindents{fig}{1em}{5.5em}
+
+\cftsetindents{chapter}{0em}{3.6em}      % set amount of 
+\cftsetindents{section}{2em}{2em}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+\newcommand{\insertfigure}{\begin{figure}\caption{A figure}\end{figure}}
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<succes>}{<failure>}
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{}
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}
+\makeatother
+
+\makeatletter
+\g@addto@macro\appendix{%
+	\addtocontents{toc}{%
+		\protect\renewcommand{\protect\cftchappresnum}{}%
+	}%
+}
+\makeatother
+
+
+\renewcommand{\cftchapaftersnumb}{\hspace{0em}}
+
+% Table caption above table
+\floatstyle{plaintop}
+\restylefloat{table}
+
+% Centering table caption
+\usepackage[justification=centering]{caption}
+% Prevent hyphenation
+\usepackage[none]{hyphenat}
+
+\usepackage{mfirstuc}
+
+\usepackage{tikz}
+
+\begin{document} \sloppy
+	% To prevent lstlisting from roman numbering
+	\renewcommand{\thelstlisting}{\arabic{chapter}.\arabic{lstlisting}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	
+	% To remove spacing between chapter in list of figure and list of table
+	\addtocontents{lof}{\protect\renewcommand*\protect\addvspace[1]{}}
+	\addtocontents{lot}{\protect\renewcommand*\protect\addvspace[1]{}}
+	
+	% \setlength{\abovecaptionskip}{-12.75pt}
+	
+	\title {\judul}
+	\author {\namaPenulisSatu, \namaPenulisDua}
+	
+	\frontmatter
+	\addcontentsline{toc}{chapter}{SAMPUL}
+	\include{sampul/sampul}
+	\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+	\include{pengesahan/pengesahan-gambar}
+	\include{abstrak/abstrak}
+	\include{kata_pengantar/kata_pengantar}
+	\tableofcontents
+	\cleardoublepage
+	\listoftables
+	\cleardoublepage
+	\listoffigures
+	\cleardoublepage
+	\lstlistoflistings
+	\cleardoublepage
+	
+	\mainmatter
+	\include{bab1/bab1}
+	\include{bab2/bab2}
+	\include{bab3/bab3}
+	\include{bab4/bab4}
+	\include{bab5/bab5}
+	\include{bab6/bab6}
+	
+	\renewcommand\chaptername{LAMPIRAN}
+	\appendix
+	\include{daftar_pustaka/daftar_pustaka}
+	\backmatter
+	\include{biodata/biodata}
+\end{document}
+

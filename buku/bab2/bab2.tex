@@ -1,0 +1,165 @@
+% Masing-masing dasar teori terdiri dari:
+% - What - definisi, contoh
+% - Why - alasan digunakan
+% - How - Penggunaan dalam tugas akhir
+
+\chapter{TINJAUAN PUSTAKA} \label{chapter:tinjauan pustaka}
+\tab Bab ini menjelaskan dasar teori yang digunakan dalam analisis, perancangan, dan implementasi struktur data dan algoritme untuk menjawab permasalahan \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu yang diangkat dalam Tugas Akhir ini. 
+
+\section{Daftar Simbol}
+\tab Tabel \ref{tabel:daftar-simbol-bag1} menunjukkan daftar simbol yang digunakan untuk memudahkan beberapa penjelasan pada bab ini berikut dengan deskripsinya.
+
+\begin{longtable}{| p{2cm} | p{7cm} |} 
+	\caption{Daftar Simbol (Bagian 1) \label{tabel:daftar-simbol-bag1}}\\
+	\hline
+	\multicolumn{1}{|p{2cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline
+	\hline
+	\endfirsthead
+	\hline
+	\multicolumn{1}{|p{2cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline 
+	\endhead
+	$ob$ & Objek data\\ \hline
+	$ob_1 \prec ob_2$ & Objek data $ob_1$ mendominasi $ob_2$\\ \hline
+	$ob_1 \prec_{ob_3} ob_2$ & Objek data $ob_1$ mendominasi $ob_2$ secara dinamis berdasarkan $ob_3$\\ \hline
+	$P$ & \textit{Dataset} produk\\ \hline
+	$C$ & \textit{Dataset} pelanggan (preferensi pelanggan)\\ \hline
+	$p$ & Sebuah data produk dalam $P$, dinotasikan sebagai $p \in P$\\ \hline
+	$c$ & Sebuah data pelanggan dalam $C$, dinotasikan sebagai $c \in C$\\ \hline
+	$d$ & Jumlah dimensi/atribut data\\ \hline
+	$i$ & Dimensi ke-1, ..., $d$\\ \hline
+	$j$ & Timestamp\\ \hline
+	$DSL(c)$ & \textit{Dynamic skyline} dari pelanggan $c$\\ \hline
+\end{longtable}
+
+\section{Data}
+\tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Menurut Checkland dan Holwell \cite{bibid}, data adalah representasi dari fakta, konsep, ataupun instruksi secara formal yang digunakan untuk komunikasi, interpretasi, maupun pemrosesan. Sehingga, sebuah sistem informasi harus menerima \textit{input} berupa data supaya dapat diproses menjadi informasi tertentu sesuai dengan kebutuhan pengguna dan mengeluarkannya sebagai \textit{output}.
+
+\subsection{Data Multidimensi}
+\tab Model data multidimensi adalah sebuah cara pandang yang melihat data dari berbagai sudut pandang atau dimensi. Model data ini memiliki struktur yang disesuaikan untuk mengoptimalkan analisis berdasarkan data dari \textit{relational database} dan diolah sehingga informasi dapat dikategorikan. Model data multidimensi merupakan variasi dari model relasional yang mengunakan struktur multidimensi untuk menyusun data dan menjelaskan relasi antar data.\\
+\tab Struktur multidimensi merepresentasikan dimensi-dimensi data dalam bentuk kubus. Jika sebuah data multidimensi memiliki lebih dari tiga dimensi, maka disebut dengan \textit{hypercube} \cite{multidimensional-database}. Dalam implementasinya, data multidimensi disajikan dalam bentuk \textit{array} multidimensi yang masing-masing nilai dalam selnya dapat diakses menggunakan sebuah indeks.\\
+\tab Data multidimensi banyak digunakan untuk analisis. Selama beberapa tahun terakhir, konsep data multidimensi telah menjadi hal yang fundamental dalam sistem pengambil keputusan, seperti sistem \textit{data warehouse} \cite{multidimensional-database}.\\
+
+**Contoh data multidimensi**
+
+\subsection{Data Serial Waktu}
+\tab Data \textit{time series} atau serial waktu adalah nilai-nilai suatu variabel yang berurutan menurut waktu. Data \textit{time series} memiliki nilai dan \textit{timestamp}, sehingga data diurutkan berdasarkan waktu atau \textit{timestamp}-nya. Pada Gambar 5, diberikan contoh sebuah \textit{time series dataset} $S$ yang setiap datanya diindeks ke dalam suatu \textit{array}. Pada contoh ini, kita asumsikan bahwa \textit{timestamp} adalah bilangan bulat positif. Nilai $s_1 \in S$ pada \textit{timestamp} $j$ dinotasikan sebagai $s_1[j]$, sehingga \textit{time series} $s_1$ jika ditulis secara berurutan menjadi $s_1[1], s_1[2],..$ , dan seterusnya \cite{time-series}.\\
+
+**Contoh data serial waktu**
+
+\subsection{Data Multidimensi dengan Serial Waktu}
+\tab Untuk menjawab permasalahan yang diangkat pada Tugas Akhir ini, data yang digunakan merupakan penggabungan dari kedua jenis data di atas, yaitu data multidimensi dengan serial waktu.\\
+\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki interval waktu berupa \textit{timestamp} awal dan akhir, dinotasikan dengan $[i:j]$. Interval waktu menggambarkan bahwa setiap data memiliki waktu hidup tertentu, misalnya pada dataset produk ($P$), setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan kapan ia tidak diproduksi lagi. Sebagai contoh lain, pada dataset pelanggan ($C$), setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan kapan ia meninggal dunia.\\
+
+**Contoh data multidimensi dengan serial waktu**
+
+\section{\textit{Skyline}}
+\tab Komputasi \textit{skyline} telah menarik perhatian yang cukup besar dari peneliti sejak diperkenalkan pada komunitas basis data \cite{skyline}, terutama mengenai metode progresif yang dapat mengembalikan hasil kueri dengan cepat tanpa perlu membaca keseluruhan data \cite{dynamic-skyline}. Tujuan dari komputasi \textit{skyline} adalah mencari data yang “menarik” dari suatu himpunan data \cite{skyline}, yaitu data yang tidak didominasi oleh data lain atau data yang paling unggul.\\
+\tab Pada \textit{dataset} produk $P$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi, sebuah titik $p_1$ dikatakan mendominasi titik lain $p_2$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ tidak lebih besar dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih kecil dari $p_2$ minimal pada satu dimensi. Secara matematika, relasi $p_1 \prec p_2$ terbentuk jika dan hanya jika:
+\[\text{(a)} \tab p_1^i \leq p_2^i, \forall i \in [1, ..., d]\] 
+\[\text{(b)} \tab p_1^i < p_2^i, \exists i \in [1, ..., d]\]
+\tab Sebagai contoh, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan resolusi kamera terbesar. Pada Gambar \ref{figure:contoh-skyline}, diberikan \textit{dataset} produk \textit{smartphone} $P$ yang memiliki atribut harga dan resolusi kamera. Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.\\
+
+\begin{figure}[H]
+	\centerline {
+		\includegraphics[width=\linewidth]{bab2/img/ex1.png}
+	}
+	\caption{\textit{Dataset} produk \textit{smartphone} $P$ dan hasil \textit{skyline}-nya}
+	\label{figure:contoh-skyline}
+\end{figure}
+
+Berdasarkan Gambar \ref{figure:contoh-skyline}, produk \textit{smartphone} yang terbaik adalah produk $p_4$, $p_5$, $p_7$, dan $p_{10}$ karena tidak ada titik yang lebih baik dari titik-titik tersebut pada semua dimensi, sedangkan \textit{smartphone} $p_2$ dan $p_1$ tidak dapat menjadi \textit{skyline} karena didominasi oleh \textit{smartphone} $p_7$ pada dimensi $x$. \textit{Smartphone} $p_4$, $p_5$, $p_7$, dan $p_{10}$ disebut juga dengan titik \textit{skyline}.\\
+\tab Saat ini, komputasi \textit{skyline} telah banyak digunakan sebagai operator pengambilan keputusan multikriteria dan perencanaan bisnis \cite{dynamic-skyline-2}. Ada beberapa pengembangan dari komputasi \textit{skyline}, seperti \textit{dynamic skyline} dan \textit{reverse skyline}.  
+
+\section{Dominansi Dinamis}
+\tab Berdasarkan definisi "\textit{Skyline}" yang telah dijelaskan pada poin sebelumnya, jika diberikan \textit{dataset} yang sama, maka hasil \textit{skyline} dari \textit{dataset} tersebut pasti akan selalu sama (statis). Oleh karena itu, para ahli juga menyebut \textit{original skyline} sebagai \textit{static skyline} \cite{dynamic-skyline-2}. Ada suatu kasus ketika perhitungan \textit{skyline} didasarkan pada titik kueri. Jika diberikan \textit{dataset} yang sama, namun titik kuerinya berbeda, maka hasil \textit{skyline}-nya akan berubah tergantung pada titik kuerinya. Inilah yang kemudian disebut dengan \textit{dynamic skyline} yang memiliki sifat dominansi dinamis.\\ 
+\tab Sebagai ilustrasi, diberikan \textit{dataset} produk $P$ dan \textit{dataset} pelanggan (preferensi pelanggan) $C$ yang setiap datanya direpresentasikan sebagai objek data $d$-dimensi. Data produk dan pelanggan pada dimensi ke-$i$ dinotasikan sebagai $p^i$ dan $c^i$, $i \leq d$. Setiap objek data hanya dapat menyimpan nilai numerik pada setiap dimensinya. Untuk menggambarkan objek data secara umum, kecuali dispesifikkan menjadi data produk atau pelanggan, digunakan notasi $ob$. \\
+\tab Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis berdasarkan objek data $ob_3$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematika, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika:
+\[\text{(a)} \tab |ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d]\]
+\[\text{(b)} \tab |ob_3^i - ob_1^i| < |ob_3^i - ob_2^i|, \exists i \in [1, ..., d]\]
+
+Pada Tabel \ref{tabel:contoh-dataset}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan definisi dominansi dinamis yang telah dijelaskan sebelumnya, produk $p_1$ mendominasi produk $p_4$ secara dinamis berdasarkan pelanggan $c_1$, dinotasikan dengan $p_1 \prec_{c_1} p_4$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_4^1| = |5-5| = 0$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_4^2| = |2-14| = 12$.\\ 
+
+\begin{table}[H]
+	\caption{(a) \textit{Dataset} produk $P$ dan (b) \textit{dataset} preferensi pelanggan $C$ \label{tabel:contoh-dataset}}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline
+			$p_1$ & 5 & 9\\ \hline
+			$p_2$ & 10 & 16\\ \hline
+			$p_3$ & 8 & 10\\ \hline
+			$p_4$ & 5 & 14\\ \hline
+			$p_5$ & 12 & 6\\ \hline
+			$p_6$ & 20 & 6\\ \hline
+			$p_7$ & 16 & 10\\ \hline
+			$p_8$ & 9 & 11\\ \hline
+			$p_9$ & 20 & 5\\ \hline
+			$p_{10}$ & 6 & 20\\ \hline
+		\end{tabular}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline
+			$c_1$ & 5 & 2\\ \hline
+			$c_2$ & 8 & 10\\ \hline
+			$c_3$ & 17 & 10\\ \hline
+			$c_4$ & 9 & 7\\ \hline
+			$c_5$ & 10 & 12\\ \hline
+			$c_6$ & 16 & 14\\ \hline
+			$c_7$ & 20 & 13\\ \hline
+			$c_8$ & 15 & 8\\ \hline
+			$c_9$ & 20 & 17\\ \hline
+			$c_{10}$ & 12 & 4\\ \hline
+		\end{tabular}
+	\end{subtable} 
+\end{table}
+
+Sebaliknya, jika berdasarkan preferensi pelanggan $c_5$, maka produk $p_4$-lah yang mendominasi $p_1$ secara dinamis, dinotasikan dengan $p_4 \prec_{c_5} p_1$, karena (a) $|c_5^1 - p_4^1| = |10-5| = 5 \leq |c_5^1 - p_1^1| = |10-5| = 5$ dan (b) $|c_5^2 - p_4^2| = |12-14| = 2 < |c_5^2 - p_1^2| = |12-9| = 3$. Preferensi pelanggan inilah yang disebut dengan titik kueri.\\
+\tab Dominansi dinamis memiliki peran yang sangat penting dalam komputasi \textit{dynamic skyline} \cite{dynamic-skyline}, sehingga dipelajari secara luas untuk membangun hubungan antara pelanggan dan produk yang baik \cite{kmpp}.
+
+\section{\textit{Dynamic Skyline}}
+\tab Kueri \textit{dynamic skyline} dalam komputasi k-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c \in C$, dinotasikan dengan $DSL(c)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c$, $p_2 \nprec_c p_1$.\\
+\tab Menggunakan contoh \textit{dataset} pada Tabel \ref{tabel:contoh-dataset}, \textit{dynamic skyline} dari pelanggan $c_5$ adalah produk $p_2$ dan $p_8$ karena produk tersebut tidak didominasi oleh produk lain berdasarkan preferensi pelanggan $c_5$. Jika titik kueri diubah, maka hasil \textit{skyline}-nya juga akan berubah.\\
+\tab \textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline}, yaitu mentransformasikan semua titik $p \in P$ ke \textit{data space} baru dengan menganggap titik $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan seperti yang ditunjukkan pada Gambar \ref{figure:dsl-c5}. Fungsi pemetaan $f^i$ didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
+
+\begin{figure}[H]
+	\centerline {
+		\includegraphics[height=6cm]{bab2/img/dsl.png}
+	}
+	\caption{Komputasi \textit{dynamic skyline} dari pelanggan $c_5$}
+	\label{figure:dsl-c5}
+\end{figure}
+
+\section{Kueri \textit{k-Most Promising Products} (k-MPP)}
+\tab Islam dan Liu dalam penelitiannya \cite{kmpp} telah memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan kerangka kerja algoritme untuk memproses kueri tersebut. Berikut adalah konsep-konsep yang berkaitan dengan penyelesaian permasalahan yang diangkat pada Tugas Akhir ini. 
+
+\subsection{\textit{Uniform Product Adoption} (UPA)}
+\tab \textit{Uniform Product Adoption} (UPA) adalah sebuah pemodelan yang mengasumsikan bahwa semua produk $p \in P$ yang muncul pada hasil \textit{dynamic skyline} pelanggan $c \in C$, dinotasikan $DSL(c)$ akan saling berkompetisi satu sama lain untuk menarik pelanggan $c$, sehingga produk-produk tersebut memiliki probabilitas yang sama untuk dibeli oleh pelanggan $c$.\\
+\tab Probabilitas produk $p$ dibeli oleh pelanggan $c$, dinotasikan dengan $Pr(c, p|P)$ dapat dijelaskan oleh persamaan berikut:
+\begin{equation}\label{eq:probability}
+Pr(c, p|P) = \left\{
+				\begin{array}{ll}
+					\frac{1}{|DSL(c)|} & \text{if } p \in DSL(c)\\
+					0 & \text{otherwise}\\
+				\end{array}
+				\right.
+\end{equation}
+\tab Berdasarkan persamaan \ref{eq:probability}, dapat dipastikan bahwa setiap produk yang muncul dalam $DSL(c)$ memiliki kesempatan yang sama untuk dipilih oleh pelanggan $c$. Sebaliknya, produk yang tidak muncul dalam $DSL(c)$ tidak memiliki kesempatan sama sekali untuk dipilih oleh $c$.\\
+\begin{equation}\label{eq:probability1}
+\sum_{\forall p \in P} Pr(c, p|P) = 1
+\end{equation}
+\tab Sebagai contoh, probabilitas produk $p_8$ dibeli oleh pelanggan $c_5$, dinotasikan dengan $Pr(c_5, p_8|P)$ adalah $\frac{1}{|DSL(c_5)|} = \frac{1}{2}$.
+
+\subsubsection{\textit{Market Contribution}}
+\tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$
+
+\subsection{Strategi Pemilihan Produk}
+
+\section{Interval Waktu Kueri}
+\section{Python}
+\section{Flask}

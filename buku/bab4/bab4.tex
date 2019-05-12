@@ -1,0 +1,579 @@
+\chapter{IMPLEMENTASI}
+\label{chapter:implementasi}
+
+Pada bab ini dijelaskan mengenai implementasi dari desain dan algoritma penyelesaian \problem{}.
+
+\section{Lingkungan Implementasi}
+Lingkungan implementasi dalam pembuatan Tugas Akhir ini meliputi perangkat keras dan perangkat lunak yang digunakan untuk penyelesaian \problem{} adalah sebagai berikut:
+
+\begin{enumerate}
+	\item Perangkat Keras:
+		\begin{itemize}
+			\item \textit{Processor} Intel(R) Core(TM) i3 - M 330 CPU @ 2.13GHz x 4 \item Memori 4 GB.
+		\end{itemize}
+	\item Perangkat Lunak:
+	\begin{itemize}
+		\item Sistem operasi Ubuntu 14.04 LTS 64 bit.
+		\item \textit{Text editor} Sublime Text 3.
+		\item \textit{Compiler} g++ versi 4.3.2.
+	\end{itemize}			
+\end{enumerate}
+
+
+\section{Rancangan Data}
+Pada subbab ini dijelaskan mengenai desain data masukan yang diperlukan untuk melakukan proses algoritma, dan data keluaran yang dihasilkan oleh program.
+
+\subsection{Data Masukan}
+Data masukan adalah data yang akan diproses oleh program sebagai masukan menggunakan algoritma dan struktur data yang telah dirancang dalam Tugas Akhir ini.\\
+Data masukan berupa berkas teks yang berisi data dengan format yang telah ditentukan pada deskripsi \problem{}. Pada masing-masing berkas data masukan, baris pertama berupa sebuah bilangan bulat yang merepresentasikan jumlah kasus uji yang ada pada berkas tersebut. Untuk setiap kasus uji dengan tipe $1$ dan $2$, masukan berupa sebuah baris masukan yang terdiri dari dua buah parameter posisi berupa $x$ dan $y$. Sedangkan pada kasus uji dengan tipe $3$, masukan berupa sebuah parameter $y$ yang merupakan indeks \textit{string} yang dicari pada konfigurasi \textit{rope} saat ini.
+
+\subsection{Data Keluaran}
+Data keluaran yang dihasilkan oleh program hanya berupa satu nilai, yaitu huruf pada indeks ke-$y$ untuk setiap kasus uji dengan tipe $3$. 
+
+\section{Implementasi Algoritma}
+Pada subbab ini akan dijelaskan tentang implementasi proses algoritma secara keseluruhan berdasarkan desain yang telah dijelaskan pada Bab \ref{chapter:desain}.
+
+\subsection{\textit{Header} yang Diperlukan}
+Implementasi algoritma dengan pemanfaatan struktur data Rope untuk menyelesaikan \problem{} membutuhkan empat buah \textit{header} yaitu stdio.h, cstdlib, cstring dan utility, seperti yang terlihat pada Kode Sumber \ref{source:header}.\\
+
+\lstinputlisting[language=C++, firstline=1, lastline=4, caption=\textit{Header} yang diperlukan, label=source:header]{assets/code/include.cpp}
+
+\textit{Header} stdio.h berisi modul untuk menerima masukan dan memberikan keluaran. \textit{Header} cstdlib berisi modul untuk manajemen memori dinamis, generasi bilangan acak, pemilahan dan konversi. \textit{Header} cstring berisi modul yang memiliki fungsi-fungsi untuk melakukan pemrosesan \textit{string}. \textit{Header} utility mencakup berbagai modul yang menyediakan fungsionalitas mulai dari aplikasi perhitungan bit hingga aplikasi fungsi parsial. Contoh implementasinya penggunaan \textit{pair}. 
+
+\subsection{Variabel Global}
+Variabel global digunakan untuk memudahkan dalam mengakses data yang digunakan lintas fungsi. Kode sumber implementasi variabel global dapat dilihat pada Kode Sumber \ref{source:variabel_global}.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[language=C++, firstline=1, lastline=3, caption=Variabel Global, label=source:variabel_global]{assets/code/global.cpp}
+\end{minipage}
+	
+\subsection{Implementasi Fungsi Main}
+Fungsi Main adalah implementasi algoritma yang dirancang pada Gambar \ref{figure:fungsi_main}. Setiap tipe memiliki operasi yang berbeda-beda. Untuk operasi dengan tipe $3$, masukan hanya berupa parameter $y$ yang merupakan nilai posisi indeks yang dicari pada konfigurasi \textit{rope} saat ini. Pada operasi dengan tipe $1$ dan $2$, baris masukan berupa nilai $x$ dan $y$ yang merupakan posisi indeks dari \textit{string} pada \textit{rope}. Setiap masukan dengan tipe $3$ akan ditampilkan sebagai jawaban akhir dari permasalahan. Implementasi fungsi Main dapat dilihat pada Kode Sumber \ref{source:fungsi_main}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=24, caption=Fungsi Main, label=source:fungsi_main]{assets/code/main.cpp}
+
+\subsection{Implementasi Struct Node}
+Fungsi Struct Node berisi atribut yang dimiliki \textit{node} pada \textit{tree}. Implementasi dari fungsi Struct Node dapat dilihat pada Kode Sumber \ref{source:fungsi_struct}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=17, caption=Fungsi Struct Node, label=source:fungsi_struct]{assets/code/struct.cpp}
+
+\subsection{Implementasi Fungsi Newnode}
+Fungsi Newnode digunakan untuk membentuk sebuah \textit{node} yang berisikan karakter yang diberikan dan relasi terhadap karakter pada posisi yang bersebelahan. Sehingga membentuk sebuah \textit{tree} seperti pada Gambar \ref{fig:bst}. Implementasi fungsi \proc{newnode} dapat dilihat pada Kode Sumber \ref{source:fungsi_newnode}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=7, caption=Fungsi Newnode, label=source:fungsi_newnode]{assets/code/newnode.cpp}
+
+\subsection{Implementasi Fungsi Build}
+Fungsi Build membangun struktur \textit{tree} dari \textit{rope} yang dilakukan dari karakter yang berada pada posisi indeks di tengah sampai pada karakter paling awal maupun akhir.  Setiap \textit{node} akan memiliki anak kiri dan anak kanan jika dan hanya jika masih terdapat \textit{string} yang tersisa. Ilustrasinya dapat dilihat pada Gambar \ref{fig:rope}. Implementasi dari Fungsi Build dapat dilihat pada Kode Sumber \ref{source:fungsi_build}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=6, caption=Fungsi Build, label=source:fungsi_build]{assets/code/build.cpp}
+
+\subsection{Implementasi Fungsi Getsize}
+Fungsi Getsize digunakan untuk mendapatkan berat \textit{node} yang diperlukan. Implementasi dari fungsi Getsize dapat dilihat pada Kode Sumber \ref{source:fungsi_getsize}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=3, caption=Fungsi Getsize, label=source:fungsi_getsize]{assets/code/getsize.cpp}
+
+\subsection{Implementasi Fungsi Split}
+Fungsi Split memanfaatkan struktur data Pair yang berupa pasangan dari dua \textit{pointer} menuju \textit{node}. \textit{Pointer node} pertama akan berisi semua \textit{node} yang bernilai lebih kecil dari posisi indeks parameter \textit{split}, sedangkan \textit{pointer node} kedua berisi semua \textit{node} yang bernilai lebih besar sama dengan posisi indeks parameter \textit{split}.\\
+Misalkan dilakukan \textit{split} pada indeks ke-$5$ dari \textit{rope} pada Gambar \ref{fig:split-5}, \textit{pointer node} pertama akan menyimpan semua \textit{node} dari indeks ke-$0$ sampai dengan $4$. Sedangkan \textit{pointer node} kedua menyimpan \textit{node} dari indeks ke-$5$ sampai akhir. Implementasi dari fungsi \textit{split} dapat dilihat pada Kode Sumber \ref{source:fungsi_split1} dan \ref{source:fungsi_split2}.
+\begin{figure}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[treenode]{b,12}
+  child{
+    node[treenode]{t,6} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[treenode] {m,2}
+    	child {
+    	    node[treenode] {a,1}
+    	}
+    	child[missing]{}
+    }
+  }
+  child{
+  	node[treenode]{h,5}
+  	child {
+  	    	node[treenode] {s,2}
+  	    	child {
+  	    		node[treenode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+  };
+  \draw [line width = 1pt] (-2.3,0) -- (-2.3,0) .. controls (-3.5,-2.5) .. (-2.1, -4.8);
+\end{tikzpicture}
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.65,transform shape]
+\node{
+	\begin{tabular}{|c|c|}
+		\hline
+		pair first & pair second\\ \hline
+	\end{tabular}
+}
+  child{
+    node[treenode]{t,5} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[treenode] {a,1}
+    }
+  }
+  child{
+  	node[treenode]{b,7}
+  	child {
+  		node[treenode]{m,1}
+  	}
+	child {
+		node[treenode]{h,5}
+		child {
+			node[treenode] {s,2}
+		  	child {
+	  	   		node[treenode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+	}
+  };
+\end{tikzpicture}
+\caption{Ilustrasi Penyimpanan Hasil Operasi \textit{Split Rope} pada Struktur Data Pair \label{fig:split-5}}
+\end{figure}
+
+\lstinputlisting[language=C++, firstline=1, lastline=5, caption=Fungsi Split(1), label=source:fungsi_split1]{assets/code/split.cpp}
+\lstinputlisting[language=C++, firstline=6, lastline=19, caption=Fungsi Split(2), label=source:fungsi_split2]{assets/code/split.cpp}
+
+\subsection{Implementasi Fungsi Random}
+Fungsi Random digunakan untuk menentukan posisi \textit{node} pada saat penggabungan dua buah \textit{rope}. Digunakan fungsi Random agar posisi \textit{node} tidak konstan dan berat suatu \textit{rope} tidak selalu sama. Implementasi fungsi Random ditunjukkan pada Kode Sumber \ref{source:fungsi_random}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=3, caption=Fungsi Random, label=source:fungsi_random]{assets/code/random.cpp}
+
+\subsection{Implementasi Fungsi Concate}
+Fungsi Concate menggabungkan dua buah \textit{rope} menjadi sebuah \textit{rope} utuh. Untuk setiap \textit{node} yang memiliki hasil modular nilai acak lebih kecil dari berat \textit{node root rope} pertama, akan menjadi \textit{root} dari \textit{rope} yang baru terbentuk. Untuk \textit{rope} kedua akan menjadi anak kanan atau anak kirinya, tergantung pada urutan BST yang seharusnya dibuat.\\
+Misalkan terdapat dua buah \textit{rope} $R_1$ yang berisi \textit{string} "$abc$" dan $R_2$ yang berisi \textit{string} "$def$" seperti pada Gambar \ref{fig:concate-ab}. Apabila akan digabungkan dengan $R_1$ berada di posisi depan sehingga membentuk \textit{string} "$abcdef$", maka semua \textit{node} pada $R_2$ berada di posisi kanan rope $R_1$. Jika nilai hasil modular $R_1$ lebih kecil dari berat \textit{node root} $R_1$, \textit{node} tersebut akan menjadi \textit{root} dari \textit{rope} yang baru terbentuk. \textit{Node root} $R_2$ akan menjadi anak kanannya. Jika \textit{root} $R_1$ memiliki anak kanan, akan menjadi anak kiri dari \textit{node} $R_1$ yang memiliki indeks $0$. Implementasi Fungsi Concate ditunjukkan pada Kode Sumber \ref{source:fungsi_concate_1} dan \ref{source:fungsi_concate_2}.
+\begin{figure}
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.65,transform shape]
+\node[treenode]{b,3}
+  child{
+  	node[treenode]{a,1}
+  }
+  child{
+  	node[treenode]{c,1}
+  };
+\end{tikzpicture}
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.65,transform shape]
+\node[treenode]{e,3}
+  child{
+  	node[treenode]{d,1}
+  }
+  child{
+  	node[treenode]{f,1}
+  };
+\end{tikzpicture}
+\centerline
+{\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.7,transform shape]
+\node[treenode]{b,6}
+  child{
+  	node[treenode]{a,1}
+  }
+  child{
+  	node[treenode]{e,4}
+  	child {
+  		node[treenode] {d,2}
+  		child {
+  			node[treenode]{c,1}
+  		}
+  		child[missing]{}
+  	}
+  	child {
+  		node[treenode] {f,1}
+  	}
+  };
+\end{tikzpicture}}
+\caption{Ilustrasi Operasi Concate. Setiap \textit{Node} Berisi Sebuah Karakter dan Nilai Berat Masing-Masing \textit{Node} \label{fig:concate-ab}}
+\end{figure}
+
+\lstinputlisting[language=C++, firstline=1, lastline=2, caption=Fungsi Concate(1), label=source:fungsi_concate_1]{assets/code/concate.cpp}
+
+\lstinputlisting[language=C++, firstline=3, lastline=10, caption=Fungsi Concate(2), label=source:fungsi_concate_2]{assets/code/concate.cpp}
+
+\subsection{Implementasi Fungsi Insert}
+Fungsi Insert adalah implementasi dari desain algoritma pada Gambar \ref{figure:fungsi_insert}. Fungsi ini bertujuan untuk memasukkan data \textit{string} ke dalam \textit{rope}. Setiap \textit{string} akan dimasukkan ke dalam suatu \textit{node}. Setiap \textit{node} hanya berisi oleh satu karakter pecahan dari \textit{string} masukan. Implementasi dari Fungsi Insert dapat dilihat pada Kode Sumber \ref{source:fungsi_insert}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=4, caption=Fungsi Insert, label=source:fungsi_insert]{assets/code/insert.cpp}
+
+\subsection{Implementasi Fungsi Mutable Begin}
+Fungsi Mutable Begin adalah implementasi dari desain algoritma pada Gambar \ref{figure:fungsi_mutable_begin}. Operasi ini dilakukan untuk menjawab permasalahan pada subbab \ref{chapter:operasi1} dengan memanfaatkan dua buah operasi Split dan dua buah operasi Concate.\\
+Misal dilakukan operasi $1$ $5$ $9$ pada \textit{rope} di Gambar \ref{fig:mutbegin}. Maka \textit{rope} akan dipotong pada posisi indeks ke-$5$ menghasilkan \textit{rope} $R_1$ dan $R_2$. Kemudian dilakukan \textit{split} kedua kali pada indeks $y-x+1$ pada \textit{rope} $R_2$ menghasilkan \textit{rope} $R_{21}$ dan $R_{22}$. Sehingga menghasilkan tiga buah \textit{rope} yang disimpan dalam struktur data Pair. Langkah selanjutnya dilakukan operasi Concate pada \textit{rope} $R_1$ dengan $R_{22}$. Hasil penggabungan \textit{rope} $R_1$ dengan $R_{22}$ akan digabungkan dengan \textit{rope} $R_{21}$. Pada operasi ini, \textit{rope} $R_{21}$ akan berada di posisi paling kiri dari keseluruhan \textit{rope}. Dan menghasilkan sebuah \textit{rope} utuh dengan urutan posisi \textit{rope} saat ini adalah $R_{21}$, $R_1$ dan $R_{22}$. Implementasi Fungsi Mutable Begin dapat dilihat pada Kode Sumber \ref{source:fungsi_mutable_begin}.
+\begin{figure}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[splitnode]{b,12}
+  child{
+    node[treenode]{t,6} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[splitnode] {m,2}
+    	child {
+    	    node[treenode] {a,1}
+    	}
+    	child[missing]{}
+    }
+  }
+  child{
+  	node[splitnode]{h,5}
+  	child {
+  	    	node[splitnode] {s,2}
+  	    	child {
+  	    		node[splitnode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+  };
+  \draw [line width = 1pt] (-2.3,0) -- (-2.3,0) .. controls (-3.5,-2.5) .. (-2.1, -4.8);
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.68,transform shape]
+\node[treenode]{t,5} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[treenode] {a,1}
+    };
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[splitnode]{b,7}
+  child{
+    node[splitnode]{m,1} 
+  }
+  child{
+  	node[splitnode]{h,5}
+  	child {
+  	    	node[splitnode] {s,2}
+  	    	child {
+  	    		node[splitnode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+  };
+  \draw[-, line width = 1pt] (3.5,-1.8) -- (1.8,-4.5);
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[treenode]{t,7}
+child {
+	node[treenode]{a,3}
+	child {
+		node[treenode]{g,1}
+	}
+	child {
+		node[treenode]{u,2}
+	}
+}
+child {
+	node[treenode]{l,3}
+	child {
+		node[treenode]{a,2}
+		child {
+			node[treenode]{a,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 3cm/#1, level distance = 1.5cm}, scale=0.55,transform shape]
+\node[treenode]{b,5}
+child {
+	node[treenode]{m,1}
+}
+child{
+	node[treenode]{h,3}
+	child {
+		node[treenode]{2,s}
+		child {
+			node[treenode]{i,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, level 2/.style={sibling distance = 2cm}, level 3/.style={sibling distance = 1.5cm}, level 4/.style={sibling distance = 1.5cm}, scale=0.65,transform shape]
+\node[treenode]{t,12}
+child {
+	node[treenode]{b,8}
+	child {
+		node[treenode]{m,1}
+	}
+	child {
+		node[treenode]{h,6}
+		child {
+			node[treenode]{s,2}
+			child {
+				node[treenode]{i,1}
+			}
+			child[missing]{}
+		}
+		child {
+			node[treenode]{a,3}
+			child {
+				node[treenode]{g,1}
+			}
+			child {
+				node[treenode]{u,1}
+			}
+		}
+	}
+}
+child {
+	node[treenode]{l,3}
+	child {
+		node[treenode]{a,2}
+		child {
+			node[treenode]{a,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\caption{Ilustrasi Operasi Mutable Begin. Setiap \textit{Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit{Node} \label{fig:mutbegin}}
+\end{figure}
+
+\lstinputlisting[language=C++, firstline=1, lastline=6, caption=Fungsi Mutable Begin, label=source:fungsi_mutable_begin]{assets/code/mutable_begin.cpp}
+
+\subsection{Implementasi Fungsi Mutable End}
+Fungsi Mutable End dilakukan untuk menjawab permasalahan pada subbab \ref{chapter:operasi2}. Implementasinya dilakukan dengan memanfaatkan dua buah operasi Split dan dua buah operasi Concate.\\
+Misal dilakukan operasi $2$ $5$ $9$ pada rope di Gambar \ref{fig:mutend}. Maka \textit{rope} akan dipotong pada posisi indeks ke-$5$ menghasilkan rope $R_1$ dan $R_2$. Kemudian dilakukan \textit{split} kedua kali pada indeks $y-x+1$ pada \textit{rope} $R_2$ menghasilkan \textit{rope} $R_{21}$ dan $R_{22}$. Sehingga menghasilkan tiga buah \textit{rope} yang disimpan dalam struktur data Pair. Langkah selanjutnya dilakukan operasi Concate pada \textit{rope} $R_1$ dengan $R_{22}$. Hasil penggabungan \textit{rope} $R_1$ dengan $R_{22}$ akan digabungkan dengan \textit{rope} $R_{21}$. Pada operasi ini, \textit{rope} $R_{21}$ akan berada di posisi paling kanan dari keseluruhan \textit{rope}. Dan menghasilkan sebuah \textit{rope} utuh dengan urutan posisi \textit{rope} saat ini adalah $R_1$, $R_{22}$ dan $R_{21}$. Implementasi Fungsi Mutable End dapat dilihat pada Kode Sumber \ref{source:fungsi_mutable_end}.
+\begin{figure}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[splitnode]{b,12}
+  child{
+    node[treenode]{t,6} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[splitnode] {m,2}
+    	child {
+    	    node[treenode] {a,1}
+    	}
+    	child[missing]{}
+    }
+  }
+  child{
+  	node[splitnode]{h,5}
+  	child {
+  	    	node[splitnode] {s,2}
+  	    	child {
+  	    		node[splitnode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+  };
+  \draw [line width = 1pt] (-2.3,0) -- (-2.3,0) .. controls (-3.5,-2.5) .. (-2.1, -4.8);
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.68,transform shape]
+\node[treenode]{t,5} 
+    child {
+    	node[treenode] {a,3}
+    	child {
+    		node[treenode]{g,1}
+    	}
+    	child{
+    		node[treenode] {u,1}
+    	}
+    }
+    child {
+    	node[treenode] {a,1}
+    };
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[splitnode]{b,7}
+  child{
+    node[splitnode]{m,1} 
+  }
+  child{
+  	node[splitnode]{h,5}
+  	child {
+  	    	node[splitnode] {s,2}
+  	    	child {
+  	    		node[splitnode]{i,1}
+  	    	}
+  	    	child[missing]{}
+  	    }
+  	    child {
+  	    	node[treenode] {l,2}
+  	    	child {
+  	    	    node[treenode] {a,1}
+  	    	}
+  	    	child[missing] {}
+  	    }
+  };
+  \draw[-, line width = 1pt] (3.5,-1.8) -- (1.8,-4.5);
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.6,transform shape]
+\node[treenode]{t,7}
+child {
+	node[treenode]{a,3}
+	child {
+		node[treenode]{g,1}
+	}
+	child {
+		node[treenode]{u,2}
+	}
+}
+child {
+	node[treenode]{l,3}
+	child {
+		node[treenode]{a,2}
+		child {
+			node[treenode]{a,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\centering
+\begin{tikzpicture}[level/.style={sibling distance = 3cm/#1, level distance = 1.5cm}, scale=0.55,transform shape]
+\node[treenode]{b,5}
+child {
+	node[treenode]{m,1}
+}
+child{
+	node[treenode]{h,3}
+	child {
+		node[treenode]{2,s}
+		child {
+			node[treenode]{i,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, level 2/.style={sibling distance = 3cm}, level 3/.style={sibling distance = 1.5cm}, level 4/.style={sibling distance = 1.5cm}, scale=0.65,transform shape]
+\node[treenode]{b,12}
+child {
+	node[treenode]{t,8}
+	child {
+		node[treenode]{a,3}
+		child {
+			node[treenode]{g,1}
+		}
+		child {
+			node[treenode]{u,1}
+		}
+	}
+	child {
+		node[treenode]{m,4}
+		child {
+			node[treenode]{l,3}
+			child {
+				node[treenode]{a,2}
+				child {
+					node[treenode]{a,1}
+				}
+				child[missing]{}
+			}
+			child[missing]{}
+		}
+		child[missing]{}
+	}
+}
+child {
+	node[treenode]{h,3}
+	child {
+		node[treenode]{s,2}
+		child {
+			node[treenode]{i,1}
+		}
+		child[missing]{}
+	}
+	child[missing] {}
+};
+\end{tikzpicture}
+\caption{Ilustrasi Operasi Mutable End. Setiap \textit{Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit{Node} \label{fig:mutend}}
+\end{figure}
+\lstinputlisting[language=C++, firstline=1, lastline=6, caption=Fungsi Mutable End, label=source:fungsi_mutable_end]{assets/code/mutable_end.cpp}
+
+\subsection{Implementasi Fungsi Print}
+Fungsi Print digunakan untuk menjawab \problem{} sesuai dengan permasalahan pada subbab \ref{chapter:operasi3}. Implementasi fungsi ini berdasarkan dari desain algorithma pada Gambar \ref{figure:fungsi_print}. Implementasi dari Fungsi Print dapat dilihat pada Kode Sumber \ref{source:fungsi_print}.
+
+\lstinputlisting[language=C++, firstline=1, lastline=6, caption=Fungsi Print, label=source:fungsi_print]{assets/code/print.cpp}
