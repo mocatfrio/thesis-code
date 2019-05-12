@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  12 MAY 2019 16:55
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  13 MAY 2019 00:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2389,6 +2389,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Kueri \EU1/TimesNewRoman(0)/m/it/10.9
+5 k-Most Promising Products \EU1/TimesNewRoman(0)/m/n/10.95 (k-MPP) 
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -2396,13 +2401,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [16]
-Underfull \hbox (badness 5847) in paragraph at lines 70--70
+Underfull \hbox (badness 5847) in paragraph at lines 71--71
  [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Operasi 1 Menggabungkan \EU1/TimesNew
 Roman(0)/m/it/10.95 Rope \EU1/TimesNewRoman(0)/m/n/10.95 pada 
  []
 
 
-Underfull \hbox (badness 5847) in paragraph at lines 71--71
+Underfull \hbox (badness 5847) in paragraph at lines 72--72
  [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Operasi 2 Menggabungkan \EU1/TimesNew
 Roman(0)/m/it/10.95 Rope \EU1/TimesNewRoman(0)/m/n/10.95 pada 
  []
@@ -2602,6 +2607,10 @@ Underfull \hbox (badness 4001) in paragraph at lines 2--3
 \EU1/TimesNewRoman(0)/m/n/10.95 masalah, batasan masalah, tujuan, manfaat, meto
 dologi dan
  []
+
+
+LaTeX Warning: Citation `interval-skyline' on page 1 undefined on input line 16
+.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--18
@@ -2913,14 +2922,6 @@ data adalah
  []
 
 
-LaTeX Warning: Citation `multidimensional-database' on page 8 undefined on inpu
-t line 39.
-
-
-LaTeX Warning: Citation `multidimensional-database' on page 8 undefined on inpu
-t line 40.
-
-
 Underfull \hbox (badness 2229) in paragraph at lines 38--41
 \EU1/TimesNewRoman(0)/m/n/10.95 analisis berdasarkan data dari \EU1/TimesNewRom
 an(0)/m/it/10.95 relational database \EU1/TimesNewRoman(0)/m/n/10.95 dan diolah
@@ -2939,10 +2940,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
-
-LaTeX Warning: Citation `time-series' on page 9 undefined on input line 45.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
@@ -3058,12 +3055,6 @@ penting
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 126--129
-\EU1/TimesNewRoman(0)/m/n/10.95 untuk mencari produk terbaik dari sudut pandang
- pelanggan.
- []
-
-
 Underfull \hbox (badness 1990) in paragraph at lines 126--129
 \EU1/TimesNewRoman(0)/m/n/10.95 dengan $\OML/cmm/m/it/10.95 DSL\OT1/cmr/m/n/10.
 95 (\OML/cmm/m/it/10.95 c\OT1/cmr/m/n/10.95 )$\EU1/TimesNewRoman(0)/m/n/10.95 ,
@@ -3100,9 +3091,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [13]
 File: bab2/img/dsl.png Graphic file (type QTm)
  <use  "bab2/img/dsl.png" >
-Underfull \hbox (badness 4048) in paragraph at lines 139--140
-\EU1/TimesNewRoman(0)/m/n/10.95 algoritme untuk memproses kueri tersebut. Berik
-ut adalah
+Underfull \hbox (badness 10000) in paragraph at lines 139--142
+
  []
 
 
@@ -3111,7 +3101,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14])
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+[]\EU1/TimesNewRoman(0)/m/n/10.95 Ada beberapa tahapan yang harus dilakukan dal
+am
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 148--151
+| \EU1/TimesNewRoman(0)/m/n/10.95 Langkah kedua, mengecek apakah pelanggan $\OM
+L/cmm/m/it/10.95 c \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 C$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--151
+
+ []
+
+
+LaTeX Warning: Reference `figure:ex-rsl' on page 15 undefined on input line 153
+.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -3119,6 +3129,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [15]
+Underfull \hbox (badness 1215) in paragraph at lines 177--179
+\OML/cmm/m/it/10.95 p \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 P$ \EU1/TimesNe
+wRoman(0)/m/n/10.95 diukur dari total jumlah pelanggan yang diharapkan
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 177--179
+\EU1/TimesNewRoman(0)/m/n/10.95 yang mungkin lebih memilih membeli produk $\OML
+/cmm/m/it/10.95 p$ \EU1/TimesNewRoman(0)/m/n/10.95 dibandingkan
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 177--179
+\EU1/TimesNewRoman(0)/m/n/10.95 produk lain $\OML/cmm/m/it/10.95 p[]$\EU1/Times
+NewRoman(0)/m/n/10.95 . Asumsinya jika seorang pelanggan memiliki
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -3126,9 +3153,127 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [16]
+Underfull \hbox (badness 1748) in paragraph at lines 185--188
+| \EU1/TimesNewRoman(0)/m/n/10.95 Perhitungan kontribusi pasar juga dapat dilak
+ukan pada
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[17]
+Underfull \hbox (badness 5817) in paragraph at lines 196--196
+|[]\EU1/TimesNewRoman(0)/bx/n/11 Kueri \EU1/TimesNewRoman(0)/bx/it/11 k-Most Pr
+omising Products \EU1/TimesNewRoman(0)/bx/n/11 (k-MPP) Berbasis
+ []
+
+
+Underfull \hbox (badness 3240) in paragraph at lines 203--207
+| \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman tingkat ting
+gi dan
+ []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 203--207
+\EU1/TimesNewRoman(0)/m/it/10.95 Foundation\EU1/TimesNewRoman(0)/m/n/10.95 . Py
+thon adalah bahasa multi-fungsi yang dapat
+ []
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 203--207
+\EU1/TimesNewRoman(0)/m/n/10.95 tingkat tinggi, membaca dan menulis kode Python
+ semudah
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 203--207
+| \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman \EU1/TimesNe
+wRoman(0)/m/it/10.95 interpreter\EU1/TimesNewRoman(0)/m/n/10.95 , artinya
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 203--207
+| \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman berorientasi
+ objek
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--207
+| \EU1/TimesNewRoman(0)/m/n/10.95 Pada Tugas Akhir ini, bahasa pemrograman Pyth
+on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--207
+\EU1/TimesNewRoman(0)/m/n/10.95 digunakan untuk mengimplementasikan struktur da
+ta dan
+ []
+
+
+Underfull \hbox (badness 4454) in paragraph at lines 203--207
+\EU1/TimesNewRoman(0)/m/n/10.95 algoritme dari sistem perangkat lunak yang akan
+ dibangun.
+ []
+
+
+Underfull \hbox (badness 1997) in paragraph at lines 203--207
+\EU1/TimesNewRoman(0)/m/n/10.95 Bahasa ini juga digunakan untuk membuat aplikas
+i web dan
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18])
+Underfull \hbox (badness 1735) in paragraph at lines 209--245
+\EU1/TimesNewRoman(0)/m/n/10.95 sederhana, ringan, dan mudah dikembangkan, sehi
+ngga Flask
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--245
+| \EU1/TimesNewRoman(0)/m/n/10.95 Kerangka kerja Flask digunakan untuk
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--245
+\EU1/TimesNewRoman(0)/m/n/10.95 mengimplementasikan aplikasi web dan layanan \E
+U1/TimesNewRoman(0)/m/it/10.95 webserver
+ []
+
+
+Underfull \hbox (badness 5077) in paragraph at lines 209--245
+\EU1/TimesNewRoman(0)/m/n/10.95 juga memiliki banyak dokumentasi dan tutorial y
+ang dapat
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19]
 \openout2 = `bab3/bab3.aux'.
 
  (./bab3/bab3.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[20
+
+
+
+]
 BAB III.
 
 Underfull \hbox (badness 7540) in paragraph at lines 2--3
@@ -3142,18 +3287,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 1 k-Most Promising Products
  []
 
-) [17
-
-
-
-]
+) [21]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18]
+[22]
 \openout2 = `bab4/bab4.aux'.
 
  (./bab4/bab4.tex
@@ -3182,13 +3323,13 @@ Underfull \hbox (badness 2237) in paragraph at lines 27--29
 ueri \EU1/TimesNewRoman(0)/m/it/10.95 k-Most
  []
 
-[19
+[23
 
 
 
 ]
 
-LaTeX Warning: Reference `chapter:desain' on page 20 undefined on input line 34
+LaTeX Warning: Reference `chapter:desain' on page 24 undefined on input line 34
 .
 
 
@@ -3220,7 +3361,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[24] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -3247,7 +3388,7 @@ Overfull \hbox (52.7622pt too wide) in paragraph at lines 46--49
  []
 
 
-LaTeX Warning: Reference `figure:fungsi_main' on page 21 undefined on input lin
+LaTeX Warning: Reference `figure:fungsi_main' on page 25 undefined on input lin
 e 51.
 
 
@@ -3256,16 +3397,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[21] (./assets/code/main.cpp)
+[25] (./assets/code/main.cpp)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22] (./assets/code/struct.cpp)
+[26] (./assets/code/struct.cpp)
 
-LaTeX Warning: Reference `fig:bst' on page 23 undefined on input line 61.
+LaTeX Warning: Reference `fig:bst' on page 27 undefined on input line 61.
 
 
 LaTeX Font Warning: Font shape `EU1/TimesNewRoman(0)/m/sc' undefined
@@ -3278,9 +3419,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[23])
+[27])
 
-LaTeX Warning: Reference `fig:rope' on page 24 undefined on input line 66.
+LaTeX Warning: Reference `fig:rope' on page 28 undefined on input line 66.
 
 (./assets/code/build.cpp) (./assets/code/getsize.cpp)
 
@@ -3289,14 +3430,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[24] (./assets/code/split.cpp
+[28] (./assets/code/split.cpp
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[25]) (./assets/code/split.cpp)
+[29]) (./assets/code/split.cpp)
 Underfull \hbox (badness 1867) in paragraph at lines 173--174
 \EU1/TimesNewRoman(0)/m/n/10.95 Implementasi fungsi Random ditunjukkan pada Kod
 e Sumber
@@ -3313,16 +3454,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[26] (./assets/code/concate.cpp
+[30] (./assets/code/concate.cpp
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[27]) (./assets/code/concate.cpp)
+[31]) (./assets/code/concate.cpp)
 
-LaTeX Warning: Reference `figure:fungsi_insert' on page 28 undefined on input l
+LaTeX Warning: Reference `figure:fungsi_insert' on page 32 undefined on input l
 ine 227.
 
 
@@ -3333,11 +3474,11 @@ lgoritma pada
 
 (./assets/code/insert.cpp)
 
-LaTeX Warning: Reference `figure:fungsi_mutable_begin' on page 28 undefined on 
+LaTeX Warning: Reference `figure:fungsi_mutable_begin' on page 32 undefined on 
 input line 232.
 
 
-LaTeX Warning: Reference `chapter:operasi1' on page 28 undefined on input line 
+LaTeX Warning: Reference `chapter:operasi1' on page 32 undefined on input line 
 232.
 
 
@@ -3358,9 +3499,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[28] (./assets/code/mutable_begin.cpp)
+[32] (./assets/code/mutable_begin.cpp)
 
-LaTeX Warning: Reference `chapter:operasi2' on page 29 undefined on input line 
+LaTeX Warning: Reference `chapter:operasi2' on page 33 undefined on input line 
 404.
 
 
@@ -3372,20 +3513,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[29]
+[33]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[30] (./assets/code/mutable_end.cpp)
+[34] (./assets/code/mutable_end.cpp)
 
-LaTeX Warning: Reference `chapter:operasi3' on page 31 undefined on input line 
+LaTeX Warning: Reference `chapter:operasi3' on page 35 undefined on input line 
 577.
 
 
-LaTeX Warning: Reference `figure:fungsi_print' on page 31 undefined on input li
+LaTeX Warning: Reference `figure:fungsi_print' on page 35 undefined on input li
 ne 577.
 
 
@@ -3401,14 +3542,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[31]
+[35]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[32]
+[36]
 \openout2 = `bab5/bab5.aux'.
 
  (./bab5/bab5.tex
@@ -3420,7 +3561,7 @@ aluasi dari
  []
 
 
-LaTeX Warning: Reference `chapter:rope' on page 33 undefined on input line 23.
+LaTeX Warning: Reference `chapter:rope' on page 37 undefined on input line 23.
 
 
 Overfull \hbox (1.4045pt too wide) in paragraph at lines 278--318
@@ -3428,7 +3569,7 @@ Overfull \hbox (1.4045pt too wide) in paragraph at lines 278--318
  []
 
 
-LaTeX Warning: Reference `chapter:index' on page 33 undefined on input line 320
+LaTeX Warning: Reference `chapter:index' on page 37 undefined on input line 320
 .
 
 
@@ -3465,7 +3606,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--321
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33
+[37
 
 
 
@@ -3485,21 +3626,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[34]
+[38]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[35]
+[39]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[36]
+[40]
 Underfull \hbox (badness 3713) in paragraph at lines 358--404
 []\EU1/TimesNewRoman(0)/m/n/10.95 Potongan \EU1/TimesNewRoman(0)/m/it/10.95 rop
 e \EU1/TimesNewRoman(0)/m/n/10.95 yang baru terbentuk akan digabungkan
@@ -3511,7 +3652,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[37]
+[41]
 File: assets/images/hasil.png Graphic file (type QTm)
  <use  "assets/images/hasil.png" >
 File: assets/images/ujicoba.png Graphic file (type QTm)
@@ -3528,7 +3669,7 @@ jawab kueri
  []
 
 
-LaTeX Warning: Reference `figure:submission' on page 38 undefined on input line
+LaTeX Warning: Reference `figure:submission' on page 42 undefined on input line
  432.
 
 File: assets/images/spoj-spam.png Graphic file (type QTm)
@@ -3544,7 +3685,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[38]
+[42]
 Underfull \hbox (badness 4120) in paragraph at lines 450--451
 []\EU1/TimesNewRoman(0)/m/n/10.95 Berdasarkan Tabel []5.1[] dari percobaan peng
 ujian yang
@@ -3562,18 +3703,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[39]
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 455--455
 |[]\EU1/TimesNewRoman(0)/bx/n/11 Operasi 1 Menggabungkan \EU1/TimesNewRoman(0)/
 bx/it/11 Rope \EU1/TimesNewRoman(0)/bx/n/11 pada Posisi
  []
 
 
-LaTeX Warning: Reference `tab:operasi1string' on page 40 undefined on input lin
+LaTeX Warning: Reference `tab:operasi1string' on page 44 undefined on input lin
 e 456.
 
 
-LaTeX Warning: Reference `tab:operasi1query' on page 40 undefined on input line
+LaTeX Warning: Reference `tab:operasi1query' on page 44 undefined on input line
  456.
 
 File: assets/images/operasi1-string.png Graphic file (type QTm)
@@ -3605,11 +3746,11 @@ bx/it/11 Rope \EU1/TimesNewRoman(0)/bx/n/11 pada Posisi
  []
 
 
-LaTeX Warning: Reference `tab:operasi2string' on page 40 undefined on input lin
+LaTeX Warning: Reference `tab:operasi2string' on page 44 undefined on input lin
 e 470.
 
 
-LaTeX Warning: Reference `tab:operasi2query' on page 40 undefined on input line
+LaTeX Warning: Reference `tab:operasi2query' on page 44 undefined on input line
  470.
 
 File: assets/images/operasi2-string.png Graphic file (type QTm)
@@ -3639,22 +3780,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[40]
+[44]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[41]
+[45]
 File: assets/images/operasi2-query.png Graphic file (type QTm)
  <use  "assets/images/operasi2-query.png" >
 
-LaTeX Warning: Reference `tab:operasi3string' on page 42 undefined on input lin
+LaTeX Warning: Reference `tab:operasi3string' on page 46 undefined on input lin
 e 484.
 
 
-LaTeX Warning: Reference `tab:operasi3query' on page 42 undefined on input line
+LaTeX Warning: Reference `tab:operasi3query' on page 46 undefined on input line
  484.
 
 
@@ -3670,18 +3811,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[42]
+[46]
 File: assets/images/operasi3-string.png Graphic file (type QTm)
  <use  "assets/images/operasi3-string.png" >
 File: assets/images/operasi3-query.png Graphic file (type QTm)
 
 <use  "assets/images/operasi3-query.png" >
 
-LaTeX Warning: Reference `figure:submission' on page 43 undefined on input line
+LaTeX Warning: Reference `figure:submission' on page 47 undefined on input line
  503.
 
 
-LaTeX Warning: Citation `string' on page 43 undefined on input line 504.
+LaTeX Warning: Citation `string' on page 47 undefined on input line 504.
 
 )
 Underfull \hbox (badness 1215) in paragraph at lines 501--248
@@ -3753,21 +3894,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[43]
+[47]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[44]
+[48]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[45]
+[49]
 \openout2 = `bab6/bab6.aux'.
 
  (./bab6/bab6.tex
@@ -3777,7 +3918,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[46
+[50
 
 
 
@@ -3825,49 +3966,52 @@ Underfull \hbox (badness 1173) in paragraph at lines 18--19
 urangan serta
  []
 
-[47])
+[51])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[48]
+[52]
 \openout2 = `daftar_pustaka/daftar_pustaka.aux'.
 
  (./daftar_pustaka/daftar_pustaka.tex
-Underfull \hbox (badness 6428) in paragraph at lines 3--4
-\EU1/TimesNewRoman(0)/bx/n/10.95 K-Most Promising Products\EU1/TimesNewRoman(0)
-/m/n/10.95 , The VLDB Journal, pp.
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+\EU1/TimesNewRoman(0)/m/it/10.95 in Data Warehouse Design: Modern Principles an
+d
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 9--10
-\EU1/TimesNewRoman(0)/bx/n/10.95 Queries in Large Graphs\EU1/TimesNewRoman(0)/m
-/n/10.95 , DASFAA’10 Proceedings of
+Underfull \hbox (badness 8056) in paragraph at lines 27--28
+[]\EU1/TimesNewRoman(0)/m/n/10.95 A. Johansen. (2016). \EU1/TimesNewRoman(0)/m/
+it/10.95 Python: The Ultimate Beginner’s
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 18--19
-[]\EU1/TimesNewRoman(0)/m/n/10.95 S. Borzsonyi, D. Kossmann and K. Stocker, \EU
-1/TimesNewRoman(0)/bx/n/10.95 The Skyline
+Underfull \hbox (badness 8038) in paragraph at lines 27--28
+\EU1/TimesNewRoman(0)/m/it/10.95 Guide! \EU1/TimesNewRoman(0)/m/n/10.95 [Online
+]. Available FTP: astronomi.erciyes.edu.tr
  []
 
-) [49
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\EU1/TimesNewRoman(0)/m/n/10.95 Directory: wp-content/uploads/astronom/pdf File
+:
+ []
+
+[53
 
 
 
-]
+])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[50
-
-
-]
+[54]
 \openout2 = `biodata/biodata.aux'.
 
  (./biodata/biodata.tex
@@ -3875,24 +4019,54 @@ File: biodata/img/hf.png Graphic file (type QTm)
  <use  "biodata/img/hf.png" >
 Package wrapfig Info: Put wrapfigure here: on input line 6.
 )
-Underfull \hbox (badness 1048) in paragraph at lines 6--255
-[]\EU1/TimesNewRoman(0)/bx/n/10.95 Hafara Firdausi\EU1/TimesNewRoman(0)/m/n/10.
-95 , lahir di Surabaya pada
+Underfull \hbox (badness 10000) in paragraph at lines 6--255
+[]| \EU1/TimesNewRoman(0)/bx/n/10.95 Hafara Firdausi\EU1/TimesNewRoman(0)/m/n/1
+0.95 , lahir di
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 Surabaya pada tanggal 19 September
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--255
-\EU1/TimesNewRoman(0)/m/n/10.95 tanggal 19 September 1998. Penulis
+\EU1/TimesNewRoman(0)/m/n/10.95 1998. Penulis merupakan anak
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 pertama dari 3 bersaudara. Penulis
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--255
-\EU1/TimesNewRoman(0)/m/n/10.95 SMA Negeri 1 Sidoarjo (2013-2015).
+\EU1/TimesNewRoman(0)/m/n/10.95 telah menempuh pendidikan formal
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--255
-\EU1/TimesNewRoman(0)/m/n/10.95 Institut Teknologi Sepuluh Nopember
+\EU1/TimesNewRoman(0)/m/n/10.95 di SD Negeri Gelam 1 Candi
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 (2010-2013), dan SMA Negeri 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 Sidoarjo (2013-2015). Kemudian,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 penulis melanjutkan studi kuliah
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--255
+\EU1/TimesNewRoman(0)/m/n/10.95 program sarjana di Departemen
  []
 
 
@@ -3914,7 +4088,9 @@ Underfull \hbox (badness 3291) in paragraph at lines 6--255
  []
 
 Package wrapfig Info: Finish wrapping text on input line 255.
-[51
+[55
+
+
 
 
 ]
@@ -3936,12 +4112,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 47621 strings out of 493638
- 891527 string characters out of 6146796
- 1117110 words of memory out of 5000000
- 50116 multiletter control sequences out of 15000+600000
+ 47884 strings out of 493638
+ 896690 string characters out of 6146796
+ 1118492 words of memory out of 5000000
+ 50379 multiletter control sequences out of 15000+600000
  12196 words of font info for 85 fonts, out of 8000000 for 9000
  1336 hyphenation exceptions out of 8191
  58i,19n,82p,10416b,2040s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on buku.pdf (75 pages).
+Output written on buku.pdf (79 pages).

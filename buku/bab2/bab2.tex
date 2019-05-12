@@ -123,20 +123,38 @@ Sebaliknya, jika berdasarkan preferensi pelanggan $c_5$, maka produk $p_4$-lah y
 \tab Dominansi dinamis memiliki peran yang sangat penting dalam komputasi \textit{dynamic skyline} \cite{dynamic-skyline}, sehingga dipelajari secara luas untuk membangun hubungan antara pelanggan dan produk yang baik \cite{kmpp}.
 
 \section{\textit{Dynamic Skyline}}
-\tab Kueri \textit{dynamic skyline} dalam komputasi k-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c \in C$, dinotasikan dengan $DSL(c)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c$, $p_2 \nprec_c p_1$.\\
+\tab Kueri \textit{dynamic skyline} dalam komputasi k-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c \in C$, dinotasikan dengan $DSL(c)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c$, $p_2 \nprec_c p_1$.\\
 \tab Menggunakan contoh \textit{dataset} pada Tabel \ref{tabel:contoh-dataset}, \textit{dynamic skyline} dari pelanggan $c_5$ adalah produk $p_2$ dan $p_8$ karena produk tersebut tidak didominasi oleh produk lain berdasarkan preferensi pelanggan $c_5$. Jika titik kueri diubah, maka hasil \textit{skyline}-nya juga akan berubah.\\
-\tab \textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline}, yaitu mentransformasikan semua titik $p \in P$ ke \textit{data space} baru dengan menganggap titik $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan seperti yang ditunjukkan pada Gambar \ref{figure:dsl-c5}. Fungsi pemetaan $f^i$ didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
+\tab \textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline}, yaitu mentransformasikan semua titik $p \in P$ ke \textit{data space} baru dengan menganggap titik $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan seperti yang ditunjukkan pada Gambar \ref{figure:cnt-dsl}. Fungsi pemetaan $f^i$ didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
 
 \begin{figure}[H]
 	\centerline {
 		\includegraphics[height=6cm]{bab2/img/dsl.png}
 	}
 	\caption{Komputasi \textit{dynamic skyline} dari pelanggan $c_5$}
-	\label{figure:dsl-c5}
+	\label{figure:cnt-dsl}
 \end{figure}
 
+\section{\textit{Reverse Skyline}}
+\tab Dalam komputasi k-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
+P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.\\
+\tab Sebagai contoh, berdasarkan dataset yang diberikan pada Tabel \ref{tabel:contoh-dataset}, \textit{reverse skyline} dari produk $p_4$ adalah pelanggan $c_3$, $c_4$, dan $c_5$ karena masing-masing pelanggan tersebut memiliki $p_4$ dalam \textit{dynamic skyline}-nya.\\
+
+** Gambar **
+
+Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}. Pertama, menghitung \textit{midpoint skyline} (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) pada setiap \textit{orthant} dari produk $p_4$. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. \textit{Mid-point} atau titik tengah antar produk, misalnya $p_4$ (yang menjadi titik kueri) dan $p_2$, dihitung menggunakan rumus berikut: 
+\begin{equation} \label{eq:midpoint}
+m_2^i = \frac{(p_1^i + p_2^i)}{2}
+\end{equation}
+Setelah itu, menentukan \textit{midpoint skyline} setiap \textit{orthant}.\\
+\tab Langkah kedua, mengecek apakah pelanggan $c \in C$ didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_4$ atau tidak. Pelanggan $c$ dikatakan didominasi oleh \textit{midpoint skyline} $m$ jika dan hanya jika:\\
+\[\text{(a)} \tab |p_4^i - m^i| \leq |p_4^i - c^i|, \forall i \in [1, ..., d]\]
+\[\text{(b)} \tab |p_4^i - m^i| < |p_4^i - c^i|, \exists i \in [1, ..., d]\]
+Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_4$, maka $c$ menjadi hasil dari \textit{reverse skyline} $p_4$, dinotasikan dengan $RSL(p_4)$. Komputasi \textit{reverse skyline} pada $p_4$ ditunjukkan pada Gambar \ref{figure:ex-rsl}.
+
+
 \section{Kueri \textit{k-Most Promising Products} (k-MPP)}
-\tab Islam dan Liu dalam penelitiannya \cite{kmpp} telah memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan kerangka kerja algoritme untuk memproses kueri tersebut. Berikut adalah konsep-konsep yang berkaitan dengan penyelesaian permasalahan yang diangkat pada Tugas Akhir ini. 
+\tab Islam dan Liu dalam penelitiannya \cite{kmpp} telah memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan kerangka kerja algoritme untuk memproses kueri tersebut. 
 
 \subsection{\textit{Uniform Product Adoption} (UPA)}
 \tab \textit{Uniform Product Adoption} (UPA) adalah sebuah pemodelan yang mengasumsikan bahwa semua produk $p \in P$ yang muncul pada hasil \textit{dynamic skyline} pelanggan $c \in C$, dinotasikan $DSL(c)$ akan saling berkompetisi satu sama lain untuk menarik pelanggan $c$, sehingga produk-produk tersebut memiliki probabilitas yang sama untuk dibeli oleh pelanggan $c$.\\
@@ -156,10 +174,37 @@ Pr(c, p|P) = \left\{
 \tab Sebagai contoh, probabilitas produk $p_8$ dibeli oleh pelanggan $c_5$, dinotasikan dengan $Pr(c_5, p_8|P)$ adalah $\frac{1}{|DSL(c_5)|} = \frac{1}{2}$.
 
 \subsubsection{\textit{Market Contribution}}
-\tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$
+\tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$ diukur dari total jumlah pelanggan yang diharapkan yang mungkin lebih memilih membeli produk $p$ dibandingkan produk lain $p'$. Asumsinya jika seorang pelanggan memiliki dua produk atau lebih dalam hasil \textit{dynamic skyline}-nya, maka ia akan memberikan bobot yang sama pada produk-produk tersebut sebagaimana yang sudah dijelaskan pada persamaan \ref{eq:probability}. Sehingga, kontribusi pasar sebuah produk didapatkan dari hasil akumulasi bobot yang didapatkan dari semua pelanggan $c \in C$. \\
+\tab Kontribusi pasar produk $p$, dinotasikan dengan $E(C, p|P)$, diperoleh dengan menambahkan probabilitas produk $Pr(c, p|P)$ dari setiap pelanggan $c \in C$ sebagai berikut:\\
+\begin{equation}\label{eq:market-contr}
+E(C, p|P) = \sum_{\forall c \in C} Pr(c, p|P)
+\end{equation}
+\tab Karena pelanggan $c$ yang muncul pada hasil \textit{reverse skyline} produk $p$, dinotasikan dengan $RSL(p)$, dan probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pada hasil \textit{dynamic skyline}-nya adalah nol (pada persamaan \ref{eq:probability}), maka persamaan \ref{eq:market-contr} dapat disederhanakan menjadi:
+\begin{equation}\label{eq:market-contr-rsl}
+E(C, p|P) = \sum_{\forall c \in RSL(p)} Pr(c, p|P)
+\end{equation}
+\tab Sebagai contoh, ...\\
+\tab Perhitungan kontribusi pasar juga dapat dilakukan pada sekumpulan produk atau \textit{subset} produk $P'$, dinotasikan dengan $E(C, P'|P)$, yang dijelaskan pada persamaan \ref{eq:market-contr-subset}.
+\begin{equation}\label{eq:market-contr-subset}
+E(C, P'|P) = \sum_{\forall p \in P'} E(C, p|P)
+\end{equation}
 
 \subsection{Strategi Pemilihan Produk}
+\tab Strategi pemilihan produk yang diusulkan oleh Islam dan Liu dalam penelitiannya \cite{kmpp} bernama kueri \textit{k-Most Promising Products} (k-MPP). \\
+\tab Diberikan \textit{dataset} produk $P$, \textit{dataset} preferensi pelanggan $C$, dan bilangan bulat positif $k$ yang lebih kecil dari |P|. Kueri k-Most Promising Products (k-MPP) \cite{kmpp}, dinotasikan dengan $k-MPP(P, C, k)$, akan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain, sebagaimana yang dijelaskan pada persamaan \ref{eq:market-contr-subset}.
 
-\section{Interval Waktu Kueri}
+\section{Kueri \textit{k-Most Promising Products} (k-MPP) Berbasis Interval Waktu}
+\tab Interval waktu $[t_i:t_e ](t_i \leq t_e)$ yang ditambahkan pada kueri \textit{k-Most Promising Products} (k-MPP) pada Tugas Akhir ini digunakan untuk menentukan rentang waktu pencarian. Sehingga, kueri k-MPP yang dimodifikasi dinotasikan menjadi:
+\begin{equation}\label{eq:kmppts}
+k-MPPTS(P, C, k, [t_i:t_e])
+\end{equation} 
+
 \section{Python}
+\tab Python adalah bahasa pemrograman tingkat tinggi dan \textit{open source} yang dikembangkan oleh Guido van Rossum pada akhir 1980-an. Saat ini, Python dikelola oleh \textit{Python Software Foundation}. Python adalah bahasa multi-fungsi yang dapat digunakan untuk membuat \textit{game}, GUI \textit{(Graphical User Interface)}, dan mengembangkan aplikasi web. Karena Python adalah bahasa tingkat tinggi, membaca dan menulis kode Python semudah membaca dan menulis bahasa Inggris biasa \cite{python}.\\
+\tab Python adalah bahasa pemrograman \textit{interpreter}, artinya setiap kali program berbahasa Python dijalankan, \textit{interpreter}-nya akan berjalan dan mengeksekusi kode program baris demi baris, kemudian menterjemahkannya ke dalam bahasa mesin.\\
+\tab Python adalah bahasa pemrograman berorientasi objek yang memungkinkan pengguna untuk mengelola dan mengontrol struktur data atau objek untuk membuat program. Semua objek, tipe data, fungsi, metode, dan kelas memiliki posisi yang sama dalam Python \cite{python}.\\
+\tab Pada Tugas Akhir ini, bahasa pemrograman Python digunakan untuk mengimplementasikan struktur data dan algoritme dari sistem perangkat lunak yang akan dibangun. Bahasa ini juga digunakan untuk membuat aplikasi web dan layanan \textit{web server}. 
+
 \section{Flask}
+\tab Flask adalah kerangka kerja web berbahasa Python yang sederhana, ringan, dan mudah dikembangkan, sehingga Flask kerap disebut dengan \textit{microframework}. Flask dibangun dari dua pustaka utama, yaitu Jinja \textit{template engine} dan Werkzeug WSGI \textit{toolkit}, serta memiliki lisensi BSD. Saat ini, Flask dikembangkan dan dikelola oleh \textit{Pallets team} dan kontributor komunitas. \\
+\tab Kerangka kerja Flask digunakan untuk mengimplementasikan aplikasi web dan layanan \textit{webserver} pada Tugas Akhir ini karena ringan dan lebih mudah digunakan dibanding dengan \textit{framework} Python Django. Selain itu, Flask juga memiliki banyak dokumentasi dan tutorial yang dapat diikuti.
