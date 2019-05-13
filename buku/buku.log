@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  13 MAY 2019 05:11
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  13 MAY 2019 15:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2085,8 +2085,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
-\EU1/TrebuchetMS(0)/bx/n/12 ANSWERING K-MOST PROMISING PRODUCTS QUERY
+Underfull \hbox (badness 1033) in paragraph at lines 60--79
+\EU1/TrebuchetMS(0)/bx/n/12 OBTAINING K-MOST PROMISING PRODUCTS BASED ON
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 60--79
+\EU1/TrebuchetMS(0)/bx/n/12 TIME INTERVAL ON MULTIDIMENSIONAL TIME SERIES
  []
 
 
@@ -2169,62 +2174,56 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 8.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (33.43694pt too wide) in paragraph at lines 8--29
+Overfull \hbox (33.43694pt too wide) in paragraph at lines 8--32
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--29
-[]\EU1/TimesNewRoman(0)/m/it/10.95 Permasalahan alphabetic rope merupakan sebua
-h
+Underfull \hbox (badness 10000) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 cara produsen dalam melakukan bisnis, yaitu de
+ngan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 permasalahan yang melibatkan sebuah rentang pe
-ncarian.
+Underfull \hbox (badness 3088) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 memanfaatkan data preferensi pelanggan untuk m
+endapatkan
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 Tipe query secara umum dibagi menjadi dua yait
-u, operasi
+Underfull \hbox (badness 7486) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 Saat ini, sudah ada komputasi yang dapat menye
+lesaikan
  []
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 alphabetic rope antara lain operasi pencarian 
-karakter pada
+Underfull \hbox (badness 1552) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 permasalahan tersebut. k-Most Promising Produc
+ts (k-MPP)
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 segmen rope pada indeks ke-x sampai y dan meng
-gabungkan
+Underfull \hbox (badness 3646) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 adalah sebuah strategi pemilihan produk dengan
+ melakukan
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 pada indeks ke-x sampai y dan menggabungkan pa
-da bagian
+Underfull \hbox (badness 1028) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 sangat berpengaruh terhadap hasil pencarian. P
+ermasalahan
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 penggunaan algoritma String masih kurang efisi
-en dalam hal
+Underfull \hbox (badness 1960) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 k-MPPTI juga mengimplementasikan teknik komput
+asi paralel
  []
 
 
-Underfull \hbox (badness 4242) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 Pada Tugas Akhir ini digunakan struktur data R
-ope untuk
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--29
-\EU1/TimesNewRoman(0)/m/it/10.95 menyelesaikan operasi-operasi tersebut. Hasil 
-uji coba
+Underfull \hbox (badness 1122) in paragraph at lines 8--32
+\EU1/TimesNewRoman(0)/m/it/10.95 Hasil uji coba menunjukkan bahwa algoritme k-M
+PPTI dapat
  []
 
 [9
@@ -2238,13 +2237,61 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [10]
-Overfull \hbox (24.91434pt too wide) in paragraph at lines 40--62
+Underfull \hbox (badness 1215) in paragraph at lines 40--42
+[]\EU1/TimesNewRoman(0)/bx/n/10.95 OBTAINING K-MOST PROMISING PRODUCTS BASED
+ []
+
+
+Overfull \hbox (24.91434pt too wide) in paragraph at lines 43--67
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--62
+Underfull \hbox (badness 10000) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 cara produsen dalam melakukan bisnis, yaitu de
+ngan
+ []
 
+
+Underfull \hbox (badness 3088) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 memanfaatkan data preferensi pelanggan untuk m
+endapatkan
+ []
+
+
+Underfull \hbox (badness 7486) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 Saat ini, sudah ada komputasi yang dapat menye
+lesaikan
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 permasalahan tersebut. k-Most Promising Produc
+ts (k-MPP)
+ []
+
+
+Underfull \hbox (badness 3646) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 adalah sebuah strategi pemilihan produk dengan
+ melakukan
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 sangat berpengaruh terhadap hasil pencarian. P
+ermasalahan
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 k-MPPTI juga mengimplementasikan teknik komput
+asi paralel
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 43--67
+\EU1/TimesNewRoman(0)/m/it/10.95 Hasil uji coba menunjukkan bahwa algoritme k-M
+PPTI dapat
  []
 
 [11
@@ -2256,9 +2303,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12
-
-])
+[12])
 \openout2 = `kata_pengantar/kata_pengantar.aux'.
 
  (./kata_pengantar/kata_pengantar.tex
@@ -2315,20 +2360,15 @@ Underfull \hbox (badness 1394) in paragraph at lines 15--16
 u dosen
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-\EU1/TimesNewRoman(0)/m/n/10.95 memberikan ilmu, nasihat, motivasi, pandangan d
-an
- []
-
 [13
 
 
 
+
 ]
-Underfull \hbox (badness 5446) in paragraph at lines 16--17
-\EU1/TimesNewRoman(0)/m/n/10.95 dosen pembimbing yang telah memberikan ilmu, da
-n
+Underfull \hbox (badness 7851) in paragraph at lines 16--17
+\EU1/TimesNewRoman(0)/m/n/10.95 dosen pembimbing yang telah memberikan ilmu dan
+
  []
 
 
@@ -2344,37 +2384,41 @@ dan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 2150) in paragraph at lines 19--20
+\EU1/TimesNewRoman(0)/m/n/10.95 Awan, Mas Penyok, Fuad, Didin, Hana, Raldo, Agu
+el,
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 19--20
+\EU1/TimesNewRoman(0)/m/n/10.95 Khawari, Tamtam, Haura, Lia, Sulton, Mail, Yoga
+, dan
+ []
+
+
+Underfull \hbox (badness 6032) in paragraph at lines 20--21
+[]\EU1/TimesNewRoman(0)/m/n/10.95 Teman-teman \EU1/TimesNewRoman(0)/m/it/10.95 
+Penguasa Kosan\EU1/TimesNewRoman(0)/m/n/10.95 , Ajeng, Salma, Napik,
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 23--24
+[]\EU1/TimesNewRoman(0)/m/n/10.95 Seluruh teman-teman TC 2015 yang tidak bisa p
+enulis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
@@ -2384,8 +2428,42 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14]) (./buku.toc [15
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[15]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[16
+
+]) (./buku.toc [17
 
 
 ]
@@ -2400,7 +2478,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16]
+[18]
 Underfull \hbox (badness 5847) in paragraph at lines 71--71
  [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Operasi 1 Menggabungkan \EU1/TimesNew
 Roman(0)/m/it/10.95 Rope \EU1/TimesNewRoman(0)/m/n/10.95 pada 
@@ -2423,14 +2501,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[17]
+[19]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18
+[20
 
 ] (./buku.lot
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
@@ -2443,7 +2521,7 @@ esNewRoman(0)/m/n/10.95 dan (b) \EU1/TimesNewRoman(0)/m/it/10.95 dataset
 \tf@lot=\write10
 \openout10 = `buku.lot'.
 
- [19
+ [21
 
 ]
 
@@ -2452,7 +2530,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20
+[22
 
 ] (./buku.lof
 Underfull \hbox (badness 1881) in paragraph at lines 6--6
@@ -2510,7 +2588,7 @@ Underfull \hbox (badness 3281) in paragraph at lines 25--25
 .95 Query 
  []
 
-[21
+[23
 
 ]
 Underfull \hbox (badness 2990) in paragraph at lines 26--26
@@ -2575,11 +2653,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22] (./buku.lol)
+[24] (./buku.lol)
 \tf@lol=\write12
 \openout12 = `buku.lol'.
 
- [23
+ [25
 
 
 ]
@@ -2589,7 +2667,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[24
+[26
 
 ]
 \openout2 = `bab1/bab1.aux'.
@@ -2606,6 +2684,18 @@ rumusan
 Underfull \hbox (badness 4001) in paragraph at lines 2--3
 \EU1/TimesNewRoman(0)/m/n/10.95 masalah, batasan masalah, tujuan, manfaat, meto
 dologi dan
+ []
+
+
+Underfull \hbox (badness 4467) in paragraph at lines 5--15
+\EU1/TimesNewRoman(0)/m/n/10.95 cara produsen dalam melakukan bisnis secara leb
+ih efisien.
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 5--15
+\EU1/TimesNewRoman(0)/m/n/10.95 maraknya penggunaan situs web untuk menjual pro
+duk secara
  []
 
 
@@ -2952,10 +3042,24 @@ sNewRoman(0)/m/it/10.95 k-Most Promising
  []
 
 
-Underfull \hbox (badness 4647) in paragraph at lines 23--23
-[]|\EU1/TimesNewRoman(0)/m/n/10.95 Objek data $\OML/cmm/m/it/10.95 ob[]$ \EU1/T
-imesNewRoman(0)/m/n/10.95 mendominasi $\OML/cmm/m/it/10.95 ob[]$ \EU1/TimesNewR
-oman(0)/m/n/10.95 secara
+Overfull \hbox (17.06412pt too wide) in alignment at lines 12--17
+ [] [] 
+ []
+
+
+Overfull \hbox (17.06412pt too wide) in alignment at lines 17--20
+ [] [] 
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 25--25
+[]|\EU1/TimesNewRoman(0)/m/n/10.95 Seorang pelanggan dalam $\OML/cmm/m/it/10.95
+ C$\EU1/TimesNewRoman(0)/m/n/10.95 , dinotasikan
+ []
+
+
+Overfull \hbox (17.06412pt too wide) in alignment at lines 20--39
+ [] [] 
  []
 
 [9
@@ -2963,24 +3067,20 @@ oman(0)/m/n/10.95 secara
 
 
 ]
-
-LaTeX Warning: Citation `bibid' on page 10 undefined on input line 35.
-
-
-Underfull \hbox (badness 1377) in paragraph at lines 35--36
-\EU1/TimesNewRoman(0)/m/n/10.95 informasi. Menurut Checkland dan Holwell [[]], 
-data adalah
+Underfull \hbox (badness 2158) in paragraph at lines 42--43
+\EU1/TimesNewRoman(0)/m/n/10.95 informasi yang bermanfaat. Sehingga, dibutuhkan
+lah sebuah
  []
 
 
-Underfull \hbox (badness 2229) in paragraph at lines 38--41
+Underfull \hbox (badness 2229) in paragraph at lines 45--48
 \EU1/TimesNewRoman(0)/m/n/10.95 analisis berdasarkan data dari \EU1/TimesNewRom
 an(0)/m/it/10.95 relational database \EU1/TimesNewRoman(0)/m/n/10.95 dan diolah
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--41
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
@@ -2991,31 +3091,31 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 | \EU1/TimesNewRoman(0)/m/n/10.95 Data multidimensi dengan serial waktu adalah 
 data
  []
 
 
-Underfull \hbox (badness 1082) in paragraph at lines 50--52
+Underfull \hbox (badness 1082) in paragraph at lines 57--59
 \EU1/TimesNewRoman(0)/m/n/10.95 awal dan akhir, dinotasikan dengan $\OT1/cmr/m/
 n/10.95 [\OML/cmm/m/it/10.95 i \OT1/cmr/m/n/10.95 : \OML/cmm/m/it/10.95 j\OT1/c
 mr/m/n/10.95 ]$\EU1/TimesNewRoman(0)/m/n/10.95 . Interval waktu
  []
 
 
-Underfull \hbox (badness 2781) in paragraph at lines 50--52
+Underfull \hbox (badness 2781) in paragraph at lines 57--59
 \EU1/TimesNewRoman(0)/m/n/10.95 waktu kapan ia pertama kali diproduksi dan kapa
 n ia tidak
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 
  []
 
@@ -3026,18 +3126,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [11]
-Underfull \hbox (badness 1939) in paragraph at lines 59--61
+Underfull \hbox (badness 1939) in paragraph at lines 66--68
 \EU1/TimesNewRoman(0)/m/n/10.95 terbaik, yaitu \EU1/TimesNewRoman(0)/m/it/10.95
  smartphone \EU1/TimesNewRoman(0)/m/n/10.95 yang memiliki harga termurah dan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
-File: bab2/img/ex1.png Graphic file (type QTm)
-<use  "bab2/img/ex1.png" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -3045,7 +3143,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [12]
-Underfull \hbox (badness 4634) in paragraph at lines 70--72
+File: bab2/img/ex1.png Graphic file (type QTm)
+ <use  "bab2/img/ex1.png" >
+Underfull \hbox (badness 4634) in paragraph at lines 77--79
 \EU1/TimesNewRoman(0)/m/n/10.95 adalah produk $\OML/cmm/m/it/10.95 p[]$\EU1/Tim
 esNewRoman(0)/m/n/10.95 , $\OML/cmm/m/it/10.95 p[]$\EU1/TimesNewRoman(0)/m/n/10
 .95 , $\OML/cmm/m/it/10.95 p[]$\EU1/TimesNewRoman(0)/m/n/10.95 , dan $\OML/cmm/
@@ -3053,25 +3153,25 @@ m/it/10.95 p[]$ \EU1/TimesNewRoman(0)/m/n/10.95 karena tidak ada titik
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 70--72
+Underfull \hbox (badness 2600) in paragraph at lines 77--79
 \EU1/TimesNewRoman(0)/m/n/10.95 yang lebih baik dari titik-titik tersebut pada 
 semua dimensi,
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 70--72
+Underfull \hbox (badness 1448) in paragraph at lines 77--79
 \EU1/TimesNewRoman(0)/m/n/10.95 operator pengambilan keputusan multikriteria da
 n perencanaan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--77
+Underfull \hbox (badness 10000) in paragraph at lines 81--84
 \EU1/TimesNewRoman(0)/m/n/10.95 pelanggan (preferensi pelanggan) $\OML/cmm/m/it
 /10.95 C$ \EU1/TimesNewRoman(0)/m/n/10.95 yang setiap datanya
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 74--77
+Underfull \hbox (badness 1226) in paragraph at lines 81--84
 \EU1/TimesNewRoman(0)/m/n/10.95 direpresentasikan sebagai objek data $\OML/cmm/
 m/it/10.95 d$\EU1/TimesNewRoman(0)/m/n/10.95 -dimensi. Data produk
  []
@@ -3083,13 +3183,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [13]
-Underfull \hbox (badness 3668) in paragraph at lines 80--81
+Underfull \hbox (badness 3668) in paragraph at lines 87--88
 []\EU1/TimesNewRoman(0)/m/n/10.95 Pada Tabel []2.2[], diberikan contoh \EU1/Tim
 esNewRoman(0)/m/it/10.95 dataset \EU1/TimesNewRoman(0)/m/n/10.95 produk dan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
@@ -3100,13 +3200,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [14]
-Underfull \hbox (badness 1337) in paragraph at lines 122--124
+Underfull \hbox (badness 1337) in paragraph at lines 129--131
 | \EU1/TimesNewRoman(0)/m/n/10.95 Dominansi dinamis memiliki peran yang sangat 
 penting
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 126--129
+Underfull \hbox (badness 1990) in paragraph at lines 133--136
 \EU1/TimesNewRoman(0)/m/n/10.95 dengan $\OML/cmm/m/it/10.95 DSL\OT1/cmr/m/n/10.
 95 (\OML/cmm/m/it/10.95 c\OT1/cmr/m/n/10.95 )$\EU1/TimesNewRoman(0)/m/n/10.95 ,
  berisi semua produk $\OML/cmm/m/it/10.95 p[] \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/
@@ -3114,21 +3214,21 @@ it/10.95 P$ \EU1/TimesNewRoman(0)/m/n/10.95 yang tidak
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 126--129
+Underfull \hbox (badness 1205) in paragraph at lines 133--136
 \EU1/TimesNewRoman(0)/m/n/10.95 didominasi oleh produk lain $\OML/cmm/m/it/10.9
 5 p[] \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 P$ \EU1/TimesNewRoman(0)/m/n/10
 .95 berdasarkan preferensi
  []
 
 
-Underfull \hbox (badness 2426) in paragraph at lines 126--129
+Underfull \hbox (badness 2426) in paragraph at lines 133--136
 | \EU1/TimesNewRoman(0)/m/n/10.95 Menggunakan contoh \EU1/TimesNewRoman(0)/m/it
 /10.95 dataset \EU1/TimesNewRoman(0)/m/n/10.95 pada Tabel []2.2[], \EU1/TimesNe
 wRoman(0)/m/it/10.95 dynamic
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 126--129
+Underfull \hbox (badness 1642) in paragraph at lines 133--136
 | \EU1/TimesNewRoman(0)/m/it/10.95 Dynamic skyline \EU1/TimesNewRoman(0)/m/n/10
 .95 dapat dihitung menggunakan algoritme
  []
@@ -3142,7 +3242,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [15]
 File: bab2/img/dsl.png Graphic file (type QTm)
  <use  "bab2/img/dsl.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 139--142
+Underfull \hbox (badness 10000) in paragraph at lines 146--149
 
  []
 
@@ -3153,24 +3253,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 []\EU1/TimesNewRoman(0)/m/n/10.95 Ada beberapa tahapan yang harus dilakukan dal
 am
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 148--151
+Underfull \hbox (badness 2096) in paragraph at lines 155--158
 | \EU1/TimesNewRoman(0)/m/n/10.95 Langkah kedua, mengecek apakah pelanggan $\OM
 L/cmm/m/it/10.95 c \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 C$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 155--158
 
  []
 
 
-LaTeX Warning: Reference `figure:ex-rsl' on page 17 undefined on input line 153
+LaTeX Warning: Reference `figure:ex-rsl' on page 17 undefined on input line 160
 .
 
 
@@ -3180,19 +3280,19 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [17]
-Underfull \hbox (badness 1215) in paragraph at lines 177--179
+Underfull \hbox (badness 1215) in paragraph at lines 184--186
 \OML/cmm/m/it/10.95 p \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 P$ \EU1/TimesNe
 wRoman(0)/m/n/10.95 diukur dari total jumlah pelanggan yang diharapkan
  []
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 177--179
+Underfull \hbox (badness 1028) in paragraph at lines 184--186
 \EU1/TimesNewRoman(0)/m/n/10.95 yang mungkin lebih memilih membeli produk $\OML
 /cmm/m/it/10.95 p$ \EU1/TimesNewRoman(0)/m/n/10.95 dibandingkan
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 177--179
+Underfull \hbox (badness 1472) in paragraph at lines 184--186
 \EU1/TimesNewRoman(0)/m/n/10.95 produk lain $\OML/cmm/m/it/10.95 p[]$\EU1/Times
 NewRoman(0)/m/n/10.95 . Asumsinya jika seorang pelanggan memiliki
  []
@@ -3204,7 +3304,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [18]
-Underfull \hbox (badness 1748) in paragraph at lines 185--188
+Underfull \hbox (badness 1748) in paragraph at lines 192--195
 | \EU1/TimesNewRoman(0)/m/n/10.95 Perhitungan kontribusi pasar juga dapat dilak
 ukan pada
  []
@@ -3216,61 +3316,61 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [19]
-Underfull \hbox (badness 5817) in paragraph at lines 196--196
+Underfull \hbox (badness 5817) in paragraph at lines 203--203
 |[]\EU1/TimesNewRoman(0)/bx/n/11 Kueri \EU1/TimesNewRoman(0)/bx/it/11 k-Most Pr
 omising Products \EU1/TimesNewRoman(0)/bx/n/11 (k-MPP) Berbasis
  []
 
 
-Underfull \hbox (badness 3240) in paragraph at lines 203--207
+Underfull \hbox (badness 3240) in paragraph at lines 210--214
 | \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman tingkat ting
 gi dan
  []
 
 
-Underfull \hbox (badness 2818) in paragraph at lines 203--207
+Underfull \hbox (badness 2818) in paragraph at lines 210--214
 \EU1/TimesNewRoman(0)/m/it/10.95 Foundation\EU1/TimesNewRoman(0)/m/n/10.95 . Py
 thon adalah bahasa multi-fungsi yang dapat
  []
 
 
-Underfull \hbox (badness 3199) in paragraph at lines 203--207
+Underfull \hbox (badness 3199) in paragraph at lines 210--214
 \EU1/TimesNewRoman(0)/m/n/10.95 tingkat tinggi, membaca dan menulis kode Python
  semudah
  []
 
 
-Underfull \hbox (badness 2197) in paragraph at lines 203--207
+Underfull \hbox (badness 2197) in paragraph at lines 210--214
 | \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman \EU1/TimesNe
 wRoman(0)/m/it/10.95 interpreter\EU1/TimesNewRoman(0)/m/n/10.95 , artinya
  []
 
 
-Underfull \hbox (badness 4699) in paragraph at lines 203--207
+Underfull \hbox (badness 4699) in paragraph at lines 210--214
 | \EU1/TimesNewRoman(0)/m/n/10.95 Python adalah bahasa pemrograman berorientasi
  objek
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--207
+Underfull \hbox (badness 10000) in paragraph at lines 210--214
 | \EU1/TimesNewRoman(0)/m/n/10.95 Pada Tugas Akhir ini, bahasa pemrograman Pyth
 on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--207
+Underfull \hbox (badness 10000) in paragraph at lines 210--214
 \EU1/TimesNewRoman(0)/m/n/10.95 digunakan untuk mengimplementasikan struktur da
 ta dan
  []
 
 
-Underfull \hbox (badness 4454) in paragraph at lines 203--207
+Underfull \hbox (badness 4454) in paragraph at lines 210--214
 \EU1/TimesNewRoman(0)/m/n/10.95 algoritme dari sistem perangkat lunak yang akan
  dibangun.
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 203--207
+Underfull \hbox (badness 1997) in paragraph at lines 210--214
 \EU1/TimesNewRoman(0)/m/n/10.95 Bahasa ini juga digunakan untuk membuat aplikas
 i web dan
  []
@@ -3282,24 +3382,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [20])
-Underfull \hbox (badness 1735) in paragraph at lines 209--245
+Underfull \hbox (badness 1735) in paragraph at lines 216--245
 \EU1/TimesNewRoman(0)/m/n/10.95 sederhana, ringan, dan mudah dikembangkan, sehi
 ngga Flask
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--245
+Underfull \hbox (badness 10000) in paragraph at lines 216--245
 | \EU1/TimesNewRoman(0)/m/n/10.95 Kerangka kerja Flask digunakan untuk
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--245
+Underfull \hbox (badness 10000) in paragraph at lines 216--245
 \EU1/TimesNewRoman(0)/m/n/10.95 mengimplementasikan aplikasi web dan layanan \E
 U1/TimesNewRoman(0)/m/it/10.95 webserver
  []
 
 
-Underfull \hbox (badness 5077) in paragraph at lines 209--245
+Underfull \hbox (badness 5077) in paragraph at lines 216--245
 \EU1/TimesNewRoman(0)/m/n/10.95 juga memiliki banyak dokumentasi dan tutorial y
 ang dapat
  []
@@ -4055,7 +4155,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
 
 
-])
+]
+Underfull \hbox (badness 5817) in paragraph at lines 30--31
+[]\EU1/TimesNewRoman(0)/m/n/10.95 Merriam-webster.com. ”Definition of DATA”. [O
+nline].
+ []
+
+)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -4163,12 +4269,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 47894 strings out of 493638
- 896954 string characters out of 6146796
- 1118494 words of memory out of 5000000
- 50389 multiletter control sequences out of 15000+600000
- 12196 words of font info for 85 fonts, out of 8000000 for 9000
+ 47880 strings out of 493638
+ 896739 string characters out of 6146796
+ 1116587 words of memory out of 5000000
+ 50374 multiletter control sequences out of 15000+600000
+ 12204 words of font info for 86 fonts, out of 8000000 for 9000
  1336 hyphenation exceptions out of 8191
  58i,19n,82p,10416b,2040s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on buku.pdf (81 pages).
+Output written on buku.pdf (83 pages).

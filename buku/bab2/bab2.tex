@@ -9,30 +9,37 @@
 \section{Daftar Simbol}
 \tab Tabel \ref{tabel:daftar-simbol-bag1} menunjukkan daftar simbol yang digunakan untuk memudahkan beberapa penjelasan pada bab ini berikut dengan deskripsinya.
 
-\begin{longtable}{| p{2cm} | p{7cm} |} 
+\begin{longtable}{| p{3cm} | p{7cm} |} 
 	\caption{Daftar Simbol (Bagian 1) \label{tabel:daftar-simbol-bag1}}\\
 	\hline
-	\multicolumn{1}{|p{2cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline
+	\multicolumn{1}{|p{3cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline
 	\hline
 	\endfirsthead
 	\hline
-	\multicolumn{1}{|p{2cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline 
+	\multicolumn{1}{|p{3cm}|}{\textbf{Simbol}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline 
 	\endhead
-	$ob$ & Objek data\\ \hline
-	$ob_1 \prec ob_2$ & Objek data $ob_1$ mendominasi $ob_2$\\ \hline
-	$ob_1 \prec_{ob_3} ob_2$ & Objek data $ob_1$ mendominasi $ob_2$ secara dinamis berdasarkan $ob_3$\\ \hline
 	$P$ & \textit{Dataset} produk\\ \hline
 	$C$ & \textit{Dataset} pelanggan (preferensi pelanggan)\\ \hline
-	$p$ & Sebuah data produk dalam $P$, dinotasikan sebagai $p \in P$\\ \hline
-	$c$ & Sebuah data pelanggan dalam $C$, dinotasikan sebagai $c \in C$\\ \hline
-	$d$ & Jumlah dimensi/atribut data\\ \hline
+	$D$ & $P \cup C$ \\ \hline
+	$p$ & Sebuah produk dalam $P$, dinotasikan sebagai $p \in P$\\ \hline
+	$c$ & Seorang pelanggan dalam $C$, dinotasikan sebagai $c \in C$\\ \hline
+	$d$ & Jumlah dimensi pada $D$\\ \hline
+	$ob$ & Sebuah objek data pada $D$\\ \hline
+	$ob_1 \prec ob_2$ & Objek data $ob_1$ mendominasi $ob_2$\\ \hline
+	$ob_1 \prec_{ob_3} ob_2$ & Objek data $ob_1$ mendominasi $ob_2$ berdasarkan $ob_3$\\ \hline
 	$i$ & Dimensi ke-1, ..., $d$\\ \hline
 	$j$ & Timestamp\\ \hline
 	$DSL(c)$ & \textit{Dynamic skyline} dari pelanggan $c$\\ \hline
+	$RSL(p)$ & \textit{Reverse skyline} dari produk $p$\\ \hline
+	$Pr(c, p|P)$ & Probabilitas produk $p$ dibeli oleh pelanggan $c$ \\ \hline
+	$E(C, p|P)$ & Kontribusi pasar $p$\\ \hline
+	$E(C, P'|P)$ & Kontribusi pasar subset $P'$ dari $P$ \\ \hline
+	$k-MPP$ & \textit{k-Most Promising Products} \\ \hline
+	$k-MPPTI$ & \textit{k-Most Promising Products in Time Interval} \\ \hline
 \end{longtable}
 
 \section{Data}
-\tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Menurut Checkland dan Holwell \cite{bibid}, data adalah representasi dari fakta, konsep, ataupun instruksi secara formal yang digunakan untuk komunikasi, interpretasi, maupun pemrosesan. Sehingga, sebuah sistem informasi harus menerima \textit{input} berupa data supaya dapat diproses menjadi informasi tertentu sesuai dengan kebutuhan pengguna dan mengeluarkannya sebagai \textit{output}.
+\tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Data adalah informasi faktual (seperti pengukuran atau statistik) yang digunakan sebagai dasar untuk analisis, diskusi, maupun perhitungan \cite{data}. Meski begitu, data mentah tidaklah berarti dan harus diproses terlebih dahulu supaya menghasilkan informasi yang bermanfaat. Sehingga, dibutuhkanlah sebuah algoritme pemrosesan data yang menerima data sebagai \textit{input}, kemudian memprosesnya menjadi informasi tertentu sesuai dengan kebutuhan pengguna dan mengeluarkannya sebagai \textit{output}.
 
 \subsection{Data Multidimensi}
 \tab Model data multidimensi adalah sebuah cara pandang yang melihat data dari berbagai sudut pandang atau dimensi. Model data ini memiliki struktur yang disesuaikan untuk mengoptimalkan analisis berdasarkan data dari \textit{relational database} dan diolah sehingga informasi dapat dikategorikan. Model data multidimensi merupakan variasi dari model relasional yang mengunakan struktur multidimensi untuk menyusun data dan menjelaskan relasi antar data.\\
@@ -48,7 +55,7 @@
 
 \subsection{Data Multidimensi dengan Serial Waktu}
 \tab Untuk menjawab permasalahan yang diangkat pada Tugas Akhir ini, data yang digunakan merupakan penggabungan dari kedua jenis data di atas, yaitu data multidimensi dengan serial waktu.\\
-\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki interval waktu berupa \textit{timestamp} awal dan akhir, dinotasikan dengan $[i:j]$. Interval waktu menggambarkan bahwa setiap data memiliki waktu hidup tertentu, misalnya pada dataset produk ($P$), setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan kapan ia tidak diproduksi lagi. Sebagai contoh lain, pada dataset pelanggan ($C$), setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan kapan ia meninggal dunia.\\
+\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki interval waktu berupa \textit{timestamp} awal dan akhir, dinotasikan dengan $[i:j]$. Interval waktu menggambarkan bahwa setiap data memiliki waktu hidup tertentu, misalnya pada \textit{dataset} produk ($P$), setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan kapan ia tidak diproduksi lagi. Sebagai contoh lain, pada \textit{dataset} pelanggan ($C$), setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan kapan ia meninggal dunia.\\
 
 **Contoh data multidimensi dengan serial waktu**
 
@@ -138,7 +145,7 @@ Sebaliknya, jika berdasarkan preferensi pelanggan $c_5$, maka produk $p_4$-lah y
 \section{\textit{Reverse Skyline}}
 \tab Dalam komputasi k-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
 P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.\\
-\tab Sebagai contoh, berdasarkan dataset yang diberikan pada Tabel \ref{tabel:contoh-dataset}, \textit{reverse skyline} dari produk $p_4$ adalah pelanggan $c_3$, $c_4$, dan $c_5$ karena masing-masing pelanggan tersebut memiliki $p_4$ dalam \textit{dynamic skyline}-nya.\\
+\tab Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tabel:contoh-dataset}, \textit{reverse skyline} dari produk $p_4$ adalah pelanggan $c_3$, $c_4$, dan $c_5$ karena masing-masing pelanggan tersebut memiliki $p_4$ dalam \textit{dynamic skyline}-nya.\\
 
 ** Gambar **
 
@@ -196,7 +203,7 @@ E(C, P'|P) = \sum_{\forall p \in P'} E(C, p|P)
 \section{Kueri \textit{k-Most Promising Products} (k-MPP) Berbasis Interval Waktu}
 \tab Interval waktu $[t_i:t_e ](t_i \leq t_e)$ yang ditambahkan pada kueri \textit{k-Most Promising Products} (k-MPP) pada Tugas Akhir ini digunakan untuk menentukan rentang waktu pencarian. Sehingga, kueri k-MPP yang dimodifikasi dinotasikan menjadi:
 \begin{equation}\label{eq:kmppts}
-k-MPPTS(P, C, k, [t_i:t_e])
+k-MPPTI(P, C, k, [t_i:t_e])
 \end{equation} 
 
 \section{Python}
