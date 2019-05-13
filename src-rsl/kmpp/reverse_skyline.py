@@ -17,6 +17,7 @@ class ReverseSkyline:
         self.customer = customer
         self.dim = len(max_val)
         self.max_val = max_val
+        self.define_orthant()
 
     def define_orthant(self):
         self.orthant = {}
@@ -57,7 +58,18 @@ class ReverseSkyline:
             logger.info('Midpoint skyline = {}'.format(self.orthant[area]))
  
     def find_reverse_skyline(self):
-        pass
+        rsl = []
+        for id in self.customer:
+            area = self.get_orthant_area(self.customer[id]['value'])
+            if not self.orthant[area]:
+                rsl.append(id)
+            else:
+                for i in list(self.orthant[area].keys()):
+                    if not self.is_dominating(self.orthant[area][i], self.customer[id]['value']):
+                        if id not in rsl:
+                            rsl.append(id)
+        logger.info('RSL = {}'.format(rsl))
+        return rsl
 
     def is_skyline(self, current, candidate, candidate_id):
         res = {}

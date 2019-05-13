@@ -75,6 +75,7 @@ def data_indexing(data_id, data_file):
       data[id]['ts_in'] = int(row[csv_reader.fieldnames[2]])
       data[id]['ts_out'] = int(row[csv_reader.fieldnames[3]])
       data[id]['value'] = []
+      data[id]['status'] = 0
       for i in range(4, col_cnt):
         data[id]['value'].append(int(row[csv_reader.fieldnames[i]]))
       for i in range(0, 2):
@@ -105,36 +106,55 @@ if __name__ == "__main__":
 
   event_queue.sort_queue()
   pandora_box = PandoraBox(len(data['product']) + 1, event_queue.get_max_timestamp() + 1)
-  prod_active = []
-  last_event = None
+  rsl_result = {}
 
   # komputasi RSL
   for k, v in data['product'].items():
     rsl = ReverseSkyline(k, data['product'], data['customer'], max_val)
-    rsl.define_orthant()
-    rsl.print_orthant()
     rsl.find_midpoint_skyline()
-    rsl.print_orthant()
+    rsl_result[k] = rsl.find_reverse_skyline()
+  logger.info('{}'.format(rsl_result))
 
   # threads = {}
   # insert_thread_data(data, pandora_box)
 
-  # while not event_queue.is_empty():
-  #   event = event_queue.dequeue()
-  #   if event[1] == 0:
-  #     if event[3] == 0:
-  #       product_in(event[2], threads, prod_active, event[0], event[3], last_event)
-  #       last_event = 'p' + str(event[2]) + 'i'
-  #       wait_thread_event(threads, last_event)
-  #     elif event[3] == 1:
-  #       product_out(event[2], threads, prod_active, event[0], event[3], last_event)
-  #       last_event = 'p' + str(event[2]) + 'o'
-  #       wait_thread_event(threads, last_event)
-  #   elif event[1] == 1:
-  #     if event[3] == 0:
-  #       customer_in(event[2], threads, prod_active, event[0], last_event)
-  #     elif event[3] == 1:
-  #       customer_out(event[2], threads, event[0], last_event)
+  # Event
+  while not event_queue.is_empty():
+    event = event_queue.dequeue()
+    if event[1] == 0:
+      if event[3] == 0:
+        """
+        Product in
+        """
+        # product_in(event[2], threads, prod_active, event[0], event[3], last_event)
+        # wait_thread_event(threads, last_event)
+        data['product'][event[2]]['status'] = 1
+        
+
+      elif event[3] == 1:
+        """
+        Product out
+        """
+        data['product'][event[2]]['status'] = 0
+
+        # product_out(event[2], threads, prod_active, event[0], event[3], last_event)
+        # last_event = 'p' + str(event[2]) + 'o'
+        # wait_thread_event(threads, last_event)
+    elif event[1] == 1:
+      if event[3] == 0:
+        """
+        Customer in
+        """
+        data['customer'][event[2]]['status'] = 1
+
+        # customer_in(event[2], threads, prod_active, event[0], last_event)
+      elif event[3] == 1:
+        """
+        Customer out
+        """
+        data['customer'][event[2]]['status'] = 0
+
+        # customer_out(event[2], threads, event[0], last_event)
 
   # for thread in threads.values():
   #   thread.join()
