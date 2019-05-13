@@ -2,3 +2,4 @@ venv/
 ref/
 __py*
 .idea/*
+.vscode/*
