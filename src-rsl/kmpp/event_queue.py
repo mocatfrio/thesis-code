@@ -1,5 +1,5 @@
+import logging
 from operator import itemgetter
-from .custom_logger import logger
 
 class EventQueue:
   def __init__(self):
@@ -18,7 +18,7 @@ class EventQueue:
 
   def dequeue(self):
     event = self.events.pop()
-    logger.info('Dequeue event {}'.format(event))
+    logging.info('Dequeue event {}'.format(event))
     return event
 
   def sort_queue(self):
@@ -30,9 +30,9 @@ class EventQueue:
     4. id
     """
     self.events = sorted(self.events, key=itemgetter(0,3,1,2), reverse=True)
-    logger.info('Sorted Queue')
+    logging.info('Sorted Queue')
     for event in self.events:
-      logger.info(event)
+      logging.info(event)
 
   def get_total_queue(self):
     return len(self.events)

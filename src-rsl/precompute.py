@@ -1,55 +1,9 @@
-import csv, sys
+import csv, sys, threading, logging, os
 import numpy as np
-from kmpp.customer_thread import CustThread
 from kmpp.pandora_box import PandoraBox
 from kmpp.event_queue import EventQueue
-from kmpp.custom_logger import logger
 from kmpp.reverse_skyline import ReverseSkyline
-
-"""
-Thread Handling
-"""
-def product_in(prod_id, threads, prod_active, timestamp, act, last_event):
-  try:
-    wait_thread_event(threads, last_event)
-  finally:
-    prod_active.append(prod_id)    
-    logger.info('[P-{} in] Masuk ke produk aktif: {}'.format(prod_id, prod_active))  
-    for thread in threads.values():
-      thread.notify(timestamp, prod_id, act)
-
-def product_out(prod_id, threads, prod_active, timestamp, act, last_event):
-  try:
-    wait_thread_event(threads, last_event)  
-  finally:
-    for thread in threads.values():
-      thread.notify(timestamp, prod_id, act, prod_active.copy())
-    prod_active.remove(prod_id)
-    logger.info('[P-{} out] Hapus dari produk aktif: {}'.format(prod_id, prod_active))
-
-def customer_in(cust_id, threads, prod_active, timestamp, last_event):
-  try:
-    wait_thread_event(threads, last_event)  
-  finally:
-    logger.info('[C-{} in] Make thread'.format(cust_id))
-    threads[cust_id] = CustThread(int(cust_id), timestamp, prod_active.copy())
-    threads[cust_id].start()
-
-def customer_out(cust_id, threads, timestamp, last_event):
-  while True:
-    if threads[cust_id].get_last_event() == last_event or threads[cust_id].get_last_event() == 0 or threads[cust_id].get_last_event() == 1:
-      break
-  logger.info('[C-{} out] Kill thread'.format(cust_id))
-  threads[cust_id].kill_thread(timestamp)
-
-def insert_thread_data(data, pandora_box):
-  CustThread.data = data
-  CustThread.pandora_box = pandora_box 
-
-def wait_thread_event(threads, last_event):
-  while True:
-    if all(thread.get_last_event() == last_event or thread.get_last_event() == 0 or thread.get_last_event() == 1 for thread in threads.values()):
-      break
+from kmpp.dynamic_skyline import DynamicSkyline
 
 """
 Data Handling
@@ -57,14 +11,14 @@ Data Handling
 def input_csv(dataset, event_queue):
   data = {}
   for i in range(len(dataset)):
-    logger.info('Input data {}'.format(dataset[i]))
+    logging.info('Input data {}'.format(dataset[i]))
     if i == 0:
-      data['product'] = data_indexing(i, dataset[i])
+      data['product'] = data_indexing(i, dataset[i], event_queue)
     else:
-      data['customer'] = data_indexing(i, dataset[i])
+      data['customer'] = data_indexing(i, dataset[i], event_queue)
   return data
 
-def data_indexing(data_id, data_file):
+def data_indexing(data_id, data_file, event_queue):
   data = {}
   with open(data_file, 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
@@ -75,19 +29,18 @@ def data_indexing(data_id, data_file):
       data[id]['ts_in'] = int(row[csv_reader.fieldnames[2]])
       data[id]['ts_out'] = int(row[csv_reader.fieldnames[3]])
       data[id]['value'] = []
-      data[id]['status'] = 0
       for i in range(4, col_cnt):
         data[id]['value'].append(int(row[csv_reader.fieldnames[i]]))
       for i in range(0, 2):
         event_queue.enqueue(data[id]['ts_in'] if i == 0 else data[id]['ts_out'], data_id, id, i)
-  logger.info('Data ({}) succesfully inputed'.format(data_file))
+  logging.info('Data ({}) succesfully inputed'.format(data_file))
   return data
 
 def print_data(data):
   for key, values in data.items():
-    logger.info('{}'.format(key))
+    logging.info('{}'.format(key))
     for k, v in values.items():
-      logger.info('{} : {}'.format(k, v))
+      logging.info('{} : {}'.format(k, v))
 
 def get_max_value(data):
   all_val = []
@@ -96,70 +49,95 @@ def get_max_value(data):
       all_val.append(val2['value'])
   return np.max(all_val, axis=0)
 
-if __name__ == "__main__":
+def main(dataset):
   data = {}
   event_queue = EventQueue()
-  dataset = ['product.csv', 'customer.csv']
   data = input_csv(dataset, event_queue)
   print_data(data)
   max_val = get_max_value(data)
 
   event_queue.sort_queue()
   pandora_box = PandoraBox(len(data['product']) + 1, event_queue.get_max_timestamp() + 1)
-  rsl_result = {}
-
-  # komputasi RSL
-  for k, v in data['product'].items():
-    rsl = ReverseSkyline(k, data['product'], data['customer'], max_val)
-    rsl.find_midpoint_skyline()
-    rsl_result[k] = rsl.find_reverse_skyline()
-  logger.info('{}'.format(rsl_result))
-
-  # threads = {}
-  # insert_thread_data(data, pandora_box)
+  data['product']['active'] = []
+  data['customer']['active'] = []
+  rsl = ReverseSkyline(data['product'], data['customer'], max_val)
+  dsl = DynamicSkyline(data['product'], data['customer'], max_val, pandora_box)
 
   # Event
   while not event_queue.is_empty():
     event = event_queue.dequeue()
+    threads = []
     if event[1] == 0:
       if event[3] == 0:
         """
-        Product in
+        Product in:
+        1. Menambah produk aktif
+        2. Menghitung RSL(p)
+        3. Bikin thread untuk menghitung DSL(RSL(p))
         """
-        # product_in(event[2], threads, prod_active, event[0], event[3], last_event)
-        # wait_thread_event(threads, last_event)
-        data['product'][event[2]]['status'] = 1
-        
-
+        logging.info('[P-{} in] Masuk ke produk aktif: {}'.format(event[2], data['product']['active']))  
+        data['product']['active'].append(event[2])
+        rsl_result = rsl.start_computation(event[2])
+        logging.info('[P-{} in] - Start threading'.format(event[2]))
+        for customer_id in rsl_result:
+          t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
+          threads.append(t)
+        for t in threads:
+          t.start()
+        for t in threads:
+          t.join()
+        logging.info('[P-{} in] - Komputasi selesai'.format(event[2]))
+      
       elif event[3] == 1:
         """
-        Product out
+        Product out:
+        1. Menghapus dari produk aktif
         """
-        data['product'][event[2]]['status'] = 0
-
-        # product_out(event[2], threads, prod_active, event[0], event[3], last_event)
-        # last_event = 'p' + str(event[2]) + 'o'
-        # wait_thread_event(threads, last_event)
+        logging.info('[P-{} out] - Start threading'.format(event[2]))
+        for customer_id in data['customer']['active']:
+          t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
+          threads.append(t)
+        for t in threads:
+          t.start()
+        for t in threads:
+          t.join()
+        logging.info('[P-{} out] - Komputasi selesai'.format(event[2]))
+        data['product']['active'].remove(event[2])
+        logging.info('[P-{} out] Hapus dari produk aktif: {}'.format(event[2], data['product']['active']))
     elif event[1] == 1:
       if event[3] == 0:
         """
-        Customer in
+        Customer in:
+        1. Menambah pelanggan aktif
+        2. Menghitung initial dsl
         """
-        data['customer'][event[2]]['status'] = 1
-
-        # customer_in(event[2], threads, prod_active, event[0], last_event)
+        logging.info('[C-{} in] Make thread'.format(event[2]))
+        data['customer']['active'].append(event[2])
+        logging.info('[C-{} in] Masukkan ke produk aktif: {}'.format(event[2], data['customer']['active']))
+        dsl.start_computation(event[2], event[0])
       elif event[3] == 1:
         """
         Customer out
         """
-        data['customer'][event[2]]['status'] = 0
+        logging.info('[C-{} out] Kill thread'.format(event[2]))
+        dsl.start_computation(event[2], event[0], 2)
+        data['customer']['active'].remove(event[2])
+        logging.info('[C-{} out] Hapus dari produk aktif: {}'.format(event[2], data['customer']['active']))
 
-        # customer_out(event[2], threads, event[0], last_event)
 
-  # for thread in threads.values():
-  #   thread.join()
+  pandora_box.print_box()
+  pandora_box.export_csv()
 
-  # pandora_box.print_box()
-  # pandora_box.export_csv()
+  logging.info('Exiting the main program') 
 
-  # logger.info('Exiting the main program') 
+if __name__ == "__main__":
+  if not os.path.exists('log'):
+    os.mkdir('log')
+  logging.basicConfig(
+      filename='log/app.log', 
+      filemode='w', 
+      format='[%(levelname).1s] %(threadName)12s: %(message)s',
+      level=logging.INFO
+    )
+  dataset = ['product.csv', 'customer.csv']
+  main(dataset)
