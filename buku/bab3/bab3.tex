@@ -1,8 +1,39 @@
 \chapter{ANALISIS DAN PERANCANGAN SISTEM} \label{chapter:analisis dan perancangan sistem}
 \tab Pada bab ini akan dijelaskan mengenai analisis dan perancangan sistem perangkat lunak yang akan dibangun, meliputi struktur data, algoritme, dan arsitektur aplikasi. 
 
-\section{Daftar Istilah}
-\tab Beberapa daftar istilah yang digunakan dalam bab ini dapat dilihat pada Tabel ? untuk melengkapi definisi yang telah dijelaskan pada Tabel \ref{tabel:daftar-simbol-bag1}.
+\section{Daftar Notasi}
+\tab Tabel \ref{tab:daftar-notasi-2} menunjukkan daftar notasi yang digunakan dalam bab ini beserta deskripsinya.
+
+\begin{longtable}{| p{3cm} | p{7cm} |} 
+	\caption{Daftar Notasi (2) \label{tab:daftar-notasi-2}}\\
+	\hline
+	\multicolumn{1}{|p{3cm}|}{\textbf{Notasi}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline
+	\hline
+	\endfirsthead
+	\hline
+	\multicolumn{1}{|p{3cm}|}{\textbf{Notasi}} & \multicolumn{1}{|p{7cm}|}{\textbf{Deskripsi}}\\ \hline 
+	\endhead
+	$P$ & \textit{Dataset} produk\\ \hline
+	$C$ & \textit{Dataset} pelanggan (preferensi pelanggan)\\ \hline
+	$D$ & $P \cup C$ \\ \hline
+	$ob$ & Sebuah objek data pada $D$\\ \hline
+	$ob_1 \prec ob_2$ & Objek data $ob_1$ mendominasi $ob_2$\\ \hline
+	$ob_1 \prec_{ob_3} ob_2$ & Objek data $ob_1$ mendominasi $ob_2$ berdasarkan $ob_3$\\ \hline
+	$p$ & Sebuah produk dalam $P$, $p \in P$\\ \hline
+	$c$ & Seorang pelanggan dalam $C$, $c \in C$\\ \hline
+	$d$ & Jumlah dimensi pada $D$\\ \hline
+	$i$ & Dimensi ke-1, ..., $d$\\ \hline
+	$j$ & Timestamp ke-1, 2, ..., dst\\ \hline
+	$O$ & \textit{Orthant} atau daerah pada komputasi \textit{reverse skyline}\\ \hline
+	$m$ & \textit{Midpoint} antar produk pada komputasi \textit{reverse skyline}\\ \hline
+	$DSL(c)$ & Hasil \textit{dynamic skyline} dari pelanggan $c$\\ \hline
+	$RSL(p)$ & Hasil \textit{reverse skyline} dari produk $p$\\ \hline
+	$Pr(c, p|P)$ & Probabilitas produk $p$ dibeli oleh pelanggan $c$ \\ \hline
+	$E(C, p|P)$ & Kontribusi pasar $p$\\ \hline
+	$E(C, P'|P)$ & Kontribusi pasar subset $P'$ dari $P$ \\ \hline
+	$k-MPP$ & \textit{k-Most Promising Products} \\ \hline
+	$k-MPPTI$ & \textit{k-Most Promising Products in Time Intervals} \\ \hline
+\end{longtable}
 
 \section{Analisis Sistem}
 \tab Analisis sistem dibagi menjadi dua bagian, yaitu analisis permasalahan yang diangkat pada tugas akhir ini dan deskripsi umum sistem perangkat lunak yang akan dibangun.
@@ -12,6 +43,12 @@
 
 \subsection{Deskripsi Umum Sistem}
 \tab 
+
+\section{Kueri \textit{k-Most Promising Products} (k-MPP) Berbasis Interval Waktu}
+\tab Tugas Akhir ini mengangkat permasalahan kueri \textit{k-Most Promising Products} berbasis interval waktu (k-MPPTI). Interval waktu $[t_i:t_e ](t_i \leq t_e)$ digunakan untuk menentukan rentang waktu pencarian. Sehingga, kueri k-MPP yang dimodifikasi, dinotasikan menjadi:
+\begin{equation}\label{eq:kmppts}
+k-MPPTI(P, C, k, [t_i:t_e])
+\end{equation} 
 
 \section{Perancangan Sistem}
 \subsection{\textit{Data Preprocessing}}

@@ -2,16 +2,23 @@
 \tab Pada bab ini akan dijelaskan latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi dan sistematika penulisan Tugas Akhir.
 
 \section{Latar Belakang}
-\tab Kemajuan ilmu pengetahuan dan teknologi telah membawa dampak yang cukup besar di bidang bisnis, termasuk mempengaruhi cara produsen dalam melakukan bisnis secara lebih efisien. Produsen dapat mengumpulkan data preferensi pelanggan terhadap produk dan fitur produk dari data penjualan mereka. Selain itu, maraknya penggunaan situs web untuk menjual produk secara \textit{online} juga memungkinkan produsen mendapatkan data preferensi pelanggan terhadap fitur produk produsen lain.\\
-\tab Data preferensi pelanggan yang terkumpul dapat dimanfaatkan untuk mendapatkan informasi-informasi penting yang menguntungkan, misalnya untuk mencari produk apa saja yang paling banyak diminati oleh pelanggan sehingga produsen dapat menentukan produk mana yang harus dipilih untuk strategi \textit{targeted marketing} supaya lebih tepat sasaran dan bertahan lama di pasar global.\\
-\tab Saat ini, sudah ada komputasi yang dapat menyelesaikan masalah pemilihan
-produk dengan memanfaatkan data preferensi pelanggan. \textit{k-Most Promising Products (k-MPP)} \cite{kmpp} adalah sebuah strategi pemilihan produk dengan melakukan pencarian $k$ produk yang paling banyak diminati oleh pelanggan.\\
-\tab Komputasi \textit{k-MPP} menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} \cite{dynamic-skyline} dan \textit{reverse skyline} \cite{reverse-skyline}. Kueri \textit{dynamic skyline} digunakan untuk mengambil data produk terbaik berdasarkan sudut pandang pelanggan, sedangkan kueri \textit{reverse skyline} digunakan untuk mengambil data pelanggan potensial berdasarkan sudut pandang produsen.\\
-\tab Kemudian muncul sebuah pertanyaan, \textit{“Apakah produk yang paling banyak diminati pelanggan akan selalu sama dari waktu ke waktu?”}. Tentu saja para produsen lain tidak akan berdiam diri. Produk-produk baru akan terus bermunculan seiring dengan berjalannya waktu, sehingga produk yang paling diminati pelanggan pun ikut berubah karena adanya produk-produk baru yang dapat mengungguli produk sebelumnya.\\
-\tab Sebagai contoh, \textit{smartphone} A adalah produk yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Juni 2018, namun pada bulan Juli posisinya tergeser oleh \textit{smartphone} B yang fitur-fiturnya lebih disukai oleh pelanggan. Dari ilustrasi tersebut, dapat diketahui bahwa interval waktu juga merupakan faktor penting yang harus dipertimbangkan dalam proses pencarian $k$ produk yang paling banyak diminati oleh pelanggan karena sangat berpengaruh terhadap hasil pencarian.\\
-\tab Pertanyaan baru yang mungkin akan diajukan oleh produsen atau analis
-pemasaran adalah \textit{“$k$ produk apa saja yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Desember 2018?”}. Dalam hal ini, bulan Januari hingga Desember 2018 disebut dengan interval waktu kueri dan data produk yang berbasis interval waktu disebut dengan data \textit{time series} atau serial waktu \cite{time-series}.\\
-\tab Untuk menjawab pertanyaan tersebut, dibutuhkan pendekatan lain untuk menyelesaikan kueri \textit{k-Most Promising Products (k-MPP)} berbasis interval waktu pada data multidimensi dengan serial waktu. Algoritme yang dibangun juga mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat \cite{kmpp}.
+\tab Kemajuan ilmu pengetahuan dan teknologi telah membawa dampak yang cukup besar di bidang bisnis, termasuk mempengaruhi cara produsen dalam melakukan bisnis secara lebih efisien. Produsen dapat mengumpulkan data preferensi pelanggan terhadap produk dan fitur produk dari data penjualan mereka. Selain itu, maraknya penggunaan situs web untuk menjual produk secara \textit{online} juga memungkinkan produsen mendapatkan data preferensi pelanggan terhadap fitur produk produsen lain.\
+
+Data preferensi pelanggan yang terkumpul dapat dimanfaatkan untuk mendapatkan informasi-informasi penting yang menguntungkan, misalnya untuk mencari produk apa saja yang paling banyak diminati oleh pelanggan sehingga produsen dapat menentukan produk mana yang harus dipilih untuk strategi \textit{targeted marketing} supaya lebih tepat sasaran dan bertahan lama di pasar global.
+
+Saat ini, sudah ada komputasi yang dapat menyelesaikan masalah pemilihan
+produk dengan memanfaatkan data preferensi pelanggan. \textit{k-Most Promising Products (k-MPP)} \cite{kmpp} adalah sebuah strategi pemilihan produk dengan melakukan pencarian $k$ produk yang paling banyak diminati oleh pelanggan.
+
+Komputasi \textit{k-MPP} menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} \cite{dynamic-skyline} dan \textit{reverse skyline} \cite{reverse-skyline}. Kueri \textit{dynamic skyline} digunakan untuk mengambil data produk terbaik berdasarkan sudut pandang pelanggan, sedangkan kueri \textit{reverse skyline} digunakan untuk mengambil data pelanggan potensial berdasarkan sudut pandang produsen.
+
+Kemudian muncul sebuah pertanyaan, \textit{“Apakah produk yang paling banyak diminati pelanggan akan selalu sama dari waktu ke waktu?”}. Tentu saja para produsen lain tidak akan berdiam diri. Produk-produk baru akan terus bermunculan seiring dengan berjalannya waktu, sehingga produk yang paling diminati pelanggan pun ikut berubah karena adanya produk-produk baru yang dapat mengungguli produk sebelumnya.
+
+Sebagai contoh, \textit{smartphone} A adalah produk yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Juni 2018, namun pada bulan Juli posisinya tergeser oleh \textit{smartphone} B yang fitur-fiturnya lebih disukai oleh pelanggan. Dari ilustrasi tersebut, dapat diketahui bahwa interval waktu juga merupakan faktor penting yang harus dipertimbangkan dalam proses pencarian $k$ produk yang paling banyak diminati oleh pelanggan karena sangat berpengaruh terhadap hasil pencarian.
+
+Pertanyaan baru yang mungkin akan diajukan oleh produsen atau analis
+pemasaran adalah \textit{“$k$ produk apa saja yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Desember 2018?”}. Dalam hal ini, bulan Januari hingga Desember 2018 disebut dengan interval waktu kueri dan data produk yang berbasis interval waktu disebut dengan data \textit{time series} atau serial waktu \cite{time-series}.
+
+Untuk menjawab pertanyaan tersebut, dibutuhkan pendekatan lain untuk menyelesaikan kueri \textit{k-Most Promising Products (k-MPP)} berbasis interval waktu pada data multidimensi dengan serial waktu. Algoritme yang dibangun juga mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat \cite{kmpp}.
 
 \section{Rumusan Masalah}
 \tab Rumusan masalah yang diangkat dalam Tugas Akhir ini adalah sebagai berikut:
@@ -39,8 +46,9 @@ pemasaran adalah \textit{“$k$ produk apa saja yang paling banyak diminati oleh
 \end{enumerate}
 
 \section{Manfaat}
-\tab Manfaat yang diharapkan dari penulisan Tugas Akhir ini adalah untuk mengetahui struktur data dan algoritme yang tepat untuk \problem secara optimal dan efisien.\\
-\tab Selain itu, Tugas Akhir ini juga diharapkan dapat memberikan kontribusi pada perkembangan ilmu pengetahuan dan teknologi informasi karena algoritme ini dapat digunakan dalam berbagai hal, khususnya bagi produsen untuk membuat bisnisnya menjadi lebih baik dan tepat sasaran.
+\tab Manfaat yang diharapkan dari penulisan Tugas Akhir ini adalah untuk mengetahui struktur data dan algoritme yang tepat untuk \problem secara optimal dan efisien.
+
+Selain itu, Tugas Akhir ini juga diharapkan dapat memberikan kontribusi pada perkembangan ilmu pengetahuan dan teknologi informasi karena algoritme ini dapat digunakan dalam berbagai hal, khususnya bagi produsen untuk membuat bisnisnya menjadi lebih baik dan tepat sasaran.
 
 \section{Metodologi}
 \tab Metodologi yang digunakan dalam pengerjaan Tugas Akhir ini adalah sebagai berikut:
