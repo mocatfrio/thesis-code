@@ -65,8 +65,14 @@ def main(dataset):
 
   # Event
   while not event_queue.is_empty():
+    logging.info('UPDATE CUST')
+    for cust in data['customer']:
+      try:
+        logging.info('C-{} : {}'.format(cust, data['customer'][cust]['dsl']))
+      except:
+        logging.info('C-{} : blum ada DSL'.format(cust))
+
     event = event_queue.dequeue()
-    threads = []
     if event[1] == 0:
       if event[3] == 0:
         """
@@ -75,17 +81,21 @@ def main(dataset):
         2. Menghitung RSL(p)
         3. Bikin thread untuk menghitung DSL(RSL(p))
         """
-        logging.info('[P-{} in] Masuk ke produk aktif: {}'.format(event[2], data['product']['active']))  
+        # threads = []
         data['product']['active'].append(event[2])
+        logging.info('[P-{} in] Masuk ke produk aktif: {}'.format(event[2], data['product']['active']))  
         rsl_result = rsl.start_computation(event[2])
         logging.info('[P-{} in] - Start threading'.format(event[2]))
         for customer_id in rsl_result:
-          t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
-          threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+          dsl.start_computation(customer_id, event[0], event[3], event[2])
+
+        # for customer_id in rsl_result:
+        #   t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
+        #   threads.append(t)
+        # for t in threads:
+        #   t.start()
+        # for t in threads:
+        #   t.join()
         logging.info('[P-{} in] - Komputasi selesai'.format(event[2]))
       
       elif event[3] == 1:
@@ -93,14 +103,19 @@ def main(dataset):
         Product out:
         1. Menghapus dari produk aktif
         """
+        # threads = []
+        rsl_result = rsl.start_computation(event[2])
         logging.info('[P-{} out] - Start threading'.format(event[2]))
-        for customer_id in data['customer']['active']:
-          t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
-          threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+        for customer_id in rsl_result:
+          dsl.start_computation(customer_id, event[0], event[3], event[2])
+
+        # for customer_id in data['customer']['active']:
+        #   t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
+        #   threads.append(t)
+        # for t in threads:
+        #   t.start()
+        # for t in threads:
+        #   t.join()
         logging.info('[P-{} out] - Komputasi selesai'.format(event[2]))
         data['product']['active'].remove(event[2])
         logging.info('[P-{} out] Hapus dari produk aktif: {}'.format(event[2], data['product']['active']))
@@ -113,7 +128,7 @@ def main(dataset):
         """
         logging.info('[C-{} in] Make thread'.format(event[2]))
         data['customer']['active'].append(event[2])
-        logging.info('[C-{} in] Masukkan ke produk aktif: {}'.format(event[2], data['customer']['active']))
+        logging.info('[C-{} in] Masukkan ke customer aktif: {}'.format(event[2], data['customer']['active']))
         dsl.start_computation(event[2], event[0])
       elif event[3] == 1:
         """
@@ -123,7 +138,6 @@ def main(dataset):
         dsl.start_computation(event[2], event[0], 2)
         data['customer']['active'].remove(event[2])
         logging.info('[C-{} out] Hapus dari produk aktif: {}'.format(event[2], data['customer']['active']))
-
 
   pandora_box.print_box()
   pandora_box.export_csv()

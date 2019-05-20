@@ -89,7 +89,7 @@ class DynamicSkyline:
     return dsl_cand 
   
   def check_domination(self, subject_id, target_id, dsl_cand):
-    if self.is_dominating(dsl_cand[subject_id]['diff'], dsl_cand[subject_id]['diff']):
+    if self.is_dominating(dsl_cand[subject_id]['diff'], dsl_cand[target_id]['diff']):
       del dsl_cand[target_id]  
       dsl_cand[subject_id] = self.update_dict(dsl_cand[subject_id], 'dominating', target_id)
       target_id = None
