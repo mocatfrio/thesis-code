@@ -52,14 +52,17 @@ def get_max_value(data):
 def main(dataset):
   data = {}
   event_queue = EventQueue()
+
   data = input_csv(dataset, event_queue)
   print_data(data)
   max_val = get_max_value(data)
 
   event_queue.sort_queue()
   pandora_box = PandoraBox(len(data['product']) + 1, event_queue.get_max_timestamp() + 1)
+
   data['product']['active'] = []
   data['customer']['active'] = []
+
   rsl = ReverseSkyline(data['product'], data['customer'], max_val)
   dsl = DynamicSkyline(data['product'], data['customer'], max_val, pandora_box)
 
@@ -70,25 +73,35 @@ def main(dataset):
       try:
         logging.info('C-{} : {}'.format(cust, data['customer'][cust]['dsl']))
       except:
-        logging.info('C-{} : blum ada DSL'.format(cust))
+        pass
+    logging.info('UPDATE PBOX')
+    pandora_box.print_box()
 
     event = event_queue.dequeue()
     if event[1] == 0:
       if event[3] == 0:
         """
         Product in:
-        1. Menambah produk aktif
-        2. Menghitung RSL(p)
-        3. Bikin thread untuk menghitung DSL(RSL(p))
+          1. Tambah ke produk aktif
+          2. Hitung RSL
+          3. Setiap RSL: Hitung DSL
+          4. Update Pandora Box
         """
-        # threads = []
+        logging.info('=================================================================')
+        logging.info('[P-{} IN]'.format(event[2]))
+
         data['product']['active'].append(event[2])
-        logging.info('[P-{} in] Masuk ke produk aktif: {}'.format(event[2], data['product']['active']))  
+        logging.info('[P-{} IN] Masuk ke produk aktif: {}'.format(event[2], data['product']['active']))  
+        
         rsl_result = rsl.start_computation(event[2])
-        logging.info('[P-{} in] - Start threading'.format(event[2]))
+        
         for customer_id in rsl_result:
           dsl.start_computation(customer_id, event[0], event[3], event[2])
+        
+        for customer_id in data['customer']['active']:
+          dsl.start_computation(customer_id, event[0], 2)
 
+        # threads = []
         # for customer_id in rsl_result:
         #   t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
         #   threads.append(t)
@@ -96,19 +109,28 @@ def main(dataset):
         #   t.start()
         # for t in threads:
         #   t.join()
-        logging.info('[P-{} in] - Komputasi selesai'.format(event[2]))
+        logging.info('=================================================================')
       
       elif event[3] == 1:
         """
         Product out:
-        1. Menghapus dari produk aktif
+          1. Update Pandora Box
+          2. Hitung RSL
+          2. Setiap RSL: Hitung DSL
+          3. Hapus dari produk aktif
         """
-        # threads = []
+        logging.info('=================================================================')
+        logging.info('[P-{} OUT]'.format(event[2]))
+
+        for customer_id in data['customer']['active']:
+          dsl.start_computation(customer_id, event[0], 2)
+
         rsl_result = rsl.start_computation(event[2])
-        logging.info('[P-{} out] - Start threading'.format(event[2]))
+        
         for customer_id in rsl_result:
           dsl.start_computation(customer_id, event[0], event[3], event[2])
 
+        # threads = []
         # for customer_id in data['customer']['active']:
         #   t = threading.Thread(target=dsl.start_computation, args=(customer_id, event[0], event[3], event[2]))
         #   threads.append(t)
@@ -116,28 +138,41 @@ def main(dataset):
         #   t.start()
         # for t in threads:
         #   t.join()
-        logging.info('[P-{} out] - Komputasi selesai'.format(event[2]))
+        
         data['product']['active'].remove(event[2])
-        logging.info('[P-{} out] Hapus dari produk aktif: {}'.format(event[2], data['product']['active']))
+        logging.info('[P-{} OUT] Hapus dari produk aktif: {}'.format(event[2], data['product']['active']))
+        logging.info('=================================================================')
+    
     elif event[1] == 1:
       if event[3] == 0:
         """
         Customer in:
-        1. Menambah pelanggan aktif
-        2. Menghitung initial dsl
+          1. Tambah ke pelanggan aktif
+          2. Menghitung initial dsl
         """
-        logging.info('[C-{} in] Make thread'.format(event[2]))
+        logging.info('=================================================================')
+        logging.info('[C-{} IN]'.format(event[2]))
+        
         data['customer']['active'].append(event[2])
-        logging.info('[C-{} in] Masukkan ke customer aktif: {}'.format(event[2], data['customer']['active']))
+        logging.info('[C-{} IN] Masukkan ke customer aktif: {}'.format(event[2], data['customer']['active']))
+        
         dsl.start_computation(event[2], event[0])
+        dsl.start_computation(event[2], event[0], 2)
+        logging.info('=================================================================')
+
       elif event[3] == 1:
         """
-        Customer out
+        Customer out:
+          1. Update pandora box
+          2. Hapus dari pelanggan aktif
         """
-        logging.info('[C-{} out] Kill thread'.format(event[2]))
+        logging.info('=================================================================')
+        logging.info('[C-{} OUT]'.format(event[2]))
         dsl.start_computation(event[2], event[0], 2)
+        
         data['customer']['active'].remove(event[2])
-        logging.info('[C-{} out] Hapus dari produk aktif: {}'.format(event[2], data['customer']['active']))
+        logging.info('[C-{} OUT] Hapus dari produk aktif: {}'.format(event[2], data['customer']['active']))
+        logging.info('=================================================================')
 
   pandora_box.print_box()
   pandora_box.export_csv()

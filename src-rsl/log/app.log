@@ -36,321 +36,415 @@
 [I]   MainThread: [2, 0, 1, 0]
 [I]   MainThread: [1, 1, 1, 0]
 [I]   MainThread: UPDATE CUST
-[I]   MainThread: C-1 : blum ada DSL
-[I]   MainThread: C-2 : blum ada DSL
-[I]   MainThread: C-3 : blum ada DSL
-[I]   MainThread: C-4 : blum ada DSL
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [1, 1, 1, 0]
-[I]   MainThread: [C-1 in] Make thread
-[I]   MainThread: [C-1 in] Masukkan ke customer aktif: [1]
-[I]   MainThread: C-1 : [2, 8]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-1 IN]
+[I]   MainThread: [C-1 IN] Masukkan ke customer aktif: [1]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 1
 [I]   MainThread: Initial dynamic skyline
+[I]   MainThread: Candidate DSL : {}
+[I]   MainThread: Candidate DSL sorted : []
+[I]   MainThread: DSL Result : []
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 1
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
-[I]   MainThread: C-1 : blum ada DSL
-[I]   MainThread: C-2 : blum ada DSL
-[I]   MainThread: C-3 : blum ada DSL
-[I]   MainThread: C-4 : blum ada DSL
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-1 : {}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [2, 0, 1, 0]
-[I]   MainThread: [P-1 in] Masuk ke produk aktif: [1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-1 IN]
+[I]   MainThread: [P-1 IN] Masuk ke produk aktif: [1]
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: RSL Result = [1]
-[I]   MainThread: [P-1 in] - Start threading
-[I]   MainThread: C-1 : [2, 8]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 2
 [I]   MainThread: Candidate DSL : {1: {'diff': [4, 5]}}
+[I]   MainThread: Candidate DSL + current DSL : {1: {'diff': [4, 5]}}
 [I]   MainThread: Candidate DSL sorted : [1]
-[I]   MainThread: DSL Result : {1: {'diff': [4, 5]}}
-[I]   MainThread: Last update 1 pbox[1] = 0
+[I]   MainThread: DSL Result : [1]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 2
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[1][2] + 1.0 = 1.0
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 2 | probability: 1.0
-[I]   MainThread: [P-1 in] - Komputasi selesai
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {1: {'diff': [4, 5], 'last_ts': 2, 'last_prob': 1.0}}
-[I]   MainThread: C-2 : blum ada DSL
-[I]   MainThread: C-3 : blum ada DSL
-[I]   MainThread: C-4 : blum ada DSL
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [3, 1, 4, 0]
-[I]   MainThread: [C-4 in] Make thread
-[I]   MainThread: [C-4 in] Masukkan ke customer aktif: [1, 4]
-[I]   MainThread: C-4 : [8, 12]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-4 IN]
+[I]   MainThread: [C-4 IN] Masukkan ke customer aktif: [1, 4]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 3
 [I]   MainThread: Initial dynamic skyline
 [I]   MainThread: Candidate DSL : {1: {'diff': [2, 9]}}
 [I]   MainThread: Candidate DSL sorted : [1]
-[I]   MainThread: DSL Result : {1: {'diff': [2, 9]}}
-[I]   MainThread: Last update 1 pbox[1] = 0
+[I]   MainThread: DSL Result : [1]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 3
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[1][3] + 1.0 = 1.0
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 3 | probability: 1.0
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {1: {'diff': [4, 5], 'last_ts': 2, 'last_prob': 1.0}}
-[I]   MainThread: C-2 : blum ada DSL
-[I]   MainThread: C-3 : blum ada DSL
 [I]   MainThread: C-4 : {1: {'diff': [2, 9], 'last_ts': 3, 'last_prob': 1.0}}
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [4, 0, 4, 0]
-[I]   MainThread: [P-4 in] Masuk ke produk aktif: [1, 4]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-4 IN]
+[I]   MainThread: [P-4 IN] Masuk ke produk aktif: [1, 4]
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {1: [7.5, 4.0]}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: RSL Result = [1, 4]
-[I]   MainThread: [P-4 in] - Start threading
-[I]   MainThread: C-1 : [2, 8]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 4
 [I]   MainThread: Candidate DSL : {4: {'diff': [7, 3]}}
 [I]   MainThread: Candidate DSL + current DSL : {4: {'diff': [7, 3]}, 1: {'diff': [4, 5], 'last_ts': 2, 'last_prob': 1.0}}
 [I]   MainThread: Candidate DSL sorted : [1, 4]
-[I]   MainThread: DSL Result : {4: {'diff': [7, 3]}, 1: {'diff': [4, 5], 'last_ts': 2, 'last_prob': 1.0}}
-[I]   MainThread: Last update 1 pbox[4] = 0
+[I]   MainThread: DSL Result : [4, 1]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 4
+[I]   MainThread: Candidate DSL : {4: {'diff': [1, 7]}}
+[I]   MainThread: Candidate DSL + current DSL : {4: {'diff': [1, 7]}, 1: {'diff': [2, 9], 'last_ts': 3, 'last_prob': 1.0}}
+[I]   MainThread: Candidate DSL sorted : [4, 1]
+[I]   MainThread: DSL Result : [4]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 4
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[4][4] + 0.5 = 0.5
-[I]   MainThread: Last update 1 pbox[1] = 2
 [I]   MainThread: Update score pbox[1][3] + 1.0 = 2.0
 [I]   MainThread: Add score pbox[1][4] + 0.5 = 0.5
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 4 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 4 | probability: 0.5
-[I]   MainThread: C-4 : [8, 12]
-[I]   MainThread: Candidate DSL : {4: {'diff': [1, 7]}}
-[I]   MainThread: Candidate DSL + current DSL : {4: {'diff': [1, 7]}, 1: {'diff': [2, 9], 'last_ts': 3, 'last_prob': 1.0}}
-[I]   MainThread: Candidate DSL sorted : [4, 1]
-[I]   MainThread: DSL Result : {4: {'diff': [1, 7], 'dominating': [1]}}
-[I]   MainThread: Last update 1 pbox[4] = 0
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 4
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[4][4] + 1.0 = 1.5
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 4 | probability: 1.0
-[I]   MainThread: [P-4 in] - Komputasi selesai
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {4: {'diff': [7, 3], 'last_ts': 4, 'last_prob': 0.5}, 1: {'diff': [4, 5], 'last_ts': 4, 'last_prob': 0.5}}
-[I]   MainThread: C-2 : blum ada DSL
-[I]   MainThread: C-3 : blum ada DSL
 [I]   MainThread: C-4 : {4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 4, 'last_prob': 1.0}}
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [4, 1, 2, 0]
-[I]   MainThread: [C-2 in] Make thread
-[I]   MainThread: [C-2 in] Masukkan ke customer aktif: [1, 4, 2]
-[I]   MainThread: C-2 : [4, 10]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-2 IN]
+[I]   MainThread: [C-2 IN] Masukkan ke customer aktif: [1, 4, 2]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 4
 [I]   MainThread: Initial dynamic skyline
 [I]   MainThread: Candidate DSL : {1: {'diff': [2, 7]}, 4: {'diff': [5, 5]}}
 [I]   MainThread: Candidate DSL sorted : [1, 4]
-[I]   MainThread: DSL Result : {1: {'diff': [2, 7]}, 4: {'diff': [5, 5]}}
-[I]   MainThread: Last update 1 pbox[1] = 0
+[I]   MainThread: DSL Result : [1, 4]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 4
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[1][4] + 0.5 = 1.0
-[I]   MainThread: Last update 1 pbox[4] = 0
 [I]   MainThread: Add score pbox[4][4] + 0.5 = 2.0
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 4 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 4 | probability: 0.5
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {4: {'diff': [7, 3], 'last_ts': 4, 'last_prob': 0.5}, 1: {'diff': [4, 5], 'last_ts': 4, 'last_prob': 0.5}}
 [I]   MainThread: C-2 : {1: {'diff': [2, 7], 'last_ts': 4, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 4, 'last_prob': 0.5}}
-[I]   MainThread: C-3 : blum ada DSL
 [I]   MainThread: C-4 : {4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 4, 'last_prob': 1.0}}
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [5, 0, 5, 0]
-[I]   MainThread: [P-5 in] Masuk ke produk aktif: [1, 4, 5]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-5 IN]
+[I]   MainThread: [P-5 IN] Masuk ke produk aktif: [1, 4, 5]
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {4: [10.5, 7.5]}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: RSL Result = [1, 2, 4]
-[I]   MainThread: [P-5 in] - Start threading
-[I]   MainThread: C-1 : [2, 8]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 5
 [I]   MainThread: Candidate DSL : {5: {'diff': [10, 2]}}
 [I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [10, 2]}, 4: {'diff': [7, 3], 'last_ts': 4, 'last_prob': 0.5}, 1: {'diff': [4, 5], 'last_ts': 4, 'last_prob': 0.5}}
 [I]   MainThread: Candidate DSL sorted : [1, 4, 5]
-[I]   MainThread: DSL Result : {5: {'diff': [10, 2]}, 4: {'diff': [7, 3], 'last_ts': 4, 'last_prob': 0.5}, 1: {'diff': [4, 5], 'last_ts': 4, 'last_prob': 0.5}}
-[I]   MainThread: Last update 1 pbox[5] = 0
+[I]   MainThread: DSL Result : [5, 4, 1]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 5
+[I]   MainThread: Candidate DSL : {5: {'diff': [8, 0]}}
+[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [8, 0]}, 1: {'diff': [2, 7], 'last_ts': 4, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 4, 'last_prob': 0.5}}
+[I]   MainThread: Candidate DSL sorted : [1, 4, 5]
+[I]   MainThread: DSL Result : [5, 1, 4]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 5
+[I]   MainThread: Candidate DSL : {5: {'diff': [4, 2]}}
+[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [4, 2]}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 4, 'last_prob': 1.0}}
+[I]   MainThread: Candidate DSL sorted : [4, 5]
+[I]   MainThread: DSL Result : [5, 4]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 5
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[5][5] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[4] = 4
 [I]   MainThread: Add score pbox[4][5] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[1] = 4
 [I]   MainThread: Add score pbox[1][5] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 5 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 5 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 5 | probability: 0.3333333333333333
-[I]   MainThread: C-2 : [4, 10]
-[I]   MainThread: Candidate DSL : {5: {'diff': [8, 0]}}
-[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [8, 0]}, 1: {'diff': [2, 7], 'last_ts': 4, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 4, 'last_prob': 0.5}}
-[I]   MainThread: Candidate DSL sorted : [1, 4, 5]
-[I]   MainThread: DSL Result : {5: {'diff': [8, 0]}, 1: {'diff': [2, 7], 'last_ts': 4, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 4, 'last_prob': 0.5}}
-[I]   MainThread: Last update 1 pbox[5] = 0
-[I]   MainThread: Add score pbox[5][5] + 0.3333333333333333 = 0.6666666666666666
-[I]   MainThread: Last update 1 pbox[1] = 4
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 5
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[5][5] + 0.5 = 0.8333333333333333
+[I]   MainThread: Add score pbox[4][5] + 0.5 = 0.8333333333333333
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 5 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[4] = timestamp: 5 | probability: 0.5
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 5
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[5][5] + 0.3333333333333333 = 1.1666666666666665
 [I]   MainThread: Add score pbox[1][5] + 0.3333333333333333 = 0.6666666666666666
-[I]   MainThread: Last update 1 pbox[4] = 4
-[I]   MainThread: Add score pbox[4][5] + 0.3333333333333333 = 0.6666666666666666
+[I]   MainThread: Add score pbox[4][5] + 0.3333333333333333 = 1.1666666666666665
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 5 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[1] = timestamp: 5 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 5 | probability: 0.3333333333333333
-[I]   MainThread: C-4 : [8, 12]
-[I]   MainThread: Candidate DSL : {5: {'diff': [4, 2]}}
-[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [4, 2]}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 4, 'last_prob': 1.0}}
-[I]   MainThread: Candidate DSL sorted : [4, 5]
-[I]   MainThread: DSL Result : {5: {'diff': [4, 2]}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 4, 'last_prob': 1.0}}
-[I]   MainThread: Last update 1 pbox[5] = 0
-[I]   MainThread: Add score pbox[5][5] + 0.5 = 1.1666666666666665
-[I]   MainThread: Last update 1 pbox[4] = 4
-[I]   MainThread: Add score pbox[4][5] + 0.5 = 1.1666666666666665
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 5 | probability: 0.5
-[I]   MainThread: Last update 2 pbox[4] = timestamp: 5 | probability: 0.5
-[I]   MainThread: [P-5 in] - Komputasi selesai
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {5: {'diff': [10, 2], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [4, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
 [I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [2, 7], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
 [I]   MainThread: C-4 : {5: {'diff': [4, 2], 'last_ts': 5, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : blum ada DSL
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.1666666666666665, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.1666666666666665, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [5, 1, 5, 0]
-[I]   MainThread: [C-5 in] Make thread
-[I]   MainThread: [C-5 in] Masukkan ke customer aktif: [1, 4, 2, 5]
-[I]   MainThread: C-5 : [9, 10]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-5 IN]
+[I]   MainThread: [C-5 IN] Masukkan ke customer aktif: [1, 4, 2, 5]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 5
 [I]   MainThread: Initial dynamic skyline
 [I]   MainThread: Candidate DSL : {1: {'diff': [3, 7]}, 4: {'diff': [0, 5]}, 5: {'diff': [3, 0]}}
 [I]   MainThread: Candidate DSL sorted : [4, 5, 1]
-[I]   MainThread: DSL Result : {4: {'diff': [0, 5], 'dominating': [1]}, 5: {'diff': [3, 0]}}
-[I]   MainThread: Last update 1 pbox[4] = 0
+[I]   MainThread: DSL Result : [4, 5]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 5
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[4][5] + 0.5 = 1.6666666666666665
-[I]   MainThread: Last update 1 pbox[5] = 0
 [I]   MainThread: Add score pbox[5][5] + 0.5 = 1.6666666666666665
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 5 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 5 | probability: 0.5
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {5: {'diff': [10, 2], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [4, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
 [I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [2, 7], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
 [I]   MainThread: C-4 : {5: {'diff': [4, 2], 'last_ts': 5, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}}
 [I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [6, 0, 2, 0]
-[I]   MainThread: [P-2 in] Masuk ke produk aktif: [1, 4, 5, 2]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-2 IN]
+[I]   MainThread: [P-2 IN] Masuk ke produk aktif: [1, 4, 5, 2]
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {}, '01': {}, '10': {1: [5.0, 7.5], 5: [8.0, 11.0], 4: [6.5, 8.5]}, '11': {}}
 [I]   MainThread: RSL Result = [1, 2, 4]
-[I]   MainThread: [P-2 in] - Start threading
-[I]   MainThread: C-1 : [2, 8]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 6
 [I]   MainThread: Candidate DSL : {2: {'diff': [2, 4]}}
 [I]   MainThread: Candidate DSL + current DSL : {2: {'diff': [2, 4]}, 5: {'diff': [10, 2], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [4, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
 [I]   MainThread: Candidate DSL sorted : [2, 1, 4, 5]
-[I]   MainThread: DSL Result : {2: {'diff': [2, 4], 'dominating': [1]}, 5: {'diff': [10, 2], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: Last update 1 pbox[2] = 0
+[I]   MainThread: DSL Result : [2, 5, 4]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 6
+[I]   MainThread: Candidate DSL : {2: {'diff': [0, 2]}}
+[I]   MainThread: Candidate DSL + current DSL : {2: {'diff': [0, 2]}, 5: {'diff': [8, 0], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [2, 7], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
+[I]   MainThread: Candidate DSL sorted : [2, 1, 4, 5]
+[I]   MainThread: DSL Result : [2, 5]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 6
+[I]   MainThread: Candidate DSL : {2: {'diff': [4, 0]}}
+[I]   MainThread: Candidate DSL + current DSL : {2: {'diff': [4, 0]}, 5: {'diff': [4, 2], 'last_ts': 5, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}}
+[I]   MainThread: Candidate DSL sorted : [4, 2, 5]
+[I]   MainThread: DSL Result : [2, 4]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 6
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[2][6] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[5] = 5
 [I]   MainThread: Add score pbox[5][6] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[4] = 5
 [I]   MainThread: Add score pbox[4][6] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 6 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 6 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 6 | probability: 0.3333333333333333
-[I]   MainThread: C-2 : [4, 10]
-[I]   MainThread: Candidate DSL : {2: {'diff': [0, 2]}}
-[I]   MainThread: Candidate DSL + current DSL : {2: {'diff': [0, 2]}, 5: {'diff': [8, 0], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 1: {'diff': [2, 7], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: Candidate DSL sorted : [2, 1, 4, 5]
-[I]   MainThread: DSL Result : {2: {'diff': [0, 2], 'dominating': [1]}, 5: {'diff': [8, 0], 'last_ts': 5, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 5, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: Last update 1 pbox[2] = 0
-[I]   MainThread: Add score pbox[2][6] + 0.3333333333333333 = 0.6666666666666666
-[I]   MainThread: Last update 1 pbox[5] = 5
-[I]   MainThread: Add score pbox[5][6] + 0.3333333333333333 = 0.6666666666666666
-[I]   MainThread: Last update 1 pbox[4] = 5
-[I]   MainThread: Add score pbox[4][6] + 0.3333333333333333 = 0.6666666666666666
-[I]   MainThread: Last update 2 pbox[2] = timestamp: 6 | probability: 0.3333333333333333
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 6 | probability: 0.3333333333333333
-[I]   MainThread: Last update 2 pbox[4] = timestamp: 6 | probability: 0.3333333333333333
-[I]   MainThread: C-4 : [8, 12]
-[I]   MainThread: Candidate DSL : {2: {'diff': [4, 0]}}
-[I]   MainThread: Candidate DSL + current DSL : {2: {'diff': [4, 0]}, 5: {'diff': [4, 2], 'last_ts': 5, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: Candidate DSL sorted : [4, 2, 5]
-[I]   MainThread: DSL Result : {2: {'diff': [4, 0], 'dominating': [5]}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: Last update 1 pbox[2] = 0
-[I]   MainThread: Add score pbox[2][6] + 0.5 = 1.1666666666666665
-[I]   MainThread: Last update 1 pbox[4] = 5
-[I]   MainThread: Add score pbox[4][6] + 0.5 = 1.1666666666666665
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 6
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[2][6] + 0.5 = 0.8333333333333333
+[I]   MainThread: Add score pbox[4][6] + 0.5 = 0.8333333333333333
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 6 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 6 | probability: 0.5
-[I]   MainThread: [P-2 in] - Komputasi selesai
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 6
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[2][6] + 0.5 = 1.3333333333333333
+[I]   MainThread: Add score pbox[5][6] + 0.5 = 0.8333333333333333
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 6 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 6 | probability: 0.5
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 6
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[4][6] + 0.5 = 1.3333333333333333
+[I]   MainThread: Add score pbox[5][6] + 0.5 = 1.3333333333333333
+[I]   MainThread: Last update 2 pbox[4] = timestamp: 6 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 6 | probability: 0.5
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 6, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 6, 'last_prob': 0.5}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [8, 1, 1, 1]
-[I]   MainThread: [C-1 out] Kill thread
-[I]   MainThread: C-1 : [2, 8]
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Last update 1 pbox[2] = 6
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-1 OUT]
+[I]   MainThread: C-1 | Val: [2, 8] | Ts: 8
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Update score pbox[2][7] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Add score pbox[2][8] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[5] = 6
 [I]   MainThread: Update score pbox[5][7] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Add score pbox[5][8] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[4] = 6
 [I]   MainThread: Update score pbox[4][7] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Add score pbox[4][8] + 0.3333333333333333 = 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 8 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 8 | probability: 0.3333333333333333
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 8 | probability: 0.3333333333333333
-[I]   MainThread: [C-1 out] Hapus dari produk aktif: [4, 2, 5]
+[I]   MainThread: [C-1 OUT] Hapus dari produk aktif: [4, 2, 5]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 6, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 6, 'last_prob': 0.5}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [8, 1, 4, 1]
-[I]   MainThread: [C-4 out] Kill thread
-[I]   MainThread: C-4 : [8, 12]
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Last update 1 pbox[2] = 6
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-4 OUT]
+[I]   MainThread: C-4 | Val: [8, 12] | Ts: 8
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Update score pbox[2][7] + 0.5 = 0.8333333333333333
 [I]   MainThread: Add score pbox[2][8] + 0.5 = 0.8333333333333333
-[I]   MainThread: Last update 1 pbox[4] = 6
 [I]   MainThread: Update score pbox[4][7] + 0.5 = 0.8333333333333333
 [I]   MainThread: Add score pbox[4][8] + 0.5 = 0.8333333333333333
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 8 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 8 | probability: 0.5
-[I]   MainThread: [C-4 out] Hapus dari produk aktif: [2, 5]
+[I]   MainThread: [C-4 OUT] Hapus dari produk aktif: [2, 5]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 6, 'last_prob': 0.5}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 0.8333333333333333, 0.8333333333333333, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 0.8333333333333333, 0.8333333333333333, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [9, 0, 3, 0]
-[I]   MainThread: [P-3 in] Masuk ke produk aktif: [1, 4, 5, 2, 3]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-3 IN]
+[I]   MainThread: [P-3 IN] Masuk ke produk aktif: [1, 4, 5, 2, 3]
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {1: [6.0, 9.0], 2: [5.0, 13.5]}, '01': {}, '10': {4: [7.5, 10.0], 5: [9.0, 12.5]}, '11': {}}
 [I]   MainThread: RSL Result = []
-[I]   MainThread: [P-3 in] - Start threading
-[I]   MainThread: [P-3 in] - Komputasi selesai
-[I]   MainThread: UPDATE CUST
-[I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
-[I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 5, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 5, 'last_prob': 0.5}}
-[I]   MainThread: C-active : blum ada DSL
-[I]   MainThread: Dequeue event [9, 0, 4, 1]
-[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
-[I]   MainThread: {'00': {1: [7.5, 4.0]}, '01': {2: [6.5, 8.5], 3: [7.5, 10.0]}, '10': {}, '11': {5: [10.5, 7.5]}}
-[I]   MainThread: RSL Result = [5]
-[I]   MainThread: [P-4 out] - Start threading
-[I]   MainThread: C-5 : [9, 10]
-[I]   MainThread: Last update 1 pbox[4] = 5
-[I]   MainThread: Update score pbox[4][6] + 0.5 = 1.6666666666666665
-[I]   MainThread: Update score pbox[4][7] + 0.5 = 1.3333333333333333
-[I]   MainThread: Update score pbox[4][8] + 0.5 = 1.3333333333333333
-[I]   MainThread: Add score pbox[4][9] + 0.5 = 0.5
-[I]   MainThread: Last update 1 pbox[5] = 5
-[I]   MainThread: Update score pbox[5][6] + 0.5 = 1.1666666666666665
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 9
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[2][7] + 0.5 = 1.3333333333333333
+[I]   MainThread: Update score pbox[2][8] + 0.5 = 1.3333333333333333
+[I]   MainThread: Add score pbox[2][9] + 0.5 = 0.5
 [I]   MainThread: Update score pbox[5][7] + 0.5 = 0.8333333333333333
 [I]   MainThread: Update score pbox[5][8] + 0.5 = 0.8333333333333333
 [I]   MainThread: Add score pbox[5][9] + 0.5 = 0.5
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 9 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 9 | probability: 0.5
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 9
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[4][7] + 0.5 = 1.3333333333333333
+[I]   MainThread: Update score pbox[4][8] + 0.5 = 1.3333333333333333
+[I]   MainThread: Add score pbox[4][9] + 0.5 = 0.5
+[I]   MainThread: Update score pbox[5][7] + 0.5 = 1.3333333333333333
+[I]   MainThread: Update score pbox[5][8] + 0.5 = 1.3333333333333333
+[I]   MainThread: Add score pbox[5][9] + 0.5 = 1.0
 [I]   MainThread: Last update 2 pbox[4] = timestamp: 9 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 9 | probability: 0.5
+[I]   MainThread: =================================================================
+[I]   MainThread: UPDATE CUST
+[I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 9, 'last_prob': 0.5}}
+[I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
+[I]   MainThread: C-5 : {4: {'diff': [0, 5], 'dominating': [1], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: Dequeue event [9, 0, 4, 1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-4 OUT]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 9
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 9 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 9 | probability: 0.5
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 9
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Last update 2 pbox[4] = timestamp: 9 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 9 | probability: 0.5
+[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
+[I]   MainThread: {'00': {1: [7.5, 4.0]}, '01': {2: [6.5, 8.5], 3: [7.5, 10.0]}, '10': {}, '11': {5: [10.5, 7.5]}}
+[I]   MainThread: RSL Result = [5]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 9
 [I]   MainThread: Dominating : [1]
 [I]   MainThread: Product active now : [1, 4, 5, 2, 3]
 [I]   MainThread: Active child = [1]
@@ -358,101 +452,126 @@
 [I]   MainThread: Candidate DSL : {1: {'diff': [3, 7]}}
 [I]   MainThread: Candidate DSL + current DSL : {1: {'diff': [3, 7]}, 5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5}}
 [I]   MainThread: Candidate DSL sorted : [5, 1]
-[I]   MainThread: DSL Result : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}}
-[I]   MainThread: Last update 1 pbox[5] = 9
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 9 | probability: 1.0
-[I]   MainThread: [P-4 out] - Komputasi selesai
-[I]   MainThread: [P-4 out] Hapus dari produk aktif: [1, 5, 2, 3]
+[I]   MainThread: DSL Result : [5]
+[I]   MainThread: [P-4 OUT] Hapus dari produk aktif: [1, 5, 2, 3]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : blum ada DSL
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 9, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [10, 1, 3, 0]
-[I]   MainThread: [C-3 in] Make thread
-[I]   MainThread: [C-3 in] Masukkan ke customer aktif: [2, 5, 3]
-[I]   MainThread: C-3 : [6, 11]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-3 IN]
+[I]   MainThread: [C-3 IN] Masukkan ke customer aktif: [2, 5, 3]
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 10
 [I]   MainThread: Initial dynamic skyline
 [I]   MainThread: Candidate DSL : {1: {'diff': [0, 8]}, 5: {'diff': [6, 1]}, 2: {'diff': [2, 1]}, 3: {'diff': [0, 4]}}
 [I]   MainThread: Candidate DSL sorted : [3, 1, 2, 5]
-[I]   MainThread: DSL Result : {2: {'diff': [2, 1], 'dominating': [5]}, 3: {'diff': [0, 4], 'dominating': [1]}}
-[I]   MainThread: Last update 1 pbox[2] = 0
+[I]   MainThread: DSL Result : [2, 3]
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 10
+[I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[2][10] + 0.5 = 0.5
-[I]   MainThread: Last update 1 pbox[3] = 0
 [I]   MainThread: Add score pbox[3][10] + 0.5 = 0.5
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 10 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[3] = timestamp: 10 | probability: 0.5
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 9, 'last_prob': 0.5}}
 [I]   MainThread: C-3 : {2: {'diff': [2, 1], 'dominating': [5], 'last_ts': 10, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0.5, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [10, 0, 1, 1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-1 OUT]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 10
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[2][10] + 0.5 = 1.0
+[I]   MainThread: Add score pbox[5][10] + 0.5 = 0.5
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 10 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 10 | probability: 0.5
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 10
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[5][10] + 1.0 = 1.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 10 | probability: 1.0
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 10
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 10 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[3] = timestamp: 10 | probability: 0.5
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {}, '01': {2: [5.0, 7.5], 3: [6.0, 9.0]}, '10': {}, '11': {5: [9.0, 6.5]}}
 [I]   MainThread: RSL Result = []
-[I]   MainThread: [P-1 out] - Start threading
-[I]   MainThread: [P-1 out] - Komputasi selesai
-[I]   MainThread: [P-1 out] Hapus dari produk aktif: [5, 2, 3]
+[I]   MainThread: [P-1 OUT] Hapus dari produk aktif: [5, 2, 3]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 5: {'diff': [8, 0], 'last_ts': 6, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 6, 'last_prob': 0.3333333333333333}}
+[I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 10, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-3 : {2: {'diff': [2, 1], 'dominating': [5], 'last_ts': 10, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 10, 'last_prob': 1.0, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 0, 0, 0, 0, 0]
 [I]   MainThread: Dequeue event [13, 0, 2, 1]
-[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
-[I]   MainThread: {'00': {}, '01': {}, '10': {5: [8.0, 11.0]}, '11': {3: [5.0, 13.5]}}
-[I]   MainThread: RSL Result = [2, 3]
-[I]   MainThread: [P-2 out] - Start threading
-[I]   MainThread: C-2 : [4, 10]
-[I]   MainThread: Last update 1 pbox[2] = 6
-[I]   MainThread: Update score pbox[2][7] + 0.3333333333333333 = 1.1666666666666665
-[I]   MainThread: Update score pbox[2][8] + 0.3333333333333333 = 1.1666666666666665
-[I]   MainThread: Update score pbox[2][9] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[2][10] + 0.3333333333333333 = 0.8333333333333333
-[I]   MainThread: Update score pbox[2][11] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[2][12] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Add score pbox[2][13] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[5] = 6
-[I]   MainThread: Update score pbox[5][7] + 0.3333333333333333 = 1.1666666666666665
-[I]   MainThread: Update score pbox[5][8] + 0.3333333333333333 = 1.1666666666666665
-[I]   MainThread: Update score pbox[5][9] + 0.3333333333333333 = 0.8333333333333333
-[I]   MainThread: Update score pbox[5][10] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[5][11] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[5][12] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Add score pbox[5][13] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 1 pbox[4] = 6
-[I]   MainThread: Update score pbox[4][7] + 0.3333333333333333 = 1.6666666666666665
-[I]   MainThread: Update score pbox[4][8] + 0.3333333333333333 = 1.6666666666666665
-[I]   MainThread: Update score pbox[4][9] + 0.3333333333333333 = 0.8333333333333333
-[I]   MainThread: Update score pbox[4][10] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[4][11] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Update score pbox[4][12] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Add score pbox[4][13] + 0.3333333333333333 = 0.3333333333333333
-[I]   MainThread: Last update 2 pbox[2] = timestamp: 13 | probability: 0.3333333333333333
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 13 | probability: 0.3333333333333333
-[I]   MainThread: Last update 2 pbox[4] = timestamp: 13 | probability: 0.3333333333333333
-[I]   MainThread: Dominating : [1]
-[I]   MainThread: Product active now : [5, 2, 3]
-[I]   MainThread: Active child = []
-[I]   MainThread: Active child of [P-2] : []
-[I]   MainThread: C-3 : [6, 11]
-[I]   MainThread: Last update 1 pbox[2] = 10
-[I]   MainThread: Update score pbox[2][11] + 0.5 = 0.8333333333333333
-[I]   MainThread: Update score pbox[2][12] + 0.5 = 0.8333333333333333
-[I]   MainThread: Add score pbox[2][13] + 0.5 = 0.8333333333333333
-[I]   MainThread: Last update 1 pbox[3] = 10
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-2 OUT]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 13
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[2][11] + 0.5 = 0.5
+[I]   MainThread: Update score pbox[2][12] + 0.5 = 0.5
+[I]   MainThread: Add score pbox[2][13] + 0.5 = 0.5
+[I]   MainThread: Update score pbox[5][11] + 0.5 = 0.5
+[I]   MainThread: Update score pbox[5][12] + 0.5 = 0.5
+[I]   MainThread: Add score pbox[5][13] + 0.5 = 0.5
+[I]   MainThread: Last update 2 pbox[2] = timestamp: 13 | probability: 0.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 13 | probability: 0.5
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 13
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[5][11] + 1.0 = 1.5
+[I]   MainThread: Update score pbox[5][12] + 1.0 = 1.5
+[I]   MainThread: Add score pbox[5][13] + 1.0 = 1.5
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 13 | probability: 1.0
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 13
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[2][11] + 0.5 = 1.0
+[I]   MainThread: Update score pbox[2][12] + 0.5 = 1.0
+[I]   MainThread: Add score pbox[2][13] + 0.5 = 1.0
 [I]   MainThread: Update score pbox[3][11] + 0.5 = 0.5
 [I]   MainThread: Update score pbox[3][12] + 0.5 = 0.5
 [I]   MainThread: Add score pbox[3][13] + 0.5 = 0.5
 [I]   MainThread: Last update 2 pbox[2] = timestamp: 13 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[3] = timestamp: 13 | probability: 0.5
+[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
+[I]   MainThread: {'00': {}, '01': {}, '10': {5: [8.0, 11.0]}, '11': {3: [5.0, 13.5]}}
+[I]   MainThread: RSL Result = [2, 3]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 13
+[I]   MainThread: Dominating : [1, 4]
+[I]   MainThread: Product active now : [5, 2, 3]
+[I]   MainThread: Active child = []
+[I]   MainThread: Active child of [P-2] : []
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 13
 [I]   MainThread: Dominating : [5]
 [I]   MainThread: Product active now : [5, 2, 3]
 [I]   MainThread: Active child = [5]
@@ -460,117 +579,153 @@
 [I]   MainThread: Candidate DSL : {5: {'diff': [6, 1]}}
 [I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: Candidate DSL sorted : [3, 5]
-[I]   MainThread: DSL Result : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
-[I]   MainThread: Last update 1 pbox[5] = 0
-[I]   MainThread: Add score pbox[5][13] + 0.5 = 0.8333333333333333
-[I]   MainThread: Last update 1 pbox[3] = 13
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 13 | probability: 0.5
-[I]   MainThread: Last update 2 pbox[3] = timestamp: 13 | probability: 0.5
-[I]   MainThread: [P-2 out] - Komputasi selesai
-[I]   MainThread: [P-2 out] Hapus dari produk aktif: [5, 3]
+[I]   MainThread: DSL Result : [5, 3]
+[I]   MainThread: [P-2 OUT] Hapus dari produk aktif: [5, 3]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.3333333333333333}, 4: {'diff': [5, 5], 'last_ts': 13, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-3 : {5: {'diff': [6, 1], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}}
+[I]   MainThread: C-3 : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 0, 0]
 [I]   MainThread: Dequeue event [14, 1, 2, 1]
-[I]   MainThread: [C-2 out] Kill thread
-[I]   MainThread: C-2 : [4, 10]
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Last update 1 pbox[5] = 13
-[I]   MainThread: Add score pbox[5][14] + 0.5 = 0.5
-[I]   MainThread: Last update 1 pbox[4] = 13
-[I]   MainThread: Add score pbox[4][14] + 0.5 = 0.5
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 14 | probability: 0.5
-[I]   MainThread: Last update 2 pbox[4] = timestamp: 14 | probability: 0.5
-[I]   MainThread: [C-2 out] Hapus dari produk aktif: [5, 3]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-2 OUT]
+[I]   MainThread: C-2 | Val: [4, 10] | Ts: 14
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[5][14] + 1.0 = 1.0
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 14 | probability: 1.0
+[I]   MainThread: [C-2 OUT] Hapus dari produk aktif: [5, 3]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 14, 'last_prob': 0.5}}
-[I]   MainThread: C-3 : {5: {'diff': [6, 1], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
+[I]   MainThread: C-3 : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.0, 0]
 [I]   MainThread: Dequeue event [15, 0, 3, 1]
-[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
-[I]   MainThread: {'00': {}, '01': {}, '10': {5: [9.0, 12.5]}, '11': {}}
-[I]   MainThread: RSL Result = [3]
-[I]   MainThread: [P-3 out] - Start threading
-[I]   MainThread: C-3 : [6, 11]
-[I]   MainThread: Last update 1 pbox[5] = 13
-[I]   MainThread: Update score pbox[5][14] + 0.5 = 1.0
-[I]   MainThread: Add score pbox[5][15] + 0.5 = 0.5
-[I]   MainThread: Last update 1 pbox[3] = 13
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-3 OUT]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Update score pbox[5][14] + 1.0 = 2.0
+[I]   MainThread: Add score pbox[5][15] + 1.0 = 1.0
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 1.0
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Add score pbox[5][15] + 0.5 = 1.5
 [I]   MainThread: Update score pbox[3][14] + 0.5 = 0.5
 [I]   MainThread: Add score pbox[3][15] + 0.5 = 0.5
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[3] = timestamp: 15 | probability: 0.5
+[I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
+[I]   MainThread: {'00': {}, '01': {}, '10': {5: [9.0, 12.5]}, '11': {}}
+[I]   MainThread: RSL Result = [3]
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
 [I]   MainThread: Dominating : [1]
 [I]   MainThread: Product active now : [5, 3]
 [I]   MainThread: Active child = []
 [I]   MainThread: Active child of [P-3] : []
-[I]   MainThread: [P-3 out] - Komputasi selesai
-[I]   MainThread: [P-3 out] Hapus dari produk aktif: [5]
+[I]   MainThread: [P-3 OUT] Hapus dari produk aktif: [5]
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 1.0, 'dominating': [1]}}
-[I]   MainThread: C-active : blum ada DSL
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 15, 'last_prob': 1.0, 'dominating': [1]}}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: Dequeue event [15, 0, 5, 1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [P-5 OUT]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 1.0
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 1.0
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: {'00': {}, '01': {}, '10': {}, '11': {}}
 [I]   MainThread: RSL Result = [3, 5]
-[I]   MainThread: [P-5 out] - Start threading
-[I]   MainThread: C-3 : [6, 11]
-[I]   MainThread: C-5 : [9, 10]
-[I]   MainThread: Last update 1 pbox[5] = 9
-[I]   MainThread: Update score pbox[5][10] + 1.0 = 1.3333333333333333
-[I]   MainThread: Update score pbox[5][11] + 1.0 = 1.3333333333333333
-[I]   MainThread: Update score pbox[5][12] + 1.0 = 1.3333333333333333
-[I]   MainThread: Update score pbox[5][13] + 1.0 = 1.8333333333333333
-[I]   MainThread: Update score pbox[5][14] + 1.0 = 2.0
-[I]   MainThread: Add score pbox[5][15] + 1.0 = 1.5
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 1.0
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
 [I]   MainThread: Dominating : [1]
 [I]   MainThread: Product active now : [5]
 [I]   MainThread: Active child = []
 [I]   MainThread: Active child of [P-5] : []
-[I]   MainThread: [P-5 out] - Komputasi selesai
-[I]   MainThread: [P-5 out] Hapus dari produk aktif: []
+[I]   MainThread: [P-5 OUT] Hapus dari produk aktif: []
+[I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
 [I]   MainThread: C-5 : {}
-[I]   MainThread: C-active : blum ada DSL
-[I]   MainThread: Dequeue event [15, 1, 3, 1]
-[I]   MainThread: [C-3 out] Kill thread
-[I]   MainThread: C-3 : [6, 11]
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: [C-3 out] Hapus dari produk aktif: [5]
-[I]   MainThread: UPDATE CUST
-[I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 4: {'diff': [5, 5], 'last_ts': 14, 'last_prob': 0.5}}
-[I]   MainThread: C-3 : {}
-[I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {}
-[I]   MainThread: C-active : blum ada DSL
-[I]   MainThread: Dequeue event [15, 1, 5, 1]
-[I]   MainThread: [C-5 out] Kill thread
-[I]   MainThread: C-5 : [9, 10]
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: [C-5 out] Hapus dari produk aktif: []
+[I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.1666666666666665, 1.1666666666666665, 1.1666666666666665, 0.3333333333333333, 0.8333333333333333, 0.8333333333333333, 0.8333333333333333, 0.8333333333333333, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
-[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.6666666666666665, 1.6666666666666665, 1.6666666666666665, 0.8333333333333333, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.5, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.1666666666666665, 1.1666666666666665, 1.1666666666666665, 0.8333333333333333, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.8333333333333333, 2.0, 1.5]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
+[I]   MainThread: Dequeue event [15, 1, 3, 1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-3 OUT]
+[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: [C-3 OUT] Hapus dari produk aktif: [5]
+[I]   MainThread: =================================================================
+[I]   MainThread: UPDATE CUST
+[I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
+[I]   MainThread: C-3 : {}
+[I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
+[I]   MainThread: C-5 : {}
+[I]   MainThread: UPDATE PBOX
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
+[I]   MainThread: Dequeue event [15, 1, 5, 1]
+[I]   MainThread: =================================================================
+[I]   MainThread: [C-5 OUT]
+[I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
+[I]   MainThread: Update Pandora Box
+[I]   MainThread: [C-5 OUT] Hapus dari produk aktif: []
+[I]   MainThread: =================================================================
+[I]   MainThread: Pandora Box
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: pandora box csv exported succesfully
 [I]   MainThread: Exiting the main program

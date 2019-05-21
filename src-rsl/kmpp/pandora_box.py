@@ -17,7 +17,6 @@ class PandoraBox:
       except:
         last_ts = 0
       finally:
-        logging.info('Last update 1 pbox[{}] = {}'.format(id, last_ts))
         if last_ts > 0:
           self.update_score(id, last_ts, timestamp, dsl[id]['last_prob'])
         if last_ts != timestamp:
