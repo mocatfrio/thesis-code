@@ -454,21 +454,12 @@
 [I]   MainThread: Candidate DSL sorted : [5, 1]
 [I]   MainThread: DSL Result : [5]
 [I]   MainThread: [P-4 OUT] Hapus dari produk aktif: [1, 5, 2, 3]
-[I]   MainThread: C-5 | Val: [9, 10] | Ts: 9
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {1: {'diff': [3, 7]}, 5: {'diff': [3, 0]}, 2: {'diff': [5, 2]}, 3: {'diff': [3, 5]}}
-[I]   MainThread: Candidate DSL + current DSL : {1: {'diff': [3, 7]}, 5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}, 2: {'diff': [5, 2]}, 3: {'diff': [3, 5]}}
-[I]   MainThread: Candidate DSL sorted : [5, 3, 1, 2]
-[I]   MainThread: DSL Result : [5]
-[I]   MainThread: new_dsl = {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1, 3, 2]}}
-[I]   MainThread: current_dsl = {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1, 3, 2]}}
-[I]   MainThread: dsl = {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1, 3, 2]}}
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
 [I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 9, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -498,7 +489,7 @@
 [I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 9, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 9, 'last_prob': 0.5}}
 [I]   MainThread: C-3 : {2: {'diff': [2, 1], 'dominating': [5], 'last_ts': 10, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 9, 'last_prob': 0.5, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -534,7 +525,7 @@
 [I]   MainThread: C-2 : {2: {'diff': [0, 2], 'dominating': [1, 4], 'last_ts': 10, 'last_prob': 0.5}, 5: {'diff': [8, 0], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-3 : {2: {'diff': [2, 1], 'dominating': [5], 'last_ts': 10, 'last_prob': 0.5}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 10, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 10, 'last_prob': 1.0, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 10, 'last_prob': 1.0, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -590,31 +581,13 @@
 [I]   MainThread: Candidate DSL sorted : [3, 5]
 [I]   MainThread: DSL Result : [5, 3]
 [I]   MainThread: [P-2 OUT] Hapus dari produk aktif: [5, 3]
-[I]   MainThread: C-2 | Val: [4, 10] | Ts: 13
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {5: {'diff': [8, 0]}, 3: {'diff': [2, 5]}}
-[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [2, 5]}}
-[I]   MainThread: Candidate DSL sorted : [3, 5]
-[I]   MainThread: DSL Result : [5, 3]
-[I]   MainThread: new_dsl = {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [2, 5]}}
-[I]   MainThread: current_dsl = {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}}
-[I]   MainThread: dsl = {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [2, 5]}}
-[I]   MainThread: C-3 | Val: [6, 11] | Ts: 13
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4]}}
-[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
-[I]   MainThread: Candidate DSL sorted : [3, 5]
-[I]   MainThread: DSL Result : [5, 3]
-[I]   MainThread: new_dsl = {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
-[I]   MainThread: current_dsl = {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
-[I]   MainThread: dsl = {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}, 3: {'diff': [2, 5]}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: C-3 : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -628,38 +601,36 @@
 [I]   MainThread: [C-2 OUT]
 [I]   MainThread: C-2 | Val: [4, 10] | Ts: 14
 [I]   MainThread: Update Pandora Box
-[I]   MainThread: Add score pbox[5][14] + 0.5 = 0.5
-[I]   MainThread: Add score pbox[3][14] + 0.5 = 0.5
-[I]   MainThread: Last update 2 pbox[5] = timestamp: 14 | probability: 0.5
-[I]   MainThread: Last update 2 pbox[3] = timestamp: 14 | probability: 0.5
+[I]   MainThread: Add score pbox[5][14] + 1.0 = 1.0
+[I]   MainThread: Last update 2 pbox[5] = timestamp: 14 | probability: 1.0
 [I]   MainThread: [C-2 OUT] Hapus dari produk aktif: [5, 3]
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 3: {'diff': [2, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {5: {'diff': [6, 1]}, 3: {'diff': [0, 4], 'dominating': [1], 'last_ts': 13, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 13, 'last_prob': 1.0, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 0.5, 0]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.0, 0]
 [I]   MainThread: Dequeue event [15, 0, 3, 1]
 [I]   MainThread: =================================================================
 [I]   MainThread: [P-3 OUT]
 [I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
 [I]   MainThread: Update Pandora Box
-[I]   MainThread: Update score pbox[5][14] + 1.0 = 1.5
+[I]   MainThread: Update score pbox[5][14] + 1.0 = 2.0
 [I]   MainThread: Add score pbox[5][15] + 1.0 = 1.0
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 1.0
 [I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
 [I]   MainThread: Update Pandora Box
 [I]   MainThread: Add score pbox[5][15] + 0.5 = 1.5
-[I]   MainThread: Update score pbox[3][14] + 0.5 = 1.0
+[I]   MainThread: Update score pbox[3][14] + 0.5 = 0.5
 [I]   MainThread: Add score pbox[3][15] + 0.5 = 0.5
 [I]   MainThread: Last update 2 pbox[5] = timestamp: 15 | probability: 0.5
 [I]   MainThread: Last update 2 pbox[3] = timestamp: 15 | probability: 0.5
@@ -672,30 +643,21 @@
 [I]   MainThread: Active child = []
 [I]   MainThread: Active child of [P-3] : []
 [I]   MainThread: [P-3 OUT] Hapus dari produk aktif: [5]
-[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {5: {'diff': [6, 1]}}
-[I]   MainThread: Candidate DSL + current DSL : {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
-[I]   MainThread: Candidate DSL sorted : [5]
-[I]   MainThread: DSL Result : [5]
-[I]   MainThread: new_dsl = {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
-[I]   MainThread: current_dsl = {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
-[I]   MainThread: dsl = {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 3: {'diff': [2, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {5: {'diff': [6, 1], 'last_ts': 15, 'last_prob': 0.5}}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
-[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 15, 'last_prob': 1.0, 'dominating': [1, 3, 2]}}
+[I]   MainThread: C-5 : {5: {'diff': [3, 0], 'last_ts': 15, 'last_prob': 1.0, 'dominating': [1]}}
 [I]   MainThread: UPDATE PBOX
 [I]   MainThread: Pandora Box
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 [I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: Dequeue event [15, 0, 5, 1]
 [I]   MainThread: =================================================================
 [I]   MainThread: [P-5 OUT]
@@ -710,33 +672,15 @@
 [I]   MainThread: RSL Result = [3, 5]
 [I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
 [I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
-[I]   MainThread: Dominating : [1, 3, 2]
+[I]   MainThread: Dominating : [1]
 [I]   MainThread: Product active now : [5]
 [I]   MainThread: Active child = []
 [I]   MainThread: Active child of [P-5] : []
 [I]   MainThread: [P-5 OUT] Hapus dari produk aktif: []
-[I]   MainThread: C-3 | Val: [6, 11] | Ts: 15
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {}
-[I]   MainThread: Candidate DSL + current DSL : {}
-[I]   MainThread: Candidate DSL sorted : []
-[I]   MainThread: DSL Result : []
-[I]   MainThread: new_dsl = {}
-[I]   MainThread: current_dsl = {}
-[I]   MainThread: dsl = {}
-[I]   MainThread: C-5 | Val: [9, 10] | Ts: 15
-[I]   MainThread: Initial dynamic skyline
-[I]   MainThread: Candidate DSL : {}
-[I]   MainThread: Candidate DSL + current DSL : {}
-[I]   MainThread: Candidate DSL sorted : []
-[I]   MainThread: DSL Result : []
-[I]   MainThread: new_dsl = {}
-[I]   MainThread: current_dsl = {}
-[I]   MainThread: dsl = {}
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 3: {'diff': [2, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
 [I]   MainThread: C-5 : {}
@@ -745,9 +689,9 @@
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 [I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: Dequeue event [15, 1, 3, 1]
 [I]   MainThread: =================================================================
 [I]   MainThread: [C-3 OUT]
@@ -757,7 +701,7 @@
 [I]   MainThread: =================================================================
 [I]   MainThread: UPDATE CUST
 [I]   MainThread: C-1 : {2: {'diff': [2, 4], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 5: {'diff': [10, 2], 'last_ts': 8, 'last_prob': 0.3333333333333333}, 4: {'diff': [7, 3], 'last_ts': 8, 'last_prob': 0.3333333333333333}}
-[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 0.5}, 3: {'diff': [2, 5], 'last_ts': 14, 'last_prob': 0.5}}
+[I]   MainThread: C-2 : {5: {'diff': [8, 0], 'last_ts': 14, 'last_prob': 1.0}}
 [I]   MainThread: C-3 : {}
 [I]   MainThread: C-4 : {2: {'diff': [4, 0], 'dominating': [5], 'last_ts': 8, 'last_prob': 0.5}, 4: {'diff': [1, 7], 'dominating': [1], 'last_ts': 8, 'last_prob': 0.5}}
 [I]   MainThread: C-5 : {}
@@ -766,9 +710,9 @@
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 [I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: Dequeue event [15, 1, 5, 1]
 [I]   MainThread: =================================================================
 [I]   MainThread: [C-5 OUT]
@@ -780,8 +724,8 @@
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 1.0, 2.0, 1.0, 0.6666666666666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [I]   MainThread: [0, 0, 0, 0, 0, 0, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 1.0, 1.0, 1.0, 1.0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 [I]   MainThread: [0, 0, 0, 0, 2.0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 0.5, 0, 0, 0, 0, 0, 0]
-[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+[I]   MainThread: [0, 0, 0, 0, 0, 1.6666666666666665, 1.3333333333333333, 1.3333333333333333, 1.3333333333333333, 1.0, 1.5, 1.5, 1.5, 1.5, 2.0, 1.5]
 [I]   MainThread: pandora box csv exported succesfully
 [I]   MainThread: Exiting the main program

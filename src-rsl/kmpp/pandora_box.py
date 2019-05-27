@@ -1,4 +1,5 @@
-import csv, logging
+import csv 
+import logging
 
 class PandoraBox:
   def __init__(self, total_prod=None, max_ts=None):

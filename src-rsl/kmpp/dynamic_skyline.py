@@ -19,33 +19,36 @@ class DynamicSkyline:
     self._define_cust(id)
     self.ts = ts
     logging.info('C-{} | Val: {} | Ts: {}'.format(self.my_id, self.my_value, self.ts))
-    if product_id is None and act is None:
-      logging.info('Initial dynamic skyline')
-      product_id = self.product['active']
+    if product_id is None:
+      if act is None or act == 3:
+        logging.info('Initial dynamic skyline')
+        product_id = self.product['active']
     if act is None or act == 0:
       self.customer[self.my_id]['dsl'] = self.product_in(product_id)
     elif act == 1:
       self.customer[self.my_id]['dsl'] = self.product_out(self.customer[self.my_id]['dsl'], product_id)
     elif act == 2:
       logging.info('Update Pandora Box')
-      # act to update pandora_box
       try:
         self.update_pandora_box(self.customer[self.my_id]['dsl'])
       except:
+        pass
         logging.info('C-{} blum punya dsl'.format(self.my_id))
+    elif act == 3:
+      dsl = self.product_in(product_id)
+      return dsl
 
   def product_out(self, dsl_result, product_id):
-    # if product_id in dsl_result:
-      # if dsl_result[product_id]['last_ts'] != self.ts:
-      #   self.update_pandora_box(self.customer[self.my_id]['dsl'])
     active_child = None
-    if 'dominating' in dsl_result[product_id]:
-      active_child = self.find_active_child(dsl_result[product_id])
-      logging.info('Active child of [P-{}] : {}'.format(product_id, active_child))
-    del dsl_result[product_id]
-    if active_child:
-      dsl_result = self.product_in(active_child)
-    return dsl_result
+    try:
+      if 'dominating' in dsl_result[product_id]:
+        active_child = self.find_active_child(dsl_result[product_id])
+        logging.info('Active child of [P-{}] : {}'.format(product_id, active_child))
+      del dsl_result[product_id]
+      if active_child:
+        dsl_result = self.product_in(active_child)
+    finally:
+      return dsl_result
   
   def product_in(self, candidate):
     dsl_result = {}

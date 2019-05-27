@@ -1,4 +1,6 @@
-import csv, sys, threading, logging, os
+import csv, sys, threading, os
+import cProfile
+import logging
 import numpy as np
 from kmpp.pandora_box import PandoraBox
 from kmpp.event_queue import EventQueue
@@ -71,6 +73,7 @@ def main(dataset):
     logging.info('UPDATE CUST')
     for cust in data['customer']:
       try:
+        pass
         logging.info('C-{} : {}'.format(cust, data['customer'][cust]['dsl']))
       except:
         pass
@@ -116,8 +119,10 @@ def main(dataset):
         Product out:
           1. Update Pandora Box
           2. Hitung RSL
-          2. Setiap RSL: Hitung DSL
-          3. Hapus dari produk aktif
+          3. Setiap RSL: Hitung DSL
+          4. Hapus dari produk aktif
+          5. Setiap RSL: Hitung Init DSL
+          6. Bandingkan jika hasil DSL tidak sama maka masukkan hasil yg baru
         """
         logging.info('=================================================================')
         logging.info('[P-{} OUT]'.format(event[2]))
@@ -141,6 +146,17 @@ def main(dataset):
         
         data['product']['active'].remove(event[2])
         logging.info('[P-{} OUT] Hapus dari produk aktif: {}'.format(event[2], data['product']['active']))
+
+        for customer_id in rsl_result:
+          dsl_res = dsl.start_computation(customer_id, event[0], 3)
+          try:
+            logging.info('new_dsl = {}'.format(dsl_res))
+            logging.info('current_dsl = {}'.format(data['customer'][customer_id]['dsl']))
+            if sorted(dsl_res) != sorted(data['customer'][customer_id]['dsl']):
+              data['customer'][customer_id]['dsl'] = dsl_res
+          except:
+            data['customer'][customer_id]['dsl'] = dsl_res
+          logging.info('dsl = {}'.format(data['customer'][customer_id]['dsl']))        
         logging.info('=================================================================')
     
     elif event[1] == 1:
@@ -189,4 +205,9 @@ if __name__ == "__main__":
       level=logging.INFO
     )
   dataset = ['product.csv', 'customer.csv']
+
+  pr = cProfile.Profile()
+  pr.enable()
   main(dataset)
+  pr.disable()
+  pr.print_stats()
