@@ -7,26 +7,28 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces (a) Komputasi \textit {Dynamic Skyline} dari Pelanggan $c_{4}$ dan (b) \textit {Dynamic Skyline} dari Pelanggan $c_{10}$\relax }}{18}{figure.caption.8}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Komputasi \textit {Reverse Skyline} dari Produk $p_8$\relax }}{19}{figure.caption.9}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Struktur Data \textit {Dictionary} Produk\relax }}{30}{figure.caption.10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Struktur Data \textit {Dictionary} Pelanggan\relax }}{31}{figure.caption.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Ilustrasi Penyimpanan Hasil Operasi \textit {Split Rope} pada Struktur Data Pair \relax }}{35}{figure.caption.10}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Ilustrasi Operasi Concate. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Berat Masing-Masing \textit {Node} \relax }}{37}{figure.caption.11}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Ilustrasi Operasi Mutable Begin. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit {Node} \relax }}{40}{figure.caption.12}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ilustrasi Operasi Mutable End. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit {Node} \relax }}{42}{figure.caption.13}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ilustrasi Penyimpanan Hasil Operasi \textit {Split Rope} pada Struktur Data Pair \relax }}{49}{figure.caption.12}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ilustrasi Operasi Concate. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Berat Masing-Masing \textit {Node} \relax }}{51}{figure.caption.13}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ilustrasi Operasi Mutable Begin. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit {Node} \relax }}{54}{figure.caption.14}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ilustrasi Operasi Mutable End. Setiap \textit {Node} Berisi Sebuah Karakter dan Nilai Prioritas Masing-Masing \textit {Node} \relax }}{56}{figure.caption.15}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Contoh kasus uji permasalahan Alphabetic Rope\relax }}{44}{figure.caption.14}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Pembentukan \textit {Root Rope} \relax }}{44}{figure.caption.15}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pembentukan \textit {Rope} pada Tingkat ke-$2$ \relax }}{45}{figure.caption.16}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Pembentukan \textit {Rope} pada Tingkat ke-$3$ \relax }}{45}{figure.caption.17}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Struktur \textit {Rope} yang Terbentuk \relax }}{46}{figure.caption.18}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Konfigurasi \textit {Rope} Setelah Operasi $2$ $0$ $5$ \relax }}{47}{figure.caption.19}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil Luaran Program pada Contoh Kasus Uji Alphabetic Rope\relax }}{48}{figure.caption.20}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Hasil Uji Coba pada Situs Penilaian SPOJ\relax }}{49}{figure.caption.21}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Hasil Uji Coba pada Situs Penilaian SPOJ\relax }}{49}{figure.caption.22}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit {Query} Tetap dan Panjang \textit {String} Bertambah\relax }}{51}{figure.caption.23}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{51}{figure.caption.24}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Hasil Uji Coba pada Operasi 2 dengan Jumlah \textit {Query} Tetap dan Jumlah \textit {String} Bertambah\relax }}{52}{figure.caption.25}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Hasil Uji Coba pada Operasi 2 dengan Panjang \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{53}{figure.caption.26}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit {Query} Tetap dan Panjang \textit {String} Bertambah\relax }}{54}{figure.caption.27}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{54}{figure.caption.28}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Contoh kasus uji permasalahan Alphabetic Rope\relax }}{58}{figure.caption.16}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Pembentukan \textit {Root Rope} \relax }}{58}{figure.caption.17}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pembentukan \textit {Rope} pada Tingkat ke-$2$ \relax }}{59}{figure.caption.18}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pembentukan \textit {Rope} pada Tingkat ke-$3$ \relax }}{59}{figure.caption.19}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Struktur \textit {Rope} yang Terbentuk \relax }}{60}{figure.caption.20}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Konfigurasi \textit {Rope} Setelah Operasi $2$ $0$ $5$ \relax }}{61}{figure.caption.21}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil Luaran Program pada Contoh Kasus Uji Alphabetic Rope\relax }}{62}{figure.caption.22}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Hasil Uji Coba pada Situs Penilaian SPOJ\relax }}{63}{figure.caption.23}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Hasil Uji Coba pada Situs Penilaian SPOJ\relax }}{63}{figure.caption.24}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit {Query} Tetap dan Panjang \textit {String} Bertambah\relax }}{65}{figure.caption.25}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{65}{figure.caption.26}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Hasil Uji Coba pada Operasi 2 dengan Jumlah \textit {Query} Tetap dan Jumlah \textit {String} Bertambah\relax }}{66}{figure.caption.27}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Hasil Uji Coba pada Operasi 2 dengan Panjang \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{67}{figure.caption.28}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit {Query} Tetap dan Panjang \textit {String} Bertambah\relax }}{68}{figure.caption.29}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit {String} Tetap dan Jumlah \textit {Query} Bertambah\relax }}{68}{figure.caption.30}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

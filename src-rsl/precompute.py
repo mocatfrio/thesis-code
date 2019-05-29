@@ -165,6 +165,7 @@ def main(dataset):
         Customer in:
           1. Tambah ke pelanggan aktif
           2. Menghitung initial dsl
+          3. Update pandora box
         """
         logging.info('=================================================================')
         logging.info('[C-{} IN]'.format(event[2]))

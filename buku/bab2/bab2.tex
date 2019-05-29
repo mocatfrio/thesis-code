@@ -4,7 +4,7 @@
 % - How - Penggunaan dalam tugas akhir
 
 \chapter{TINJAUAN PUSTAKA} \label{chapter:tinjauan pustaka}
-\tab Bab ini menjelaskan dasar teori yang digunakan dalam analisis, perancangan, dan implementasi struktur data dan algoritme untuk menjawab permasalahan \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu yang diangkat dalam Tugas Akhir ini. 
+\tab Bab ini menjelaskan dasar teori yang digunakan dalam analisis, perancangan, dan implementasi struktur data dan algoritme untuk menjawab permasalahan \textit{k-Most Promising Products} ($k$-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu yang diangkat dalam Tugas Akhir ini. 
 
 \section{Daftar Notasi}
 \tab Tabel \ref{tab:daftar-notasi-1} menunjukkan daftar notasi yang digunakan untuk memudahkan beberapa penjelasan pada bab ini berikut dengan deskripsinya.
@@ -147,8 +147,12 @@ Ada suatu kasus ketika perhitungan \textit{skyline} didasarkan pada titik kueri.
 Diberikan \textit{dataset} produk $P$ dan \textit{dataset} pelanggan (preferensi pelanggan) $C$ yang setiap datanya direpresentasikan sebagai objek data $d$-dimensi dan hanya dapat menyimpan nilai numerik pada setiap dimensinya. Data produk dan pelanggan pada dimensi ke-$i$ dinotasikan sebagai $p^i$ dan $c^i$, $i \leq d$. Untuk menggambarkan objek data secara umum digunakan notasi $ob$.
 
 Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis berdasarkan objek data $ob_3$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematika, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika:
-\[\text{(a)} \tab |ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d]\]
-\[\text{(b)} \tab |ob_3^i - ob_1^i| < |ob_3^i - ob_2^i|, \exists i \in [1, ..., d]\]
+\begin{equation}\label{eq:syarat-dominansi-dinamis}
+\begin{split}
+\text{(a)} \tab |ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d] \\
+\text{(b)} \tab |ob_3^i - ob_1^i| < |ob_3^i - ob_2^i|, \exists i \in [1, ..., d]
+\end{split}
+\end{equation}
 
 Pada Tabel \ref{tab:dataset}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan preferensi pelanggan $c_1$, produk $p_1$ dikatakan mendominasi produk $p_2$, dinotasikan dengan $p_1 \prec_{c_1} p_2$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_2^1| = |5-15| = 10$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_2^2| = |2-14| = 12$.
 
@@ -200,7 +204,7 @@ Sebaliknya, jika berdasarkan preferensi pelanggan $c_6$, maka produk $p_2$-lah y
 Mengambil contoh lain, produk $p_1$ tidak mendominasi $p_2$ berdasarkan pelanggan $c_3$ karena ada salah satu syarat dominansi dinamis yang tidak terpenuhi, (a) $|c_3^1 - p_1^1| = |15-5| = 10 \nleq |c_3^1 - p_2^1| = |15-15| = 0$ dan (b) $|c_3^2 - p_1^2| = |10-9| = 1 < |c_3^2 - p_2^2| = |10-14| = 4$. Produk $p_1$ dan $p_2$ dikatakan saling mendominasi berdasarkan pelanggan $c_2$.
 
 \section{\textit{Dynamic Skyline}}
-\tab Kueri \textit{dynamic skyline} dalam komputasi k-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}, sehingga yang menjadi titik kueri adalah pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
+\tab Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}, sehingga yang menjadi titik kueri adalah pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
 
 \textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline}, yaitu mentransformasikan semua titik $p \in P$ ke ruang data baru dengan menganggap titik kueri $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan seperti yang ditunjukkan pada Gambar \ref{fig:dsl}. Fungsi pemetaan $f^i$ didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
 
@@ -223,7 +227,7 @@ Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, \textit{dynamic skyli
 \end{figure}
 
 \section{\textit{Reverse Skyline}}
-\tab Dalam komputasi k-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}, sehingga yang menjadi titik kueri adalah produk. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
+\tab Dalam komputasi $k$-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}, sehingga yang menjadi titik kueri adalah produk. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
 P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
 
 Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}. Pertama, menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. Kedua, menghitung \textit{midpoint} atau titik tengah antara produk kueri dan produk lainnya, misalnya $p_1$ (sebagai titik kueri) dan $p_2$, dihitung menggunakan rumus berikut: 
@@ -233,8 +237,12 @@ m_2^i = \frac{(p_1^i + p_2^i)}{2}
 Kemudian menentukan \textit{midpoint skyline} (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) pada setiap \textit{orthant}.
 
 Langkah ketiga, mengecek apakah pelanggan $c \in C$ didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_1$ atau tidak. Pelanggan $c$ dikatakan didominasi oleh \textit{midpoint skyline} $m$ jika dan hanya jika:
-\[\text{(a)} \tab |p_1^i - m^i| \leq |p_1^i - c^i|, \forall i \in [1, ..., d]\]
-\[\text{(b)} \tab |p_1^i - m^i| < |p_1^i - c^i|, \exists i \in [1, ..., d]\]
+\begin{equation}\label{eq:mid-skyline}
+\begin{split}
+\text{(a)} \tab |p_1^i - m^i| \leq |p_1^i - c^i|, \forall i \in [1, ..., d] \\
+\text{(b)} \tab |p_1^i - m^i| < |p_1^i - c^i|, \exists i \in [1, ..., d]
+\end{split}
+\end{equation}
 
 Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_1$, maka $c$ menjadi hasil dari \textit{reverse skyline} $p_1$, dinotasikan dengan $RSL(p_1)$. Untuk lebih jelasnya, komputasi \textit{reverse skyline} ditunjukkan pada Gambar \ref{fig:rsl}.
 
@@ -247,8 +255,8 @@ Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan prod
 
 Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tab:dataset}, \textit{reverse skyline} dari produk $p_8$ adalah pelanggan $c_4$, $c_5$, dan $c_{10}$, dinotasikan dengan $RSL(p_8) = \{c_4, c_5, c_{10}\}$ karena masing-masing pelanggan tersebut memiliki $p_8$ pada hasil \textit{dynamic skyline}-nya.
 
-\section{Kueri \textit{k-Most Promising Products} (k-MPP)}
-\tab Kueri \textit{k-Most Promising Products} (k-MPP) adalah sebuah strategi pemilihan produk yang dikenalkan oleh Islam dan Liu dalam penelitiannya \cite{kmpp}.
+\section{Kueri \textit{k-Most Promising Products} ($k$-MPP)}
+\tab Kueri \textit{k-Most Promising Products} ($k$-MPP) adalah sebuah strategi pemilihan produk yang dikenalkan oleh Islam dan Liu dalam penelitiannya \cite{kmpp}.
 
 \subsection{\textit{Uniform Product Adoption} (UPA)}
 \tab \textit{Uniform Product Adoption} (UPA) mengasumsikan bahwa semua produk $p \in P$ yang muncul pada hasil \textit{dynamic skyline} pelanggan $c \in C$ akan saling berkompetisi satu sama lain untuk menarik pelanggan $c$, sehingga produk-produk tersebut memiliki probabilitas yang sama untuk dibeli oleh pelanggan $c$.
@@ -290,9 +298,9 @@ E(C, P'|P) = \sum_{\forall p \in P'} E(C, p|P)
 \end{equation}
 
 \subsection{Strategi Pemilihan Produk}
-\tab Diberikan \textit{dataset} produk $P$, \textit{dataset} preferensi pelanggan $C$, dan bilangan bulat positif $k$ yang lebih kecil dari |P|. Kueri \textit{k-Most Promising Products} (k-MPP), dinotasikan dengan $k-MPP(P, C, k)$, akan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}, sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-subset}.
+\tab Diberikan \textit{dataset} produk $P$, \textit{dataset} preferensi pelanggan $C$, dan bilangan bulat positif $k$ yang lebih kecil dari |P|. Kueri \textit{k-Most Promising Products} ($k$-MPP), dinotasikan dengan $k-MPP(P, C, k)$, akan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}, sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-subset}.
 
-Jika merangkum semua penjelasan di atas, langkah-langkah yang harus dilakukan untuk memproses kueri k-MPP adalah: (1) menghitung \textit{reverse skyline} dari setiap produk $p \in P$, (2) menghitung \textit{dynamic Skyline} dari setiap pelanggan $c \in RSL(p)$, dan (3) memilih \textit{k} produk dari $P$ yang memiliki kontribusi pasar terbesar.
+Jika merangkum semua penjelasan di atas, langkah-langkah yang harus dilakukan untuk memproses kueri $k$-MPP adalah: (1) menghitung \textit{reverse skyline} dari setiap produk $p \in P$, (2) menghitung \textit{dynamic Skyline} dari setiap pelanggan $c \in RSL(p)$, dan (3) memilih \textit{k} produk dari $P$ yang memiliki kontribusi pasar terbesar.
 
 \section{Python}
 \tab Python adalah bahasa pemrograman tingkat tinggi, \textit{interpreted}, dan berorientasi objek yang didukung oleh struktur data \textit{built-in} tingkat tinggi dan semantik yang dinamis \cite{python}. Python dikembangkan oleh Guido van Rossum pada akhir 1980-an dan dikelola oleh \textit{Python Software Foundation}. Saat ini, Python sudah tersedia dalam dua versi, yakni 2.x dan 3.x.
@@ -307,6 +315,3 @@ Pada Tugas Akhir ini, bahasa pemrograman Python digunakan untuk mengimplementasi
 \tab Flask adalah kerangka kerja web berbahasa Python yang sederhana, ringan, dan mudah dikembangkan, sehingga Flask kerap disebut dengan \textit{microframework}. Flask dibangun dari dua pustaka utama, yaitu Jinja \textit{template engine} dan Werkzeug WSGI \textit{toolkit}, serta memiliki lisensi BSD. Saat ini, Flask dikembangkan dan dikelola oleh \textit{Pallets team} dan kontributor komunitas.
 
 Kerangka kerja Flask digunakan untuk mengimplementasikan aplikasi web dan layanan \textit{web server} yang digunakan pada Tugas Akhir ini karena ringan dan lebih mudah digunakan dibandingkan dengan \textit{framework} Python Django. Selain itu, Flask juga memiliki banyak dokumentasi dan tutorial yang dapat diikuti.
-
-\section{JavaScript}
-\section{...}
