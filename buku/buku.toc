@@ -54,40 +54,41 @@
 \contentsline {paragraph}{\numberline {3.3.2.1.6}Proses \textit {Product Deletion}}{44}{paragraph.3.3.2.1.6}
 \contentsline {paragraph}{\numberline {3.3.2.1.7}Proses \textit {Customer Insertion}}{45}{paragraph.3.3.2.1.7}
 \contentsline {paragraph}{\numberline {3.3.2.1.8}Proses \textit {Customer Deletion}}{45}{paragraph.3.3.2.1.8}
+\contentsline {paragraph}{\numberline {3.3.2.1.9}Pemrosesan Paralel}{46}{paragraph.3.3.2.1.9}
 \contentsline {subsubsection}{\numberline {3.3.2.2}\textit {Query Processing}}{46}{subsubsection.3.3.2.2}
-\contentsline {subsection}{\numberline {3.3.3}Algoritme \textit {Brute Force}}{46}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{46}{subsection.3.3.4}
-\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{49}{chapter.4}
-\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{49}{section.4.1}
-\contentsline {section}{\numberline {4.2}Rancangan Data}{49}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Data Masukan}{50}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Data Keluaran}{50}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritma}{50}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}\textit {Header} yang Diperlukan}{50}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Variabel Global}{51}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Implementasi Fungsi Main}{51}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Implementasi Struct Node}{53}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Implementasi Fungsi Newnode}{53}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Implementasi Fungsi Build}{54}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Implementasi Fungsi Getsize}{54}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Implementasi Fungsi Split}{55}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Implementasi Fungsi Random}{56}{subsection.4.3.9}
-\contentsline {subsection}{\numberline {4.3.10}Implementasi Fungsi Concate}{57}{subsection.4.3.10}
-\contentsline {subsection}{\numberline {4.3.11}Implementasi Fungsi Insert}{58}{subsection.4.3.11}
-\contentsline {subsection}{\numberline {4.3.12}Implementasi Fungsi Mutable Begin}{58}{subsection.4.3.12}
-\contentsline {subsection}{\numberline {4.3.13}Implementasi Fungsi Mutable End}{59}{subsection.4.3.13}
-\contentsline {subsection}{\numberline {4.3.14}Implementasi Fungsi Print}{61}{subsection.4.3.14}
-\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{63}{chapter.5}
-\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{63}{section.5.1}
-\contentsline {section}{\numberline {5.2}Uji Coba Kebenaran}{63}{section.5.2}
-\contentsline {section}{\numberline {5.3}Uji Coba Kinerja}{70}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Operasi 1 Menggabungkan \textit {Rope} pada Posisi Awal}{70}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Operasi 2 Menggabungkan \textit {Rope} pada Posisi Akhir}{72}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Operasi 3 Mencetak Karakter pada Indeks ke-Y}{73}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{75}{section.5.4}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN}{77}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{77}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{78}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{79}{appendix*.35}
+\contentsline {subsection}{\numberline {3.3.3}Algoritme \textit {Brute Force}}{47}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{47}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{51}{chapter.4}
+\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{51}{section.4.1}
+\contentsline {section}{\numberline {4.2}Rancangan Data}{51}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Data Masukan}{52}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Data Keluaran}{52}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritma}{52}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}\textit {Header} yang Diperlukan}{52}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Variabel Global}{53}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Implementasi Fungsi Main}{53}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Implementasi Struct Node}{55}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Implementasi Fungsi Newnode}{55}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Implementasi Fungsi Build}{56}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Implementasi Fungsi Getsize}{56}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Implementasi Fungsi Split}{57}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Implementasi Fungsi Random}{58}{subsection.4.3.9}
+\contentsline {subsection}{\numberline {4.3.10}Implementasi Fungsi Concate}{59}{subsection.4.3.10}
+\contentsline {subsection}{\numberline {4.3.11}Implementasi Fungsi Insert}{60}{subsection.4.3.11}
+\contentsline {subsection}{\numberline {4.3.12}Implementasi Fungsi Mutable Begin}{60}{subsection.4.3.12}
+\contentsline {subsection}{\numberline {4.3.13}Implementasi Fungsi Mutable End}{61}{subsection.4.3.13}
+\contentsline {subsection}{\numberline {4.3.14}Implementasi Fungsi Print}{63}{subsection.4.3.14}
+\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{65}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{65}{section.5.1}
+\contentsline {section}{\numberline {5.2}Uji Coba Kebenaran}{65}{section.5.2}
+\contentsline {section}{\numberline {5.3}Uji Coba Kinerja}{72}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Operasi 1 Menggabungkan \textit {Rope} pada Posisi Awal}{72}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Operasi 2 Menggabungkan \textit {Rope} pada Posisi Akhir}{74}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Operasi 3 Mencetak Karakter pada Indeks ke-Y}{75}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{77}{section.5.4}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN}{79}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{79}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{80}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{81}{appendix*.35}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{BIODATA PENULIS}{81}{appendix*.36}
+\contentsline {chapter}{BIODATA PENULIS}{83}{appendix*.36}

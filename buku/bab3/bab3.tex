@@ -23,8 +23,8 @@
 	$p_{out}$ & Produk keluar \\ \hline
 	$c_{in}$ & Pelanggan masuk \\ \hline
 	$c_{out}$ & Pelanggan keluar \\ \hline
-	$P_{active}$ & Himpunan produk yang sedang aktif (di dalam linimasa) \\ \hline	
-	$C_{active}$ & Himpunan pelanggan yang sedang aktif (di dalam linimasa) \\ \hline	
+	$P_{active}$ & Himpunan produk yang sedang aktif (di dalam lini masa) \\ \hline	
+	$C_{active}$ & Himpunan pelanggan yang sedang aktif (di dalam lini masa) \\ \hline	
 	$D_{active}$ & $P_{active} \cup C_{active}$ \\ \hline	
 	$d$ & Jumlah dimensi pada $D$\\ \hline
 	$i$ & Dimensi ke-1, ..., $d$\\ \hline
@@ -53,10 +53,7 @@
 \tab Analisis sistem dijelaskan dalam empat bagian, yakni analisis permasalahan, deskripsi umum sistem, fungsi sistem, dan analisis kebutuhan fungsional.
 
 \subsection{Analisis Permasalahan}
-\tab Permalasahan yang ingin diselesaikan pada Tugas Akhir ini adalah bagaimana menjawab kueri \textit{$k$-Most Promising Products} berbasis interval waktu ($k$-MPPTI). Interval waktu, dinotasikan dengan $[t_i:t_e ](t_i \leq t_e)$, digunakan untuk menentukan rentang waktu pencarian. Sehingga, kueri $k$-MPP yang sudah ada \cite{kmpp} dimodifikasi menjadi:
-\begin{equation}\label{eq:kmppts}
-k-MPPTI(P, C, k, [t_i:t_e])
-\end{equation} 
+\tab Permalasahan yang ingin diselesaikan pada Tugas Akhir ini adalah bagaimana menjawab kueri \textit{$k$-Most Promising Products} berbasis interval waktu ($k$-MPPTI). Interval waktu, dinotasikan dengan $[t_i:t_e ](t_i \leq t_e)$, digunakan untuk menentukan rentang waktu pencarian.
 
 Permasalahan ini tidak dapat langsung diselesaikan menggunakan metode dan algoritme yang sudah ada \cite{kmpp}. Sehingga, diperlukan pendekatan lain yang akan dijelaskan pada bagian perancangan sistem.
 
@@ -266,7 +263,7 @@ Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbas
 	\end{subtable} 
 \end{table}
 
-Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi dengan serial waktu $[t_i:t_e]$. Data multidimensi dengan serial waktu dimodelkan sebagai linimasa yang diilustrasikan pada Gambar \ref{fig:timeline}.
+Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi dengan serial waktu $[t_i:t_e]$. Data multidimensi dengan serial waktu dimodelkan sebagai lini masa yang diilustrasikan pada Gambar \ref{fig:timeline}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm]{bab3/img/timeline.png}
@@ -274,7 +271,7 @@ Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan
 	\label{fig:timeline}
 \end{figure}
 
-Pada komputasi $k$-MPP \cite{kmpp}, semua data dikomputasi sekaligus dalam satu waktu, namun hal ini tidak dapat diterapkan pada komputasi $k$-MPPTI. Pendekatan yang digunakan adalah membagi linimasa menjadi beberapa area komputasi. Sebagaimana yang ditunjukkan oleh Gambar \ref{fig:timeline-color}, $CA$ adalah area komputasi saat ini dan semua data di sebelah kiri $CA$ disebut sebagai data aktif, dinotasikan dengan $D_{active}$. Area $CA$ nantinya akan dikomputasi menggunakan algoritme yang mengadopsi komputasi $k$-MPP \cite{kmpp} dengan berbagai penyesuaian.
+Pada komputasi $k$-MPP \cite{kmpp}, semua data dikomputasi sekaligus dalam satu waktu, namun hal ini tidak dapat diterapkan pada komputasi $k$-MPPTI. Pendekatan yang digunakan adalah membagi lini masa menjadi beberapa area komputasi. Sebagaimana yang ditunjukkan oleh Gambar \ref{fig:timeline-color}, $CA$ adalah area komputasi saat ini dan semua data di sebelah kiri $CA$ disebut sebagai data aktif, dinotasikan dengan $D_{active}$. Area $CA$ nantinya akan dikomputasi menggunakan algoritme yang mengadopsi komputasi $k$-MPP \cite{kmpp} dengan berbagai penyesuaian.
  
 \begin{figure}[H]
 	\centering
@@ -451,43 +448,53 @@ Hasil perhitungan probabilitas produk $p$ pada Tabel \ref{tab:prob-res} kemudian
 
 \myparagraph{Proses \textit{Product Insertion}}
 
-Proses \textit{Product Insertion} adalah proses yang dijalankan ketika ada produk yang masuk, dinotasikan dengan $p_{in}$, ke dalam himpunan data $D_{active}$, yaitu himpunan data yang aktif pada linimasa.
+Proses \textit{Product Insertion} adalah proses yang dijalankan ketika ada produk yang masuk, dinotasikan dengan $p_{in}$, ke dalam data aktif $D_{active}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika produk baru dapat mendominasi produk lama, sehingga hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ dan perhitungan probabilitasnya ikut berubah.
 
-Proses ini sangat penting dilakukan karena ada kemungkinan jika produk baru dapat mendominasi produk lama, sehingga hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ dan perhitungan probabilitasnya ikut berubah.
-
-Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah produk $p_{in}$ ke dalam daftar produk aktif, dinotasikan dengan $P_{active}$. Kemudian, (2) menghitung $RSL(p_{in})$, (3) menghitung $DSL(c), \forall c \in RSL(p_{in})$ dan diakhiri dengan (4) memperbarui \textit{Pandora Box}. Mekanisme pembaruan \textit{Pandora Box} adalah dengan cara mengakumulasikan skor hasil probabilitas setiap $c \in RSL(p_{in})$ di dalam \textit{Pandora Box} dengan indeks ID produk masuk dan \textit{timestamp event}, dinotasikan dengan $PBox[p_{in}][ts]$.
-
+Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah produk $p_{in}$ ke dalam daftar produk aktif $P_{active}$. Kemudian, (2) menghitung $RSL(p_{in})$, (3) menghitung $DSL(c), \forall c \in RSL(p_{in})$ dan diakhiri dengan (4) memperbarui \textit{Pandora Box}. Mekanisme pembaruan \textit{Pandora Box} adalah dengan cara mengakumulasikan skor hasil probabilitas setiap $c \in RSL(p_{in})$ di dalam \textit{Pandora Box} dengan indeks ID produk masuk dan \textit{timestamp event}, dinotasikan dengan $PBox[p_{in}][ts]$.
 
 \myparagraph{Proses \textit{Product Deletion}}
 
-Proses \textit{Product Deletion} adalah proses yang dijalankan ketika ada produk yang keluar, dinotasikan dengan $p_{out}$, ke dalam himpunan data $D$. Proses ini sangat penting dilakukan karena ada kemungkinan jika sebuah produk yang pernah menjadi hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ keluar, maka produk lain yang pernah didominasi akan menjadi hasil $DSL(c)$ yang baru.
+Proses \textit{Product Deletion} adalah proses yang dijalankan ketika ada produk yang keluar, dinotasikan dengan $p_{out}$,  ke dalam data aktif $D_{active}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika sebuah produk yang pernah menjadi hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ keluar, maka produk lain yang pernah didominasi akan menjadi hasil $DSL(c)$ yang baru.
 
-Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last_ts$ dan $last_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghitung $RSL(p_{out})$ dan (3) menghitung $DSL(c), \forall c \in RSL(p_{out})$. Terakhir adalah menghapus produk $p$ dari daftar produk aktif $P_{active}$.
+Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last\_ts$ dan $last\_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghitung $RSL(p_{out})$ dan (3) menghitung $DSL(c), \forall c \in RSL(p_{out})$. Terakhir adalah menghapus produk $p$ dari daftar produk aktif $P_{active}$.
 
 \myparagraph{Proses \textit{Customer Insertion}}
 
-Proses \textit{Customer Insertion} adalah proses yang dijalankan ketika ada pelanggan yang masuk ke dalam, dinotasikan dengan $p_{out}$, ke dalam himpunan data $D$\textit{timeline}. 
+Proses \textit{Customer Insertion} adalah proses yang dijalankan ketika ada pelanggan yang masuk, dinotasikan dengan $c_{in}$, ke dalam data aktif $D_{active}$. 
 
-Algoritme pemrosesan yang dilakukan adalah:
-\begin{enumerate}
-	\item Menambah pelanggan $c$ ke dalam daftar pelanggan aktif, dinotasikan dengan $C_a$
-	\item Menghitung \textit{Initial} $DSL(c)$ 
-	\item Memperbarui \textit{Pandora Box}
-\end{enumerate}
+Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah pelanggan $c_{in}$ ke dalam daftar pelanggan aktif $C_{active}$. Kemudian (2) menghitung \textit{Initial} $DSL(c_{in})$ untuk mendapatkan hasil \textit{dynamic skyline} awal dan diakhiri dengan (3) memperbarui \textit{Pandora Box}.
 
 \myparagraph{Proses \textit{Customer Deletion}}
 
-Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada pelanggan yang keluar dari \textit{timeline}. 
+Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada pelanggan yang keluar, dinotasikan dengan $c_{out}$, dari data aktif $D_{active}$. Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last\_ts$ dan $last\_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghapus pelanggan $c$ dari daftar pelanggan aktif $C_{active}$
 
-Algoritme pemrosesan yang dilakukan adalah:
-\begin{enumerate}
-	\item Memperbarui \textit{Pandora Box}
-	\item Menghapus pelanggan $c$ dari daftar pelanggan aktif $C_a$
-\end{enumerate}
+\myparagraph{Pemrosesan Paralel}
+
+Untuk meningkatkan efisiensi waktu komputasi, penelitian ini memanfaatkan pemrosesan paralel, yaitu pemrosesan yang dilakukan secara bersamaan dalam satu waktu. Pemrosesan paralel hanya dapat dilakukan jika suatu proses tidak membutuhkan masukan dari keluaran proses sebelumnya, misalnya komputasi $DSL(c), \forall c \in RSL(p)$ yang diilustrasikan pada Gambar ...
 
 \subsubsection{\textit{Query Processing}}
+\tab \textit{Query processing} adalah algoritme pencarian produk sejumlah $k$ yang paling menjanjikan, yaitu $k$-produk yang memiliki kontribusi pasar terbesar. Sesuai namanya, algoritme ini memproses kueri pencarian yang dimasukkan oleh pengguna.
+
+\begin{equation}\label{eq:kmppti}
+k-MPPTI(PBox, k, [t_i:t_e])
+\end{equation} 
+
+Kueri $k$-MPPTI, dimodelkan sebagai Persamaan \ref{eq:kmppti}, membutuhkan tiga jenis masukan saja, yaitu \textit{Pandora Box} yang merupakan hasil keluaran dari proses \textit{data precomputing}, bilangan bulat positif $k$ yang lebih kecil dari $|P|$ sebagai jumlah produk yang dicari, dan interval waktu pencarian yang terdiri dari waktu awal dan waktu akhir $[t_i:t_e]$. 
+
+Lain halnya jika tidak melalui proses \textit{data precomputing}, maka kueri $k$-MPPTI dimodelkan menjadi Persamaan \ref{eq:kmppti-asli} yang selalu membutuhkan \textit{dataset} produk $P$ dan preferensi pelanggan $C$ setiap kali diproses.  
+
+\begin{equation}\label{eq:kmppti-asli}
+k-MPPTI(P, C, k, [t_i:t_e])
+\end{equation} 
+
+Algoritme ini mengadopsi strategi pemilihan produk $k$-MPP, yaitu memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}. Perbedaannya adalah adanya pembatasan berupa interval waktu pencarian. 
+
+Sebagai contoh, seorang pengguna melakukan kueri $k-MPPTI(PBox, 3, [4:14])$ yang diilustrasikan pada Gambar .... Pada interval waktu pencarian $[4:14]$, skor kontribusi pasar setiap produk diakumulasi, kemudian diurutkan dari yang terbesar. Produk sejumlah $3$ teratas akan dikembalikan sebagai hasil dari kueri pencarian. 
 
 \subsection{Algoritme \textit{Brute Force}}
+\tab Algoritme \textit{brute force} adalah algoritme yang mengimplementasikan metode \textit{brute force}, yaitu melakukan percobaan terhadap semua kemungkinan dan hanya mengandalkan kekuatan pemrosesan komputer. Algoritme ini digunakan sebagai pembanding dari algoritme $k$-MPPTI.
+
+Secara garis besar, struktur data dan pendekatan yang digunakan hampir sama dengan $k$-MPPTI, namun tidak ada tahap komputasi $RSL$, sehingga komputasi $DSL$ dilakukan pada semua $c \in C$ dengah cara membandingkan semua produk $p \in P$ satu persatu. Selain itu, komputasi tidak dilakukan dengan secara paralel. 
 
 \subsection{Arsitektur Aplikasi} 
 \tab Sistem akan diimplementasikan menggunakan arsitektur \textit{client}-\textit{server} seperti yang diilustrasikan pada Gambar \ref{fig:arsitektur}. 
