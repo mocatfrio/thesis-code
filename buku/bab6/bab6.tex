@@ -1,23 +1,26 @@
-\chapter{KESIMPULAN}
+\chapter{KESIMPULAN DAN SARAN}\label{chap:kesimpulan-saran}
 
-Pada bab ini dijelaskan mengenai kesimpulan dari hasil uji coba yang telah dilakukan.
+\tab Pada bab ini dijelaskan mengenai kesimpulan dan saran dari hasil uji coba yang telah dilakukan.
 
 \section{Kesimpulan}
 
-Dari hasil uji coba yang telah dilakukan terhadap perancangan dan implementasi algoritma untuk menyelesaikan \problem{} dapat diambil kesimpulan sebagai berikut:
+\tab Dari proses desain hingga uji coba, dapat diambil beberapa hasil sebagai berikut:
 
 \begin{enumerate}
-	\item Implementasi algoritma dengan menggunakan struktur data Rope dapat menyelesaikan \problem{} dengan benar. 
-	\item Kompleksitas waktu sebesar $O(\log N)$ dapat menyelesaikan \problem{}.
-	\item Waktu yang dibutuhkan program untuk menyelesaikan \problem{} minimum $0.14$ detik, maksimum $0.16$ detik dan rata-rata $0.152$ detik. Memori yang dibutuhkan sebesar $5.0$ MB.
-	\item Struktur data Rope yang dibuat sangat baik diaplikasikan untuk melakukan komputasi \textit{string} yang panjang.
+	\item Tugas akhir ini mengusulkan struktur data grid indeks dan metode $ CSd_\varepsilon $ untuk pengolahan \textit{skyline query} pada \textit{uncertain data streaming} oleh titik bergerak dan objek tidak bergerak. Struktur data grid indeks memecah struktur data graf tradisional menjadi sel-sel yang berisi \textit{node}, \textit{edge}, dan objek. Penyimpanan objek dalam bentuk \textit{SW-Tree} pada setiap \textit{node} membuat proses komputasi lebih cepat.
+	
+	\item Biaya komputasi pada metode $ CSd_\varepsilon $ jauh lebih baik dibandingkan metode \textit{naive} dari sisi waktu komputasi dan penggunaan memori. Komputasi metode $ CSd_\varepsilon $ lebih cepat 600 kali dibandingkan metode \textit{naive}. Dari sisi penggunaan memori, metode $ CSd_\varepsilon $ lebih hemat 1500 kali dibandingkan metode \textit{naive}.
 \end{enumerate}
 
 \section{Saran}
 
-Pada Tugas Akhir kali ini tentunya terdapat kekurangan serta nilai-nilai yang dapat penulis ambil. Berikut adalah saran-saran yang dapat diambil melalui Tugas Akhir ini:
+\tab Berikut beberapa saran terkait pengembangan lebih lanjut:
 
 \begin{enumerate}
-	\item Struktur data Rope adalah pendekatan yang sesuai untuk menyelesaikan permasalahan \textit{string} yang sangat panjang.
-	\item Struktur data Rope dapat diimplementasikan pada bahasa pemrograman lain.
+	\item Pendefinisian jarak $ d_\varepsilon $ dapat dilakukan secara dinamis. Apabila pencarian objek dengan jarak $ d_\varepsilon $ tidak menemukan hasil yang diminta, jarak $ d_\varepsilon $ dapat diperbesar secara dinamis hingga mendapatkan hasil yang sesuai.
+	\item Pengembangan algoitma untuk memproses objek \textit{uncertain} yang dapat bergerak secara dinamis.
+	\item Pada algoritme ini proses pembaruan \textit{instance} dari \textit{uncertain} objek dilakukan dengan menghapus dan menambahkan objek baru. Hal ini tentunya tidak efisien. Diperlukan algoritme pembaruan objek agar lebih efisien dalam hal waktu komputasi dan penggunaan memori.
 \end{enumerate}
+
+
+

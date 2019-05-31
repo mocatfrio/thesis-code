@@ -3,7 +3,7 @@
 % - Why - alasan digunakan
 % - How - Penggunaan dalam tugas akhir
 
-\chapter{TINJAUAN PUSTAKA} \label{chapter:tinjauan pustaka}
+\chapter{TINJAUAN PUSTAKA} \label{chap:tinjauan-pustaka}
 \tab Bab ini menjelaskan dasar teori yang digunakan dalam analisis, perancangan, dan implementasi struktur data dan algoritme untuk menjawab permasalahan \textit{k-Most Promising Products} ($k$-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu yang diangkat dalam Tugas Akhir ini. 
 
 \section{Daftar Notasi}
@@ -128,7 +128,7 @@ Misalnya, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \tex
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=6cm]{bab2/img/skyline.png}
+	\includegraphics[width=6cm]{assets/img/bab2/skyline.png}
 	\caption{Titik Skyline dari Data Produk pada Tabel \ref{tab:dataset}}
 	\label{fig:skyline}
 \end{figure}
@@ -213,12 +213,12 @@ Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, \textit{dynamic skyli
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[height=5cm]{bab2/img/dsl-1.png}
+		\includegraphics[height=5cm]{assets/img/bab2/dsl-1.png}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[height=5cm]{bab2/img/dsl-2.png}
+		\includegraphics[height=5cm]{assets/img/bab2/dsl-2.png}
 		\caption{}
 	\end{subfigure}
 	\caption{(a) Komputasi \textit{Dynamic Skyline} dari Pelanggan $c_{4}$ dan (b) \textit{Dynamic Skyline} dari Pelanggan $c_{10}$}
@@ -247,7 +247,7 @@ Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan prod
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=6cm]{bab2/img/rsl.png}
+	\includegraphics[height=6cm]{assets/img/bab2/rsl.png}
 	\caption{Komputasi \textit{Reverse Skyline} dari Produk $p_8$}
 	\label{fig:rsl}
 \end{figure}
@@ -297,7 +297,10 @@ E(C, P'|P) = \sum_{\forall p \in P'} E(C, p|P)
 \end{equation}
 
 \subsection{Strategi Pemilihan Produk}
-\tab Diberikan \textit{dataset} produk $P$, \textit{dataset} preferensi pelanggan $C$, dan bilangan bulat positif $k$ yang lebih kecil dari |P|. Kueri \textit{k-Most Promising Products} ($k$-MPP), dinotasikan dengan $k-MPP(P, C, k)$, akan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}, sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-subset}.
+\tab Diberikan \textit{dataset} produk $P$, \textit{dataset} preferensi pelanggan $C$, dan bilangan bulat positif $k$ yang lebih kecil dari |P|. Kueri \textit{k-Most Promising Products} ($k$-MPP), dinotasikan oleh Persamaan \ref{eq:kmpp}, akan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}.
+\begin{equation}\label{eq:kmpp}
+k-MPP(P, C, k)
+\end{equation}
 
 Jika merangkum semua penjelasan di atas, langkah-langkah yang harus dilakukan untuk memproses kueri $k$-MPP adalah: (1) menghitung \textit{reverse skyline} dari setiap produk $p \in P$, (2) menghitung \textit{dynamic Skyline} dari setiap pelanggan $c \in RSL(p)$, dan (3) memilih \textit{k} produk dari $P$ yang memiliki kontribusi pasar terbesar.
 

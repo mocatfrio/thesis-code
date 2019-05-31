@@ -16,12 +16,14 @@
 \contentsline {table}{\numberline {3.5}{\ignorespaces Contoh \textit {Pandora Box} dari \textit {Dataset} \ref {tab:dataset-2}\relax }}{34}{table.3.5}
 \contentsline {table}{\numberline {3.6}{\ignorespaces Contoh \textit {Dataset} (a) Produk $P$ dan (b) Preferensi Pelanggan $C$ \relax }}{37}{table.3.6}
 \contentsline {table}{\numberline {3.7}{\ignorespaces \textit {Event Queue} \relax }}{38}{table.3.7}
-\contentsline {table}{\numberline {3.8}{\ignorespaces Hasil Perhitungan \textit {Dynamic Skyline}\relax }}{41}{table.3.8}
-\contentsline {table}{\numberline {3.9}{\ignorespaces Hasil Perhitungan \textit {Reverse Skyline}\relax }}{42}{table.3.9}
-\contentsline {table}{\numberline {3.10}{\ignorespaces Hasil Perhitungan Probabilitas\relax }}{43}{table.3.10}
-\contentsline {table}{\numberline {3.11}{\ignorespaces Hasil Perhitungan Kontribusi Pasar\relax }}{44}{table.3.11}
+\contentsline {table}{\numberline {3.8}{\ignorespaces Hasil Perhitungan \textit {Dynamic Skyline}\relax }}{44}{table.3.8}
+\contentsline {table}{\numberline {3.9}{\ignorespaces Hasil Perhitungan Probabilitas\relax }}{44}{table.3.9}
+\contentsline {table}{\numberline {3.10}{\ignorespaces Hasil Perhitungan Kontribusi Pasar\relax }}{45}{table.3.10}
+\contentsline {table}{\numberline {3.11}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu\relax }}{48}{table.3.11}
+\contentsline {table}{\numberline {3.12}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu (2)\relax }}{49}{table.3.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Kecepatan Maksimal, Minimal dan Rata-Rata dari Hasil Uji Coba Sebanyak 15 Kali pada Situs Pengujian SPOJ \relax }}{72}{table.5.1}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Atribut dari objek \relax }}{56}{table.5.1}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

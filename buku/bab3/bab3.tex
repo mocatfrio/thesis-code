@@ -1,4 +1,4 @@
-\chapter{ANALISIS DAN PERANCANGAN SISTEM} \label{chapter:analisis dan perancangan sistem}
+\chapter{ANALISIS DAN PERANCANGAN SISTEM} \label{chap:analisis-perancangan-sistem}
 \tab Pada bab ini akan dijelaskan mengenai analisis dan perancangan sistem perangkat lunak yang akan dibangun, meliputi struktur data, algoritme, dan arsitektur aplikasi. 
 
 \section{Daftar Notasi}
@@ -103,7 +103,7 @@ Penjelasan rinci dari masing-masing kebutuhan fungsional pada tabel \ref{tab:keb
 	\item Melihat informasi dan pratinjau data \\
 	Pengguna dapat melihat informasi dan pratinjau dari data yang dimasukkan berupa tabel sebanyak dua puluh baris. Informasi yang ditampilkan antara lain jumlah baris, jumlah kolom, dan nama kolom.
 	\item Melihat visualisasi data \\
-	Pengguna juga dapat melihat visualisasi dari data yang di-\textit{input}-kan berupa \textit{timeline} sederhana.
+	Pengguna juga dapat melihat visualisasi dari data yang dimasukkan berupa lini masa sederhana.
 	\item Memilih algoritme yang digunakan untuk \textit{data precomputing} \\
 	Pengguna dapat memilih algoritme yang akan digunakan untuk \textit{data precomputing}, yaitu algoritme $k$-MPPTI dan \textit{Brute Force}.
 	\item Memasukkan kueri pencarian \\
@@ -125,14 +125,14 @@ Penjelasan rinci dari masing-masing kebutuhan fungsional pada tabel \ref{tab:keb
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7cm]{bab3/img/sd1.png}
+	\includegraphics[width=7cm]{assets/img/bab3/sd1.png}
 	\caption{Struktur Data \textit{Dictionary} Produk}
 	\label{fig:sd1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{bab3/img/sd2.png}
+	\includegraphics[width=9cm]{assets/img/bab3/sd2.png}
 	\caption{Struktur Data \textit{Dictionary} Pelanggan}
 	\label{fig:sd2}
 \end{figure}
@@ -214,7 +214,7 @@ Produk dan pelanggan disebut dengan pemilik \textit{event}, sedangkan masuk dan 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{bab3/img/flowchart.png}
+	\includegraphics[width=8cm]{assets/img/bab3/flowchart.png}
 	\caption{Diagram Alur Algoritme k-MPPTI}
 	\label{fig:diagram-alur1}
 \end{figure}
@@ -266,7 +266,7 @@ Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbas
 Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi dengan serial waktu $[t_i:t_e]$. Data multidimensi dengan serial waktu dimodelkan sebagai lini masa yang diilustrasikan pada Gambar \ref{fig:timeline}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{bab3/img/timeline.png}
+	\includegraphics[width=10cm]{assets/img/bab3/timeline.png}
 	\caption{Ilustrasi Data Multidimensi dengan Serial Waktu}
 	\label{fig:timeline}
 \end{figure}
@@ -275,7 +275,7 @@ Pada komputasi $k$-MPP \cite{kmpp}, semua data dikomputasi sekaligus dalam satu 
  
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{bab3/img/timeline-color.png}
+	\includegraphics[width=10cm]{assets/img/bab3/timeline-color.png}
 	\caption{Ilustrasi Pemrosesan Data}
 	\label{fig:timeline-color}
 \end{figure}
@@ -325,127 +325,6 @@ Ada empat jenis algoritme pemrosesan berdasarkan jenis \textit{event}-nya, yaitu
 
 Terlepas dari empat jenis proses di atas, ada dua jenis komputasi \textit{skyline} yang digunakan dalam \textit{data precomputing}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}. Dua komputasi tersebut digunakan sebagai metode perhitungan probabilitas dan kontribusi pasar \cite{kmpp}. 
 
-\myparagraph{Komputasi \textit{Dynamic Skyline}}
-
-Sebagaimana yang telah dijelaskan pada Bab Tinjauan Pustaka, komputasi \textit{dynamic skyline} digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$. 
-
-Proses komputasi \textit{dynamic skyline} diawali dengan perhitungan selisih absolut dari nilai masing-masing dimensi antara pelanggan dan produk, dinotasikan dengan:
-\begin{equation}\label{eq:diff}
-diff^i = |c_1^i - p^i|
-\end{equation}
-
-Selanjutnya, mengecek dominansi dinamis antar produk dengan membandingkan selisih absolut-nya. Misalnya, ada dua produk yang akan dibandingkan, dinotasikan dengan $p_s$ sebagai subjek yang dibandingkan dan $p_o$ sebagai objek pembanding. Berdasarkan syarat dominansi dinamis (Persamaan \ref{eq:syarat-dominansi-dinamis}), $p_s$ dikatakan mendominasi $p_o$ jika dan hanya jika:
-\begin{equation}\label{eq:komputasi-dsl}
-\begin{split}
-\text{(a)} \tab diff_s^i \leq diff_o^i, \forall i \in [1, ..., d] \\
-\text{(b)} \tab diff_s^i < diff_o^i, \exists i \in [1, ..., d]
-\end{split}
-\end{equation}
-
-Pengecekan dominansi dinamis ini dilakukan secara iteratif sampai dipastikan suatu $p_1$ tidak didominasi oleh $p_2$ lain sama sekali. Jika $p_1$ pernah didominasi, maka $p_1$ tidak dapat menjadi hasil \textit{dynamic skyline}.
-
-Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2}, dengan mengabaikan \textit{timestamp}-nya akan didapatkan perhitungan hasil \textit{dynamic skyline} seperti pada Tabel \ref{tab:dsl-res}.
-
-\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{|p{2cm}|p{3cm}|}
-		\hline
-		$DSL(c_1)$ & $\{2, 4, 5\}$ \\ \hline
-		$DSL(c_2)$ & $\{2, 5\}$ \\ \hline
-		$DSL(c_3)$ & $\{2, 3\}$ \\ \hline
-		$DSL(c_4)$ & $\{2, 3, 4\}$\\ \hline
-		$DSL(c_5)$ & $\{4, 5\}$ \\ \hline
-	\end{tabular} 
-	\caption{Hasil Perhitungan \textit{Dynamic Skyline}}
-	\label{tab:dsl-res}
-\end{table}
-
-\myparagraph{Komputasi \textit{Reverse Skyline}}
-
-Komputasi \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
-P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
-
-Sebagaimana yang telah dijelaskan pada Tinjauan Pustaka, komputasi \textit{reverse skyline} diawali dengan menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Dalam geometri, \textit{orthant} adalah analog dalam ruang data \textit{d}-dimensi atau biasa dikenal sebagai kuadran dalam bidang dua dimensi. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. 
-
-\textit{Orthant} ditandai menggunakan bilangan biner. Sebagai contoh, terdapat empat \textit{orthant} pada bidang dua dimensi, yaitu $O_{00}$, $O_{01}$, $O_{10}$, dan $O_{11}$, dan delapan \textit{orthant} pada bidang tiga dimensi, yaitu $O_{000}$, $O_{001}$, $O_{010}$, $O_{011}$, $O_{100}$, $O_{101}$, $O_{110}$ dan $O_{111}$. Penggunaan bilangan biner bertujuan untuk menandai batas wilayah sebuah \textit{orthant}. Misalnya, \textit{orthant} $O_{010}$ dari produk $p_1$ memiliki wilayah dengan batas-batas sebagai berikut: sumbu $x [0:pos_x(p_1)]$, sumbu $y [pos_y(p_1):max_y]$, dan sumbu $z [0:pos_z(p_1)]$.
-
-Langkah selanjutnya adalah menghitung \textit{midpoint} atau titik tengah antara produk kueri dan produk lainnya, misalnya $p_1$ (sebagai titik kueri) dan $p_2 \in P$, menggunakan rumus berikut: 
-\begin{equation} \label{eq:midpoint2}
-m_2^i = \frac{(p_1^i + p_2^i)}{2}
-\end{equation}
-Kemudian, menentukan \textit{midpoint skyline} atau \textit{mid-skyline} \cite{mid-skyline} pada setiap \textit{orthant}.
-
-Langkah terakhir adalah mengecek setiap pelanggan $c \in C$ apakah didominasi oleh hasil \textit{mid-skyline} pada masing-masing \textit{orthant} atau tidak (Persamaan \ref{eq:mid-skyline}). Jika $c$ didominasi, maka $c$ tidak dapat menjadi hasil \textit{reverse skyline}.
-
-Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2}, dengan mengabaikan \textit{timestamp}-nya akan didapatkan perhitungan hasil \textit{reverse skyline} seperti pada Tabel \ref{tab:rsl-res}.
-
-\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{|p{2cm}|p{3cm}|}
-		\hline
-		$RSL(p_1)$ & $\{\}$ \\ \hline
-		$RSL(p_2)$ & $\{1, 2, 3, 4\}$ \\ \hline
-		$RSL(p_3)$ & $\{3, 4\}$ \\ \hline
-		$RSL(p_4)$ & $\{1, 4, 5\}$\\ \hline
-		$RSL(p_5)$ & $\{1, 2, 5\}$ \\ \hline
-	\end{tabular} 
-	\caption{Hasil Perhitungan \textit{Reverse Skyline}}
-	\label{tab:rsl-res}
-\end{table}
-
-\myparagraph{Perhitungan Probabilitas}
-
-Setelah mendapatkan hasil \textit{dynamic skyline} dan \textit{reverse skyline} pada Tabel \ref{tab:dsl-res} dan \ref{tab:rsl-res}, selanjutnya adalah menghitung probabilitas masing-masing produk $p$ dipilih oleh pelanggan $c$, dinotasikan dengan $Pr(c, p|P), \forall c \in C$, yang telah dijelaskan pada Persamaan \ref{eq:probability}. 
-
-Probabilitas $p$ dipilih oleh $c$ yang tidak menjadi hasil $RSL(p)$ pasti $0$ karena $p$ tersebut tidak menjadi hasil $DSL(c)$, sehingga untuk mempersingkat komputasi, perhitungan probabilitas dinotasikan menjadi:
-\begin{equation}\label{eq:prob-singkat}
-Pr(c, p|P), \forall c \in RSL(p)
-\end{equation}
-
-Sehingga, akan didapatkan hasil perhitungan probabilitas sebagai berikut.
-
-\begin{small}
-	\begin{longtable}{|p{1.5cm}|p{3cm}|p{2.5cm}|}
-		\caption{Hasil Perhitungan Probabilitas}
-		\label{tab:prob-res}
-		\hline
-		\multirow{1}{*}{$p_1$} & - & $0$ \\ \hline
-		\multirow{4}{*}{$p_2$} & $Pr(c_1, p_2|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr(c_2, p_2|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_3, p_2|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_4, p_2|P)$ & $\frac{1}{3} = 0.33$  \\ \hline
-		\multirow{2}{*}{$p_3$} & $Pr(c_3, p_3|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_4, p_3|P)$ & $\frac{1}{3} = 0.33$  \\ \hline
-		\multirow{3}{*}{$p_4$} & $Pr(c_1, p_4|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr(c_4, p_4|P)$ & $\frac{1}{3} = 0.33$  \\ \cline{2-3}
-		& $Pr(c_5, p_4|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
-		\multirow{3}{*}{$p_5$} & $Pr(c_1, p_5|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr(c_2, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_5, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
-	\end{longtable}
-\end{small}
-
-\myparagraph{Perhitungan Kontribusi Pasar (\textit{Market Contribution})}
-
-Hasil perhitungan probabilitas produk $p$ pada Tabel \ref{tab:prob-res} kemudian diakumulasikan menjadi skor kontribusi pasar sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-rsl}. Sehingga akan didapatkan hasil pada Tabel \ref{tab:mc-res}.
-
-\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{|p{3cm}|p{2cm}|}
-		\hline
-		$E(C, p_1|P)$ & $0$ \\ \hline
-		$E(C, p_2|P)$ & $1.66$ \\ \hline
-		$E(C, p_3|P)$ & $0.83$ \\ \hline
-		$E(C, p_4|P)$ & $1.16$ \\ \hline
-		$E(C, p_5|P)$ & $1.33$ \\ \hline
-	\end{tabular} 
-	\caption{Hasil Perhitungan Kontribusi Pasar}
-	\label{tab:mc-res}
-\end{table}
-
 \myparagraph{Proses \textit{Product Insertion}}
 
 Proses \textit{Product Insertion} adalah proses yang dijalankan ketika ada produk yang masuk, dinotasikan dengan $p_{in}$, ke dalam data aktif $D_{active}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika produk baru dapat mendominasi produk lama, sehingga hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ dan perhitungan probabilitasnya ikut berubah.
@@ -468,28 +347,193 @@ Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah pelanggan $
 
 Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada pelanggan yang keluar, dinotasikan dengan $c_{out}$, dari data aktif $D_{active}$. Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last\_ts$ dan $last\_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghapus pelanggan $c$ dari daftar pelanggan aktif $C_{active}$
 
+\myparagraph{Komputasi \textit{Reverse Skyline}}
+
+Komputasi \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
+P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
+
+Sebagaimana yang telah dijelaskan pada Bab \ref{chap:tinjauan-pustaka}, komputasi \textit{reverse skyline} diawali dengan menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Dalam geometri, \textit{orthant} adalah analog dalam ruang data \textit{d}-dimensi atau biasa dikenal sebagai kuadran dalam bidang dua dimensi. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. 
+
+\textit{Orthant} ditandai menggunakan bilangan biner. Sebagai contoh, terdapat empat \textit{orthant} pada bidang dua dimensi, yaitu $O_{00}$, $O_{01}$, $O_{10}$, dan $O_{11}$, dan delapan \textit{orthant} pada bidang tiga dimensi, yaitu $O_{000}$, $O_{001}$, $O_{010}$, $O_{011}$, $O_{100}$, $O_{101}$, $O_{110}$ dan $O_{111}$. Penggunaan bilangan biner bertujuan untuk menandai batas wilayah sebuah \textit{orthant}. Misalnya, \textit{orthant} $O_{010}$ dari produk $p_1$ memiliki wilayah dengan batas-batas sebagai berikut: sumbu $x [0:pos_x(p_1)]$, sumbu $y [pos_y(p_1):max_y]$, dan sumbu $z [0:pos_z(p_1)]$.
+
+Langkah selanjutnya adalah menghitung \textit{midpoint} atau titik tengah antara produk kueri dan produk lainnya, misalnya $p_1$ (sebagai titik kueri) dan $p_2 \in P$, menggunakan rumus berikut: 
+\begin{equation} \label{eq:midpoint2}
+m_2^i = \frac{(p_1^i + p_2^i)}{2}
+\end{equation}
+Kemudian, menentukan \textit{midpoint skyline} atau \textit{mid-skyline} \cite{mid-skyline} pada setiap \textit{orthant}.
+
+Langkah terakhir adalah mengecek setiap pelanggan $c \in C$ apakah didominasi oleh hasil \textit{mid-skyline} pada masing-masing \textit{orthant} atau tidak (Persamaan \ref{eq:mid-skyline}). Jika $c$ didominasi, maka $c$ tidak dapat menjadi hasil \textit{reverse skyline}.
+
+Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2} pada \textit{event} $e_6$, komputasi $RSL(p_5)$ digambarkan sebagai berikut.
+
+\myparagraph{Komputasi \textit{Dynamic Skyline}}
+
+Sebagaimana yang telah dijelaskan pada Bab \ref{chap:tinjauan-pustaka}, komputasi \textit{dynamic skyline} digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$. 
+
+Proses komputasi \textit{dynamic skyline} diawali dengan perhitungan selisih absolut dari nilai masing-masing dimensi antara pelanggan dan produk, dinotasikan dengan:
+\begin{equation}\label{eq:diff}
+diff^i = |c_1^i - p^i|
+\end{equation}
+
+Selanjutnya, mengecek dominansi dinamis antar produk dengan membandingkan selisih absolut-nya. Misalnya, ada dua produk yang akan dibandingkan, dinotasikan dengan $p_s$ sebagai subjek yang dibandingkan dan $p_o$ sebagai objek pembanding. Berdasarkan syarat dominansi dinamis (Persamaan \ref{eq:syarat-dominansi-dinamis}), $p_s$ dikatakan mendominasi $p_o$ jika dan hanya jika:
+\begin{equation}\label{eq:komputasi-dsl}
+\begin{split}
+\text{(a)} \tab diff_s^i \leq diff_o^i, \forall i \in [1, ..., d] \\
+\text{(b)} \tab diff_s^i < diff_o^i, \exists i \in [1, ..., d]
+\end{split}
+\end{equation}
+
+Pengecekan dominansi dinamis ini dilakukan secara iteratif sampai dipastikan suatu $p_1$ tidak didominasi oleh $p_2$ lain sama sekali. Jika $p_1$ pernah didominasi, maka $p_1$ tidak dapat menjadi hasil \textit{dynamic skyline}.
+
+Dari hasil komputasi $RSL(p_5)$ pada Gambar ..., akan didapatkan perhitungan hasil \textit{dynamic skyline} seperti pada Tabel \ref{tab:dsl-res}.
+
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|p{2cm}|p{3cm}|}
+		\hline
+		$DSL(c_1)$ & $\{1, 4, 5\}$ \\ \hline
+		$DSL(c_2)$ & $\{1, 4, 5\}$ \\ \hline
+		$DSL(c_4)$ & $\{4, 5\}$\\ \hline
+	\end{tabular} 
+	\caption{Hasil Perhitungan \textit{Dynamic Skyline}}
+	\label{tab:dsl-res}
+\end{table}
+
+\myparagraph{Perhitungan Probabilitas}
+
+Setelah mendapatkan hasil \textit{dynamic skyline} dan \textit{reverse skyline}, selanjutnya adalah menghitung probabilitas masing-masing produk $p \in P{active}$ dipilih oleh pelanggan $c \in C{active}$ yang dinotasikan oleh persamaan berikut:
+\begin{equation}\label{eq:prob-ti}
+Pr_t(c, p|P_{active}) = \left\{
+						\begin{array}{ll}
+						\frac{1}{|DSL(c)|} & \text{if } p \in DSL(c)\\
+						0 & \text{otherwise}\\
+						\end{array}
+						\right.
+\end{equation}
+
+Karena probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pada hasil \textit{dynamic skyline}-nya adalah nol, maka perhitungan probabilitas dapat disederhanakan menjadi:
+\begin{equation}\label{eq:prob-ti-rsl}
+Pr_t(c, p|P_{active}), \forall c \in RSL(p)
+\end{equation}
+
+Dari hasil perhitungan \textit{dynamic skyline} pada Tabel \ref{tab:dsl-res}, akan didapatkan hasil perhitungan probabilitas sebagai berikut.
+
+\begin{small}
+	\begin{longtable}{|p{1cm}|p{4cm}|p{3cm}|}
+		\caption{Hasil Perhitungan Probabilitas}
+		\label{tab:prob-res}
+		\hline
+		\multirow{2}{*}{$p_1$} & $Pr_5(c_1, p_1|P_{active})$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
+		& $Pr_5(c_2, p_1|P_{active})$ & $\frac{1}{3} = 0.33$ \\ \hline
+		\multirow{3}{*}{$p_4$} & $Pr_5(c_1, p_4|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
+		& $Pr(c_4, p_3|P)$ & $\frac{1}{3} = 0.33$  \\ \hline
+		\multirow{3}{*}{$p_4$} & $Pr(c_1, p_4|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
+		& $Pr(c_4, p_4|P)$ & $\frac{1}{3} = 0.33$  \\ \cline{2-3}
+		& $Pr(c_5, p_4|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
+		\multirow{3}{*}{$p_5$} & $Pr(c_1, p_5|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
+		& $Pr(c_2, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
+		& $Pr(c_5, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
+	\end{longtable}
+\end{small}
+
+\myparagraph{Perhitungan Kontribusi Pasar}
+
+Hasil perhitungan probabilitas produk $p$ pada Tabel \ref{tab:prob-res} kemudian diakumulasikan menjadi skor kontribusi pasar sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-rsl}. Sehingga akan didapatkan hasil pada Tabel \ref{tab:mc-res}.
+
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|p{3cm}|p{2cm}|}
+		\hline
+		$E(C, p_1|P)$ & $0$ \\ \hline
+		$E(C, p_2|P)$ & $1.66$ \\ \hline
+		$E(C, p_3|P)$ & $0.83$ \\ \hline
+		$E(C, p_4|P)$ & $1.16$ \\ \hline
+		$E(C, p_5|P)$ & $1.33$ \\ \hline
+	\end{tabular} 
+	\caption{Hasil Perhitungan Kontribusi Pasar}
+	\label{tab:mc-res}
+\end{table}
+
+Dalam komputasi $k$-MPPTI, perhitungan kontribusi pasar dilakukan berbasis waktu atau \textit{timestamp} yang dijelaskan pada Persamaan \ref{eq:market-contr-ti}.
+\begin{equation}\label{eq:market-contr-ti}
+E_t(C, p|P) = \sum_{\forall c \in RSL(p)} Pr_t(c, p|P)
+\end{equation} 
+
 \myparagraph{Pemrosesan Paralel}
 
-Untuk meningkatkan efisiensi waktu komputasi, penelitian ini memanfaatkan pemrosesan paralel, yaitu pemrosesan yang dilakukan secara bersamaan dalam satu waktu. Pemrosesan paralel hanya dapat dilakukan jika suatu proses tidak membutuhkan masukan dari keluaran proses sebelumnya, misalnya komputasi $DSL(c), \forall c \in RSL(p)$ yang diilustrasikan pada Gambar ...
+Untuk meningkatkan efisiensi waktu komputasi, algoritme $k$-MPPTI mengimplementasikan konsep pemrosesan paralel, yaitu suatu bentuk komputasi dua atau lebih tugas yang dilakukan secara bersamaan dan beroperasi dengan prinsip bahwa masalah besar seringkali dapat dibagi dan dipecah menjadi masalah yang lebih kecil, kemudian dipecahkan secara bersamaan (paralel) \cite{paralel}. 
+
+Pemrosesan paralel dilakukan dengan cara menggunakan satu atau lebih CPU atau prosesor untuk menjalankan program atau multi-\textit{thread}. Karena dilakukan secara bersamaan, maka pemrosesan ini hanya dapat dilakukan jika suatu tugas tidak membutuhkan masukan dari keluaran tugas sebelumnya, misalnya komputasi $DSL(c)$ untuk setiap $c \in RSL(p)$ yang diilustrasikan pada Gambar \ref{fig:paralel}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{assets/img/bab3/paralel.png}
+	\caption{Pemrosesan Paralel}
+	\label{fig:paralel}
+\end{figure}
 
 \subsubsection{\textit{Query Processing}}
-\tab \textit{Query processing} adalah algoritme pencarian produk sejumlah $k$ yang paling menjanjikan, yaitu $k$-produk yang memiliki kontribusi pasar terbesar. Sesuai namanya, algoritme ini memproses kueri pencarian yang dimasukkan oleh pengguna.
-
+\tab \textit{Query processing} adalah algoritme pencarian produk sejumlah $k$ yang paling menjanjikan dalam interval waktu tertentu. Selanjutnya kueri ini disebut dengan $k$-MPPTI ($k$-\textit{Most Promising Products in Time Interval}) yang dinotasikan oleh Persamaan \ref{eq:kmppti}. 
 \begin{equation}\label{eq:kmppti}
-k-MPPTI(PBox, k, [t_i:t_e])
+k-MPPTI(k, [t_i:t_e])
 \end{equation} 
 
-Kueri $k$-MPPTI, dimodelkan sebagai Persamaan \ref{eq:kmppti}, membutuhkan tiga jenis masukan saja, yaitu \textit{Pandora Box} yang merupakan hasil keluaran dari proses \textit{data precomputing}, bilangan bulat positif $k$ yang lebih kecil dari $|P|$ sebagai jumlah produk yang dicari, dan interval waktu pencarian yang terdiri dari waktu awal dan waktu akhir $[t_i:t_e]$. 
+Kueri $k$-MPPTI hanya membutuhkan dua masukan saja, yaitu bilangan bulat positif $k$ yang lebih kecil dari $|P|$ sebagai jumlah produk yang dicari dan interval waktu pencarian yang terdiri dari waktu awal dan waktu akhir $[t_i:t_e]$. Berbeda dengan kueri $k$-MPP (Persamaan \ref{eq:kmpp}), kueri $k$-MPPTI tidak membutuhkan masukan \textit{dataset} produk $P$ dan preferensi pelanggan $C$ lagi karena sudah melalui tahap \textit{data precomputing} yang menghasilkan \textit{Pandora Box}.  
 
-Lain halnya jika tidak melalui proses \textit{data precomputing}, maka kueri $k$-MPPTI dimodelkan menjadi Persamaan \ref{eq:kmppti-asli} yang selalu membutuhkan \textit{dataset} produk $P$ dan preferensi pelanggan $C$ setiap kali diproses.  
+Algoritme ini mengadopsi strategi pemilihan produk $k$-MPP, yaitu memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}. Bedanya, $k$-MPPTI menambahkan fitur pembatasan interval waktu pencarian.
 
-\begin{equation}\label{eq:kmppti-asli}
-k-MPPTI(P, C, k, [t_i:t_e])
-\end{equation} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{assets/img/bab3/timeline-interval.png}
+	\caption{Ilustrasi Interval Waktu Pencarian}
+	\label{fig:timeline-kueri}
+\end{figure}
 
-Algoritme ini mengadopsi strategi pemilihan produk $k$-MPP, yaitu memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain \cite{kmpp}. Perbedaannya adalah adanya pembatasan berupa interval waktu pencarian. 
+Ada dua langkah pemrosesan yang harus dilakukan, yaitu (1) mengakumulasi skor kontribusi pasar setiap produk $p \in P$ dalam interval waktu pencarian. Total kontribusi pasar berbasis interval waktu dinotasikan sebagai $MC_{[t_i:t_e]}(p), \forall p \in P$. Kemudian (2) mengurutkan total skor dari yang terbesar dan mengembalikan produk sejumlah $k$ teratas sebagai hasil dari kueri pencarian. 
 
-Sebagai contoh, seorang pengguna melakukan kueri $k-MPPTI(PBox, 3, [4:14])$ yang diilustrasikan pada Gambar .... Pada interval waktu pencarian $[4:14]$, skor kontribusi pasar setiap produk diakumulasi, kemudian diurutkan dari yang terbesar. Produk sejumlah $3$ teratas akan dikembalikan sebagai hasil dari kueri pencarian. 
+Misalnya, seorang pengguna ingin mencari $3$ produk yang paling menjanjikan dalam interval waktu $4$ hingga $14$, dinotasikan dengan $k-MPPTI(3, [4:14])$. Berdasarkan hasil perhitungan total kontribusi pasar berbasis interval waktu pada Tabel \ref{tab:mc-ti-res}, produk $p_5$, $p_2$ dan $p_4$ adalah $3$ produk paling menjanjikan dalam interval waktu $4$ hingga $14$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{assets/img/bab3/pbox-kueri.png}
+	\caption{Perhitungan Kontribusi Pasar pada \textit{Pandora Box} Berdasarkan Interval Waktu Pencarian}
+	\label{fig:pbox-kueri}
+\end{figure}
+
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|p{3cm}|p{2cm}|}
+		\hline
+		$MC_{[4:14]}(p_5)$ & $14.67$ \\ \hline
+		$MC_{[4:14]}(p_2)$ & $8.5$ \\ \hline
+		$MC_{[4:14]}(p_4)$ & $8.17$ \\ \hline
+		$MC_{[4:14]}(p_3)$ & $3$ \\ \hline
+		$MC_{[4:14]}(p_1)$ & $1.67$ \\ \hline
+	\end{tabular} 
+	\caption{Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu}
+	\label{tab:mc-ti-res}
+\end{table}
+
+Interval waktu pencarian sangat mempengaruhi hasil kueri. Sebagai bukti, jika interval waktu pencariannya diubah dari $1$ hingga $6$, $[1:6]$, maka hasil kueri $3$ produk teratas yang paling menjanjikan adalah $p_4$, $p_1$, dan $p_5$.
+
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|p{3cm}|p{2cm}|}
+		\hline
+		$MC_{[1:6]}(p_4)$ & $5$ \\ \hline
+		$MC_{[1:6]}(p_1)$ & $4.67$ \\ \hline
+		$MC_{[1:6]}(p_5)$ & $3$ \\ \hline
+		$MC_{[1:6]}(p_2)$ & $1.33$ \\ \hline
+		$MC_{[1:6]}(p_3)$ & $0$ \\ \hline
+	\end{tabular} 
+	\caption{Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu (2)}
+	\label{tab:mc-ti-res2}
+\end{table}
+
 
 \subsection{Algoritme \textit{Brute Force}}
 \tab Algoritme \textit{brute force} adalah algoritme yang mengimplementasikan metode \textit{brute force}, yaitu melakukan percobaan terhadap semua kemungkinan dan hanya mengandalkan kekuatan pemrosesan komputer. Algoritme ini digunakan sebagai pembanding dari algoritme $k$-MPPTI.
@@ -497,16 +541,14 @@ Sebagai contoh, seorang pengguna melakukan kueri $k-MPPTI(PBox, 3, [4:14])$ yang
 Secara garis besar, struktur data dan pendekatan yang digunakan hampir sama dengan $k$-MPPTI, namun tidak ada tahap komputasi $RSL$, sehingga komputasi $DSL$ dilakukan pada semua $c \in C$ dengah cara membandingkan semua produk $p \in P$ satu persatu. Selain itu, komputasi tidak dilakukan dengan secara paralel. 
 
 \subsection{Arsitektur Aplikasi} 
-\tab Sistem akan diimplementasikan menggunakan arsitektur \textit{client}-\textit{server} seperti yang diilustrasikan pada Gambar \ref{fig:arsitektur}. 
+\tab Sistem akan diimplementasikan menggunakan arsitektur \textit{client}-\textit{server} seperti yang diilustrasikan pada Gambar \ref{fig:arsitektur}. Terdapat dua komponen utama dalam arsitektur ini, yaitu klien (\textit{client}), pihak yang meminta atau menerima layanan, dan peladen (\textit{server}), pihak yang memberikan atau mengirim layanan. Komponen-komponen ini terhubung ke jaringan, baik melalui kabel maupun nirkabel untuk melakukan transmisi data. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=7cm]{bab3/img/arsitektur.png}
+	\includegraphics[width=7cm]{assets/img/bab3/arsitektur.png}
 	\caption{Perancangan Arsitektur Aplikasi}
 	\label{fig:arsitektur}
 \end{figure}
-
-Terdapat dua komponen utama dalam arsitektur ini, yaitu klien (\textit{client}), pihak yang meminta atau menerima layanan, dan peladen (\textit{server}), pihak yang memberikan atau mengirim layanan. Komponen-komponen ini terhubung ke jaringan, baik melalui kabel maupun nirkabel untuk melakukan transmisi data. 
 
 Klien mengimplementasikan antarmuka pengguna grafis atau APG (Inggris: \textit{graphical user interface} atau GUI) berbasis web, sedangkan peladen mengimplementasikan \textit{back-end service} yang berisi algoritme komputasi $k$-MPPTI yang terdiri atas algoritme \textit{data precomputing} dan \textit{query processing}. Web dibangun menggunakan Flask \textit{microframework} dan bahasa Python, HTML, CSS, serta Javascript, sedangkan \textit{back-end service} diimplementasikan menggunakan bahasa Python. Flask juga sekaligus berperan sebagai peladen web (\textit{web server}).
 

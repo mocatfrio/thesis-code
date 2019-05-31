@@ -1,505 +1,460 @@
-\chapter{UJI COBA DAN EVALUASI}
+\chapter{UJI COBA DAN EVALUASI}\label{chap:uji-coba-eval}
 
-Pada bab ini dijelaskan tentang uji coba dan evaluasi dari implementasi yang telah dilakukan pada Tugas Akhir ini.
+\tab Bab ini membahas hasil uji coba aplikasi yang telah dirancang dan diimplementasikan. Uji coba dilakukan untuk mengetahui kinerja aplikasi dengan lingkungan uji coba yang telah ditentukan.
 
 \section{Lingkungan Uji Coba}
 
-Linkungan uji coba yang digunakan adalah salah satu sistem yang digunakan situs penilaian daring SPOJ, yaitu kluster \textit{Cube} dengan spesifikasi sebagai berikut:
+Lingkungan pengujian menggunakan komponen-komponen yang terdiri dari:
 
 \begin{enumerate}
-	\item Perangkat Keras:
-	\begin{itemize}
-		\item \textit{Processor} Intel(R) Pentium G860 CPU @ 3GHz.
-		\item \textit{Memory} 1536 MB.
-	\end{itemize}
-	\item Perangkat Lunak:
-	\begin{itemize}
-		\item \textit{Compiler} g++ versi 4.3.2.
-	\end{itemize}			
-\end{enumerate} 
+	\item \textit{Processor} Intel(R) Core(TM) i3-5010U CPU @ 2.10GHz x 4
+	\item RAM 6 GB
+\end{enumerate}
 
-\section{Uji Coba Kebenaran}
-\label{section:ujikebenaran}
-Uji coba kebenaran dilakukan dengan analisis penyelesaian sebuah contoh kasus menggunakan pendekatan penyelesaian yang telah dijelaskan pada subbab \ref{chapter:rope} serta pengumpulan berkas kode sumber hasil implementasi ke dalam situs penilaian daring SPOJ.\\
-Kasus yang akan digunakan sebagai bahan uji kebenaran dalam analisis penyelesaian \problem{} menggunakan contoh kasus pada Gambar \ref{figure:sample_problem}.
-\begin{figure}[h]
-	%\inputminted[frame=lines]{text}{bab5/rope.in} %
-	\begin{tikzpicture}
-	\node (example-align) [draw, text width=10cm, align=left, font=\ttfamily]{gautambishal \\3\\3 1\\2 0 5\\3 1};
-	\end{tikzpicture}
-	\caption{Contoh kasus uji permasalahan Alphabetic Rope}
-	\label{figure:sample_problem}
-\end{figure}\\
-Mula-mula dalam setiap permasalahan adalah membangun struktur \textit{rope} yang sesuai dengan \textit{string} masukan. Operasi dasar pada sebuah \textit{rope} adalah fungsi Insert, dimana dibentuk sebuah \textit{tree} yang berfungsi untuk menyimpan potongan karakter pada \textit{rope}. Selanjutnya \textit{rope} akan dibangun pada \textit{node root} yang dilakukan berdasarkan posisi tengah dari panjang \textit{string}. Pembentukan ini dapat dilihat pada Gambar \ref{fig:build_root}. Nilai pada tanda kurung siku menyatakan isi karakter pada \textit{node} tersebut. Dikarenakan masih terdapat \textit{string} yang tersisa maka proses pembentukan dilanjutkan untuk membentuk anak kiri dan anak kanan \textit{root}.
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[->,>=stealth', level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.93,transform shape]
-\node {
-	[b]
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		g & a & u & t & a & m & b & i & s & h & a & l\\ \hline
-		\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5} & \nc{6} & \nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-	\end{tabular}
-};
-\end{tikzpicture}
-\caption{Pembentukan \textit{Root Rope} \label{fig:build_root}}
-\end{figure}
-Rentang \textit{string} pada anak kiri diperoleh dari indeks $0$ hingga nilai tengah$-1$ sedangkan rentang kanan diperoleh dari nilai tengah$+1$ hingga panjang \textit{string}. Pembentukan anak dari \textit{root} ditunjukkan pada Gambar \ref{fig:build_level1}. Pada setiap anak kiri dan anak kanan, posisi karakter yang berada ditengah-tengah \textit{string} anak menjadi nilai dari \textit{node} tersebut. Yang ditunjukkan oleh nilai di dalam tanda kurung siku.
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[->,>=stealth', level/.style={sibling distance = 5cm/#1, level distance = 1.5cm}, scale=0.93,transform shape]
-\node {
-	[b]
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		g & a & u & t & a & m & b & i & s & h & a & l\\ \hline
-		\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5} & \nc{6} & \nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-	\end{tabular}
-}
-child {
-	node {
-		[t]
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
-			g & a & u & t & a & m\\ \hline
-			\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5}\\
-		\end{tabular}
-	}
-} 
-child {
-	node {
-		[h]
-		\begin{tabular}{|c|c|c|c|c|}
-			\hline
-			i & s & h & a & l\\ \hline
-			\nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-		\end{tabular}
-	}
-};
-\end{tikzpicture}
-\caption{Pembentukan \textit{Rope} pada Tingkat ke-$2$ \label{fig:build_level1}}
-\end{figure}\\
-Dikarenakan masih terdapat \textit{string} yang tersisa, proses pembentukan dilanjutkan untuk tingkat ke-$3$ yang ditunjukkan pada Gambar \ref{fig:build_level2}.
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[->,>=stealth', level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.7,transform shape]
-\node {
-	[b]
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		g & a & u & t & a & m & b & i & s & h & a & l\\ \hline
-		\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5} & \nc{6} & \nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-	\end{tabular}
-}
-child {
-	node {
-		[t]
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
-			g & a & u & t & a & m\\ \hline
-			\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5}\\
-		\end{tabular}
-	}
-	child {
-		node{
-			[a]
-			\begin{tabular}{|c|c|c|}
-				\hline
-				g & a & u\\ \hline
-				\nc{0} & \nc{1} & \nc{2}\\
-			\end{tabular}
-		}
-	}
-	child {
-		node{
-			[m]
-			\begin{tabular}{|c|c|}		
-				\hline
-				a & m\\ \hline
-				\nc{4} & \nc{5}\\
-			\end{tabular}
-		}
-	}
-} 
-child {
-	node {
-		[h]
-		\begin{tabular}{|c|c|c|c|c|}
-			\hline
-			i & s & h & a & l\\ \hline
-			\nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-		\end{tabular}
-	}
-	child {
-		node{
-			[s]
-			\begin{tabular}{|c|c|}		
-				\hline
-				i & s\\ \hline
-				\nc{7} & \nc{8}\\
-			\end{tabular}
-		}
-	}
-	child {
-		node{
-			[l]
-			\begin{tabular}{|c|c|}		
-				\hline
-				a & l\\ \hline
-				\nc{10} & \nc{11}\\
-			\end{tabular}
-		}
-	}
-};
-\end{tikzpicture}
-\caption{Pembentukan \textit{Rope} pada Tingkat ke-$3$ \label{fig:build_level2}}
-\end{figure}\\
-Untuk tahap selanjutnya dilakukan pembentukan \textit{rope} pada tingkat ke-$4$ yang ditunjukkan pada Gambar \ref{fig:arope}.
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[->,>=stealth', level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.68,transform shape]
-\node {
-	[b]
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		g & a & u & t & a & m & b & i & s & h & a & l\\ \hline
-		\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5} & \nc{6} & \nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-	\end{tabular}
-}
-child {
-	node {
-		[t]
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
-			g & a & u & t & a & m\\ \hline
-			\nc{0} & \nc{1} & \nc{2} & \nc{3} & \nc{4} & \nc{5}\\
-		\end{tabular}
-	}
-	child {
-		node{
-			[a]
-			\begin{tabular}{|c|c|c|}
-				\hline
-				g & a & u\\ \hline
-				\nc{0} & \nc{1} & \nc{2}\\
-			\end{tabular}
-		}
-		child {
-			node {
-				[g]
-				\begin{tabular}{|c|}
-					\hline
-					g\\ \hline
-				\end{tabular}
-			}
-		}
-		child {
-			node {
-				[u]
-				\begin{tabular}{|c|}
-					\hline
-					u\\ \hline
-				\end{tabular}
-			}
-		}
-	}
-	child {
-		node{
-			[m]
-			\begin{tabular}{|c|c|}		
-				\hline
-				a & m\\ \hline
-				\nc{4} & \nc{5}\\
-			\end{tabular}
-		}
-		child {
-			node {
-				[a]
-				\begin{tabular}{|c|}
-					\hline
-					a\\ \hline
-				\end{tabular}
-			}
-		}
-		child[missing]{}
-	}
-} 
-child {
-	node {
-		[h]
-		\begin{tabular}{|c|c|c|c|c|}
-			\hline
-			i & s & h & a & l\\ \hline
-			\nc{7} & \nc{8} & \nc{9} & \nc{10} & \nc{11}\\
-		\end{tabular}
-	}
-	child {
-		node{
-			[s]
-			\begin{tabular}{|c|c|}		
-				\hline
-				i & s\\ \hline
-				\nc{7} & \nc{8}\\
-			\end{tabular}
-		}
-		child {
-			node {
-				[i]
-				\begin{tabular}{|c|}
-					\hline
-					i\\ \hline
-				\end{tabular}
-			}
-		}
-		child[missing]{}
-	}
-	child {
-		node{
-			[l]
-			\begin{tabular}{|c|c|}		
-				\hline
-				a & l\\ \hline
-				\nc{10} & \nc{11}\\
-			\end{tabular}
-		}
-		child {
-			node {
-				[a]
-				\begin{tabular}{|c|}
-					\hline
-					a\\ \hline
-				\end{tabular}
-			}
-		}
-		child[missing]{}
-	}
-};
-\end{tikzpicture}
-\begin{tikzpicture}[level/.style={sibling distance = 8cm/#1, level distance = 1.5cm}, scale=0.68,transform shape]
-\node[treenode]{b,12}
-  child{
-    node[treenode]{t,6} 
-    child {
-    	node[treenode] {a,3}
-    	child {
-    		node[treenode]{g,1}
-    	}
-    	child{
-    		node[treenode] {u,1}
-    	}
-    }
-    child {
-    	node[treenode] {m,2}
-    	child {
-    	    node[treenode] {a,1}
-    	}
-    	child[missing]{}
-    }
-  }
-  child{
-  	node[treenode]{h,5}
-  	child {
-  	    	node[treenode] {s,2}
-  	    	child {
-  	    		node[treenode]{i,1}
-  	    	}
-  	    	child[missing]{}
-  	    }
-  	    child {
-  	    	node[treenode] {l,2}
-  	    	child {
-  	    	    node[treenode] {a,1}
-  	    	}
-  	    	child[missing] {}
-  	    }
-  };
-\end{tikzpicture}
-\caption{Struktur \textit{Rope} yang Terbentuk \label{fig:arope}}
-\end{figure}\\
-\textit{Query} pertama memiliki parameter $type \gets 3$, $y \gets 0$. Tahapan pertama dengan mencari karakter pada indeks ke-$y$. Untuk memperoleh jawaban dilakukan penelusuran sesuai dengan algoritma yang dijelaskan pada subbab \ref{chapter:index}.
+Semua pengujian menggunakan Memory Heap pada JVM sebanyak 4 GB (dengan opsi -Xmx4g).
 
-Tahapan pencarian pada \textit{rope} adalah sebagai berikut,
+\section{Data Uji Coba}
 
-$y \gets 1$, $left.weight \gets 6$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
+\tab Terdapat tiga jenis data yang akan digunakan dalam pengujian Tugas Akhir ini. Tiga jenis data tersebut terdiri dari data \textit{independent}, data \textit{anticorrelated}, dan data \textit{correlated}.
 
-$y \gets 1$, $left.weight \gets 3$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
+\subsection{Data \textit{Independent} (IND)}
 
-$y \gets 1$, $left.weight \gets 1$, $idx \gets left.weight$; $idx \gets y$;
-kembalikan nilai \textit{node} saat ini;
+\tab Data \textit{independent} adalah sebuah data buatan dengan cara melakukan \textit{random} secara utuh dengan jumlah yang telah ditentukan.
 
-Maka jawaban untuk \textit{query} ini adalah $a$. 
+\subsection{Data \textit{Anticorrelated} (ANT)}
 
-\textit{Query} kedua memiliki parameter $type \gets 2$, $x \gets 0$, $y \gets 5$. Proses perubahan pada \textit{rope} adalah sebagai berikut,
+\tab Data \textit{anticorrelated} adalah data yang memiliki hubungan negatif. Artinya, jika suatu nilai suatu atribut bertambah, maka atribut lain berkurang dengan rasio yang sama. Data \textit{anticorrelated} ini memungkinkan setiap objek tidak mendominasi dan didominasi oleh objek lain.
 
-$x \gets 0$, $y \gets 5$, $left.weight \gets 6$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
+\subsection{Data \textit{Correlated} (COR)}
+\tab Data \textit{correlated} adalah data yang memiliki hubungan erat. Dalam artian, jika nilai suatu atribut bertambah, maka atribut lain juga bertambah dengan rasio yang sama. Dalam kasus ini, suatu objek pasti mendominasi dan didominasi objek yang lain.
 
-$x \gets 0$, $y \gets 5$, $left.weight \gets 3$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
+\section{Skenario Uji Coba} \label{skenarioujicoba}
 
-$x \gets 0$, $y \gets 5$, $left.weight \gets 1$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
+\tab Untuk menguji \textit{performance} dari algoritme yang diusulkan, kami mengujinya dengan beberapa variasi pada faktor-faktor yang mempengaruhi jalannya algoritme, yaitu: jumlah objek, jumlah sel grid, jumlah \textit{instance} tiap objek, dan jarak $ d_\varepsilon $. Berikut kami sajikan tabel variasi faktor-faktor yang disebutkan beserta nilai \textit{default}.
 
-$x \gets 0$, $y \gets 5$, $left.weight \gets 0$, $idx \gets left.weight$; $idx \gets y$;
-kembalikan nilai \textit{node} saat ini;
-
-Dikarenakan $x \gets 0$ operasi Split menghasilkan \textit{rope} $R_1$ yang berisi NULL dan $R_2$ sisa dari potongan \textit{rope} yang berarti keseluruhan \textit{rope} saat ini.
-
-Proses perubahan selanjutnya adalah sebagai berikut,
-
-$x \gets 0$, $y \gets 5$, $left.weight \gets 1$, $len \gets y - x + 1$, $idx \gets left.weight$; $idx = len$;
-kembalikan nilai \textit{node} saat ini;
-
-Setelah menemukan posisi \textit{node} yang akan dipotong, hapus sambungan dari seluruh \textit{node} yang memiliki nilai indeks kurang dari nilai indeks saat ini. Hasil potongan dari \textit{rope} akan disimpan dengan menggunakan struktur data Pair yang bertipe \textit{pointer node}. Sehingga menghasilkan dua buah \textit{rope} baru $R_{21}$ yang berisi \textit{string} "$gautam$" dan $R_{22}$ yang berisi \textit{string} "$bishal$".
-
-Potongan \textit{rope} yang baru terbentuk akan digabungkan berdasarkan $type \gets 2$, dimana $R_{21}$ berada diposisi belakang dari keseluruhan \textit{rope}. Konfigurasi \textit{rope} yang baru terbentuk berisi \textit{string} "$bishalgautam$" yang ditunjukkan pada Gambar \ref{fig:konfigurasi-3}.
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[level/.style={sibling distance = 5cm/#1, level distance = 1.5cm},  scale=0.7,transform shape]
-\node[treenode]{t,12}
-child {
-	node[treenode]{a,9}
-	child {
-		node[treenode]{b,7}
-		child[missing]{}
-		child {
-			node[treenode]{h,6}
-			child {
-				node[treenode]{s,2}
-				child {
-					node[treenode]{i,1}
-				}
-				child[missing]{}
-			}
-			child {
-				node[treenode]{g,3}
-				child {
-					node[treenode]{l,2}
-					child {
-						node[treenode]{a,1}
-					}
-					child[missing]{}
-				}
-				child[missing]{}
-			}
-		}
-	}
-	child {
-		node[treenode]{u,1}
-	}
-}
-child {
-	node[treenode]{m,2}
-	child {
-		node[treenode]{a,1}
-	}
-	child[missing]{}
-};
-\end{tikzpicture}
-\caption{Konfigurasi \textit{Rope} Setelah Operasi $2$ $0$ $5$ \label{fig:konfigurasi-3}}
-\end{figure}
-
-\textit{Query} ketiga memiliki parameter $type \gets 3$, $y \gets 0$. Proses perubahan dan pencarian pada \textit{rope} adalah sebagai berikut,
-
-$y \gets 0$, $left.weight \gets 9$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
-
-$y \gets 0$, $left.weight \gets 7$, $idx \gets left.weight$; $idx <= y$;
-dilanjutkan ke anak kiri;
-
-$y \gets 0$, $left.weight \gets 0$, $idx \gets left.weight$; $idx \gets y$;
-kembalikan nilai \textit{node} saat ini;
-
-Maka jawaban untuk \textit{query} ini adalah $b$.
-
-Secara terurut jawaban dari kedua \textit{query} tersebut adalah $a$ dan $b$. Kemudian sistem penyelesaian dijalankan dan diberi masukan sesuai kasus uji dari analisis sebelumnya dan hasil luaran sistem adalah $a$ dan $b$ seperti terlihat pada Gambar \ref{fig:hasil-luaran}.
-\begin{figure}[H]
-\centerline{ \includegraphics[scale=0.6]{assets/images/hasil.png}}
-\caption{Hasil Luaran Program pada Contoh Kasus Uji Alphabetic Rope}
-\label{fig:hasil-luaran}
-\end{figure}
-
-Selanjutnya dilakukan juga uji coba kebenaran dengan mengirimkan kode sumber program ke dalam situs penilaian daring SPOJ. Permasalahan yang diselesaikan adalah \problem{}. Hasil uji kebenaran dan waktu eksekusi program pada saat pengumpulan kasus uji pada situs SPOJ ditunjukkan pada Gambar \ref{figure:ujicoba}.
-\begin{figure}[H]
-\centerline{ \includegraphics[scale=0.43]{assets/images/ujicoba.png}}
-\caption{Hasil Uji Coba pada Situs Penilaian SPOJ}
-\label{figure:ujicoba}
-\end{figure}
-
-Hal ini membuktikan bahwa implementasi yang dilakukan telah berhasil menyelesaikan \problem{} dengan batasan-batasan yang telah ditetapkan. Setelah itu dilakukan pengiriman kode sumber implementasi sebanyak 15 kali untuk melihat variasi waktu dan memori yang dibutuhkan program. Hasil uji coba sebanyak $15$ kali dapat dilihat pada Gambar \ref{figure:submission}. Grafik hasil uji coba sebanyak 15 kali ditunjukkan pada Gambar \ref{figure:grafik_spam}.
-\begin{figure}[H]
-\centerline{ \includegraphics[scale=0.5]{assets/images/spoj-spam.png}}
-\caption{Hasil Uji Coba pada Situs Penilaian SPOJ}
-\label{figure:grafik_spam}
-\end{figure}
-\begin{table}{}
+\begin{table}[!htb]
 	\centering
-	\begin{tabular}{|c|c|}
-	\hline
-		Waktu Maksimal & $0.16$ detik\\ \hline
-		Waktu Minimal & $0.14$ detik\\ \hline
-		Waktu Rata-Rata & $0.152$ detik\\ \hline
-		Memori Maksimal & $5.0$ MB\\ \hline
-		Memori Minimal & $5.0$ MB\\ \hline
-		Memori Rata-rata & $5.0$ MB\\ \hline
-	\end{tabular}\caption{Kecepatan Maksimal, Minimal dan Rata-Rata dari Hasil Uji Coba Sebanyak 15 Kali pada Situs Pengujian SPOJ \label{tab:pengujian}}
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\textbf{Parameter} & \textbf{\textit{Default}} & \textbf {Rentang} \\ \hline
+		Jumlah sel grid & $ 256^2 $ & $ 32^2 $, $ 64^2 $, $ 128^2 $, $ 256^2 $, $ 512^2 $ \\ \hline
+		Jumlah objek (K) & 5 & 0.1, 1, 5, 10, 20 \\ \hline
+		Jumlah \textit{instance} tiap objek & 50 & 10, 50, 100, 200, 400 \\ \hline
+		$ d_\varepsilon $ (\%) & 1 & 0.1, 0.5, 1, 2, 3 \\ \hline
+		Dimensi data & 2 & 2, 3, 4, 5, 6 \\ \hline
+	\end{tabular}
+	\caption{Atribut dari objek
+		\label{tab:uji}}
 \end{table}
-Berdasarkan Tabel \ref{tab:pengujian} dari percobaan pengujian yang dilakukan, didapat waktu rata-rata program yaitu $0.152$ detik dan penggunaan memori yang dibutuhkan program yaitu $5.0$ MB. Hasil ini masih dibawah dari batas maksimal waktu dan memori pada \problem{}, yaitu $1$ detik dan $1536$ MB.
 
-\section{Uji Coba Kinerja}
-\label{section:ujikinerja}
-Uji coba kinerja penyelesaian \problem{} dilakukan dengan cara membandingkan waktu yang dibutuhkan untuk penyelesaian menggunakan \textit{string} dengan struktur data Rope yang dibuat.
-\subsection{Operasi 1 Menggabungkan \textit{Rope} pada Posisi Awal}
-Pada Gambar \ref{figure:operasi1string} terlihat bahwa untuk $N \gets 5000$ sampai $N \gets 10^5$ dengan banyak $Q \gets 10^5$, struktur Rope yang dibuat untuk penyelesaian \problem{} menunjukkan waktu yang lebih cepat dibandingan dengan algoritma String dan stuktur data Rope pembanding. Sedangkan untuk $N \gets 10^5$ dengan $Q \gets 5000$ sampai $Q \gets 10^5$, pertumbuhan waktu secara logaritmik dan lebih kecil dibandingkan dengan algoritma String dan struktur data Rope pembanding yang ditunjukkan pada Gambar \ref{figure:operasi1query}. Untuk tabel performa antara algoritma String dengan struktur data Rope yang telah dibuat dapat dilihat pada Tabel \ref{tab:operasi1string} dan \ref{tab:operasi1query}.
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi1-string.png}}
-\caption{Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit{Query} Tetap dan Panjang \textit{String} Bertambah}
-\label{figure:operasi1string}
+\tab Uji coba dilakukan pada peta California\cite{ontrip} dengan irisan garis lintang antara 32.0 hingga 37.0 dan garis bujur antara -120.0 hingga -114.0. Pada koordinat tersebut didapat \textit{node} sebanyak 8716 dan \textit{edge} sebanyak 9077.
+
+\subsection{Skenario Uji Coba \textit{Performance}}
+\tab Pada sub-bab ini, kami menampilkan tabel uji \textit{performance} dalam bentuk grafik. Perlu diperhatikan bahwa beberapa grafik pada bab ini menggunakan skala logaritma pada sumbu \textit{y}. Uji coba dilakukan dengan membandingkan dengan metode \textit{naive}. Metode \textit{naive} mencari jarak terdekat setiap \textit{node} ketika terdapat objek baru masuk pada sistem dan memasukkan objek pada \textit{node} yang berjarak kurang dari $ d_\varepsilon $. Metode ini juga tidak menggunakan penanda \textit{isImpossible}, artinya, jika terdapat objek baru masuk pada suatu \textit{node}, maka metode ini membandingkan objek tersebut dengan semua objek yang ada.
+
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Perubahan Jumlah Sel}
+
+\tab Perubahan jumlah sel pada grid indeks tidak memberikan pengaruh banyak pada waktu komputasi dan penggunaan memori. Hal tersebut dikarenakan, jika jumlah sel sedikit, maka proses pengambilan data semakin cepat. Tetapi di sisi lain, pemrosesan data melambat karena objek yang dimuat semakin banyak. Jika jumlah sel banyak, pengambilan data semakin lama, tetapi pemrosesan data semakin cepat karena objek yang dimuat semakin sedikit.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={Jumlah sel grid},
+	ylabel={waktu komputasi (detik/operasi)},
+	ymin=0, ymax=1,
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={$ 32^2 $, $ 64^2 $, $ 128^2 $, $ 256^2 $, $ 512^2 $},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 0.198035104400913)(3, 0.19713375528914)(5, 0.214094556217187)(7, 0.177597533827906)(9, 0.213052689078089)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah sel terhadap waktu komputasi tiap operasi dalam satuan detik}\label{fig:uji-g}
 \end{figure}
 
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi1-query.png}}
-\caption{Hasil Uji Coba pada Operasi 1 dengan Jumlah \textit{String} Tetap dan Jumlah \textit{Query} Bertambah}
-\label{figure:operasi1query}
+\tab Jumlah sel tidak banyak mempengaruhi penggunaan memori dan waktu komputasi. Hal ini dikarenakan adanya \textit{trade-off} antara proses memuat data dengan komputasi. Grid indeks yang memiliki sel sedikit menjadikan data yang dimuat lebih banyak sehingga menjadikan data yang diproses labih banyak. Tetapi di sisi lain, sistem tidak banyak mencari data secara berulang-ulang karena setiap sel sudah mengaver area yang besar. Sedangkan grid indeks yang memiliki sel yang banyak menjadikan proses komputasi lebih efisien karena melibatkan data yang lebih sedikit. Tetapi di sisi lain, sistem harus melakukan pencarian data berulang-ulang karena sedikitnya data yang didapat pada setiap sel.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={Jumlah sel grid},
+	ymin=0, ymax=500,
+	ylabel={penggunaan memori (MB)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={$ 32^2 $, $ 64^2 $, $ 128^2 $, $ 256^2 $, $ 512^2 $},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 205)(3, 245)(5, 222)(7, 209)(9, 214)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah sel grid terhadap penggunaan memori dalam satuan megabita}\label{fig:uji-g-mem}
 \end{figure}
 
-\subsection{Operasi 2 Menggabungkan \textit{Rope} pada Posisi Akhir}
-Pada Gambar \ref{figure:operasi2string} terlihat bahwa untuk $N \gets 5000$ sampai $N \gets 10^5$ dengan banyak $Q \gets 10^5$, struktur Rope yang dibuat untuk penyelesaian \problem{} menunjukkan waktu yang lebih cepat dibandingan dengan algoritma String dan stuktur data Rope pembanding. Sedangkan untuk $N \gets 10^5$ dengan $Q \gets 5000$ sampai $Q \gets 10^5$, pertumbuhan waktu secara logaritmik dan lebih kecil dibandingkan dengan algoritma String dan struktur data Rope pembanding yang ditunjukkan pada Gambar \ref{figure:operasi2query}. Untuk tabel performa antara algoritma String dengan struktur data Rope yang telah dibuat dapat dilihat pada Tabel \ref{tab:operasi2string} dan \ref{tab:operasi2query}.
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi2-string.png}}
-\caption{Hasil Uji Coba pada Operasi 2 dengan Jumlah \textit{Query} Tetap dan Jumlah \textit{String} Bertambah}
-\label{figure:operasi2string}
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Perubahan Jumlah Objek}
+\tab Penggunaan waktu CPU pada algoritme $ CSd_\varepsilon-SQ$ jauh mengungguli algoritme \textit{naive}. Hal ini dikarenakan algoritme \textit{naive} menghitung jarak semua \textit{node} dengan objek yang masuk menggunakan \textit{shortest-path}, sedangkan $ CSd_\varepsilon-SQ $ hanya menggunakan \textit{node} yang diperlukan dan $ CSd_\varepsilon-SQ $ tidak menggunakan algoritme \textit{shortest-path}.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={Jumlah objek (k)},
+	ymode=log,
+	ylabel={waktu komputasi (detik/operasi)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={0.1, 1, 5, 10, 20},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1,0.027)(3, 0.054)(5, 0.24)(7, 0.527)(9, 1.062)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1,63)(3, 64)(5, 68)(7, 90)(9, 167)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah objek terhadap waktu komputasi tiap operasi dalam satuan detik}\label{fig:uji-n}
 \end{figure}
 
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi2-query.png}}
-\caption{Hasil Uji Coba pada Operasi 2 dengan Panjang \textit{String} Tetap dan Jumlah \textit{Query} Bertambah}
-\label{figure:operasi2query}
+\tab Ketika jumlah objek bertambah, waktu pemrosesan juga bertambah, hal ini dikarenakan bertambahnya objek yang terdapat pada \textit{node}. Dengan bertambahnya objek pada \textit{node}, algoritme perlu membandingkan dengan objek yang lebih banyak untuk mencari probabilitas masing-masing objek menjadi \textit{SP}.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={Jumlah objek (k)},
+	ymode=log,
+	ylabel={penggunaan memori (MB)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={0.1, 1, 5, 10, 20},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 16)(3, 41)(5, 328)(7, 367)(9, 375)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 77062)(3, 79292)(5, 78801)(7, 73392)(9, 67442)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah objek terhadap penggunaan memori dalam satuan megabita}\label{fig:uji-n-mem}
 \end{figure}
 
-\subsection{Operasi 3 Mencetak Karakter pada Indeks ke-Y}
-Pada Gambar \ref{figure:operasi3string} terlihat bahwa untuk $N \gets 5000$ sampai $N \gets 10^5$ dengan banyak $Q \gets 10^5$, algoritma String untuk penyelesaian \problem{} menunjukkan waktu yang lebih cepat dibandingan dengan struktur data Rope yang dibuat dan stuktur data Rope pembanding. Dan berlaku ketika menjalankan operasi untuk $N \gets 10^5$ dengan $Q \gets 5000$ sampai $Q \gets 10^5$ yang ditunjukkan pada Gambar \ref{figure:operasi3query}. Untuk tabel performa antara algoritma String dengan struktur data Rope yang telah dibuat dapat dilihat pada Tabel \ref{tab:operasi3string} dan \ref{tab:operasi3query}.
+\tab Terkait penggunaan memori, metode \textit{naive} membutuhkan memori yang sangat banyak karena banyaknya \textit{node} yang perlu diproses menggunakan algoritme \textit{shortest-path}. Sedangkan metode $ CSd_\varepsilon-SQ$ membutuhkan memori yang tidak banyak karena hanya menggunakan data \textit{node} yang diperlukan saja dengan struktur grid.
 
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi3-string.png}}
-\caption{Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit{Query} Tetap dan Panjang \textit{String} Bertambah}
-\label{figure:operasi3string}
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Perubahan Jumlah \textit{Instance} pada Objek}
+\tab Jumlah \textit{instance} pada objek mempengaruhi waktu komputasi dan penggunaan memori. Hal ini dikarenakan proses penghitungan probabilitas melibatkan \textit{instances} di objek. Dari sisi memori, banyaknya \textit{instance} membuat sistem harus mengalokasikan memori lebih untuk proses penyimpanan dan komputasi.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={\textit{instances}},
+	ymode=log,
+	ylabel={waktu komputasi (detik/operasi)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={10, 50, 100, 150, 200},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 0.033)(3, 0.229)(5, 0.979)(7, 3)(9, 5.736)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 67)(3, 70)(5, 74)(7, 133)(9, 132)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah \textit{instance} terhadap waktu komputasi tiap operasi dalam satuan detik}\label{fig:uji-np}
 \end{figure}
 
-\begin{figure}
-\centerline{ \includegraphics[scale=0.45]{assets/images/operasi3-query.png}}
-\caption{Hasil Uji Coba pada Operasi 3 dengan Jumlah \textit{String} Tetap dan Jumlah \textit{Query} Bertambah}
-\label{figure:operasi3query}
+\tab Pada metode \textit{naive}, objek perubahan waktu komputasi terlihat ketika jumlah \textit{instance} diatas 100. Hal ini dikarenakan waktu komputasi lebih banyak digunakan untuk penghitungan jarak terpendek dari setiap \textit{node} ke objek, sehingga jumlah \textit{instance} yang sedikit tidak berpengaruh banyak terhadap waktu komputasi.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={\textit{instances}},
+	ymode=log,
+	ylabel={penggunaan memori (MB)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={10, 50, 100, 150, 200},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 41)(3, 139)(5, 4874)(7, 11213)(9, 32760)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 73772)(3, 81068)(5, 79448)(7, 71448)(9, 58597)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jumlah \textit{instance} terhadap penggunaan memori dalam satuan megabita}\label{fig:uji-np-mem}
 \end{figure}
 
-Perbedaan \textit{rope} dengan \textit{rope}-bandingan terletak pada operasi \textit{insert}. Pada \textit{rope} bandingan operasi \textit{insert} dilakukan sama seperti algoritma \textit{insert} pada BST. Sedangkan pada \textit{rope}, \textit{insert} dilakukan dengan membagi dua panjang \textit{string} kemudian dimasukkan ke dalam \textit{tree}.
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Perubahan Panjang Jarak Maksimal $ d_\varepsilon $}
+\tab Jarak $ d_\varepsilon $ sangat mempengaruhi \textit{performance} karena $ d_\varepsilon $ menentukan jarak terjauh \textit{node} yang dapat menyimpan objek baru. Dengan bertambahnya nilai $ d_\varepsilon $, objek dapat menjangkau lebih banyak \textit{node}. Dengan demikian, objek yang ditampung pada \textit{node} menjadi semakin banyak. Dengan semakin banyaknya objek, proses penghiungan probabilitas \textit{skyline} menjadi semakin lama karena harus menghitung banyak objek. Pada $ CSd_\varepsilon-SQ$, semakin besar nilai $ d_\varepsilon $, semakin banyak grid yang diakses sehingga membutuhkan waktu yang lebih banyak. Pada metode \textit{naive}, terdapat perubahan waktu komputasi yang signifikan ketika nilai $ d_\varepsilon $ diatas 1.
 
-\section{Analisis Hasil Uji Coba}
-Pada subbab ini akan dibahas mengenai analisis hasil uji coba yang dikerjakan pada subbab \ref{section:ujikebenaran}. Berdasarkan ketiga skenario yang telah dilakukan, masing-masing membuktikan kebenaran dan efisiensi hasil implementasi Tugas Akhir ini.\\
-Dari ketiga hasil uji coba yang telah dilakukan, dapat dilihat bahwa hasil implementasi algoritma penyelesaian \problem{} pada Tugas Akhir ini mengeluarkan hasil keluaran yang sama dengan jalur yang ditelusuri secara manual. Hasil uji coba kebenaran pada subbab \ref{section:ujikebenaran} dapat digunakan sebagai acuan bahwa hasil keluaran program akan benar untuk segala jenis operasi pertanyaan dan perubahan.\\
-Selanjutnya berdasarkan uji coba performa yang ditunjukkan pada Gambar \ref{figure:submission}, dapat dilihat bahwa memori dan waktu yang dibutuhkan untuk mengeksekusi program dapat dikategorikan efisien menurut situs SPOJ.\\
-Proses \textit{split, concate} dan \textit{print} pada \textit{rope} mengacu pada algoritma pencarian pada \textit{tree} sehingga dapat disimpulkan bahwa kompleksitas waktu yang diperlukan sebesar $O(\log N)$. Pada proses pembuatan \textit{rope} berdasarkan Kode Sumber \ref{source:fungsi_build} didapatkan kompleksitas waktu sebesar $O(N \log N)$. Sehingga dapat disimpulkan bahwa kompleksitas waktu untuk algoritma komputasi \textit{string} pada Tugas Akhir ini adalah $O(\log N)$, dimana $N$ merupakan panjang \textit{string}. Sedangkan algoritma String membutuhkan kompleksitas sebesar $O(N)$ untuk setiap proses \textit{split} dan \textit{concate}\cite{string}.\\
-Pada hasil perbandingan antara algoritma String dengan struktur Rope yang digunakan pada Tugas Akhir ini, ditunjukkan perbedaan pada kecepatan eksekusi program. Hal ini menunjukkan bahwa algoritma pada Tugas Akhir ini lebih efisien daripada algoritma String dan Rope-bandingan.
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={$ d_\varepsilon $},
+	ymode=log,
+	ylabel={waktu komputasi (detik/operasi)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={0.1, 0.5, 1, 2, 3},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 0.009)(3, 0.052)(5, 0.24)(7, 1.592)(9, 9.667)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 64)(3, 67)(5, 68)(7, 216)(9, 490)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh $ d_\varepsilon $ terhadap waktu komputasi tiap operasi dalam satuan detik}\label{fig:uji-d}
+\end{figure}
+
+\tab Penggunaan memori sangat tergantung dari jumlah objek yang diproses. Nilai $ d_\varepsilon $ yang besar menjadikan objek yang diproses semakin banyak karena setiap \textit{node} memiliki jangkauan yang lebih jauh. Banyaknya objek yang diproses menjadikan penggunaan memori semakin besar.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={$ d_\varepsilon $},
+	ymode=log,
+	ylabel={penggunaan memori (MB)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={0.1, 0.5, 1, 2, 3},
+	legend pos=south east,
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 12)(3, 122.7)(5, 328)(7, 5932)(9, 37507)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 74387)(3, 72904)(5, 78801)(7, 126323)(9, 230699)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh $ d_\varepsilon $ terhadap penggunaan memori dalam satuan megabita}\label{fig:uji-d-mem}
+\end{figure}
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Perubahan Dimensi Data}
+
+\tab Dimensi dari \textit{uncertian data} tidak banyak mempengaruhi \textit{performance} dari algoritma. Pada Gambar \ref{fig:uji-dim}, waktu komputasi pada algoritma $ CSd_\varepsilon $ cenderung turun. Hal tersebut dikarenakan antar objek tidak banyak yang mendominasi atau didominasi karena semakin banyaknya variabel yang perlu dibandingkan. Sebagai imbasnya, penggunaan memori semakin sedikit karena proses komputasi semakin sedikit.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={dimensi},
+	ymode=log,
+	ylabel={waktu komputasi (detik/operasi)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={2, 3, 4, 5, 6},
+	legend style={at={(0.7,0.5)},anchor=west},
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 0.111)(3, 0.1018)(5, 0.0978)(7, 0.06906)(9, 0.065)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 70.194)(3, 68)(5, 65)(7, 65)(9, 68)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh dimensi terhadap waktu komputasi tiap operasi dalam satuan detik}\label{fig:uji-dim}
+\end{figure}
+
+\tab Secara umum objek yang memiliki semakin banyak dimensi menjadikan objek tersebut semakin sedikit \textit{overlap}-nya dengan objek lain. Pada algoritma ini, proses penghitungan \textit{skyline} hanya dilakukan pada objek-objek yang overlap dengan objek yang dicari probabilitasnya. Dengan demikian, semakin banyak dimensi menjadikan waktu komputasi semakin kecil.
+
+\tab Pengalokasian memori berlaku pada objek-objek yang \textit{overlap}. Semakin sedikit objek yang \textit{overlap}, maka semakin sedikit memori yang dibutuhkan untuk pemrosesan probabilitas \textit{skyline}.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel={dimensi},
+	ymode=log,
+	ylabel={penggunaan memori (MB)},
+	xmin=0, xmax=10,
+	xtick={1, 3, 5, 7, 9},
+	xticklabels={2, 3, 4, 5, 6},
+	legend style={at={(0.7,0.5)},anchor=west},
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	
+	\addplot[
+	color=blue,
+	mark=square,
+	]
+	coordinates {
+		(1, 46)(3, 39)(5, 39)(7, 25)(9, 21)
+	};
+	\addlegendentry{$ CSd_\varepsilon $}
+	
+	\addplot[
+	color=red,
+	mark=x,
+	]
+	coordinates {
+		(1, 60714)(3, 60727)(5, 60006)(7, 61235)(9, 56945)
+	};
+	\addlegendentry{\textit{Naive}}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh dimensi terhadap penggunaan memori dalam satuan megabita}\label{fig:uji-dim-mem}
+\end{figure}
+
+\subsubsection{Skenario Uji Coba \textit{Performance} Terhadap Jenis Data}
+\tab Data \textit{anticorrelated} tidak banyak mempengaruhi komputasi karena pada penghitungan probabilitas \textit{skyline} objek $ X $, tidak banyak objek yang terdapat pada $ PDD(X) $. Dengan data \textit{correlated}, hampir setiap objek $ X $ memiliki objek yang overlap dengan $ PDD(X) $, sehingga proses penghitungan probabilitas \textit{skyline} menjadi lebih lama. Data \textit{independence} tidak berbeda jauh dengan data \textit{anticorrelated} karena objek yang terdapat pada \textit{node} sedikit sehingga tidak banyak objek $ X $ yang memiliki probabilitas \textit{skyline}.
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+	\begin{axis}[
+	ybar,
+	ylabel={waktu komputasi (detik/operasi)},
+	xlabel={Jenis data},
+	symbolic x coords={ANT, COR, IND},
+	xtick=data,
+	ymin=0, ymax=0.3,
+	nodes near coords align={vertical},
+	ymajorgrids=true,
+	grid style=dashed,
+	]
+	\addplot 
+	coordinates {(ANT, 0.1253)(COR, 0.2059)(IND, 0.1228)};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Pengaruh jenis data terhadap waktu komputasi tiap operasi dalam satuan detik}\label{GrafikDIND}
+\end{figure}
+
+

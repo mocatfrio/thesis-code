@@ -17,6 +17,9 @@
 }
 
 \usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{pgfplots}
 \usepackage{booktabs}
 \usepackage{subcaption}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
@@ -231,7 +234,8 @@
 	\addcontentsline{toc}{chapter}{SAMPUL}
 	\include{sampul/sampul}
 	\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
-	\include{pengesahan/pengesahan-gambar}
+%	\include{pengesahan/pengesahan-gambar}
+	\include{pengesahan/pengesahan}
 	\include{abstrak/abstrak}
 	\include{kata_pengantar/kata_pengantar}
 	\tableofcontents
@@ -254,6 +258,7 @@
 	\renewcommand\chaptername{LAMPIRAN}
 	\appendix
 	\include{daftar_pustaka/daftar_pustaka}
+	\include{lampiran/lampiran}
 	\backmatter
 	\include{biodata/biodata}
 \end{document}
