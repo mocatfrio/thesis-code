@@ -46,44 +46,44 @@
 \contentsline {subsubsection}{\numberline {3.3.1.3}\textit {Pandora Box}}{34}{subsubsection.3.3.1.3}
 \contentsline {subsection}{\numberline {3.3.2}Algoritme Utama}{34}{subsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.2.1}\textit {Data Precomputing}}{36}{subsubsection.3.3.2.1}
-\contentsline {paragraph}{\numberline {3.3.2.1.1}Proses \textit {Product Insertion}}{40}{paragraph.3.3.2.1.1}
+\contentsline {paragraph}{\numberline {3.3.2.1.1}Proses \textit {Product Insertion}}{39}{paragraph.3.3.2.1.1}
 \contentsline {paragraph}{\numberline {3.3.2.1.2}Proses \textit {Product Deletion}}{40}{paragraph.3.3.2.1.2}
-\contentsline {paragraph}{\numberline {3.3.2.1.3}Proses \textit {Customer Insertion}}{41}{paragraph.3.3.2.1.3}
-\contentsline {paragraph}{\numberline {3.3.2.1.4}Proses \textit {Customer Deletion}}{41}{paragraph.3.3.2.1.4}
-\contentsline {paragraph}{\numberline {3.3.2.1.5}Komputasi \textit {Reverse Skyline}}{41}{paragraph.3.3.2.1.5}
-\contentsline {paragraph}{\numberline {3.3.2.1.6}Komputasi \textit {Dynamic Skyline}}{43}{paragraph.3.3.2.1.6}
-\contentsline {paragraph}{\numberline {3.3.2.1.7}Perhitungan Probabilitas}{44}{paragraph.3.3.2.1.7}
-\contentsline {paragraph}{\numberline {3.3.2.1.8}Perhitungan Kontribusi Pasar}{45}{paragraph.3.3.2.1.8}
-\contentsline {paragraph}{\numberline {3.3.2.1.9}Pemrosesan Paralel}{45}{paragraph.3.3.2.1.9}
-\contentsline {subsubsection}{\numberline {3.3.2.2}\textit {Query Processing}}{46}{subsubsection.3.3.2.2}
-\contentsline {subsection}{\numberline {3.3.3}Algoritme \textit {Brute Force}}{49}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{49}{subsection.3.3.4}
-\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{51}{chapter.4}
-\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{51}{section.4.1}
-\contentsline {section}{\numberline {4.2}Implementasi Algoritme k-MPPTI}{53}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Implementasi Algoritme \textit {Data Precomputing}}{53}{subsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.1.1}\textit {Class}}{53}{subsubsection.4.2.1.1}
-\contentsline {subsection}{\numberline {4.2.2}Implementasi Algoritme \textit {Query Processing}}{53}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritme Pembanding (\textit {Brute Force})}{53}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{53}{section.4.4}
-\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{55}{chapter.5}
-\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{55}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data Uji Coba}{55}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{55}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anticorrelated} (ANT)}{56}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Data \textit {Correlated} (COR)}{56}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{56}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Skenario Uji Coba \textit {Performance}}{57}{subsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Sel}{57}{subsubsection.5.3.1.1}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Objek}{59}{subsubsection.5.3.1.2}
-\contentsline {subsubsection}{\numberline {5.3.1.3}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah \textit {Instance} pada Objek}{61}{subsubsection.5.3.1.3}
-\contentsline {subsubsection}{\numberline {5.3.1.4}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Panjang Jarak Maksimal $ d_\varepsilon $}{63}{subsubsection.5.3.1.4}
-\contentsline {subsubsection}{\numberline {5.3.1.5}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Dimensi Data}{65}{subsubsection.5.3.1.5}
-\contentsline {subsubsection}{\numberline {5.3.1.6}Skenario Uji Coba \textit {Performance} Terhadap Jenis Data}{67}{subsubsection.5.3.1.6}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{69}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{69}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{69}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{71}{appendix*.30}
+\contentsline {paragraph}{\numberline {3.3.2.1.3}Proses \textit {Customer Insertion}}{43}{paragraph.3.3.2.1.3}
+\contentsline {paragraph}{\numberline {3.3.2.1.4}Proses \textit {Customer Deletion}}{43}{paragraph.3.3.2.1.4}
+\contentsline {paragraph}{\numberline {3.3.2.1.5}Komputasi \textit {Reverse Skyline}}{45}{paragraph.3.3.2.1.5}
+\contentsline {paragraph}{\numberline {3.3.2.1.6}Komputasi \textit {Dynamic Skyline}}{47}{paragraph.3.3.2.1.6}
+\contentsline {paragraph}{\numberline {3.3.2.1.7}Perhitungan Probabilitas}{48}{paragraph.3.3.2.1.7}
+\contentsline {paragraph}{\numberline {3.3.2.1.8}Perhitungan Kontribusi Pasar}{49}{paragraph.3.3.2.1.8}
+\contentsline {paragraph}{\numberline {3.3.2.1.9}Pemrosesan Paralel}{49}{paragraph.3.3.2.1.9}
+\contentsline {subsubsection}{\numberline {3.3.2.2}\textit {Query Processing}}{50}{subsubsection.3.3.2.2}
+\contentsline {subsection}{\numberline {3.3.3}Algoritme \textit {Brute Force}}{53}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{53}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{55}{chapter.4}
+\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{55}{section.4.1}
+\contentsline {section}{\numberline {4.2}Implementasi Algoritme k-MPPTI}{57}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Implementasi Algoritme \textit {Data Precomputing}}{57}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}\textit {Class}}{57}{subsubsection.4.2.1.1}
+\contentsline {subsection}{\numberline {4.2.2}Implementasi Algoritme \textit {Query Processing}}{57}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritme Pembanding (\textit {Brute Force})}{57}{section.4.3}
+\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{57}{section.4.4}
+\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{59}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Uji Coba}{59}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{59}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anticorrelated} (ANT)}{60}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Data \textit {Correlated} (COR)}{60}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{60}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Skenario Uji Coba \textit {Performance}}{61}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Sel}{61}{subsubsection.5.3.1.1}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Objek}{63}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.3}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah \textit {Instance} pada Objek}{65}{subsubsection.5.3.1.3}
+\contentsline {subsubsection}{\numberline {5.3.1.4}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Panjang Jarak Maksimal $ d_\varepsilon $}{67}{subsubsection.5.3.1.4}
+\contentsline {subsubsection}{\numberline {5.3.1.5}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Dimensi Data}{69}{subsubsection.5.3.1.5}
+\contentsline {subsubsection}{\numberline {5.3.1.6}Skenario Uji Coba \textit {Performance} Terhadap Jenis Data}{71}{subsubsection.5.3.1.6}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{73}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{73}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{73}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{75}{appendix*.36}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{73}{Lampiran.a.A}
-\contentsline {chapter}{BIODATA PENULIS}{105}{appendix*.31}
+\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{77}{Lampiran.a.A}
+\contentsline {chapter}{BIODATA PENULIS}{109}{appendix*.37}

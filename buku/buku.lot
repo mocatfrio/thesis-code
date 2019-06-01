@@ -13,17 +13,13 @@
 \contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan Fungsional\relax }}{29}{table.3.2}
 \contentsline {table}{\numberline {3.3}{\ignorespaces \textit {Key} dari \textit {Data Storage} \relax }}{32}{table.3.3}
 \contentsline {table}{\numberline {3.4}{\ignorespaces Atribut dari \textit {Event Queue}\relax }}{33}{table.3.4}
-\contentsline {table}{\numberline {3.5}{\ignorespaces Contoh \textit {Pandora Box} dari \textit {Dataset} \ref {tab:dataset-2}\relax }}{34}{table.3.5}
-\contentsline {table}{\numberline {3.6}{\ignorespaces Contoh \textit {Dataset} (a) Produk $P$ dan (b) Preferensi Pelanggan $C$ \relax }}{37}{table.3.6}
-\contentsline {table}{\numberline {3.7}{\ignorespaces \textit {Event Queue} \relax }}{38}{table.3.7}
-\contentsline {table}{\numberline {3.8}{\ignorespaces Hasil Perhitungan \textit {Dynamic Skyline}\relax }}{44}{table.3.8}
-\contentsline {table}{\numberline {3.9}{\ignorespaces Hasil Perhitungan Probabilitas\relax }}{44}{table.3.9}
-\contentsline {table}{\numberline {3.10}{\ignorespaces Hasil Perhitungan Kontribusi Pasar\relax }}{45}{table.3.10}
-\contentsline {table}{\numberline {3.11}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu\relax }}{48}{table.3.11}
-\contentsline {table}{\numberline {3.12}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu (2)\relax }}{49}{table.3.12}
+\contentsline {table}{\numberline {3.5}{\ignorespaces Contoh \textit {Dataset} (a) Produk $P$ dan (b) Preferensi Pelanggan $C$ \relax }}{37}{table.3.5}
+\contentsline {table}{\numberline {3.6}{\ignorespaces \textit {Event Queue} \relax }}{38}{table.3.6}
+\contentsline {table}{\numberline {3.7}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu\relax }}{52}{table.3.7}
+\contentsline {table}{\numberline {3.8}{\ignorespaces Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu (2)\relax }}{52}{table.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Atribut dari objek \relax }}{56}{table.5.1}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Atribut dari objek \relax }}{60}{table.5.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

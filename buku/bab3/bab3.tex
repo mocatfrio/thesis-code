@@ -162,7 +162,7 @@ Struktur data \textit{dictionary} yang digunakan berbentuk \textit{nested dictio
 \end{longtable}
 
 \subsubsection{\textit{Event Queue}}
-\tab \textit{Event} adalah titik tempat terjadinya perubahan di dalam himpunan data. Sebuah himpunan data dikatakan berubah jika ada data yang masuk atau keluar. Sehingga, ada empat jenis \textit{event} yang terjadi dalam penelitian ini, yaitu:
+\tab \textit{Event} adalah titik-titik tempat terjadinya perubahan di dalam himpunan data, yaitu jika ada data yang masuk atau keluar. Ada empat jenis \textit{event} yang terjadi dalam penelitian ini, yaitu:
 
 \begin{enumerate}
 	\item Data Produk masuk
@@ -190,43 +190,33 @@ Produk dan pelanggan disebut dengan pemilik \textit{event}, sedangkan masuk dan 
 \end{table}
 
 \subsubsection{\textit{Pandora Box}}
-\tab \textit{Pandora Box} adalah sebuah struktur data \textit{array} dua dimensi yang terdiri dari sumbu $x$ (\textit{time series}) dan sumbu $y$ (produk). Struktur data ini digunakan untuk menyimpan skor kontribusi pasar produk setiap waktu. Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2}, maka model \textit{Pandora Box} yang terbentuk adalah seperti pada Tabel \ref{tab:pbox}.  
+\tab \textit{Pandora Box} adalah sebuah struktur data \textit{array} dua dimensi yang terdiri dari sumbu $x$ (\textit{time series}) dan sumbu $y$ (produk). Struktur data ini digunakan untuk menyimpan skor kontribusi pasar produk setiap waktu. Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2}, maka model \textit{Pandora Box} yang terbentuk adalah seperti pada Gambar \ref{fig:pbox}.  
 
-\newcolumntype{C}{>{\centering\arraybackslash}p{0.5em}}
-\begin{table}[H]
-	\small
+\begin{figure}[h]
 	\centering
-	\begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|C|C|C|C|}
-		\hline
-		& $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ & $13$ & $14$ & $15$ \\ \hline \hline
-		$p_1$ & & & & & & & & & & & & & & & \\ \hline
-		$p_2$ & & & & & & & & & & & & & & & \\ \hline
-		$p_3$ & & & & & & & & & & & & & & & \\ \hline
-		$p_4$ & & & & & & & & & & & & & & & \\ \hline
-		$p_5$ & & & & & & & & & & & & & & & \\ \hline
-	\end{tabular} 
+	\includegraphics[width=10cm]{assets/img/bab3/pbox.png}
 	\caption{Contoh \textit{Pandora Box} dari \textit{Dataset} \ref{tab:dataset-2}}
-	\label{tab:pbox}
-\end{table}
+	\label{fig:pbox}
+\end{figure}
 
 \subsection{Algoritme Utama}
-\tab Sebagaimana yang telah dijelaskan sebelumnya bahwa algoritme k-MPPTI terdiri dari dua tahap pemrosesan, yaitu \textit{data precomputing} dan \textit{query processing}. Secara garis besar, alur kerja sistem secara umum disajikan dalam bentuk diagram alur yang dapat dilihat pada Gambar \ref{fig:diagram-alur1}.
+\tab Sebagaimana yang telah dijelaskan sebelumnya bahwa algoritme $k$-MPPTI terdiri dari dua tahap pemrosesan, yaitu \textit{data precomputing} dan \textit{query processing}. Secara garis besar, alur kerja sistem secara umum disajikan dalam bentuk diagram alur yang dapat dilihat pada Gambar \ref{fig:diagram-alur1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{assets/img/bab3/flowchart.png}
+	\includegraphics[width=10cm]{assets/img/bab3/flowchart.png}
 	\caption{Diagram Alur Algoritme k-MPPTI}
 	\label{fig:diagram-alur1}
 \end{figure}
 
-Tahap \textit{data precomputing} bertujuan untuk menghitung kontribusi pasar masing-masing produk berdasarkan preferensi pelanggan. Diawali dengan pembentukan \textit{Event Queue} untuk mencatat semua \textit{event} yang terjadi selama pemrosesan data. Kemudian, memproses \textit{event-event} tersebut menggunakan algoritme pemrosesan berdasarkan jenis \textit{event}-nya. Terakhir adalah menghitung kontribusi pasar dan menyimpannya ke dalam struktur data \textit{array} bernama \textit{Pandora Box}.
+Tahap \textit{data precomputing} bertujuan untuk menghitung skor kontribusi pasar masing-masing produk berdasarkan preferensi pelanggan. Diawali dengan pembentukan \textit{Event Queue} untuk mencatat semua \textit{event} yang terjadi selama pemrosesan data. Kemudian, memproses \textit{event-event} tersebut menggunakan algoritme pemrosesan berdasarkan jenis \textit{event}-nya. Terakhir adalah mengekspor \textit{Pandora Box} untuk digunakan sebagai masukan pada tahap \textit{query processing}.
 
-\textit{Pandora Box} kemudian digunakan sebagai masukan pada tahap \textit{query processing}. Diawali dengan masukan kueri pencarian berupa jumlah produk ($k$) dan interval waktu pencarian. Kemudian, mencari produk sejumlah $k$ yang memiliki total skor kontribusi pasar terbesar selama interval waktu pencarian. Terakhir adalah mengembalikan hasil kueri pencarian berupa $k$-produk yang paling menjanjikan kepada pengguna.
+Tahap kedua adalah \textit{query processing} yang bertujuan untuk memproses kueri pencarian yang dimasukkan oleh pengguna berupa jumlah produk ($k$) dan interval waktu pencarian. Diawali dengan mencari produk sejumlah $k$ yang memiliki total skor kontribusi pasar terbesar selama interval waktu pencarian, kemudian mengembalikan hasil kueri pencarian berupa $k$-produk yang paling menjanjikan kepada pengguna.
 
 Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbasis web yang memudahkan pengguna memasukkan data produk dan pelanggan, melihat pratinjau dan visualisasi data, memasukkan kueri pencarian, serta melihat hasil kueri pencarian.   
 
 \subsubsection{\textit{Data Precomputing}}
-\tab \textit{Data precomputing} adalah sebuah proses yang dapat menunjang performa algoritme \textit{query processing} supaya dapat bekerja lebih efektif dan efisien. Tidak adanya proses \textit{data precomputing} menyebabkan pengulangan komputasi data setiap kali seseorang memasukkan kueri pencarian, sehingga komputasi data cukup dilakukan satu kali di awal (\textit{precomputing}) karena data yang digunakan adalah \textit{historical data}, yaitu data yang dikumpulkan dari kejadian yang telah lalu. Berbeda halnya jika data yang digunakan adalah \textit{streaming data} yang nilainya terus berubah dalam periode waktu tertentu.
+\tab \textit{Data precomputing} adalah sebuah proses yang dapat menunjang performa algoritme \textit{query processing} supaya dapat bekerja lebih efektif dan efisien. Tidak adanya proses \textit{data precomputing} menyebabkan pengulangan komputasi data setiap kali seseorang memasukkan kueri pencarian. Karena data yang digunakan adalah \textit{historical data}, yaitu data yang dikumpulkan dari kejadian yang telah lalu, maka komputasi data cukup dilakukan satu kali saja di awal (\textit{precomputing}). Berbeda halnya jika data yang digunakan adalah \textit{streaming data} yang nilainya terus berubah dalam periode waktu tertentu.
 	
 \newcolumntype{C}{>{\centering\arraybackslash}p{1.4em}}
 \begin{table}[H]
@@ -263,24 +253,23 @@ Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbas
 	\end{subtable} 
 \end{table}
 
-Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi dengan serial waktu $[t_i:t_e]$. Data multidimensi dengan serial waktu dimodelkan sebagai lini masa yang diilustrasikan pada Gambar \ref{fig:timeline}.
+Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi dengan serial waktu $[t_i:t_e]$. Pendekatan yang digunakan untuk memproses data multidimensi dengan serial waktu adalah menggunakan lini masa yang diilustrasikan pada Gambar \ref{fig:timeline}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{assets/img/bab3/timeline.png}
-	\caption{Ilustrasi Data Multidimensi dengan Serial Waktu}
+	\includegraphics[width=10cm]{assets/img/bab3/timeline-polos.png}
+	\caption{lini Masa Data Produk dan Pelanggan}
 	\label{fig:timeline}
 \end{figure}
 
-Pada komputasi $k$-MPP \cite{kmpp}, semua data dikomputasi sekaligus dalam satu waktu, namun hal ini tidak dapat diterapkan pada komputasi $k$-MPPTI. Pendekatan yang digunakan adalah membagi lini masa menjadi beberapa area komputasi. Sebagaimana yang ditunjukkan oleh Gambar \ref{fig:timeline-color}, $CA$ adalah area komputasi saat ini dan semua data di sebelah kiri $CA$ disebut sebagai data aktif, dinotasikan dengan $D_{active}$. Area $CA$ nantinya akan dikomputasi menggunakan algoritme yang mengadopsi komputasi $k$-MPP \cite{kmpp} dengan berbagai penyesuaian.
- 
+Lini masa atau alur waktu adalah suatu representasi kronologis urutan peristiwa atau kejadian (\textit{event}). Lini masa dapat dibuat menurut era, abad, tahun, bulan, minggu, atau hari, namun untuk pemodelan ini, waktu direpresentasikan sebagai bilangan bulat positif. Di dalam lini masa, terdapat titik-titik yang mewakili kejadian penting (\textit{event}) yang dinotasikan dengan $e \in E$. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{assets/img/bab3/timeline-color.png}
-	\caption{Ilustrasi Pemrosesan Data}
-	\label{fig:timeline-color}
+	\includegraphics[width=10cm]{assets/img/bab3/timeline-event.png}
+	\caption{\textit{Event} dalam Lini Masa Data Produk dan Pelanggan}
+	\label{fig:timeline-event}
 \end{figure}
 
-Dalam $k$-MPPTI, tidak semua \textit{timestamp} dianggap sebagai area $CA$ karena akan menghabiskan waktu komputasi. Hasil komputasi akan berubah jika ada perubahan susunan data, yakni ada data yang masuk atau keluar. Setiap ada data yang masuk atau keluar akan dicatat sebagai \textit{event} $e$ dan dimasukkan ke dalam \textit{Event Queue}. \textit{Event-event} ini nantinya akan diproses satu persatu secara berurutan sebagai area $CA$. Contoh \textit{Event Queue} yang terbentuk dari \textit{dataset} pada Tabel \ref{tab:dataset-2} ditunjukkan pada Tabel \ref{tab:event-queue}.
+Ada empat jenis \textit{event} di dalam lini masa, yaitu data produk masuk, produk keluar, pelanggan masuk, dan pelanggan keluar. \textit{Event-event} tersebut dicatat dan dimasukkan ke dalam \textit{Event Queue}, kemudian diproses satu persatu secara berurutan. Contoh \textit{Event Queue} yang terbentuk dari \textit{dataset} pada Tabel \ref{tab:dataset-2} ditunjukkan pada Tabel \ref{tab:event-queue}.
 
 \begin{small}
 	\begin{longtable}{|c|c|c|c|}
@@ -314,45 +303,62 @@ Dalam $k$-MPPTI, tidak semua \textit{timestamp} dianggap sebagai area $CA$ karen
 	\end{longtable}
 \end{small}
 
-Ada empat jenis algoritme pemrosesan berdasarkan jenis \textit{event}-nya, yaitu:
-
-\begin{enumerate}
-	\item \textit{Product Insertion}
-	\item \textit{Product Deletion}
-	\item \textit{Customer Insertion}
-	\item \textit{Customer Deletion}
-\end{enumerate}
-
-Terlepas dari empat jenis proses di atas, ada dua jenis komputasi \textit{skyline} yang digunakan dalam \textit{data precomputing}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}. Dua komputasi tersebut digunakan sebagai metode perhitungan probabilitas dan kontribusi pasar \cite{kmpp}. 
+Ada empat jenis algoritme pemrosesan berdasarkan jenis \textit{event}-nya, yaitu: (1) \textit{Product Insertion}, (2) \textit{Product Deletion}, (3) \textit{Customer Insertion}, dan (4) \textit{Customer Deletion}. Masing-masing proses itu membutuhkan dua jenis komputasi \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}, sebagai metode perhitungan probabilitas dan kontribusi pasar \cite{kmpp}. 
 
 \myparagraph{Proses \textit{Product Insertion}}
 
-Proses \textit{Product Insertion} adalah proses yang dijalankan ketika ada produk yang masuk, dinotasikan dengan $p_{in}$, ke dalam data aktif $D_{active}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika produk baru dapat mendominasi produk lama, sehingga hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ dan perhitungan probabilitasnya ikut berubah.
+Proses \textit{Product Insertion} adalah proses yang dijalankan ketika ada data produk yang masuk, dinotasikan dengan $p_{in}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika produk baru dapat mendominasi produk lama, sehingga hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ dan perhitungan probabilitasnya ikut berubah. 
 
-Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah produk $p_{in}$ ke dalam daftar produk aktif $P_{active}$. Kemudian, (2) menghitung $RSL(p_{in})$, (3) menghitung $DSL(c), \forall c \in RSL(p_{in})$ dan diakhiri dengan (4) memperbarui \textit{Pandora Box}. Mekanisme pembaruan \textit{Pandora Box} adalah dengan cara mengakumulasikan skor hasil probabilitas setiap $c \in RSL(p_{in})$ di dalam \textit{Pandora Box} dengan indeks ID produk masuk dan \textit{timestamp event}, dinotasikan dengan $PBox[p_{in}][ts]$.
+Secara garis besar, algoritme pemrosesan disajikan dalam bentuk diagram alur pada Gambar \ref{fig:flowchart-pi}. Pemrosesan diawali dengan (1) menambahkan produk $p_{in}$ ke dalam daftar produk aktif $P_{active}$. Kemudian, (2) menghitung $RSL(p_{in})$. Dari hasil $RSL(p_{in})$ akan didapatkan hasil berupa sejumlah pelanggan yang menganggap $p_{in}$ sebagai hasil $DSL$-nya. Dilanjutkan dengan (3) menghitung $DSL(c)$ untuk masing-masing $c \in RSL(p_{in})$ dan (4) menghitung probabilitas masing-masing produk. Diakhiri dengan (5) memperbarui \textit{Pandora Box}. 
 
 \myparagraph{Proses \textit{Product Deletion}}
 
-Proses \textit{Product Deletion} adalah proses yang dijalankan ketika ada produk yang keluar, dinotasikan dengan $p_{out}$,  ke dalam data aktif $D_{active}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika sebuah produk yang pernah menjadi hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ keluar, maka produk lain yang pernah didominasi akan menjadi hasil $DSL(c)$ yang baru.
+Proses \textit{Product Deletion} adalah proses yang dijalankan ketika ada data produk yang keluar, dinotasikan dengan $p_{out}$. Proses ini sangat penting dilakukan karena ada kemungkinan jika sebuah produk yang pernah menjadi hasil \textit{dynamic skyline} seorang pelanggan $c \in C$ keluar, maka produk lain yang pernah didominasi akan menjadi hasil $DSL(c)$ yang baru.
 
-Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last\_ts$ dan $last\_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghitung $RSL(p_{out})$ dan (3) menghitung $DSL(c), \forall c \in RSL(p_{out})$. Terakhir adalah menghapus produk $p$ dari daftar produk aktif $P_{active}$.
+Secara garis besar, algoritme pemrosesan disajikan dalam bentuk diagram alur pada Gambar \ref{fig:flowchart-po}. Pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghitung $RSL(p_{out})$. Dari hasil $RSL(p_{out})$ akan didapatkan hasil berupa sejumlah pelanggan yang menganggap $p_{out}$ sebagai hasil $DSL$-nya. Dilanjutkan dengan (3) menghitung $DSL(c)$ untuk masing-masing $c \in RSL(p_{out})$ yang dimaksudkan untuk mencari produk lain yang pernah didominasi. Diakhiri dengan (4) menghitung probabilitas masing-masing produk, serta (5) menghapus produk $p_{out}$ dari daftar produk aktif $P_{active}$. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{assets/img/bab3/flowchart-pi.png}
+	\caption{Diagram Alur Proses \textit{Product Insertion}}
+	\label{fig:flowchart-pi}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{assets/img/bab3/flowchart-po.png}
+	\caption{Diagram Alur Proses \textit{Product Deletion}}
+	\label{fig:flowchart-po}
+\end{figure}
 
 \myparagraph{Proses \textit{Customer Insertion}}
 
-Proses \textit{Customer Insertion} adalah proses yang dijalankan ketika ada pelanggan yang masuk, dinotasikan dengan $c_{in}$, ke dalam data aktif $D_{active}$. 
-
-Secara garis besar, algoritme pemrosesan diawali dengan (1) menambah pelanggan $c_{in}$ ke dalam daftar pelanggan aktif $C_{active}$. Kemudian (2) menghitung \textit{Initial} $DSL(c_{in})$ untuk mendapatkan hasil \textit{dynamic skyline} awal dan diakhiri dengan (3) memperbarui \textit{Pandora Box}.
+Proses \textit{Customer Insertion} adalah proses yang dijalankan ketika ada data pelanggan yang masuk, dinotasikan dengan $c_{in}$. Secara garis besar, algoritme pemrosesan disajikan dalam bentuk diagram alur pada Gambar \ref{fig:flowchart-ci}. Pemrosesan diawali dengan (1) menambahkan pelanggan $c_{in}$ ke dalam daftar pelanggan aktif $C_{active}$. Kemudian (2) menghitung \textit{Initial} $DSL(c_{in})$ untuk mendapatkan hasil \textit{dynamic skyline} awal. Diakhiri dengan (3) menghitung probabilitas dan (4) memperbarui \textit{Pandora Box}.
 
 \myparagraph{Proses \textit{Customer Deletion}}
 
-Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada pelanggan yang keluar, dinotasikan dengan $c_{out}$, dari data aktif $D_{active}$. Secara garis besar, algoritme pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara mengecek $last\_ts$ dan $last\_prob$-nya (Tabel \ref{tab:desc-key}) untuk mengisi indeks $PBox$ sebelumnya yang kosong. Kemudian (2) menghapus pelanggan $c$ dari daftar pelanggan aktif $C_{active}$
+Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada data pelanggan yang keluar, dinotasikan dengan $c_{out}$. Secara garis besar, algoritme pemrosesan disajikan dalam bentuk diagram alur pada Gambar \ref{fig:flowchart-co}. Pemrosesan diawali dengan (1) memperbarui \textit{Pandora Box} dengan cara untuk mengisi indeks $PBox$ sebelumnya yang kosong, kemudian diakhiri dengan (2) menghapus pelanggan $c$ dari daftar pelanggan aktif $C_{active}$. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5cm]{assets/img/bab3/flowchart-ci.png}
+	\caption{Diagram Alur Proses \textit{Customer Insertion}}
+	\label{fig:flowchart-ci}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5cm]{assets/img/bab3/flowchart-co.png}
+	\caption{Diagram Alur Proses \textit{Customer Deletion}}
+	\label{fig:flowchart-co}
+\end{figure}
 
 \myparagraph{Komputasi \textit{Reverse Skyline}}
 
 Komputasi \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
 P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
 
-Sebagaimana yang telah dijelaskan pada Bab \ref{chap:tinjauan-pustaka}, komputasi \textit{reverse skyline} diawali dengan menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Dalam geometri, \textit{orthant} adalah analog dalam ruang data \textit{d}-dimensi atau biasa dikenal sebagai kuadran dalam bidang dua dimensi. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. 
+Komputasi \textit{reverse skyline} diawali dengan menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Dalam geometri, \textit{orthant} adalah analog dalam ruang data \textit{d}-dimensi atau biasa dikenal sebagai kuadran dalam bidang dua dimensi. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. 
 
 \textit{Orthant} ditandai menggunakan bilangan biner. Sebagai contoh, terdapat empat \textit{orthant} pada bidang dua dimensi, yaitu $O_{00}$, $O_{01}$, $O_{10}$, dan $O_{11}$, dan delapan \textit{orthant} pada bidang tiga dimensi, yaitu $O_{000}$, $O_{001}$, $O_{010}$, $O_{011}$, $O_{100}$, $O_{101}$, $O_{110}$ dan $O_{111}$. Penggunaan bilangan biner bertujuan untuk menandai batas wilayah sebuah \textit{orthant}. Misalnya, \textit{orthant} $O_{010}$ dari produk $p_1$ memiliki wilayah dengan batas-batas sebagai berikut: sumbu $x [0:pos_x(p_1)]$, sumbu $y [pos_y(p_1):max_y]$, dan sumbu $z [0:pos_z(p_1)]$.
 
@@ -364,13 +370,18 @@ Kemudian, menentukan \textit{midpoint skyline} atau \textit{mid-skyline} \cite{m
 
 Langkah terakhir adalah mengecek setiap pelanggan $c \in C$ apakah didominasi oleh hasil \textit{mid-skyline} pada masing-masing \textit{orthant} atau tidak (Persamaan \ref{eq:mid-skyline}). Jika $c$ didominasi, maka $c$ tidak dapat menjadi hasil \textit{reverse skyline}.
 
-Menggunakan contoh \textit{dataset} pada Tabel \ref{tab:dataset-2} pada \textit{event} $e_6$, komputasi $RSL(p_5)$ digambarkan sebagai berikut.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{assets/img/bab3/flowchart-rsl.png}
+	\caption{Diagram Alur Komputasi \textit{Reverse Skyline}}
+	\label{fig:flowchart-rsl}
+\end{figure}
 
 \myparagraph{Komputasi \textit{Dynamic Skyline}}
 
-Sebagaimana yang telah dijelaskan pada Bab \ref{chap:tinjauan-pustaka}, komputasi \textit{dynamic skyline} digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$. 
+Komputasi \textit{dynamic skyline} digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$. 
 
-Proses komputasi \textit{dynamic skyline} diawali dengan perhitungan selisih absolut dari nilai masing-masing dimensi antara pelanggan dan produk, dinotasikan dengan:
+Secara umum, proses komputasi \textit{dynamic skyline} diawali dengan perhitungan selisih absolut dari nilai masing-masing dimensi antara pelanggan dan produk, dinotasikan dengan:
 \begin{equation}\label{eq:diff}
 diff^i = |c_1^i - p^i|
 \end{equation}
@@ -385,20 +396,8 @@ Selanjutnya, mengecek dominansi dinamis antar produk dengan membandingkan selisi
 
 Pengecekan dominansi dinamis ini dilakukan secara iteratif sampai dipastikan suatu $p_1$ tidak didominasi oleh $p_2$ lain sama sekali. Jika $p_1$ pernah didominasi, maka $p_1$ tidak dapat menjadi hasil \textit{dynamic skyline}.
 
-Dari hasil komputasi $RSL(p_5)$ pada Gambar ..., akan didapatkan perhitungan hasil \textit{dynamic skyline} seperti pada Tabel \ref{tab:dsl-res}.
+Komputasi $DSL$ dalam $k$-MPPTI dibagi menjadi 3 jenis, yaitu (1) \textit{Initial} $DSL$, digunakan ketika ada data pelanggan yang masuk, (2) $DSL-PI$, digunakan ketika ada data produk yang masuk, dan (3) $DSL-PD$, digunakan ketika ada data produk yang keluar.
 
-\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{|p{2cm}|p{3cm}|}
-		\hline
-		$DSL(c_1)$ & $\{1, 4, 5\}$ \\ \hline
-		$DSL(c_2)$ & $\{1, 4, 5\}$ \\ \hline
-		$DSL(c_4)$ & $\{4, 5\}$\\ \hline
-	\end{tabular} 
-	\caption{Hasil Perhitungan \textit{Dynamic Skyline}}
-	\label{tab:dsl-res}
-\end{table}
 
 \myparagraph{Perhitungan Probabilitas}
 
@@ -417,48 +416,11 @@ Karena probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pa
 Pr_t(c, p|P_{active}), \forall c \in RSL(p)
 \end{equation}
 
-Dari hasil perhitungan \textit{dynamic skyline} pada Tabel \ref{tab:dsl-res}, akan didapatkan hasil perhitungan probabilitas sebagai berikut.
-
-\begin{small}
-	\begin{longtable}{|p{1cm}|p{4cm}|p{3cm}|}
-		\caption{Hasil Perhitungan Probabilitas}
-		\label{tab:prob-res}
-		\hline
-		\multirow{2}{*}{$p_1$} & $Pr_5(c_1, p_1|P_{active})$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr_5(c_2, p_1|P_{active})$ & $\frac{1}{3} = 0.33$ \\ \hline
-		\multirow{3}{*}{$p_4$} & $Pr_5(c_1, p_4|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_4, p_3|P)$ & $\frac{1}{3} = 0.33$  \\ \hline
-		\multirow{3}{*}{$p_4$} & $Pr(c_1, p_4|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr(c_4, p_4|P)$ & $\frac{1}{3} = 0.33$  \\ \cline{2-3}
-		& $Pr(c_5, p_4|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
-		\multirow{3}{*}{$p_5$} & $Pr(c_1, p_5|P)$ & $\frac{1}{3} = 0.33$ \\ \cline{2-3}
-		& $Pr(c_2, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \cline{2-3}
-		& $Pr(c_5, p_5|P)$ & $\frac{1}{2} = 0.5$ \\ \hline
-	\end{longtable}
-\end{small}
-
 \myparagraph{Perhitungan Kontribusi Pasar}
 
-Hasil perhitungan probabilitas produk $p$ pada Tabel \ref{tab:prob-res} kemudian diakumulasikan menjadi skor kontribusi pasar sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-rsl}. Sehingga akan didapatkan hasil pada Tabel \ref{tab:mc-res}.
-
-\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{|p{3cm}|p{2cm}|}
-		\hline
-		$E(C, p_1|P)$ & $0$ \\ \hline
-		$E(C, p_2|P)$ & $1.66$ \\ \hline
-		$E(C, p_3|P)$ & $0.83$ \\ \hline
-		$E(C, p_4|P)$ & $1.16$ \\ \hline
-		$E(C, p_5|P)$ & $1.33$ \\ \hline
-	\end{tabular} 
-	\caption{Hasil Perhitungan Kontribusi Pasar}
-	\label{tab:mc-res}
-\end{table}
-
-Dalam komputasi $k$-MPPTI, perhitungan kontribusi pasar dilakukan berbasis waktu atau \textit{timestamp} yang dijelaskan pada Persamaan \ref{eq:market-contr-ti}.
+Setelah mendapatkan hasil perhitungan probabilitas, selanjutnya adalah menghitung kontribusi pasar dengan cara mengakumulasikan probabilitas produk dari setiap pelanggan $c \in Cactive$ sebagaimana yang dijelaskan pada Persamaan \ref{eq:market-contr-ti}. 
 \begin{equation}\label{eq:market-contr-ti}
-E_t(C, p|P) = \sum_{\forall c \in RSL(p)} Pr_t(c, p|P)
+E_t(C, p|P_{active}) = \sum_{\forall c \in RSL(p)} Pr_t(c, p|P_{active})
 \end{equation} 
 
 \myparagraph{Pemrosesan Paralel}
@@ -469,7 +431,7 @@ Pemrosesan paralel dilakukan dengan cara menggunakan satu atau lebih CPU atau pr
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=7cm]{assets/img/bab3/paralel.png}
+	\includegraphics[width=8cm]{assets/img/bab3/paralel.png}
 	\caption{Pemrosesan Paralel}
 	\label{fig:paralel}
 \end{figure}
