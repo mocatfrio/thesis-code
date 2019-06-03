@@ -23,27 +23,28 @@
 \section{Implementasi \textit{Data Precomputing}}
 \tab \textit{Data precomputing} merupakan pemrosesan tahap pertama dalam algoritme $k$-MPPTI yang bertujuan untuk mengolah \textit{dataset} produk $P$ dan preferensi pelanggan $C$ dengan jumlah data sebanyak $n$ dan ukuran dimensi sebesar $d$, menjadi sebuah $Pandora Box$ yang menyimpan skor kontribusi pasar semua produk pada setiap waktu. Algoritme ini diimplementasikan menggunakan paradigma pemrograman berorientasi objek, sehingga semua data dan fungsi dibungkus dalam kelas-kelas. Ada empat macam kelas yang diimplementasikan, yaitu kelas \textit{EventQueue}, \textit{PandoraBox}, \textit{ReverseSkyline}, dan \textit{DynamicSkyline}.
 
-\subsection{Kelas \textit{EventQueue}}
-\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. Kelas ini mengimplementasikan karakteristik dari struktur data \textit{queue}, yakni FIFO (\textit{First In First Out}).
+\subsection{Kelas \textit{Event Queue}}
+\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. Kelas ini mengimplementasikan karakteristik dari struktur data \textit{queue}, yakni FIFO (\textit{First In First Out}). 
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\label{algo:event-queue-class}
-		\caption{EventQueue}
+		\caption{EventQueue Class}
 		\begin{algorithmic}[1]
 			\Statex \textbf{Input \hskip1em :} timestamp $t$, event's owner $o$ (product/customer), owner ID $oid$, action $a$ (insertion/deletion)
+			\Statex \textbf{Output \hskip0.3em :} event queue $E$
 			\Statex
-			\State $E \leftarrow$ empty list \Comment{Initialization}
+			\State $E \gets$ empty list \Comment{Initialization}
 			\Procedure{\large{E}\small{NQUEUE}}{$t$, $o$, $oid$, $a$}
-				\State $e \leftarrow$ list($t, o, oid, a$)
-				\State $E \leftarrow$ append $e$ 
+				\State $e \gets$ list($t, o, oid, a$)
+				\State $E \gets$ append $e$ 
 			\EndProcedure
 			\Procedure{\large{D}\small{EQUEUE}}{}
-				\State $e \leftarrow$ pop an element from $E$
+				\State $e \gets$ pop an element from $E$
 				\State \Return $e$
 			\EndProcedure
 			\Procedure{\large{S}\small{ORT}\large{Q}\small{UEUE}}{}
-				\State $E \leftarrow$ sort elements in descending order based on sorting priority
+				\State $E \gets$ sort elements in descending order based on sorting priority
 			\EndProcedure
 			\Procedure{\large{G}\small{ET}\large{T}\small{OTAL}\large{Q}\small{UEUE}}{}
 				\State \Return number of elements in $E$
@@ -51,28 +52,308 @@
 			\Procedure{\large{G}\small{ET}\large{M}\small{AX}\large{T}\small{IMESTAMP}}{}
 				\State \Return first index of $E$
 			\EndProcedure
+			\Procedure{\large{I}\small{S}\large{E}\small{MPTY}}{}
+				\If {$E$ is empty} \Return True
+				\Else \Return False
+			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
 	\caption{Kelas \textit{EventQueue}}
 \end{figure}
+  
+\subsection{Kelas \textit{Pandora Box}}
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:event-queue-instance}
-		\caption{StoreEventQueue}
+		\label{algo:pbox-class}
+		\caption{PandoraBox Class (Part 1)}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
-			\Statex \textbf{Output \hskip0.3em :} an instance of EventQueue class
+			\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp $ts$, probability score $Pr$ 
+			\Statex \textbf{Output \hskip0.3em :} -
 			\Statex
-			\State $EQ \leftarrow$ EventQueue object instantiation
-			\For 
-			
+			\State $PBox \gets$ empty list  \Comment{Initialization}
+			\Procedure{\large{A}\small{DD}\large{S}\small{CORE}}{$DSL(c)$, $ts$, $Pr$}
+				\ForAll {$p\_id \in DSL(c)$}
+					\State $last\_ts \gets 0$ 
+					\State $last\_ts \gets$ last update of $DSL(c)$
+					\If {$last\_ts > 0$} \Comment{update score first}
+						\State call $UpdateScore(p\_id, last\_ts, ts, Pr)$
+					\EndIf
+					\If {$last\_ts \not= ts$} \Comment{then, add score}
+						\State $PBox[p\_id][ts] \gets PBox[p\_id][ts] + Pr$  
+						\State call $UpdateScore(p\_id, last\_ts, ts, Pr)$
+					\EndIf
+				\EndFor
+			\EndProcedure
+			\Procedure{\large{U}\small{PDATE}\large{S}\small{CORE}}{$p\_id$, $last\_ts$, $ts$, $Pr$}
+				\For {$t \gets last\_ts+1$, $ts$}
+					\State $PBox[p\_id][t] \gets PBox[p\_id][t] + Pr$  
+				\EndFor
+			\EndProcedure
+			\State \Comment{Algo \ref{algo:pbox-class-2}}
+			\algrestore{pbox}
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Objek \textit{EventQueue}}
+	\caption{Kelas \textit{PandoraBox} (Bagian 1)}
 \end{figure}
-  
+
+\subsection{Kelas \textit{Reverse Skyline}}
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:rsl-class}
+		\caption{ReverseSkyline Class}
+		\begin{algorithmic}[1]
+			\Statex \textbf{Input \hskip1em :} product as query point $p_s$, other products $p_o$, product dataset $P$, customer dataset $C$, maximum value $max\_val$
+			\Statex \textbf{Output \hskip0.3em :} $RSL(p)$
+			\Statex
+			\State $d \gets$ len($max\_val$) \Comment{get dimension}
+			\Procedure{\large{S}\small{TART}\large{C}\small{OMPUTATION}}{$p_s[id]$}
+				\State call $DefineOrthant()$
+				\State call $FindMidpointSkyline()$
+				\State call $FindReveserSkyline()$
+			\EndProcedure
+			\Procedure{\large{D}\small{EFINE}\large{O}\small{RTHANT}}{}
+				\State $O \gets$ empty dictionary
+				\For {$i \gets 0$, $2^d$}
+					\State $id \gets$ convert $i$ to binary
+					\State $O[id] \gets$ empty dictionary
+				\EndFor
+			\EndProcedure
+			\Procedure{\large{F}\small{IND}\large{M}\small{ID}\large{S}\small{KYLINE}}{}
+				\ForAll {$p_o[id] \in P$}
+					\If {$p_o[id]$ is $p_s[id]$ or $p_o[id]$ not in $P[active]$}
+						\textbf{continue}
+					\EndIf
+					\State $m \gets$ call $CalcMidpoint(p_s[val], p_o[val])$ 
+					\State $a \gets$ call $GetOrthantArea(p_o[val])$ 
+					
+				\EndFor
+			\EndProcedure
+			\Procedure{\large{G}\small{ET}\large{O}\small{RTHANT}\large{A}\small{REA}}{$p_o[val]$}
+				\State $res \gets$ empty list
+				\For {$i \gets 0$, $d$}
+					\If {$p_o[val] \leq p_s[val]$}
+						\State $res \gets$ append $0$
+					\Else
+						\State $res \gets$ append $1$
+					\EndIf
+				\EndFor
+				\State \Return $res$
+			\EndProcedure
+			\Procedure{\large{C}\small{ALC\large{M}\small{IDPOINT}}{$val_1$, $val_2$} \Comment{calculate midpoint between products}
+				\State $res \gets$ empty list
+				\For {$i \gets 0$, $d$}
+					\State $res \gets$ append $\frac{(val_1^i + val_2^i)}{2}$
+				\EndFor
+				\State \Return $res$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Kelas \textit{ReverseSkyline}}
+\end{figure}
+
+
+\subsection{Kelas \textit{Dynamic Skyline}}
+
+\subsection{Fungsi \textit{Main}}
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:main-func-1}
+		\caption{MainFunction (List Event)}
+		\begin{algorithmic}[1]
+			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
+			\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
+			\Statex
+			\Statex \Comment{store data and event}
+			\State $EQ \gets$ new $EventQueue()$ \Comment{EventQueue instantiation}
+			\State $D \gets P, C$ 
+			\ForAll {$d \in D$}
+				\State open dataset file $d$
+				\For {each row in $d$}
+					\State $id \gets$ data ID
+					\State $t_{in} \gets$ timestamp in
+					\State $t_{out} \gets$ timestamp out
+					\If {$d$ is product data} \Comment{product data}
+						\State $dt \gets$ 0
+					\Else \Comment{customer data}
+						\State $dt \gets$ 1
+					\EndIf
+					\For {$i \gets$ 0, 2}
+						\If {$i$ is 0} \Comment{insertion}
+							\State call $EQ.Enqueue(t_{in}, dt, id, i)$
+						\Else \Comment{deletion}
+							\State call $EQ.Enqueue(t_{out}, dt, id, i)$
+						\EndIf
+					\EndFor
+				\EndFor
+			\EndFor
+			\State call $EQ.SortQueue()$ \Comment{sorting queue}
+			\Statex \Comment {break}
+			\algstore{main1}
+		\end{algorithmic}
+	\end{algorithm}
+\caption{Fungsi Utama (Mendaftar \textit{Event})}
+\end{figure}
+			
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:main-func-init}
+		\caption{MainFunction (Inisialisasi)}
+		\begin{algorithmic}[1]
+			\algrestore{main1}
+			\Statex \Comment {continued}
+			\Statex \Comment{initialization} 
+			\State $max\_ts \gets$ call $EQ.GetMaxTimestamp()$
+			\State $max\_val \gets$ get max value of data
+			\State $PB \gets$ new $PandoraBox(len(P), ts_{max})$  \Comment{PandoraBox instantiation}
+			\State $P\_active \gets$ empty list of active product
+			\State $C\_active \gets$ empty list of active customer
+			\State $RSL \gets$ new $ReverseSkyline(P, C, max\_val)$  \Comment{ReverseSkyline instantiation}
+			\State $DSL \gets$ new $DynamicSkyline(P, C, max\_val}, PB)$  \Comment{DynamicSkyline instantiation}
+			\Statex \Comment break
+			\algrestore{main2}
+		\end{algorithmic}
+	\end{algorithm}
+\caption{Fungsi Utama (Inisialisasi)}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:main-func-event-process}
+		\caption{MainFunction (Process Event)}
+		\begin{algorithmic}[1]
+			\algrestore{main2}
+			\Statex \Comment {continued}
+			\Statex \Comment{process event} 
+			\While {$EQ.IsEmpty()$ is not True}
+				\State $e \gets$ call $EQ.Dequeue()$
+				\If {$e[o]$ is product}
+					\If {$e[a]$ is insertion}
+						\Comment{Algo \ref{algo:product-insertion}}
+					\ElsIf {$e[a]$ is deletion}
+						\Comment{Algo \ref{algo:product-deletion}}
+					\EndIf
+				\ElsIf{$e[o]$ is customer}
+					\If {$e[a]$ is insertion}
+						\Comment{Algo \ref{algo:customer-insertion}}
+					\ElsIf {$e[a]$ is deletion}
+						\Comment{Algo \ref{algo:customer-deletion}}
+					\EndIf
+				\EndIf
+			\EndWhile
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Fungsi Utama (Memproses \textit{Event})}
+\end{figure}
+
+\subsubsection{Fungsi \textit{Product Insertion}}
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:product-insertion}
+		\caption{ProductInsertion}
+		\begin{algorithmic}[1]
+			\State $P\_active \gets$ append product id $e[oid]$
+			\State $rsl\_result \gets $ call $RSL.StartComputation(e[oid])$
+			\State $T \gets$ empty list of threads
+			\For {each $r \in rsl\_rsesult$} \Comment{compute DSL}
+				\State $th \gets$ make a thread that called $DSL.StartComputation(r, e[t], e[a], e[oid])$
+				\State $T \gets$ append $th$
+			\EndFor
+			\State run threads
+			\State join threads
+			\State $T \gets$ empty list of threads
+			\For {each $c \in Ca$} \Comment{update pandora box}
+				\State $th \gets$ make a thread that called $DSL.StartComputation(c, e[t], update\_pbox)$
+				\State $T \gets$ append $th$
+			\EndFor
+			\State run threads
+			\State join threads
+	\end{algorithmic} 
+\end{algorithm}
+\caption{Fungsi \textit{ProductInsertion}}
+\end{figure}
+
+\subsubsection{Fungsi \textit{Product Deletion}}
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:product-deletion}
+		\caption{ProductDeletion}
+		\begin{algorithmic}[1]
+			\State $P\_active \gets$ append product id $e[oid]$
+			\State $rsl\_result \gets $ call $RSL.StartComputation(e[oid])$
+			\State $T \gets$ empty list of threads
+			\For {each $r \in rsl\_rsesult$} \Comment{compute DSL}
+			\State $th \gets$ make a thread that called $DSL.StartComputation(r, e[t], e[a], e[oid])$
+			\State $T \gets$ append $th$
+			\EndFor
+			\State run threads
+			\State join threads
+			\State $T \gets$ empty list of threads
+			\For {each $c \in Ca$} \Comment{update pandora box}
+			\State $th \gets$ make a thread that called $DSL.StartComputation(c, e[t], update\_pbox)$
+			\State $T \gets$ append $th$
+			\EndFor
+			\State run threads
+			\State join threads
+		\end{algorithmic} 
+	\end{algorithm}
+	\caption{Fungsi \textit{ProductDeletion}}
+\end{figure}
+
+\subsubsection{Fungsi \textit{Customer Insertion}}
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:customer-insertion}
+		\caption{CustomerInsertion}
+		\begin{algorithmic}[1]
+			\State $C\_active \gets$ append customer id $e[oid]$ 
+			\State call $DSL.StartComputation(e[oid], e[t], init\_dsl)$
+			\State call $DSL.StartComputation(e[oid], e[t], update\_pbox)$
+		\end{algorithmic} 
+	\end{algorithm}
+	\caption{Fungsi \textit{CustomerInsertion}}
+\end{figure}
+
+\subsubsection{Fungsi \textit{Customer Deletion}}
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:customer-deletion}
+		\caption{CustomerDeletion}
+		\begin{algorithmic}[1]
+			\State call $DSL.StartComputation(e[oid], e[t], update\_pbox)$
+			\State $C\_active \gets$ remove customer id $e[oid]$ 
+		\end{algorithmic} 
+	\end{algorithm}
+	\caption{Fungsi \textit{CustomerDeletion}}
+\end{figure}
 
 \section{Implementasi Algoritme \textit{Query Processing}}
+
+\subsection{Kelas \textit{Pandora Box}}
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:pbox-class-2}
+		\caption{PandoraBox Class (Part 2)}
+		\begin{algorithmic}[1]
+			\algrestore{pbox}
+			\Statex \textbf{Input \hskip1em :} product ID $p[id]$, time interval (time init $t_i$, time end $t_e$)
+			\Statex \textbf{Output \hskip0.3em :} total market contribution score in time interval  $MC$
+			\Statex 
+			\Procedure{\large{G}\small{ET}\large{S}\small{CORE}}{$p[id]$, $t_i$, $t_e$} \Comment{get market contribution score}
+				\State $MC \gets 0$ 
+				\For {$i \gets t_i$, $t_e + 1$}
+					\State $MC \gets MC + PBox[p[id]][i]$
+				\EndFor
+				\Return $MC$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Kelas \textit{PandoraBox} (Bagian 2)}
+\end{figure}
+
 \section{Implementasi Algoritme \textit{Brute Force}}
+\tab pending
 \section{Implementasi Antarmuka Pengguna}

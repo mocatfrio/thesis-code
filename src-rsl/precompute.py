@@ -28,7 +28,7 @@ def data_indexing(data_id, data_file, event_queue):
       col_cnt = len(csv_reader.fieldnames)
       id = int(row[csv_reader.fieldnames[0]])
       data[id] = {}
-      data[id]['ts_in'] = int(row[csv_reader.fieldnames[2]])
+      data[id]['ts_in'] = int(row[csv_reader.fieldnames[2]])S
       data[id]['ts_out'] = int(row[csv_reader.fieldnames[3]])
       data[id]['value'] = []
       for i in range(4, col_cnt):
