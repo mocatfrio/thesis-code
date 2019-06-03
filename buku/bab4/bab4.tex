@@ -1,6 +1,6 @@
 \chapter{IMPLEMENTASI} \label{chap:implementasi}
 
-\tab Pada bab ini akan dijelaskan mengenai implementasi dari perancangan struktur data dan algoritme untuk menyelesaikan permasalahan \problemDua{} yang telah dijelaskan pada Bab \ref{chap:analisis-perancangan-sistem}. Penjelasan implementasi terdiri dari penjelasan kelas dan fungsi yang dibuat, disertai dengan \textit{pseudocode} untuk masing-masing fungsi tersebut.
+\tab Pada bab ini akan dijelaskan mengenai implementasi dari perancangan struktur data dan algoritme untuk menyelesaikan permasalahan \problemDua{} sebagaimana yang telah dijelaskan pada Bab \ref{chap:analisis-perancangan-sistem}. Penjelasan implementasi terdiri dari penjelasan kelas dan fungsi yang dibuat, disertai dengan \textit{pseudocode} untuk masing-masing fungsi tersebut.
 
 \section{Lingkungan Implementasi}
 \tab Lingkungan implementasi dalam pembuatan Tugas Akhir ini meliputi perangkat keras dan perangkat lunak dengan spesifikasi sebagai berikut:
@@ -20,48 +20,59 @@
 	\end{itemize}			
 \end{enumerate}
 
+\section{Implementasi \textit{Data Precomputing}}
+\tab \textit{Data precomputing} merupakan pemrosesan tahap pertama dalam algoritme $k$-MPPTI yang bertujuan untuk mengolah \textit{dataset} produk $P$ dan preferensi pelanggan $C$ dengan jumlah data sebanyak $n$ dan ukuran dimensi sebesar $d$, menjadi sebuah $Pandora Box$ yang menyimpan skor kontribusi pasar semua produk pada setiap waktu. Algoritme ini diimplementasikan menggunakan paradigma pemrograman berorientasi objek, sehingga semua data dan fungsi dibungkus dalam kelas-kelas. Ada empat macam kelas yang diimplementasikan, yaitu kelas \textit{EventQueue}, \textit{PandoraBox}, \textit{ReverseSkyline}, dan \textit{DynamicSkyline}.
+
+\subsection{Kelas \textit{EventQueue}}
+\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. Kelas ini mengimplementasikan karakteristik dari struktur data \textit{queue}, yakni FIFO (\textit{First In First Out}).
+
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:gsp}
-		\caption{DetermineGSP}
+		\label{algo:event-queue-class}
+		\caption{EventQueue}
 		\begin{algorithmic}[1]
-			\State \textbf{Input: }grid index \textit{G}, a distance $ d_\varepsilon $, uncertain data object $ X $, action(insertion/deletion)
-			\State \textbf{Output: }an updated grid index \textit{G}
-			\State create empty queue $ Q $
-			\State create temporary graph $ Gr $
-			\State access edge $ e $ enclosing $ X $ and enqueue $ n_i  $ and $ n_j $
-			\State enqueue $ n_i $ and $ n_j $ with each distance
-			\While{$ Q $ is not empty}
-			\State sort Q by distance from $ X $
-			\State dequeue $ Q $ as $ n $
-			\If{$d_{n, X} \le d_\varepsilon $}
-			\State insert grid enclosing $ n $ to $ Gr $
-			\If{action is insertion}
-			call $ Insertion() $
-			\Else
-			$ $ call $ Deletion() $
-			\EndIf
-			\ForAll{node $ m $ as neighbor of $ n $}
-			\If{$ m $ has not visited}
-			\State enqueue $ m $ with it's distance
-			\State mark $ m $ as visited
-			\EndIf
-			\EndFor
-			\EndIf
-			\EndWhile
-			\ForAll{edge $ e $ which has updated $ n_s $ or $ n_e $ in $ Gr $}
-			\State find GSP as $ gsp $
-			\State call \textit{ComputeTurningPoint($ gsp $)}
-			\EndFor
+			\Statex \textbf{Input \hskip1em :} timestamp $t$, event's owner $o$ (product/customer), owner ID $oid$, action $a$ (insertion/deletion)
+			\Statex
+			\State $E \leftarrow$ empty list \Comment{Initialization}
+			\Procedure{\large{E}\small{NQUEUE}}{$t$, $o$, $oid$, $a$}
+				\State $e \leftarrow$ list($t, o, oid, a$)
+				\State $E \leftarrow$ append $e$ 
+			\EndProcedure
+			\Procedure{\large{D}\small{EQUEUE}}{}
+				\State $e \leftarrow$ pop an element from $E$
+				\State \Return $e$
+			\EndProcedure
+			\Procedure{\large{S}\small{ORT}\large{Q}\small{UEUE}}{}
+				\State $E \leftarrow$ sort elements in descending order based on sorting priority
+			\EndProcedure
+			\Procedure{\large{G}\small{ET}\large{T}\small{OTAL}\large{Q}\small{UEUE}}{}
+				\State \Return number of elements in $E$
+			\EndProcedure
+			\Procedure{\large{G}\small{ET}\large{M}\small{AX}\large{T}\small{IMESTAMP}}{}
+				\State \Return first index of $E$
+			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Algoritme \textit{DetermineGSP}}
+	\caption{Kelas \textit{EventQueue}}
 \end{figure}
 
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\label{algo:event-queue-instance}
+		\caption{StoreEventQueue}
+		\begin{algorithmic}[1]
+			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
+			\Statex \textbf{Output \hskip0.3em :} an instance of EventQueue class
+			\Statex
+			\State $EQ \leftarrow$ EventQueue object instantiation
+			\For 
+			
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Objek \textit{EventQueue}}
+\end{figure}
+  
 
-\section{Implementasi Algoritme k-MPPTI}
-\subsection{Implementasi Algoritme \textit{Data Precomputing}}
-\subsubsection{\textit{Class}}
-\subsection{Implementasi Algoritme \textit{Query Processing}}
-\section{Implementasi Algoritme Pembanding (\textit{Brute Force})}
+\section{Implementasi Algoritme \textit{Query Processing}}
+\section{Implementasi Algoritme \textit{Brute Force}}
 \section{Implementasi Antarmuka Pengguna}

@@ -23,19 +23,20 @@
 \contentsline {figure}{\numberline {3.14}{\ignorespaces Perhitungan Kontribusi Pasar pada \textit {Pandora Box} Berdasarkan Interval Waktu Pencarian\relax }}{52}{figure.caption.22}
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Perancangan Arsitektur Aplikasi\relax }}{54}{figure.caption.23}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Algoritme \textit {DetermineGSP}\relax }}{56}{figure.caption.24}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Kelas \textit {EventQueue}\relax }}{57}{figure.caption.24}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Objek \textit {EventQueue}\relax }}{57}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Pengaruh jumlah sel terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{62}{figure.caption.25}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Pengaruh jumlah sel grid terhadap penggunaan memori dalam satuan megabita\relax }}{63}{figure.caption.26}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pengaruh jumlah objek terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{64}{figure.caption.27}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Pengaruh jumlah objek terhadap penggunaan memori dalam satuan megabita\relax }}{65}{figure.caption.28}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Pengaruh jumlah \textit {instance} terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{66}{figure.caption.29}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Pengaruh jumlah \textit {instance} terhadap penggunaan memori dalam satuan megabita\relax }}{67}{figure.caption.30}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{68}{figure.caption.31}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap penggunaan memori dalam satuan megabita\relax }}{69}{figure.caption.32}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Pengaruh dimensi terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{70}{figure.caption.33}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Pengaruh dimensi terhadap penggunaan memori dalam satuan megabita\relax }}{71}{figure.caption.34}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Pengaruh jenis data terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{72}{figure.caption.35}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Pengaruh jumlah sel terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{62}{figure.caption.26}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Pengaruh jumlah sel grid terhadap penggunaan memori dalam satuan megabita\relax }}{63}{figure.caption.27}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pengaruh jumlah objek terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{64}{figure.caption.28}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pengaruh jumlah objek terhadap penggunaan memori dalam satuan megabita\relax }}{65}{figure.caption.29}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Pengaruh jumlah \textit {instance} terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{66}{figure.caption.30}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Pengaruh jumlah \textit {instance} terhadap penggunaan memori dalam satuan megabita\relax }}{67}{figure.caption.31}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{68}{figure.caption.32}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap penggunaan memori dalam satuan megabita\relax }}{69}{figure.caption.33}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Pengaruh dimensi terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{70}{figure.caption.34}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Pengaruh dimensi terhadap penggunaan memori dalam satuan megabita\relax }}{71}{figure.caption.35}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Pengaruh jenis data terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{72}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

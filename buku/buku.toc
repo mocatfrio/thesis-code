@@ -60,12 +60,11 @@
 \contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{53}{subsection.3.3.4}
 \contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{55}{chapter.4}
 \contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{55}{section.4.1}
-\contentsline {section}{\numberline {4.2}Implementasi Algoritme k-MPPTI}{57}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Implementasi Algoritme \textit {Data Precomputing}}{57}{subsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.1.1}\textit {Class}}{57}{subsubsection.4.2.1.1}
-\contentsline {subsection}{\numberline {4.2.2}Implementasi Algoritme \textit {Query Processing}}{57}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritme Pembanding (\textit {Brute Force})}{57}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{57}{section.4.4}
+\contentsline {section}{\numberline {4.2}Implementasi \textit {Data Precomputing}}{55}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Kelas \textit {EventQueue}}{56}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritme \textit {Query Processing}}{58}{section.4.3}
+\contentsline {section}{\numberline {4.4}Implementasi Algoritme \textit {Brute Force}}{58}{section.4.4}
+\contentsline {section}{\numberline {4.5}Implementasi Antarmuka Pengguna}{58}{section.4.5}
 \contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{59}{chapter.5}
 \contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{59}{section.5.1}
 \contentsline {section}{\numberline {5.2}Data Uji Coba}{59}{section.5.2}
@@ -83,7 +82,7 @@
 \contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{73}{chapter.6}
 \contentsline {section}{\numberline {6.1}Kesimpulan}{73}{section.6.1}
 \contentsline {section}{\numberline {6.2}Saran}{73}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{75}{appendix*.36}
+\contentsline {chapter}{DAFTAR PUSTAKA}{75}{appendix*.37}
 \renewcommand {\cftchappresnum }{}
 \contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{77}{Lampiran.a.A}
-\contentsline {chapter}{BIODATA PENULIS}{109}{appendix*.37}
+\contentsline {chapter}{BIODATA PENULIS}{109}{appendix*.38}
