@@ -61,28 +61,32 @@
 \contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{55}{chapter.4}
 \contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{55}{section.4.1}
 \contentsline {section}{\numberline {4.2}Implementasi \textit {Data Precomputing}}{55}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Kelas \textit {EventQueue}}{56}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritme \textit {Query Processing}}{58}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementasi Algoritme \textit {Brute Force}}{58}{section.4.4}
-\contentsline {section}{\numberline {4.5}Implementasi Antarmuka Pengguna}{58}{section.4.5}
-\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{59}{chapter.5}
-\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{59}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data Uji Coba}{59}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{59}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anticorrelated} (ANT)}{60}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Data \textit {Correlated} (COR)}{60}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{60}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Skenario Uji Coba \textit {Performance}}{61}{subsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Sel}{61}{subsubsection.5.3.1.1}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Objek}{63}{subsubsection.5.3.1.2}
-\contentsline {subsubsection}{\numberline {5.3.1.3}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah \textit {Instance} pada Objek}{65}{subsubsection.5.3.1.3}
-\contentsline {subsubsection}{\numberline {5.3.1.4}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Panjang Jarak Maksimal $ d_\varepsilon $}{67}{subsubsection.5.3.1.4}
-\contentsline {subsubsection}{\numberline {5.3.1.5}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Dimensi Data}{69}{subsubsection.5.3.1.5}
-\contentsline {subsubsection}{\numberline {5.3.1.6}Skenario Uji Coba \textit {Performance} Terhadap Jenis Data}{71}{subsubsection.5.3.1.6}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{73}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{73}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{73}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{75}{appendix*.37}
+\contentsline {subsection}{\numberline {4.2.1}Kelas \textit {EventQueue}}{59}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Kelas \textit {PandoraBox}}{60}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Kelas \textit {ReverseSkyline}}{62}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Kelas \textit {Dynamic Skyline}}{64}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Fungsi \textit {Check Domination}}{65}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritme \textit {Query Processing}}{66}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Kelas \textit {Pandora Box}}{66}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{66}{section.4.4}
+\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{67}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{67}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Uji Coba}{67}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{67}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anticorrelated} (ANT)}{68}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Data \textit {Correlated} (COR)}{68}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{68}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Skenario Uji Coba \textit {Performance}}{69}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Sel}{69}{subsubsection.5.3.1.1}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah Objek}{71}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.3}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Jumlah \textit {Instance} pada Objek}{73}{subsubsection.5.3.1.3}
+\contentsline {subsubsection}{\numberline {5.3.1.4}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Panjang Jarak Maksimal $ d_\varepsilon $}{75}{subsubsection.5.3.1.4}
+\contentsline {subsubsection}{\numberline {5.3.1.5}Skenario Uji Coba \textit {Performance} Terhadap Perubahan Dimensi Data}{77}{subsubsection.5.3.1.5}
+\contentsline {subsubsection}{\numberline {5.3.1.6}Skenario Uji Coba \textit {Performance} Terhadap Jenis Data}{79}{subsubsection.5.3.1.6}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{81}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{81}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{81}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{83}{appendix*.45}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{77}{Lampiran.a.A}
-\contentsline {chapter}{BIODATA PENULIS}{109}{appendix*.38}
+\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{85}{Lampiran.a.A}
+\contentsline {chapter}{BIODATA PENULIS}{117}{appendix*.46}
