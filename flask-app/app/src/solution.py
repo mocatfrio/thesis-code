@@ -1,6 +1,6 @@
 import csv
 from app.src.kmpp.pandora_box import PandoraBox
-from app.src.kmpp.logger import Logger
+from app.src.kmppnew.logger import Logger
 
 def kmpp_solution(file, k_product, time_start, time_end):
     logger = Logger('kmppts', 'query')

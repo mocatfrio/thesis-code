@@ -4,59 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>KMPPTS | {{ title }}</title>
+  <title>k-MPPTI | {{ title }}</title>
 
   <link rel="shortcut icon" type="image/svg" href="{{ url_for('static', filename='img/logo.svg') }}"/>
   <link rel="shortcut icon" type="image/svg" href="{{ url_for('static', filename='img/logo.svg') }}"/>
 
   <!-- load css -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-  <link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}"/>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css"> -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap-4.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="jumbotron mb-3" style="background-color:#23383f !important">
-      <h2 class="text-center text-warning">Studi Permasalahan k-Most Promising Products (k-MPP) Berbasis Interval Waktu pada Data Multidimensi dengan Serial Waktu</h2>
-      <br>
-      <p class="text-center text-white">Hafara Firdausi • 05111540000043</p>
-    </div>
-    {% set active_page = active_page|default('index') -%}
-    <div class="row justify-content-center mb-20">
-      <div class="col-6">
-        <ul class="nav nav-pills pills-red nav-justified">
-          <li class="nav-item">
-            <a class="nav-link {{ 'active' if active_page == 'dataset' else '' }}" href="{{ request.script_root }}/precompute">Precompute</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ 'active' if active_page == 'input' else '' }}" href="{{ request.script_root }}/input">Input</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <main>
-      <div class="card" style="margin: 0 0 20px 0">
-        <div class="card-body">
-          {% block content %}{% endblock %}
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #32485c;">
+      <div class="container">
+        <a class="navbar-brand" href="{{ request.script_root }}/index">
+          <img src="{{ url_for('static', filename='img/logo-nav.png') }}" width="35" height="35" class="d-inline-block align-top mr-2" alt="">
+          k-MPPTI
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% set active_page = active_page|default('index') -%}
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="{{ request.script_root }}/index" class="nav-item nav-link {{ 'active' if active_page == 'index' else '' }}">Home</a>
+            <a href="{{ request.script_root }}/precompute" class="nav-item nav-link {{ 'active' if active_page == 'precompute' else '' }}">Precompute</a>
+            <a href="{{ request.script_root }}/search" class="nav-item nav-link {{ 'active' if active_page == 'search' else '' }}">Search</a>
+            <a href="{{ request.script_root }}/visualization" class="nav-item nav-link {{ 'active' if active_page == 'visualization' else '' }}">Visualization</a>
+          </div>
         </div>
       </div>
-      {% block content_table %}{% endblock %}
-    </main>
-    <footer class="footer footer-custom">
-      <div class="container text-center mt-100 mb-20">
-        <span class="text-secondary mb-1 small">Copyright &copy; 2019 - Tugas Akhir by
-          <a href="https://github.com/mocatfrio/tugas-akhir" class="text-secondary" target="_blank">Mocatfrio</a>
-        </span>
+    </nav>
+  </header>
+  <main role="main">
+    <section class="jumbotron text-center" style="margin-top: 60px; margin-bottom: 0;background-color: #fff;">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 style="margin-bottom: 30px">Studi Permasalahan k-Most Promising Products (k-MPP) Berbasis Interval Waktu pada Data Multidimensi dengan Serial Waktu</h1>
+          <p class="lead text-muted">Hafara Firdausi (05111540000043)</p>
+        </div>
       </div>
-    </footer>
-  </div>
-
+    </section>
+    <div class="py-5 bg-light">
+      <div class="container" style="margin-bottom: 30px">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted" style="margin-bottom: 30px; margin-top: 30px; background-color: #fff;">
+    <div class="container text-center">
+      <span class="text-secondary mb-1 small">Copyright &copy; 2019 - Tugas Akhir by
+        <a href="https://github.com/mocatfrio/tugas-akhir" class="text-secondary" target="_blank">Hafara Firdausi</a>
+      </span>
+    </div>
+  </footer>
   <!-- load script -->
-  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/all.min.js') }}"></script>
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='vendor/jquery/jquery-3.4.1.slim.min.js') }}"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script> -->
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='vendor/bootstrap-4.3.1/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/all.min.js') }}"></script> -->
 
 
   {% block script %}{% endblock %}

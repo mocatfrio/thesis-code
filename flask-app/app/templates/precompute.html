@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
-{% set active_page = "dataset" %}
+{% set active_page = "precompute" %}
 
 {% block content %}
 <div class="row justify-content-center">
-  <div class="col-8">
+  <div class="col-9">
     {% with messages = get_flashed_messages() %}
       {% if messages[0] == 'not allowed' %}
         <div class="alert alert-danger" role="alert">
@@ -11,59 +11,49 @@
         </div>
       {% endif %}
     {% endwith %}
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <h4 style="margin-bottom: 30px">Choose Session</h4>
     <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="dataset">Dataset Produk</label>
+        <label for="algorithm">Session</label>
+        <select class="custom-select form-control" id="session" name="session" required>
+          <option selected>Choose Session</option>
+          <option value="kmppti">k-MPPTI Algorithm</option>
+          <option value="kmppti-2">k-MPPTI-RSL Algorithm</option>
+          <option value="bf">Brute Force Algorithm</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+  <div class="col-1">
+    <h4>or</h4>
+  </div>
+  <div class="col-4">
+    <h4 style="margin-bottom: 30px">Make Session</h4>
+    <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="dataset">Product Dataset</label>
         <input type="file" class="form-control-file" id="dataset" name="p_dataset" required>
       </div>
       <div class="form-group">
-        <label for="dataset">Dataset Pelanggan</label>
+        <label for="dataset">Customer Dataset</label>
         <input type="file" class="form-control-file" id="dataset" name="c_dataset" required>
       </div>
       <div class="form-group">
-        <label for="algorithm">Algoritme</label>
+        <label for="algorithm">Algorithm</label>
         <select class="custom-select form-control" id="algorithm" name="algorithm" required>
-          <option selected>Pilih Algoritme</option>
-          <option value="kmppti">Algoritme k-MPPTI</option>
-          <option value="kmppti-2">Algoritme k-MPPTI Dengan RSL</option>
-          <option value="bf">Brute Force</option>
+          <option selected>Choose Algorithm</option>
+          <option value="kmppti">k-MPPTI Algorithm</option>
+          <option value="kmppti-2">k-MPPTI-RSL Algorithm</option>
+          <option value="bf">Brute Force Algorithm</option>
         </select>
       </div>
       <button type="submit" class="btn btn-warning float-right">Submit</button>
     </form>
   </div>
 </div>
-{% endblock %}
-
-{% block content_table %}
-{% if result %}
-<div class="card">
-  <div class="card-body">
-    <div class="row justify-content-center">
-      <div class="col-8">
-        <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover" id="table-police">
-            <thead>
-              <tr>
-                <th class="text-center align-middle">No.</th>
-                <th class="text-center align-middle">Product</th>
-                <th class="text-center align-middle">Market Contribution</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for res in result %}
-                <tr>
-                  <td class="text-center">{{ loop.index }}</td>
-                  <td>{{ res['id'] }}</td>
-                  <td>{{ res['market_contr'] }}</td>
-                </tr>
-              {% endfor %} 
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}
 {% endblock %}

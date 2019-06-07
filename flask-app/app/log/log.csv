@@ -14,3 +14,15 @@ precomputing,2019-06-07__14:39:29,2019-06-07__14:39:29,kmppti-rsl,unknown,unknow
 precomputing,2019-06-07__14:40:27,2019-06-07__14:40:27,kmppti,unknown,unknown,unknown,-,0:00:00.100279,36.499456
 precomputing,2019-06-07__14:41:35,2019-06-07__14:42:01,kmppti-without-rsl,i,500,2,-,0:00:25.505454,45.211648
 precomputing,2019-06-07__14:42:58,2019-06-07__14:43:18,kmppti-using-rsl,i,500,2,-,0:00:20.161050,47.566848
+precomputing,2019-06-07__23:31:58,2019-06-07__23:31:58,kmppti-using-rsl,unknown,unknown,unknown,-,0:00:00.020075,42.319872
+precomputing,2019-06-07__23:48:36,2019-06-07__23:48:36,kmppti-using-rsl,unknown,unknown,unknown,-,0:00:00.015473,46.063616
+query,2019-06-07__23:49:39,2019-06-07__23:49:39,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.000820,35.627008
+query,2019-06-07__23:51:06,2019-06-07__23:51:06,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.001692,36.265984
+query,2019-06-07__23:51:36,2019-06-07__23:51:36,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.001773,36.421632
+query,2019-06-07__23:51:39,2019-06-07__23:51:39,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.001693,36.438016
+query,2019-06-07__23:51:57,2019-06-07__23:51:57,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.001998,36.438016
+query,2019-06-07__23:52:37,2019-06-07__23:52:37,kmppts,unknown,unknown,unknown,k : 3 | time intvl : 3-10,0:00:00.001688,36.478976
+precomputing,2019-06-08__00:31:08,2019-06-08__00:31:36,kmppti-without-rsl,i,500,2,-,0:00:28.088121,49.463296
+query,2019-06-08__00:31:48,2019-06-08__00:31:49,kmppts,i,500,2,k : 3 | time intvl : 3-10,0:00:00.148103,52.137984
+query,2019-06-08__00:32:28,2019-06-08__00:32:28,kmppts,i,500,2,k : 3 | time intvl : 3-10,0:00:00.123782,52.330496
+query,2019-06-08__00:32:36,2019-06-08__00:32:36,kmppts,i,500,2,k : 4 | time intvl : 10-20,0:00:00.078935,52.363264

@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% set active_page = "visualization" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-9">
+    <h4 style="margin-bottom: 30px">Choose Session</h4>
+    <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="algorithm">Session</label>
+        <select class="custom-select form-control" id="session" name="session" required>
+          <option selected>Choose Session</option>
+          <option value="kmppti">k-MPPTI Algorithm</option>
+          <option value="kmppti-2">k-MPPTI-RSL Algorithm</option>
+          <option value="bf">Brute Force Algorithm</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
