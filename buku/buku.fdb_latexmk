@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1559539971 "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.tex" "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.pdf" "buku" 1559539971
-  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.aux" 1559539971 8 a94a2480d3289e625eea47cd1b285758 ""
-  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.tex" 1559538004 7246 e92e880f2c1ecc1d2cafca0b904e415e ""
+["pdflatex"] 1559900663 "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.tex" "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.pdf" "buku" 1559900663
+  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.aux" 1559900663 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.tex" 1559554588 7246 e92e880f2c1ecc1d2cafca0b904e415e ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1480098701 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1480098815 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -207,10 +207,10 @@
   "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1522066949 33362 cf75436e19743e94a92a6b1b9183c434 ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1523934516 4220280 10cab8fbd7c5a7c52aba9917e190d018 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "buku.tex" 1559538004 7246 e92e880f2c1ecc1d2cafca0b904e415e ""
-  "clrscode3e.sty" 1557671014 14668 7711a2ee425913933c3d7fe3d9a4fbf4 ""
+  "buku.tex" 1559554588 7246 e92e880f2c1ecc1d2cafca0b904e415e ""
+  "clrscode3e.sty" 1559900569 14676 fe82139d599aa22293d485579b904bc4 ""
   (generated)
-  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.pdf"
   "buku.log"
   "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.log"
+  "/Users/mocatfrio/Documents/thesis/tugas-akhir/buku/buku.pdf"
   "buku.pdf"

@@ -7,10 +7,10 @@
 
 \begin{enumerate}
 	\item Perangkat Keras:
-		\begin{itemize}
-			\item Prosesor 2.6 GHz Intel Core i5 (I5-4278U)
-			\item Memori 8 GB 1600 MHz DDR3
-		\end{itemize}
+	\begin{itemize}
+		\item Prosesor 2.6 GHz Intel Core i5 (I5-4278U)
+		\item Memori 8 GB 1600 MHz DDR3
+	\end{itemize}
 	\item Perangkat Lunak:
 	\begin{itemize}
 		\item Sistem operasi macOS Mojave Versi 10.14.5
@@ -21,44 +21,157 @@
 \end{enumerate}
 
 \section{Implementasi \textit{Data Precomputing}}
-\tab \textit{Data precomputing} merupakan pemrosesan tahap pertama dalam algoritme $k$-MPPTI yang bertujuan untuk mengolah \textit{dataset} produk $P$ dan preferensi pelanggan $C$ dengan jumlah data sebanyak $n$ dan ukuran dimensi sebesar $d$, menjadi sebuah $Pandora Box$ yang menyimpan skor kontribusi pasar semua produk pada setiap waktu. Algoritme ini diimplementasikan menggunakan paradigma pemrograman berorientasi objek, sehingga semua data dan fungsi dibungkus dalam kelas-kelas. Ada empat macam kelas yang diimplementasikan, yaitu kelas \textit{EventQueue}, \textit{PandoraBox}, \textit{ReverseSkyline}, dan \textit{DynamicSkyline}.
-
-\subsection{Kelas \textit{Event Queue}}
-\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. Kelas ini mengimplementasikan karakteristik dari struktur data \textit{queue}, yakni FIFO (\textit{First In First Out}). 
+\tab \textit{Data precomputing} merupakan pemrosesan tahap pertama dalam algoritme $k$-MPPTI yang bertujuan untuk mengolah \textit{dataset} produk $P$ dan preferensi pelanggan $C$ dengan jumlah data sebanyak $n$ dan ukuran dimensi sebesar $d$, menjadi sebuah $Pandora Box$ yang menyimpan skor kontribusi pasar semua produk pada setiap waktu. 
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:event-queue-class}
+		\caption{Precomputing (Event Queue Creation)}
+		\begin{algorithmic}[1]
+			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
+			\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
+			\State $EQ \leftarrow$ new $EventQueue()$ \Comment{object instantiation}
+			\State $D \leftarrow P, C$ 
+			\ForAll {$d \in D$}
+				\For {each row in $d$}
+					\State $id \leftarrow$ data ID
+					\State $t_{in} \leftarrow$ timestamp in
+					\State $t_{out} \leftarrow$ timestamp out
+					\If {$d$ is product data} $dt \leftarrow$ 0\Comment{product}
+					\Else{} $dt \leftarrow$ 1 \Comment{customer}
+					\EndIf
+					\For {$i \leftarrow$ 0, 2}
+						\If {$i$ is 0} \Comment{insertion}
+							\State call $EQ.Enqueue(t_{in}, dt, id, i)$
+						\Else \Comment{deletion}
+							\State call $EQ.Enqueue(t_{out}, dt, id, i)$
+						\EndIf
+					\EndFor
+				\EndFor
+			\EndFor
+			\State call $EQ.SortQueue()$ \Comment{sorting queue}
+			\algstore{main1}
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Algoritme \textit{Precomputing} (Bagian 1) \label{algo:main-func-1}}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\caption{Precomputing (Initialization)}
+		\begin{algorithmic}[1]
+			\algrestore{main1}
+			\State $maxt \leftarrow$ call $EQ.GetMaxTimestamp()$
+			\State $maxv \leftarrow$ get max value of data
+			\State $PB \leftarrow$ new $PandoraBox(len(P), maxt)$ 
+			\State $RSL \leftarrow$ new $ReverseSkyline(P, C, maxv)$
+			\State $DSL \leftarrow$ new $DynamicSkyline(P, C, maxv, PB)$
+			\State $PA \leftarrow \emptyset$ of active products
+			\State $CA \leftarrow \emptyset$ of active customers
+			\algstore{main2}
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Algoritme \textit{Precomputing} (Bagian 2) \label{algo:main-func-2}}
+\end{figure}
+
+Algoritme ini diimplementasikan menggunakan paradigma pemrograman berorientasi objek, sehingga semua data dan fungsi dibungkus dalam kelas-kelas. Ada empat macam kelas yang diimplementasikan, yaitu kelas \textit{EventQueue}, \textit{PandoraBox}, \textit{ReverseSkyline}, dan \textit{DynamicSkyline}. 
+
+Secara garis besar, langkah yang dilakukan selama \textit{precomputing} adalah (1) \textit{indexing} data dan pembentukan \textit{EventQueue} (Algoritme \ref{algo:main-func-1}), (2) inisialisasi dan instansiasi objek (Algoritme \ref{algo:main-func-2}), kemudian (3) pemrosesan \textit{event} (Algoritme \ref{algo:main-func-3}).
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\caption{Precomputing (Event Processing)}
+		\begin{algorithmic}[1]
+			\algrestore{main2}
+			\While {not $EQ.IsEmpty()$}
+				\State $e \leftarrow$ call $EQ.Dequeue()$
+				\If {$e_o$ is product}
+					\If {$e_a$ is insertion} \Comment{product insertion} 
+						\State $PA \leftarrow$ append product id $e_{oid}$
+						\State $RSL(p) \leftarrow $ call $RSL.Compute(e_{oid})$
+						\ForAll {$c \in RSL(p)$ \textbf{parallel}}
+							\State call $DSL.Compute(c, e_t, e_a, e_{oid})$
+						\EndFor
+						\ForAll {$c \in CA$ \textbf{parallel}}
+							\State call $DSL.Compute(c, e_t, updatePB)$
+						\EndFor
+					\ElsIf {$e_a$ is deletion} \Comment{product deletion}
+						\ForAll {$c \in CA$ \textbf{parallel}}
+							\State call $DSL.Compute(c, e_t, updatePB)$
+						\EndFor
+						\State $RSL(p) \leftarrow $ call $RSL.Compute(e_{oid})$
+						\ForAll {$c \in RSL(p)$ \textbf{parallel}}
+							\State call $DSL.Compute(c, e_t, e_a, e_{oid})$
+						\EndFor
+						\State $PA \leftarrow$ remove product id $e_{oid}$
+					\EndIf
+				\ElsIf{$e_o$ is customer}
+					\If {$e_a$ is insertion} \Comment{customer insertion}
+						\State $CA \leftarrow$ append customer id $e_{oid}$ 
+						\State call $DSL.Compute(e_{oid}, e_t, initDSL)$
+						\State call $DSL.Compute(e_{oid}, e_t, updatePB)$
+					\ElsIf {$e_a$ is deletion} \Comment{customer deletion}
+						\State call $DSL.Compute(e_{oid}, e_t, updatePB)$
+						\State $CA \leftarrow$ remove customer id $e_{oid}$ 
+					\EndIf
+				\EndIf
+			\EndWhile
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Algoritme \textit{Precomputing} (Bagian 3) \label{algo:main-func-3}}
+\end{figure}
+
+\subsection{Kelas \textit{EventQueue}}
+\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. \textit{EventQueue} tidak dibuat menggunakan struktur data \textit{queue} karena data yang digunakan adalah \textit{historical} dan diurutkan berdasarkan \textit{timestamp} dari data tersebut, bukan berdasarkan urutan masuknya data. Sehingga, \textit{EventQueue} diimplementasikan menggunakan \textit{array} yang bekerja seperti \textit{queue}, yakni FIFO (\textit{First In First Out}). 
+
+Ada enam fungsi yang diimplementasikan dalam kelas ini sebagaimana yang ditunjukkan oleh Algoritme \ref{algo:event-queue-class}, namun hanya ada tiga fungsi utama, yaitu $Enqueue$ untuk memasukkan data ke dalam \textit{array} pada indeks terakhir, $Dequeue$ untuk mengeluarkan data dari \textit{array} pada indeks pertama; dan $SortQueue$ untuk mengurutkan data di dalam array berdasarkan prioritas pengurutan yang ditunjukkan pada Tabel \ref{tab:sort-priority}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ | p{2cm} | p{4cm} | }
+		\hline
+		\textbf{Prioritas} & \textbf{Atribut} \\ \hline \hline
+		1 & \textit{Timestamp} \\ \hline
+		2 & Aksi \textit{Insertion} \\ \hline
+		3 & Aksi \textit{Deletion}  \\ \hline
+		4 & Data Produk\\ \hline
+		5 & Data Pelanggan\\ \hline
+		6 & ID Data\\ \hline
+	\end{tabular} \caption{\textit{Sorting Priority}}
+	\label{tab:sort-priority}
+\end{table} 
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
 		\caption{EventQueue Class}
 		\begin{algorithmic}[1]
 			\Statex \textbf{Input \hskip1em :} timestamp $t$, event's owner $o$ (product/customer), owner ID $oid$, action $a$ (insertion/deletion)
 			\Statex \textbf{Output \hskip0.3em :} event queue $E$
-			\Statex
-			\State $E \gets$ empty list \Comment{Initialization}
-			\Procedure{\large{E}\small{NQUEUE}}{$t$, $o$, $oid$, $a$}
-				\State $e \gets$ list($t, o, oid, a$)
-				\State $E \gets$ append $e$ 
+			\State $E \leftarrow \emptyset$ \Comment{Initialization}
+			\Procedure{\textit{\large{E}\small{NQUEUE}}}{$t$, $o$, $oid$, $a$}
+				\State $e \leftarrow$ [$t, o, oid, a$]
+				\State $E \leftarrow$ append $e$ 
 			\EndProcedure
-			\Procedure{\large{D}\small{EQUEUE}}{}
-				\State $e \gets$ pop an element from $E$
+			\Procedure{\textit{\large{D}\small{EQUEUE}}}{}
+				\State $e \leftarrow$ pop an element from $E$
 				\State \Return $e$
 			\EndProcedure
-			\Procedure{\large{S}\small{ORT}\large{Q}\small{UEUE}}{}
-				\State $E \gets$ sort elements in descending order based on sorting priority
+			\Procedure{\textit{\large{S}\small{ORT}\large{Q}\small{UEUE}}}{}
+				\State $E \leftarrow$ sort elements in descending order based on sorting priority 
 			\EndProcedure
-			\Procedure{\large{G}\small{ET}\large{T}\small{OTAL}\large{Q}\small{UEUE}}{}
+			\Procedure{\textit{\large{G}\small{ET}\large{T}\small{OTAL}\large{Q}\small{UEUE}}}{}
 				\State \Return number of elements in $E$
 			\EndProcedure
-			\Procedure{\large{G}\small{ET}\large{M}\small{AX}\large{T}\small{IMESTAMP}}{}
+			\Procedure{\textit{\large{G}\small{ET}\large{M}\small{AX}\large{T}\small{IMESTAMP}}}{}
 				\State \Return first index of $E$
 			\EndProcedure
-			\Procedure{\large{I}\small{S}\large{E}\small{MPTY}}{}
+			\Procedure{\textit{\large{I}\small{S}\large{E}\small{MPTY}}}{}
 				\If {$E$ is empty} \Return True
-				\Else \Return False
+				\Else {} \Return False
+				\EndIf
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Kelas \textit{EventQueue}}
+	\caption{Kelas \textit{EventQueue} \label{algo:event-queue-class}}
 \end{figure}
   
 \subsection{Kelas \textit{Pandora Box}}
@@ -158,175 +271,178 @@
 
 \subsection{Fungsi \textit{Main}}
 
+\subsection{Kelas \textit{PandoraBox}}
+\tab Kelas \textit{PandoraBox} mendefinisikan bentuk dan perilaku dari objek \textit{Pandora Box} yang berfungsi untuk menyimpan skor kontribusi pasar masing-masing produk $p \in P$ pada setiap waktu dalam interval hidupnya $t \in [t_i:t_e]$. \textit{PandoraBox} diimplementasikan menggunakan struktur data \textit{array} dua dimensi, yaitu ID produk dan \textit{timestamp}.
+
+Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yaitu $AddScore$ untuk menambah skor kontribusi pasar dengan nilai probabilitas yang didapat dari komputasi $DSL(c)$ dan $UpdateScore$ untuk memperbarui "kotak" sebelumnya menggunakan nilai probabilitas terakhir.
+
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:main-func-1}
-		\caption{MainFunction (List Event)}
+		\caption{PandoraBox Class}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
-			\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
-			\Statex
-			\Statex \Comment{store data and event}
-			\State $EQ \gets$ new $EventQueue()$ \Comment{EventQueue instantiation}
-			\State $D \gets P, C$ 
-			\ForAll {$d \in D$}
-				\State open dataset file $d$
-				\For {each row in $d$}
-					\State $id \gets$ data ID
-					\State $t_{in} \gets$ timestamp in
-					\State $t_{out} \gets$ timestamp out
-					\If {$d$ is product data} \Comment{product data}
-						\State $dt \gets$ 0
-					\Else \Comment{customer data}
-						\State $dt \gets$ 1
-					\EndIf
-					\For {$i \gets$ 0, 2}
-						\If {$i$ is 0} \Comment{insertion}
-							\State call $EQ.Enqueue(t_{in}, dt, id, i)$
-						\Else \Comment{deletion}
-							\State call $EQ.Enqueue(t_{out}, dt, id, i)$
-						\EndIf
-					\EndFor
+			\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp now $t$, probability score $Pr$, last timestamp $lt$, last probability score $lp$
+			\Statex \textbf{Output \hskip0.3em :} filled pandora box $PBox$
+			\State $PBox \leftarrow \emptyset$  \Comment{Initialization}
+			\Procedure{\textit{\large{A}\small{DD}\large{S}\small{CORE}}}{$DSL(c)$, $t$, $Pr$}
+				\ForAll {$p \in DSL(c)$}
+					\State $lt \leftarrow$ get the last timestamp when pbox of $p$ updated
+					\State $lp \leftarrow$ get the last probabality of $p$
+					\If {$lt > 0$ and $lt < t$}
+						\State call $UpdateScore(p, lt, t, lp)$
+						\State $PBox_{p}^{t} \leftarrow PBox_{p}^{t} + Pr$
+					\EndIf  
 				\EndFor
-			\EndFor
-			\State call $EQ.SortQueue()$ \Comment{sorting queue}
-			\Statex \Comment {break}
-			\algstore{main1}
+			\EndProcedure
+			\Procedure{\textit{\large{U}\small{PDATE}\large{S}\small{CORE}}}{$p$, $lt$, $t$, $lp$}
+				\For {$i \leftarrow lt+1$, $t$}
+					\State $PBox_{p}^{i} \leftarrow PBox_{p}^{i} + lp$  
+				\EndFor
+			\EndProcedure
+			\algstore{pbox}
 		\end{algorithmic}
 	\end{algorithm}
-\caption{Fungsi Utama (Mendaftar \textit{Event})}
+	\caption{Kelas \textit{PandoraBox} (Bagian 1) \label{algo:pbox-class}}
 \end{figure}
-			
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\label{algo:main-func-init}
-		\caption{MainFunction (Inisialisasi)}
-		\begin{algorithmic}[1]
-			\algrestore{main1}
-			\Statex \Comment {continued}
-			\Statex \Comment{initialization} 
-			\State $max\_ts \gets$ call $EQ.GetMaxTimestamp()$
-			\State $max\_val \gets$ get max value of data
-			\State $PB \gets$ new $PandoraBox(len(P), ts_{max})$  \Comment{PandoraBox instantiation}
-			\State $P\_active \gets$ empty list of active product
-			\State $C\_active \gets$ empty list of active customer
-			\State $RSL \gets$ new $ReverseSkyline(P, C, max\_val)$  \Comment{ReverseSkyline instantiation}
-			\State $DSL \gets$ new $DynamicSkyline(P, C, max\_val}, PB)$  \Comment{DynamicSkyline instantiation}
-			\Statex \Comment break
-			\algrestore{main2}
-		\end{algorithmic}
-	\end{algorithm}
-\caption{Fungsi Utama (Inisialisasi)}
-\end{figure}
+
+\subsection{Kelas \textit{ReverseSkyline}}
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:main-func-event-process}
-		\caption{MainFunction (Process Event)}
+		\caption{ReverseSkyline Class (Part 1)}
 		\begin{algorithmic}[1]
-			\algrestore{main2}
-			\Statex \Comment {continued}
-			\Statex \Comment{process event} 
-			\While {$EQ.IsEmpty()$ is not True}
-				\State $e \gets$ call $EQ.Dequeue()$
-				\If {$e[o]$ is product}
-					\If {$e[a]$ is insertion}
-						\Comment{Algo \ref{algo:product-insertion}}
-					\ElsIf {$e[a]$ is deletion}
-						\Comment{Algo \ref{algo:product-deletion}}
+			\Statex \textbf{Input \hskip1em :} product as query point $p_q$, active products $PA$, active customers $CA$, maximum value $maxv$
+			\Statex \textbf{Output \hskip0.3em :} $RSL(p)$ 
+			\State $d \leftarrow$ get dimension of data
+			\State $O \leftarrow DefineOrthant(d)$
+			\Procedure{\textit{\large{C}\small{OMPUTE}}}{$p_q$}
+				\State $FindMidSkyline(p_q, PA)$
+				\State $FindReverseSkyline(CA)$
+			\EndProcedure
+			\Procedure{\textit{\large{D}\small{EFINE}\large{O}\small{RTHANT}}}{$d$}
+				\State $O \leftarrow \emptyset$
+				\For {\textbf{each} $i \in 2^d$}
+					\State $id \leftarrow$ convert $i$ to binary
+					\State $O_{id} \leftarrow \emptyset$
+				\EndFor
+			\EndProcedure
+			\Procedure{\textit{\large{F}\small{IND}\large{M}\small{ID}\large{S}\small{KYLINE}}}{$p_q, PA$}
+				\ForAll {$p \in PA$}
+					\If {$p \not= p_q$}
+						\State $m \leftarrow CalcMidpoint(p_q, p)$ 
+						\State $id \leftarrow GetOrthantId(p)$
+						\If {$O_{id}$ is empty} $O_{id} \leftarrow m$
+						\Else{} 
+						\For {\textbf{each} $ms \in MSL(o)$}
+						\If{$m \prec ms$} 
+						\State $MSL(o) \leftarrow$ delete $ms$
+						\ElsIf{$ms \prec m$}
+						\State exit the loop 
+						\EndIf
+						\State $MSL(o) \leftarrow$ insert $m$
+						\EndFor
+						\EndIf
 					\EndIf
-				\ElsIf{$e[o]$ is customer}
-					\If {$e[a]$ is insertion}
-						\Comment{Algo \ref{algo:customer-insertion}}
-					\ElsIf {$e[a]$ is deletion}
-						\Comment{Algo \ref{algo:customer-deletion}}
-					\EndIf
-				\EndIf
-			\EndWhile
+				\EndFor
+				\State \Return $O$
+			\EndProcedure
+			\algstore{rsl}
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Fungsi Utama (Memproses \textit{Event})}
+	\caption{Kelas \textit{ReverseSkyline} (Bagian 1) \label{algo:rsl-class-1}}
 \end{figure}
 
-\subsubsection{Fungsi \textit{Product Insertion}}
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:product-insertion}
-		\caption{ProductInsertion}
+		\caption{Reverse Skyline Computation (Part 2)}
 		\begin{algorithmic}[1]
-			\State $P\_active \gets$ append product id $e[oid]$
-			\State $rsl\_result \gets $ call $RSL.StartComputation(e[oid])$
-			\State $T \gets$ empty list of threads
-			\For {each $r \in rsl\_rsesult$} \Comment{compute DSL}
-				\State $th \gets$ make a thread that called $DSL.StartComputation(r, e[t], e[a], e[oid])$
-				\State $T \gets$ append $th$
-			\EndFor
-			\State run threads
-			\State join threads
-			\State $T \gets$ empty list of threads
-			\For {each $c \in Ca$} \Comment{update pandora box}
-				\State $th \gets$ make a thread that called $DSL.StartComputation(c, e[t], update\_pbox)$
-				\State $T \gets$ append $th$
-			\EndFor
-			\State run threads
-			\State join threads
-	\end{algorithmic} 
-\end{algorithm}
-\caption{Fungsi \textit{ProductInsertion}}
-\end{figure}
-
-\subsubsection{Fungsi \textit{Product Deletion}}
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\label{algo:product-deletion}
-		\caption{ProductDeletion}
-		\begin{algorithmic}[1]
-			\State $P\_active \gets$ append product id $e[oid]$
-			\State $rsl\_result \gets $ call $RSL.StartComputation(e[oid])$
-			\State $T \gets$ empty list of threads
-			\For {each $r \in rsl\_rsesult$} \Comment{compute DSL}
-			\State $th \gets$ make a thread that called $DSL.StartComputation(r, e[t], e[a], e[oid])$
-			\State $T \gets$ append $th$
-			\EndFor
-			\State run threads
-			\State join threads
-			\State $T \gets$ empty list of threads
-			\For {each $c \in Ca$} \Comment{update pandora box}
-			\State $th \gets$ make a thread that called $DSL.StartComputation(c, e[t], update\_pbox)$
-			\State $T \gets$ append $th$
-			\EndFor
-			\State run threads
-			\State join threads
-		\end{algorithmic} 
+			\algrestore{rsl}
+			\Procedure{\textit{\large{F}\small{IND}\large{R}\small{EVERSE}\large{S}\small{KYLINE}}}{$CA$} 
+				\State $RSL(p) \leftarrow \emptyset$
+				\For {$c \in CA$}
+					\State $id \leftarrow$ $GetOrthantId(c)$
+					\If {$O_{id}$ is empty} 
+						\State $RSL(p) \leftarrow$ insert $c$
+					\Else{}  
+						\State $dom \leftarrow 0$
+						\ForAll {$m \in O_{id}$}
+							\If {$m$ is dominating $c$}
+								\State $dom \leftarrow dom + 1$						
+							\EndIf
+						\EndFor
+						\If {$dom$ is $0$}
+							\State $RSL(p) \leftarrow$ insert $c$
+						\EndIf
+					\EndIf
+				\EndFor
+				\State \Return $RSL(p)$
+			\EndProcedure
+			\Procedure{\large{C}\small{ALC}\large{M}\small{IDPOINT}}{$p_q$, $p$} 
+				\State $m \leftarrow \emptyset$
+				\For {\textbf{each} $i \in d$} $m \leftarrow$ $\frac{(p_q^i + p^i)}{2}$
+				\EndFor
+				\State \Return $m$
+			\EndProcedure
+			\Procedure{\large{G}\small{ET}\large{O}\small{RTHANT}\large{I}\small{D}}{$D$}
+				\State $o \leftarrow \varnothing$
+				\For {\textbf{each} $i \in d$}
+					\If {$D^i \leq p_q^i$} $o \leftarrow$ append $0$
+					\Else {} $o \leftarrow$ append $1$
+					\EndIf
+				\EndFor
+				\State \Return $o$
+			\EndProcedure
+			\algstore{rsl-2}
+		\end{algorithmic}
 	\end{algorithm}
-	\caption{Fungsi \textit{ProductDeletion}}
+	\caption{Kelas \textit{ReverseSkyline} (Bagian 2) \label{algo:rsl-class-2}}
 \end{figure}
-
-\subsubsection{Fungsi \textit{Customer Insertion}}
+	
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:customer-insertion}
-		\caption{CustomerInsertion}
+		\caption{Reverse Skyline Computation (Part 3)}
 		\begin{algorithmic}[1]
-			\State $C\_active \gets$ append customer id $e[oid]$ 
-			\State call $DSL.StartComputation(e[oid], e[t], init\_dsl)$
-			\State call $DSL.StartComputation(e[oid], e[t], update\_pbox)$
-		\end{algorithmic} 
+			\algrestore{rsl-2}
+			\Procedure{\textit{\large{U}\small{PDATE}\large{M}\small{ID}\large{S}\small{KYLINE}}}{$MSL(o), m$} 
+				
+			\EndProcedure
+		\end{algorithmic}
 	\end{algorithm}
-	\caption{Fungsi \textit{CustomerInsertion}}
+	\caption{Kelas \textit{ReverseSkyline} (Bagian 3) \label{algo:rsl-class-3}}
 \end{figure}
 
-\subsubsection{Fungsi \textit{Customer Deletion}}
+\subsection{Kelas \textit{Dynamic Skyline}}
+\tab Sek
+
+\subsection{Fungsi \textit{Check Domination}}}
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:customer-deletion}
-		\caption{CustomerDeletion}
+		\caption{Check Domination}
 		\begin{algorithmic}[1]
-			\State call $DSL.StartComputation(e[oid], e[t], update\_pbox)$
-			\State $C\_active \gets$ remove customer id $e[oid]$ 
-		\end{algorithmic} 
+			\Statex \textbf{Input \hskip1em :} value of subject ($val_s$), value of target ($val_t$), value of query point ($val_q$), dimension of data ($d$)
+			\Statex \textbf{Output \hskip0.3em :} is subject dominating target based on query point? ($s \prec_q t$)
+			\Procedure{\textit{\large{I}\small{S}\large{D}\small{OMINATING}}}{$val_s, val_t, val_q$} 
+			\State $dg \leftarrow 0$ \Comment{counter of dominating}
+			\State $dd \leftarrow 0$ \Comment{counter of dominated}
+			\For {\textbf{each} $i \in d$}
+			\State $diff_s^i \leftarrow |val_s^i - val_q^i|$
+			\State $diff_t^i \leftarrow |val_t^i - val_q^i|$
+			\If {$diff_a^i = diff_b^i$}
+			\State \textbf{continue the loop}
+			\ElsIf{$diff_s^i < diff_t^i$}
+			\State $dg \leftarrow dg+1$
+			\ElsIf{$diff_s^i > diff_t^i$}
+			\State $dd \leftarrow dd+1$
+			\EndIf
+			\EndFor
+			\If{$dd = 0$ and $dg \geq 1$} 
+			\State \Return True
+			\Else{} 
+			\State \Return False
+			\EndIf
+			\EndProcedure
+		\end{algorithmic}
 	\end{algorithm}
-	\caption{Fungsi \textit{CustomerDeletion}}
+	\caption{Fungsi \textit{Check Domination} \label{algo:check-dom}}
 \end{figure}
 
 \section{Implementasi Algoritme \textit{Query Processing}}
@@ -335,25 +451,22 @@
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\label{algo:pbox-class-2}
-		\caption{PandoraBox Class (Part 2)}
+		\caption{PandoraBox Class}
 		\begin{algorithmic}[1]
 			\algrestore{pbox}
 			\Statex \textbf{Input \hskip1em :} product ID $p[id]$, time interval (time init $t_i$, time end $t_e$)
 			\Statex \textbf{Output \hskip0.3em :} total market contribution score in time interval  $MC$
-			\Statex 
 			\Procedure{\large{G}\small{ET}\large{S}\small{CORE}}{$p[id]$, $t_i$, $t_e$} \Comment{get market contribution score}
-				\State $MC \gets 0$ 
-				\For {$i \gets t_i$, $t_e + 1$}
-					\State $MC \gets MC + PBox[p[id]][i]$
-				\EndFor
-				\Return $MC$
+			\State $MC \leftarrow 0$ 
+			\For {$i \leftarrow t_i$, $t_e + 1$}
+			\State $MC \leftarrow MC + PBox[p[id]][i]$
+			\EndFor
+			\Return $MC$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Kelas \textit{PandoraBox} (Bagian 2)}
+	\caption{Kelas \textit{PandoraBox} (Bagian 2) \label{algo:pbox-class-2}}
 \end{figure}
 
-\section{Implementasi Algoritme \textit{Brute Force}}
-\tab pending
 \section{Implementasi Antarmuka Pengguna}
+\tab sek
