@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.src import solution as ss
 from app.src import precompute as pr
+from app.src import precomputenew as prnew
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -40,8 +41,12 @@ def precompute():
             else:
                 flash('not allowed')
                 return redirect(request.url)
-        if algorithm == 'kmpp':
+        if algorithm == 'kmppti':
+            # print(filenames)
             app.pandora_file = pr.kmpp_precompute(filenames[0], filenames[1])
+            flash('success')
+        elif algorithm == 'kmppti-2':
+            app.pandora_file = prnew.kmpp_precompute(filenames[0], filenames[1])
             flash('success')
         return redirect ( url_for('input') )
 

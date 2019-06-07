@@ -5,7 +5,7 @@ pandora_box = PandoraBox()
 market_contr = {}
 output = {}
 
-file = '../output/pandora_box.csv'
+file = 'pandora_box.csv'
 with open(file, 'r') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     total_prod = 0
@@ -15,7 +15,7 @@ with open(file, 'r') as csv_file:
             prod_score.append(float(col))
         pandora_box.insert_score(prod_score) 
         total_prod += 1
-pandora_box.print_box()
+# pandora_box.print_box()
 
 k_product = int(input('Masukkan jumlah produk : '))
 print('Jumlah produk: {}'.format(k_product))

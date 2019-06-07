@@ -2,7 +2,7 @@ import csv
 from app.src.kmpp.customer_thread import CustThread
 from app.src.kmpp.pandora_box import PandoraBox
 from app.src.kmpp.event_queue import EventQueue
-from app.src.kmppnew.logger import Logger
+from app.src.kmpp.logger import Logger
 
 def product_in(prod_id, threads, prod_active, timestamp, act, last_event):
   try:
@@ -60,7 +60,7 @@ def wait_thread_event(threads, last_event):
       break
 
 def kmpp_precompute(product_dataset, customer_product):
-  logger = Logger('kmppti-without-rsl', 'precomputing')
+  logger = Logger('kmppts', 'precomputing')
   logger.set_time(0)
   logger.set_data_info(product_dataset.split('_'))
   print ('Precompute started')

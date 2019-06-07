@@ -1,5 +1,5 @@
-import csv 
-import logging
+import csv
+from app import app
 
 class PandoraBox:
   def __init__(self, total_prod=None, max_ts=None):
@@ -12,7 +12,7 @@ class PandoraBox:
     self.box.append(prod_score)
 
   def add_score(self, dsl, timestamp, score):
-    for id in list(dsl.keys()):
+    for id in dsl.keys():
       try:
         last_ts = dsl[id]['last_ts']
       except:
@@ -22,17 +22,10 @@ class PandoraBox:
           self.update_score(id, last_ts, timestamp, dsl[id]['last_prob'])
         if last_ts != timestamp:
           self.box[id][timestamp] += score
-          logging.info('Add score pbox[{}][{}] + {} = {}'. format(id, timestamp, score, self.box[id][timestamp]))
 
   def update_score(self, id, last_ts, now_ts, prob):
     for i in range(last_ts + 1, now_ts):
       self.box[id][i] += prob
-      logging.info('Update score pbox[{}][{}] + {} = {}'.format(id, i, prob, self.box[id][i]))
-
-  def print_box(self):
-    logging.info('Pandora Box')
-    for row in self.box:
-      logging.info(row)
   
   def get_score(self, prod_id, ts_start, ts_end):
     total_score = 0
@@ -45,8 +38,9 @@ class PandoraBox:
       return total_score
 
   def export_csv(self):
-    with open('pandora_box.csv', 'w') as csvFile:
+    pandora_file = app.config['PANDORA_FILE']
+    with open(pandora_file, 'w') as csvFile:
       writer = csv.writer(csvFile)
       writer.writerows(self.box)
     csvFile.close()
-    logging.info('pandora box csv exported succesfully')
+    return pandora_file
