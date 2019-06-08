@@ -3,3 +3,7 @@ ref/
 __py*
 .idea/*
 .vscode/*
+file-bak/src-rsl/.vscode
+*.zip
+flask-app/app/session
+flask-app/app/upload

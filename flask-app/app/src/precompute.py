@@ -2,7 +2,7 @@ import csv
 from app.src.kmpp.customer_thread import CustThread
 from app.src.kmpp.pandora_box import PandoraBox
 from app.src.kmpp.event_queue import EventQueue
-from app.src.kmppnew.logger import Logger
+from app.src.kmppti.logger import Logger
 
 def product_in(prod_id, threads, prod_active, timestamp, act, last_event):
   try:

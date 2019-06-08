@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.src import solution as ss
 from app.src import precompute as pr
-from app.src import precomputenew as prnew
+from app.src import precompute_kmppti as pre
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -42,16 +42,15 @@ def precompute():
         flash('not allowed')
         return redirect(request.url)
     if algorithm == 'kmppti':
-      # print(filenames)
-      app.pandora_file = pr.kmpp_precompute(filenames[0], filenames[1])
+      session_name = pr.kmpp_precompute(filenames[0], filenames[1])
       flash('success')
     elif algorithm == 'kmppti-2':
-      app.pandora_file = prnew.kmpp_precompute(filenames[0], filenames[1])
+      session_name = pre.kmppti_precompute(filenames)
       flash('success')
     return redirect ( url_for('search') )
 
 @app.route('/search', methods=['GET', 'POST'])
-def search():
+def search(session_name):
   if request.method == 'GET':
     return render_template('search.html', title = 'Search')
   else:
