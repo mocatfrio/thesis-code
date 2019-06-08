@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="row justify-content-center">
-  <div class="col-9">
+  <div class="col-10">
     {% with messages = get_flashed_messages() %}
       {% if messages[0] == 'success' %}
         <div class="alert alert-success" role="alert">
@@ -15,12 +15,15 @@
         </div>
       {% endif %}
     {% endwith %}
+    <nav class="nav nav-pills nav-fill" style="margin-bottom: 30px">
+      <a class="nav-item btn btn-outline-secondary disabled" role="button">{{ session_name }}</a>
+    </nav>
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-4">
+  <div class="col-5">
     <h4 style="margin-bottom: 30px">Search Promising Product</h4>
-    <form action="{{ url_for('search') }}" method="POST">
+    <form action="{{ url_for('search', session_name = session_name) }}" method="POST">
       <div class="form-group">
         <label for="num-of-product">Number of Product</label>
         <input type="text" class="form-control" id="num-of-product" placeholder="Masukkan jumlah produk yang ingin dicari" name="num-of-product" value="{{ param[0] if param else '' }}" required>
@@ -39,9 +42,7 @@
       <button type="submit" class="btn btn-warning float-right">Submit</button>
     </form>
   </div>
-  <div class="col-1">
-  </div>
-  <div class="col-4">
+  <div class="col-5">
     {% if result %}
     <h4 style="margin-bottom: 30px">Result</h4>
     <div class="table-responsive">

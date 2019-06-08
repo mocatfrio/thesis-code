@@ -72,7 +72,7 @@ def recheck(cust_id, ts, dsl, data):
 """
 Session Handling
 """
-def make_session(data_info, algorithm, metadata, attr_prod, attr_cust):
+def make_session(data_info, algorithm, metadata):
   session_file = app.config['SESSION_DIR']
   if not os.path.exists(session_file):
     os.mkdir(session_file)
@@ -94,9 +94,11 @@ def make_session(data_info, algorithm, metadata, attr_prod, attr_cust):
     'dim': metadata[3],
     'total_prod': metadata[4],
     'total_cust': metadata[5],
-    'attr_prod': attr_prod,
-    'attr_cust': attr_cust,
-    'data_type': data_info[1]
+    'attr_prod': metadata[6],
+    'attr_cust': metadata[7],
+    'data_type': data_info[1],
+    'product_data': metadata[8],
+    'customer_data': metadata[9]
   }
   if 'session' in data:
     data['session'].update(my_data)
@@ -125,7 +127,11 @@ def kmppti_precompute(dataset):
     get_maxmin_value(data['product']['data'], data['customer']['data']),
     len(data['product']['attr']) - 4,
     len(data['product']['data']),
-    len(data['customer']['data'])
+    len(data['customer']['data']),
+    data['product']['attr'],
+    data['customer']['attr'],
+    dataset[0].split('/')[len(dataset[0].split('/'))-1],
+    dataset[1].split('/')[len(dataset[1].split('/'))-1], 
   ]
 
   data['product']['active'] = []
@@ -206,7 +212,7 @@ def kmppti_precompute(dataset):
           dsl.update_history(event[2])
         data['customer']['active'].remove(event[2])
 
-  session_name, session_file = make_session(dataset[0].split('_'), algorithm, metadata, data['product']['attr'], data['customer']['attr'])
+  session_name, session_file = make_session(dataset[0].split('_'), algorithm, metadata)
   pandora_path = session_file + '/' + session_name
   os.mkdir(pandora_path)
   pandora_box.export_csv(pandora_path)

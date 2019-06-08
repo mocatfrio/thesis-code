@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>k-MPPTI | {{ title }}</title>
-
-  <link rel="shortcut icon" type="image/svg" href="{{ url_for('static', filename='img/logo.svg') }}"/>
-  <link rel="shortcut icon" type="image/svg" href="{{ url_for('static', filename='img/logo.svg') }}"/>
-
+  <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='img/logo.ico') }}" />
   <!-- load css -->
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css"> -->
   <link href="{{ url_for('static', filename='vendor/bootstrap-4.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/vis-4.21.0/vis.css') }}" rel="stylesheet" type="text/css" />
+  <!-- load script -->
+  <script src="{{ url_for('static', filename='vendor/vis-4.21.0/vis.js') }}"></script>
 </head>
+{% if session %}
+<body onload="get_session({{ session }})">
+{% else %}
 <body>
+{% endif %}
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #32485c;">
       <div class="container">
@@ -40,7 +43,7 @@
     <section class="jumbotron text-center" style="margin-top: 60px; margin-bottom: 0;background-color: #fff;">
       <div class="row justify-content-center">
         <div class="col-8">
-          <h1 style="margin-bottom: 30px">Studi Permasalahan k-Most Promising Products (k-MPP) Berbasis Interval Waktu pada Data Multidimensi dengan Serial Waktu</h1>
+          <h1 style="margin-bottom: 30px">Obtaining k-Most Promising Products Based on Time Interval on Multidimensional Time Series Data</h1>
           <p class="lead text-muted">Hafara Firdausi (05111540000043)</p>
         </div>
       </div>
@@ -60,12 +63,20 @@
   </footer>
   <!-- load script -->
   <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='vendor/jquery/jquery-3.4.1.slim.min.js') }}"></script>
-  <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script> -->
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='vendor/jquery/jquery-3.4.1.min.js') }}"></script>
   <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='vendor/bootstrap-4.3.1/js/bootstrap.bundle.min.js') }}"></script>
-  <!-- <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/all.min.js') }}"></script> -->
-
-
+  <!-- custom script -->
+  <script type="text/javascript">
+    function get_session(session_name){
+      let dropdown = $('#session');
+      dropdown.empty();
+      dropdown.append('<option selected disabled>Choose Session</option>');
+      dropdown.prop('selectedIndex', 0);
+      $.each(session_name, function(index, value) {
+        dropdown.append($('<option></option>').attr('value', value).text(value));
+      });
+    }
+  </script>
   {% block script %}{% endblock %}
 </body>
 </html>
