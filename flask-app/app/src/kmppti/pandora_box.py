@@ -6,9 +6,12 @@ import csv
 from app import app
 
 class PandoraBox:
-  def __init__(self, total_prod=None, max_ts=None):
+  def __init__(self, total_prod=None, max_ts=None, prod_id=None):
     try:
       self.box = [[0 for col in range(0, max_ts)] for row in range(0, total_prod)]
+      # for n in range(0, len(self.box)): 
+      #   self.box[n][0] = prod_id[0]
+      # print(self.box)
     except:
       self.box = []
 

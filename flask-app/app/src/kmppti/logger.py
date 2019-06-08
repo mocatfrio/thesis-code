@@ -76,7 +76,9 @@ class Logger:
     res_data.append(self.runtime)
     res_data.append(self.mem_usage)
     res.append(res_data)
-
+    
+    if not os.path.exists(app.config['LOG_DIR']):
+      os.mkdir(app.config['LOG_DIR'])
     log_path = app.config['LOG_DIR'] + '/log.csv'
     print('Saved to {}'.format(log_path))
     if not os.path.exists(log_path):

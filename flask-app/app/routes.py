@@ -5,7 +5,6 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.src import solution as ss
 from app.src import precompute as pr
-from app.src import precompute_kmppti as pre
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -13,11 +12,15 @@ def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def read_session():
-  data = json.load(open(app.config['SESSION_FILE']))
   session = []
-  for key in data['session']:
-    session.append(key)
-  return session
+  try:
+    data = json.load(open(app.config['SESSION_FILE']))
+    for key in data['session']:
+      session.append(key)
+  except:
+    session = ['No session']
+  finally:
+    return session
 
 def get_metadata(session_name):
   data = json.load(open(app.config['SESSION_FILE']))
@@ -68,11 +71,12 @@ def precompute():
           flash('not allowed')
           return redirect(request.url)
       if algorithm == 'kmppti':
-        session_name = pr.kmpp_precompute(filenames[0], filenames[1])
-        flash('success')
-      elif algorithm == 'kmppti-2':
-        session_name = pre.kmppti_precompute(filenames)
-        flash('success')
+        session_name = pr.kmppti_precompute(filenames)
+      elif algorithm == 'kmppti-t':
+        session_name = pr.kmppti_precompute_using_thread(filenames)
+      elif algorithm == 'kmppti-no-rsl':
+        session_name = pr.kmppti_precompute_without_rsl(filenames)
+      flash('success')
       return redirect ( url_for('search', session_name = session_name) )
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -93,7 +97,7 @@ def search(session_name):
     time_end = request.form.get('time-end')
     pandora_path = app.config['SESSION_DIR'] + '/' + session_name + '/pandora_box.csv'
 
-    result = ss.kmpp_solution(pandora_path, k_product, time_start, time_end)
+    result = ss.solution(pandora_path, k_product, time_start, time_end)
     result_json = json.dumps(result)
     loaded_r = json.loads(result_json)
     return render_template('search.html', title = 'Search', result = loaded_r, param = [k_product, time_start, time_end], session_name = session_name) 
