@@ -43,16 +43,27 @@
 \contentsline {figure}{\numberline {4.15}{\ignorespaces Implementasi Halaman \textit {Precompute}\relax }}{70}{figure.caption.41}
 \contentsline {figure}{\numberline {4.16}{\ignorespaces Implementasi Halaman \textit {Search}\relax }}{71}{figure.caption.42}
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Implementasi Halaman \textit {Visualization} (Informasi Data)\relax }}{72}{figure.caption.43}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Implementasi Halaman \textit {Visualization} (Pratinjau Data dalam Tabel)\relax }}{72}{figure.caption.44}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Implementasi Halaman \textit {Visualization} (Pratinjau Data dalam Lini Masa)\relax }}{73}{figure.caption.45}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Implementasi Halaman \textit {Visualization} (Pratinjau Data Berbentuk Tabel)\relax }}{72}{figure.caption.44}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Implementasi Halaman \textit {Visualization} (Visualisasi Data Berbentuk Lini Masa)\relax }}{73}{figure.caption.45}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Hasil Uji Coba: Mengunggah Data dan Memilih Algoritme \textit {Data Precomputing}\relax }}{81}{figure.caption.46}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Hasil Uji Coba: Mengunggah Data dan Memilih Algoritme \textit {Data Precomputing}\relax }}{82}{figure.caption.46}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Hasil Uji Coba: \textit {Data Precomputing} Berhasil\relax }}{82}{figure.caption.47}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Hasil Uji Coba: Melihat Informasi Data\relax }}{82}{figure.caption.48}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Hasil Uji Coba: Melihat Informasi Data\relax }}{83}{figure.caption.48}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Hasil Uji Coba: Melihat Pratinjau Data Berupa Tabel\relax }}{83}{figure.caption.49}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Hasil Uji Coba: Melihat Visualisasi Data Berupa Lini Masa\relax }}{83}{figure.caption.50}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Hasil Uji Coba: Melihat Visualisasi Data Berupa Lini Masa\relax }}{84}{figure.caption.50}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Hasil Uji Coba: Memasukkan Kueri Pencarian dan Melihat Hasil Kueri\relax }}{84}{figure.caption.51}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil Uji Coba: \textit {Session}\relax }}{84}{figure.caption.52}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil Uji Coba: Memilih \textit {Session}\relax }}{85}{figure.caption.52}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Waktu Komputasi Algoritme pada Data \textit {Independent}\relax }}{86}{figure.caption.53}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Waktu Komputasi Algoritme pada Data \textit {Anti-Correlated}\relax }}{87}{figure.caption.54}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit {Independent}\relax }}{88}{figure.caption.55}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit {Anti-Correlated}\relax }}{88}{figure.caption.56}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Grafik Pengaruh Dimensi Data Terhadap Waktu Komputasi Algoritme pada Data \textit {Independent}\relax }}{90}{figure.caption.57}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Grafik Pengaruh Dimensi Data Terhadap Waktu Komputasi Algoritme pada Data \textit {Anti-Correlated}\relax }}{90}{figure.caption.58}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit {Independent}\relax }}{91}{figure.caption.59}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit {Anti-Correlated}\relax }}{92}{figure.caption.60}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Pengujian Akurasi Hasil Kueri pada Data \textit {Independent}\relax }}{93}{figure.caption.61}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Pengujian Akurasi Hasil Kueri pada Data \textit {Anti-Correlated}\relax }}{94}{figure.caption.62}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Pengujian Akurasi Hasil Kueri pada Data \textit {Forest Cover Type}\relax }}{94}{figure.caption.63}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

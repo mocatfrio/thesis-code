@@ -7,7 +7,7 @@
 \contentsline {chapter}{DAFTAR ISI}{xvii}{chapter*.2}
 \contentsline {chapter}{DAFTAR TABEL}{xxi}{chapter*.3}
 \contentsline {chapter}{DAFTAR GAMBAR}{xxiii}{chapter*.4}
-\contentsline {chapter}{DAFTAR KODE SUMBER}{xxv}{chapter*.5}
+\contentsline {chapter}{DAFTAR KODE SUMBER}{xxvii}{chapter*.5}
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Rumusan Masalah}{3}{section.1.2}
@@ -70,18 +70,22 @@
 \contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{75}{chapter.5}
 \contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{75}{section.5.1}
 \contentsline {section}{\numberline {5.2}Data Uji Coba}{75}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{75}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{76}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Data \textit {Anti-Correlated} (ANT)}{76}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Data \textit {Forest Cover Type} (FC)}{76}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{77}{section.5.3}
+\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{78}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Uji Coba Fungsionalitas}{78}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Uji Coba Performa}{78}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{80}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Uji Coba Fungsionalitas}{80}{subsection.5.4.1}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{85}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{85}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{85}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{87}{appendix*.53}
+\contentsline {subsection}{\numberline {5.4.2}Uji Coba Performa}{85}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}Pengaruh Jumlah Data Terhadap Performa Algoritme}{85}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}Pengaruh Jumlah Dimensi Data Terhadap Performa Algoritme}{89}{subsubsection.5.4.2.2}
+\contentsline {subsubsection}{\numberline {5.4.2.3}Akurasi Hasil Kueri}{93}{subsubsection.5.4.2.3}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{95}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{95}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{96}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{97}{appendix*.64}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{89}{Lampiran.a.A}
-\contentsline {chapter}{BIODATA PENULIS}{121}{appendix*.54}
+\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{99}{Lampiran.a.A}
+\contentsline {chapter}{BIODATA PENULIS}{123}{appendix*.65}

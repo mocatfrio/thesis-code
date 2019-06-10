@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% set active_page = "index" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-8 text-center">
+    <p class="text-left">The advancement of science and technology, especially
+in the data analytics area, has influenced the way manufacturers do businesses 
+by collecting sales and customer preferences data, then using it to obtain 
+some informations to make the right business decision.</p>
+    <p class="text-left">Currently, there is a product selection strategy by 
+searching for k-most preferred product by customers, namely k-Most Promising 
+Products (k-MPP). This computation uses two types of skyline queries, dynamic 
+skyline and reverse skyline. Unfortunately, k-MPP computing has some 
+shortcomings. First, it's not considering the time variable, so the query 
+results are invalid to be used as a consideration in decision making based on 
+time. Second, k-MPP computing cannot process query based on time intervals.</p>
+    <p class="text-left">This study and research aims to answer the k-MPP query 
+based on time intervals in multidimensional time series data with serial time 
+by modeling k-Most Promising Products in Time Intervals (k-MPPTI ) query and 
+designing an algorithmic framework for processing the query. The algorithm is 
+implemented using parallel computing techniques to make data processing faster. 
+The effectiveness and efficiency of the algorithm was tested using real and 
+synthetic datasets.</p>
+    <a class="btn btn-outline-secondary" 
+    href="{{ request.script_root }}/precompute" 
+    role="button" style="margin-top: 20px">Let's Try!</a>
+  </div>
+</div>
+
+{% endblock %}
