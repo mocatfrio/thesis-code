@@ -19,16 +19,16 @@ Pembimbing II  & : \pembimbingDua
 \itshape
 % BEGIN
 \\*[5pt]
-Kemajuan ilmu pengetahuan dan teknologi telah mempengaruhi cara produsen dalam melakukan bisnis, yaitu dengan memanfaatkan data preferensi pelanggan untuk mendapatkan informasi, misalnya untuk mencari produk yang paling banyak diminati oleh pelanggan sehingga produsen dapat memilih produk dengan tepat untuk menarik lebih banyak pelanggan dan bertahan lama di pasar global.
+Kemajuan ilmu pengetahuan dan teknologi di bidang analisis data telah mempengaruhi cara perusahaan dalam berbisnis, yakni dengan mengumpulkan data penjualan dan preferensi pelanggan, kemudian memanfaatkannya untuk mendapatkan informasi yang dapat digunakan untuk membuat keputusan bisnis yang tepat. 
 \\*[5pt]
-Saat ini, sudah ada komputasi yang dapat menyelesaikan permasalahan tersebut. \textit{k-Most Promising Products (k-MPP)} adalah sebuah strategi pemilihan produk dengan melakukan pencarian $k$-produk yang paling banyak diminati oleh pelanggan. Namun, hasil pencarian $k$-produk tidak mungkin tetap dari waktu ke waktu. Oleh karena itu, interval waktu adalah salah satu faktor yang harus dipertimbangkan dalam proses kueri karena sangat berpengaruh terhadap hasil pencarian. Permasalahan ini kemudian didefinisikan dalam penelitian ini sebagai "\textit{k-Most Promising Products} berbasis interval waktu (k-MPPTI)".
+Saat ini, sudah ada strategi pemilihan produk dengan melakukan pencarian $k$-produk yang paling banyak diminati oleh pelanggan, yaitu \textit{k-Most Promising Products (k-MPP)}. Komputasi k-MPP menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}. Kelemahan dari komputasi k-MPP adalah tidak mempertimbangkan variabel waktu, sehingga hasil kuerinya tidak valid untuk digunakan sebagai bahan pertimbangan pembuat keputusan. Selain itu, komputasi k-MPP tidak dapat memproses kueri berbasis interval waktu.
 \\*[5pt]
-Pada penelitian ini akan dirancang dan diimplementasikan struktur data dan algoritme yang tepat untuk menyelesaikan permasalahan tersebut. Data yang digunakan adalah data multidimensi, sehingga menggunakan struktur data yang memiliki fitur \textit{indexing}, yaitu \textit{array}. Algoritme \textit{k-MPPTI} menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}. Selain itu, algoritme k-MPPTI juga mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat.
+Tugas Akhir ini bertujuan untuk menjawab permasalahan k-MPP berbasis interval waktu pada data multidimensi dengan serial waktu dengan memodelkan kueri k-MPPTI \textit{(k-Most Promising Products in Time Intervals)}, serta merancang kerangka kerja algoritme yang dapat memproses kueri tersebut. Algoritme diimplementasikan menggunakan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat. Efektivitas dan efisiensi algoritme diuji menggunakan data asli dan sintetis.
 \\*[5pt]
-Hasil uji coba menunjukkan bahwa algoritme k-MPPTI dapat memberikan hasil dengan waktu eksekusi ... kali lebih cepat dan penggunaan memori ... kali lebih hemat dibandingkan dengan algoritme konvensional Brute Force.
+Hasil uji coba menunjukkan bahwa algoritme k-MPPTI yang tidak menggunakan komputasi \textit{reverse skyline} dapat memberikan hasil dengan waktu eksekusi ... kali lebih cepat dan penggunaan memori ... kali lebih hemat dibandingkan dengan algoritme k-MPPTI yang menggunakan komputasi \textit{reverse skyline}. Selain itu ...
 % END
 \rm \\*[5pt]
-\textbf{Kata Kunci: \textit{Strategi pemilihan produk, Kueri, Dynamic skyline, Reverse skyline, Interval waktu}}
+\textbf{Kata Kunci: \textit{Strategi Pemilihan Produk, Kueri, Dynamic Skyline, Reverse Skyline, Interval Waktu}}
 
 
 \cleardoublepage
@@ -54,15 +54,15 @@ Supervisor II  & : \pembimbingDua
 \itshape
 % BEGIN
 \\*[5pt]
-Kemajuan ilmu pengetahuan dan teknologi telah mempengaruhi cara produsen dalam melakukan bisnis, yaitu dengan memanfaatkan data preferensi pelanggan untuk mendapatkan informasi, misalnya untuk mencari produk yang paling banyak diminati oleh pelanggan sehingga produsen dapat memilih produk dengan tepat untuk menarik lebih banyak pelanggan dan bertahan lama di pasar global.
+The advancement of science and technology, especially in the data analytics area, has influenced the way manufacturers do businesses by collecting customer preferences and sales data, then using it to obtain some informations to make the right business decision.
 \\*[5pt]
-Saat ini, sudah ada komputasi yang dapat menyelesaikan permasalahan tersebut. \textit{k-Most Promising Products (k-MPP)} adalah sebuah strategi pemilihan produk dengan melakukan pencarian $k$-produk yang paling banyak diminati oleh pelanggan. Namun, hasil pencarian $k$-produk tidak mungkin tetap dari waktu ke waktu. Oleh karena itu, interval waktu adalah salah satu faktor yang harus dipertimbangkan dalam proses kueri karena sangat berpengaruh terhadap hasil pencarian. Permasalahan ini kemudian didefinisikan dalam penelitian ini sebagai "\textit{k-Most Promising Products} berbasis interval waktu (k-MPPTI)".
+Currently, there is a product selection strategy by searching for k-most preferred product by customers, namely k-Most Promising Products (k-MPP). This computation uses two types of skyline queries, dynamic skyline and reverse skyline. Unfortunately, k-MPP computation has some shortcomings. First, it doesn't consider the time variable, so the query results are invalid to be used as a consideration in decision making based on time. Second, k-MPP computing cannot process query based on time intervals.
 \\*[5pt]
-Pada penelitian ini akan dirancang dan diimplementasikan struktur data dan algoritme yang tepat untuk menyelesaikan permasalahan tersebut. Data yang digunakan adalah data multidimensi, sehingga menggunakan struktur data yang memiliki fitur \textit{indexing}, yaitu \textit{array}. Algoritme \textit{k-MPPTI} menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}. Selain itu, algoritme k-MPPTI juga mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat.
+This study aims to answer the k-MPP query based on time intervals in multidimensional time series data with serial time by modeling k-Most Promising Products in Time Intervals (k-MPPTI) query and designing an algorithmic framework for processing the query. The algorithm is implemented using parallel computing techniques to make data processing faster. The effectiveness and efficiency of the algorithm was tested using real and synthetic datasets.
 \\*[5pt]
 Hasil uji coba menunjukkan bahwa algoritme k-MPPTI dapat memberikan hasil dengan waktu eksekusi ... kali lebih cepat dan penggunaan memori ... kali lebih hemat dibandingkan dengan algoritme konvensional Brute Force.
 % END
 \rm \\*[5pt]
-\textbf{Keywords: \textit{Product selection strategy, Query, Dynamic skyline, Reverse skyline, Time interval}}
+\textbf{Keywords: \textit{Product Selection Strategy, Query, Dynamic Skyline, Reverse Skyline, Time Interval}}
 
 \cleardoublepage

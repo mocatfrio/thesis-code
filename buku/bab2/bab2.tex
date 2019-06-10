@@ -133,6 +133,7 @@ Misalnya, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \tex
 	\label{fig:skyline}
 \end{figure}
 
+\pagebreak
 Berdasarkan Gambar \ref{fig:skyline}, produk \textit{smartphone} yang terbaik adalah $p_5$, $p_6$, dan $p_9$ karena tidak ada titik yang lebih baik dari titik-titik tersebut pada semua dimensi, sedangkan produk $p_{10}$ tidak dapat menjadi \textit{skyline} karena didominasi oleh produk $p_5$ pada dimensi $x$. Begitu juga produk $p_7$ yang didominasi $p_5$ pada dimensi $y$ dan produk $p_2$ yang didominasi $p_6$ pada dimensi $y$. Produk $p_5$, $p_6$, dan $p_9$ disebut dengan titik \textit{skyline} atau \textit{skyline point}.
 
 Saat ini, komputasi \textit{skyline} telah banyak digunakan sebagai operator pengambil keputusan multikriteria dan perencanaan bisnis \cite{dynamic-skyline-2}. Ada beberapa pengembangan dari komputasi \textit{skyline}, seperti \textit{dynamic skyline} dan \textit{reverse skyline}.  
@@ -145,6 +146,7 @@ Ada suatu kasus ketika perhitungan \textit{skyline} didasarkan pada titik kueri.
 
 Diberikan \textit{dataset} produk $P$ dan \textit{dataset} pelanggan (preferensi pelanggan) $C$ yang setiap datanya direpresentasikan sebagai objek data $d$-dimensi dan hanya dapat menyimpan nilai numerik pada setiap dimensinya. Data produk dan pelanggan pada dimensi ke-$i$ dinotasikan sebagai $p^i$ dan $c^i$, $i \leq d$. Untuk menggambarkan objek data secara umum digunakan notasi $ob$.
 
+\pagebreak
 Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis berdasarkan objek data $ob_3$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematika, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika:
 \begin{equation}\label{eq:syarat-dominansi-dinamis}
 \begin{split}
@@ -255,7 +257,7 @@ Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan prod
 Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tab:dataset}, \textit{reverse skyline} dari produk $p_8$ adalah pelanggan $c_4$, $c_5$, dan $c_{10}$, dinotasikan dengan $RSL(p_8) = \{c_4, c_5, c_{10}\}$ karena masing-masing pelanggan tersebut memiliki $p_8$ pada hasil \textit{dynamic skyline}-nya.
 
 \section{Kueri \textit{k-Most Promising Products} ($k$-MPP)}
-\tab Kueri \textit{k-Most Promising Products} ($k$-MPP) adalah sebuah strategi pemilihan produk yang dikenalkan oleh Islam dan Liu dalam penelitiannya \cite{kmpp}.
+\tab Kueri \textit{k-Most Promising Products} ($k$-MPP) adalah sebuah strategi pemilihan produk yang dikenalkan oleh Islam dan Liu dalam Tugas Akhirnya \cite{kmpp}.
 
 \subsection{\textit{Uniform Product Adoption} (UPA)}
 \tab \textit{Uniform Product Adoption} (UPA) mengasumsikan bahwa semua produk $p \in P$ yang muncul pada hasil \textit{dynamic skyline} pelanggan $c \in C$ akan saling berkompetisi satu sama lain untuk menarik pelanggan $c$, sehingga produk-produk tersebut memiliki probabilitas yang sama untuk dibeli oleh pelanggan $c$.
@@ -272,12 +274,13 @@ Pr(c, p|P) = \left\{
 
 Berdasarkan Persamaan \ref{eq:probability}, dapat dipastikan bahwa setiap produk yang muncul dalam $DSL(c)$ memiliki kesempatan yang sama untuk dipilih oleh pelanggan $c$. Sebaliknya, produk yang tidak muncul dalam $DSL(c)$ tidak memiliki kesempatan sama sekali untuk dipilih oleh $c$.
 
+\pagebreak
 Sebagai contoh menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, probabilitas produk $p_8$ dibeli oleh pelanggan $c_4$ adalah $Pr(c_4, p_8|P) = \frac{1}{|DSL(c_4)|} = \frac{1}{2}$, sedangkan probabilitas produk $p_8$ dibeli oleh pelanggan $c_{10}$ adalah $\frac{1}{|DSL(c_{10})|} = \frac{1}{3}$.
 
 \subsubsection{\textit{Market Contribution}}
 \tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$ diukur dari total jumlah pelanggan yang mungkin lebih memilih membeli produk $p$ dibandingkan produk lain $p'$.
 
-Asumsinya jika seorang pelanggan memiliki dua produk atau lebih dalam hasil \textit{dynamic skyline}-nya, maka ia akan memberikan bobot yang sama pada produk-produk tersebut sebagaimana yang sudah dijelaskan pada Persamaan \ref{eq:probability}. Sehingga, kontribusi pasar sebuah produk dihitung dari hasil akumulasi bobot yang didapatkan dari semua pelanggan $c \in C$.
+Asumsinya, jika seorang pelanggan memiliki dua produk atau lebih dalam hasil \textit{dynamic skyline}-nya, maka ia akan memberikan bobot yang sama pada produk-produk tersebut sebagaimana yang sudah dijelaskan pada Persamaan \ref{eq:probability}. Sehingga, kontribusi pasar sebuah produk dihitung dari hasil akumulasi bobot yang didapatkan dari semua pelanggan $c \in C$.
 
 Kontribusi pasar produk $p$, dinotasikan dengan $E(C, p|P)$, diperoleh dengan mengakumulasikan probabilitas produk dari setiap pelanggan $c \in C$, sebagai berikut:\\
 \begin{equation}\label{eq:market-contr}
@@ -289,6 +292,7 @@ Karena probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pa
 E(C, p|P) = \sum_{\forall c \in RSL(p)} Pr(c, p|P)
 \end{equation}
 
+\pagebreak
 Sebagai contoh menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, kontribusi pasar dari produk $p_8$ adalah $E(C, p_8|P) = Pr(c_4, p_8|P) + Pr(c_5, p_8|P) + Pr(c_{10}, p_8|P) = \frac{1}{2} + 1 + \frac{1}{3} = \frac{11}{6}$ atau $1.833$.
 
 Perhitungan kontribusi pasar juga dapat dilakukan pada sekumpulan produk atau \textit{subset} produk $P'$, dinotasikan dengan $E(C, P'|P)$, yang dijelaskan pada Persamaan \ref{eq:market-contr-subset}.
@@ -311,9 +315,15 @@ Kelebihan bahasa pemrograman Python adalah pada keterbacaannya karena memiliki s
 
 Melakukan debug pada program Python sangatlah mudah karena tidak akan mengakibatkan \textit{segmentation fault}. Sebagai gantinya, ia akan menimbulkan \textit{Exception} apabila menemukan suatu \textit{error} atau kesalahan. Ketika program tidak menangkap \textit{Exception}, maka Python akan menampilkan \textit{stack trace} yang dapat digunakan untuk menganalisis dan memperbaiki kesalahan yang terjadi \cite{python}.
 
-Pada Tugas Akhir ini, bahasa pemrograman Python digunakan untuk mengimplementasikan struktur data dan algoritme pada sistem perangkat lunak yang akan dibangun. 
+Dalam Tugas Akhir ini, bahasa pemrograman Python digunakan untuk mengimplementasikan struktur data dan algoritme pada sistem perangkat lunak yang akan dibangun. Python yang digunakan adalah versi 3.7.3.
 
 \section{Flask}
-\tab Flask adalah kerangka kerja web berbahasa Python yang sederhana, ringan, dan mudah dikembangkan, sehingga Flask kerap disebut dengan \textit{microframework}. Flask dibangun dari dua pustaka utama, yaitu Jinja \textit{template engine} dan Werkzeug WSGI \textit{toolkit}, serta memiliki lisensi BSD. Saat ini, Flask dikembangkan dan dikelola oleh \textit{Pallets team} dan kontributor komunitas.
+\tab Flask adalah kerangka kerja web berbahasa Python yang sederhana, ringan, dan mudah dikembangkan, sehingga Flask kerap disebut dengan \textit{microframework}. Flask dibangun dari dua pustaka utama, yaitu Jinja \textit{template engine} dan Werkzeug WSGI \textit{toolkit}, serta memiliki lisensi BSD. Saat ini, Flask dikembangkan dan dikelola oleh \textit{Pallets team} dan kontributor komunitas \cite{flask}.
 
-Kerangka kerja Flask digunakan untuk mengimplementasikan aplikasi web dan layanan \textit{web server} yang digunakan pada Tugas Akhir ini karena ringan dan lebih mudah digunakan dibandingkan dengan \textit{framework} Python Django. Selain itu, Flask juga memiliki banyak dokumentasi dan tutorial yang dapat diikuti.
+\pagebreak
+Dalam Tugas Akhir ini, kerangka kerja Flask digunakan untuk mengimplementasikan aplikasi web dan layanan \textit{web server} yang digunakan pada Tugas Akhir ini karena ringan dan lebih mudah digunakan dibandingkan dengan \textit{framework} Python Django. Selain itu, Flask juga memiliki banyak dokumentasi dan tutorial yang dapat diikuti. Flask yang digunakan adalah versi 1.0.2.
+
+\section{Vis.js}
+\tab Vis.js adalah sebuah pustaka visualisasi berbasis web yang mudah digunakan, dapat menangani jumlah data yang besar secara dinamis, serta memungkinkan manipulasi dan interaksi dengan data. Pustaka ini terdiri dari komponen \textit{DataSet}, \textit{Timeline}, \textit{Network}, \textit{Graph2d}, dan \textit{Graph3d}. Pustaka yang dikembangkan oleh Almende B.V. ini berjalan dengan baik di sebagian besar peramban, seperti Chrome, Firefox, Opera, Safari, IE9 +, dan beberapa peramban seluler \cite{visjs}.
+
+Dalam Tugas Akhir ini, pustaka Vis.js digunakan untuk memvisualisasikan data dalam bentuk lini masa atau \textit{timeline} pada sistem perangkat lunak yang akan dibangun. Vis.js yang digunakan adalah versi 4.21.0.

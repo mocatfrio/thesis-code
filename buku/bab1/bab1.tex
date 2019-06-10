@@ -1,37 +1,38 @@
 \chapter{PENDAHULUAN}
-\tab Pada bab ini akan dijelaskan latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi dan sistematika penulisan Tugas Akhir.
+\tab Pada bab ini dijelaskan latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi dan sistematika penulisan Tugas Akhir.
 
 \section{Latar Belakang}
-\tab Kemajuan ilmu pengetahuan dan teknologi telah membawa dampak yang cukup besar di bidang bisnis, termasuk mempengaruhi cara produsen dalam melakukan bisnis secara lebih efisien. Produsen dapat mengumpulkan data preferensi pelanggan terhadap produk dan fitur produk dari data penjualan mereka. Selain itu, maraknya penggunaan situs web untuk menjual produk secara \textit{online} juga memungkinkan produsen mendapatkan data preferensi pelanggan terhadap fitur produk produsen lain.
+\tab Pesatnya kemajuan ilmu pengetahuan dan teknologi di bidang analisis data telah mempengaruhi cara perusahaan dalam berbisnis, yakni dengan mengumpulkan data-data penjualan, riset pasar, logistik, atau biaya transportasi, kemudian menggunakannya untuk membuat keputusan bisnis yang lebih baik. Seorang analis data atau analis bisnis dapat mengumpulkan data preferensi pelanggan terhadap fitur-fitur produk perusahaan tersebut dari data penjualan yang dimiliki. Selain itu, maraknya penggunaan situs web untuk menjual produk secara \textit{online} juga memungkinkan analis mengumpulkan data preferensi pelanggan terhadap fitur produk perusahaan lain.
 
-Data preferensi pelanggan yang terkumpul dapat dimanfaatkan untuk mendapatkan informasi-informasi penting yang menguntungkan, misalnya untuk mencari produk apa saja yang paling banyak diminati oleh pelanggan sehingga produsen dapat menentukan produk mana yang harus dipilih untuk strategi \textit{targeted marketing} supaya lebih tepat sasaran dan bertahan lama di pasar global.
+Dengan memanfaatkan data penjualan produk dan data preferensi pelanggan, sebuah perusahaan dapat mendapatkan informasi yang dapat digunakan untuk membuat keputusan bisnis yang tepat. Misalnya, dengan mendapatkan informasi $k$-produk apa saja yang paling diminati oleh pelanggan beserta fitur-fiturnya, perusahaan dapat menentukan harga produk baru yang akan diluncurkan atau menentukan fitur-fitur apa yang hendak diunggulkan dari produk baru yang akan diluncurkan. 
 
-Saat ini, sudah ada komputasi yang dapat menyelesaikan masalah pemilihan
-produk dengan memanfaatkan data preferensi pelanggan. \textit{k-Most Promising Products (k-MPP)} \cite{kmpp} adalah sebuah strategi pemilihan produk dengan melakukan pencarian $k$ produk yang paling banyak diminati oleh pelanggan.
+\pagebreak
+Saat ini, sudah ada penelitian yang mengembangkan strategi pemilihan produk dengan melakukan pencarian $k$-produk yang paling banyak diminati oleh pelanggan. Islam dan Liu (2010) memodelkannnya sebagai kueri \textit{k-Most Promising Products} (k-MPP), serta membuat kerangka kerja algoritme untuk memproses kueri tersebut \cite{kmpp}. Komputasi k-MPP menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} \cite{dynamic-skyline} dan \textit{reverse skyline} \cite{reverse-skyline}. Kueri \textit{dynamic skyline} digunakan untuk mengambil data produk terbaik berdasarkan sudut pandang pelanggan, sedangkan kueri \textit{reverse skyline} digunakan untuk mengambil data pelanggan potensial berdasarkan sudut pandang produk atau perusahaan.
 
-Komputasi \textit{k-MPP} menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} \cite{dynamic-skyline} dan \textit{reverse skyline} \cite{reverse-skyline}. Kueri \textit{dynamic skyline} digunakan untuk mengambil data produk terbaik berdasarkan sudut pandang pelanggan, sedangkan kueri \textit{reverse skyline} digunakan untuk mengambil data pelanggan potensial berdasarkan sudut pandang produsen.
+Kelemahan dari strategi pemilihan produk k-MPP adalah tidak adanya pertimbangan variabel waktu, sehingga hasilnya tidak valid untuk digunakan sebagai bahan pertimbangan pembuat keputusan di masa yang akan datang, misalnya salah satu dari hasil pencarian $k$-produk yang unggul ternyata sudah tidak diproduksi lagi saat ini. 
 
-Kemudian muncul sebuah pertanyaan, \textit{“Apakah produk yang paling banyak diminati pelanggan akan selalu sama dari waktu ke waktu?”}. Tentu saja para produsen lain tidak akan berdiam diri. Produk-produk baru akan terus bermunculan seiring dengan berjalannya waktu, sehingga produk yang paling diminati pelanggan pun ikut berubah karena adanya produk-produk baru yang dapat mengungguli produk sebelumnya.
+Selain itu, komputasi k-MPP tidak dapat memproses kueri berbasis interval waktu. Pertanyaan yang mungkin akan diajukan adalah \textit{“$k$-produk apa saja yang paling banyak diminati oleh pelanggan pada bulan Februari hingga September?”}. Dalam hal ini, bulan Februari hingga September disebut dengan interval waktu kueri dan data yang berbasis interval waktu disebut dengan data \textit{time series} atau serial waktu.
 
-Sebagai contoh, \textit{smartphone} A adalah produk yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Juni 2018, namun pada bulan Juli posisinya tergeser oleh \textit{smartphone} B yang fitur-fiturnya lebih disukai oleh pelanggan. Dari ilustrasi tersebut, dapat diketahui bahwa interval waktu juga merupakan faktor penting yang harus dipertimbangkan dalam proses pencarian $k$ produk yang paling banyak diminati oleh pelanggan karena sangat berpengaruh terhadap hasil pencarian.
+Waktu adalah variabel penting yang harus dipertimbangkan dalam analisis data supaya informasi yang didapatkan valid dengan kondisi yang sebenarnya. Sebagai ilustrasi, produk A adalah produk yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Juni, namun pada bulan Juli hingga September posisinya diungguli oleh produk B yang lebih diminati pelanggan. Pada bulan Oktober, produk B tidak diproduksi lagi karena suatu alasan, sehingga produk A kembali diminati pelanggan.  
 
-Pertanyaan baru yang mungkin akan diajukan oleh produsen atau analis
-pemasaran adalah \textit{“$k$ produk apa saja yang paling banyak diminati oleh pelanggan pada bulan Januari hingga Desember 2018?”}. Dalam hal ini, bulan Januari hingga Desember 2018 disebut dengan interval waktu kueri dan data produk yang berbasis interval waktu disebut dengan data \textit{time series} atau serial waktu \cite{time-series}.
+Berdasarkan ilustrasi di atas, produk yang paling unggul berdasarkan kueri k-MPP biasa adalah produk B karena produk B pernah mengungguli produk A, padahal produk B sudah tidak diproduksi lagi saat ini. Hal ini terjadi karena komputasi k-MPP hanya mempertimbangkan skor kontribusi pasar yang dihitung dari banyaknya jumlah pelanggan yang lebih menyukai produk tersebut daripada produk lainnya, tanpa mempertimbangkan variabel waktu.
 
-Untuk menjawab pertanyaan tersebut, dibutuhkan pendekatan lain untuk menyelesaikan kueri \textit{k-Most Promising Products (k-MPP)} berbasis interval waktu pada data multidimensi dengan serial waktu. Algoritme yang dibangun juga mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat \cite{kmpp}.
+Sedangkan jika berdasarkan kueri dengan interval waktu Januari hingga Juli, maka produk yang paling unggul adalah produk A; jika berdasarkan kueri dengan interval waktu Juli hingga Agustus, maka produk yang paling unggul adalah produk B; dan jika berdasarkan kueri dengan interval waktu Januari hingga Desember, maka produk yang paling unggul adalah produk A karena masa ketika produk A unggul lebih lama daripada produk B.
+
+Tugas Akhir ini bertujuan untuk menjawab permasalahan k-MPP berbasis interval waktu pada data multidimensi dengan serial waktu dengan memodelkan kueri k-MPPTI \textit{(k-Most Promising Products in Time Intervals)}, serta merancang kerangka kerja algoritme yang dapat memproses kueri tersebut. Algoritme diimplementasikan menggunakan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat. Efektivitas dan efisiensi algoritme diuji menggunakan data asli dan dataset sintetis.
 
 \section{Rumusan Masalah}
 \tab Rumusan masalah yang diangkat dalam Tugas Akhir ini adalah sebagai berikut:
 \begin{enumerate}
 	\item Bagaimana desain dan implementasi struktur data dan algoritme untuk \problem?
 	\item Bagaimana kinerja dari struktur data dan algoritme yang dibangun untuk \problem?
-	\item Bagaimana strategi yang optimal untuk meningkatkan efisiensi komputasi \textit{k-Most Promising Products (k-MPP)} berbasis interval waktu pada data multidimensi dengan serial waktu?
+	\item Bagaimana strategi yang optimal untuk meningkatkan efisiensi komputasi \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu?
 \end{enumerate}
 
 \section{Batasan Masalah}
 \tab Permasalahan yang dibahas pada Tugas Akhir ini memiliki beberapa batasan sebagai berikut:
 \begin{enumerate}
-	\item Struktur data dan algoritme dalam komputasi \textit{k-Most Promising Products (k-MPP)} hanya dapat menyimpan dan memproses nilai numerik.
+	\item Struktur data dan algoritme dalam komputasi \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu hanya dapat menyimpan dan memproses nilai numerik.
 	\item Implementasi struktur data dan algoritme menggunakan bahasa pemrograman Python.
 	\item \textit{Dataset} yang digunakan adalah data asli dan sintetis.
 \end{enumerate}
@@ -42,13 +43,14 @@ Untuk menjawab pertanyaan tersebut, dibutuhkan pendekatan lain untuk menyelesaik
 \begin{enumerate}
 	\item Merancang dan mengimplementasikan struktur data dan algoritme untuk \problem.
 	\item Mengevaluasi kinerja dari struktur data dan algoritme yang dibangun untuk \problem.
-	\item Mengimplementasikan strategi yang optimal untuk meningkatkan efisiensi komputasi \textit{k-Most Promising Products (k-MPP)} berbasis interval waktu pada data multidimensi dengan serial waktu.
+	\pagebreak
+	\item Mengimplementasikan strategi yang optimal untuk meningkatkan efisiensi komputasi \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu.
 \end{enumerate}
 
 \section{Manfaat}
 \tab Manfaat yang diharapkan dari penulisan Tugas Akhir ini adalah untuk mengetahui struktur data dan algoritme yang tepat untuk \problem secara optimal dan efisien.
 
-Selain itu, Tugas Akhir ini juga diharapkan dapat memberikan kontribusi pada perkembangan ilmu pengetahuan dan teknologi informasi karena algoritme ini dapat digunakan dalam berbagai hal, khususnya bagi produsen untuk membuat bisnisnya menjadi lebih baik dan tepat sasaran.
+Selain itu, Tugas Akhir ini juga diharapkan dapat memberikan kontribusi pada perkembangan ilmu pengetahuan dan teknologi informasi karena algoritme ini dapat digunakan dalam berbagai hal, khususnya bagi perusahaan untuk membuat bisnisnya menjadi lebih baik dan tepat sasaran.
 
 \section{Metodologi}
 \tab Metodologi yang digunakan dalam pengerjaan Tugas Akhir ini adalah sebagai berikut:
@@ -116,6 +118,7 @@ Berikut adalah sistematika penulisan buku Tugas Akhir:
 	
 	\tab Bab ini berisi uji coba dan evaluasi dari hasil implementasi yang telah dilakukan pada tahap implementasi.
 	
+	\pagebreak
 	\item BAB VI: PENUTUP
 	
 	\tab Bab ini berisi kesimpulan dan saran yang didapat dari hasil uji coba dan evaluasi yang telah dilakukan.
