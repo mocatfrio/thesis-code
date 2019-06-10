@@ -7,4 +7,3 @@ file-bak/src-rsl/.vscode
 *.zip
 flask-app/app/session/session_*
 flask-app/app/upload
-dataset/
