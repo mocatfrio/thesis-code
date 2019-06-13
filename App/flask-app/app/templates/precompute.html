@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% set active_page = "precompute" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-10">
+    {% with messages = get_flashed_messages() %}
+      {% if messages[0] == 'not allowed' %}
+        <div class="alert alert-danger" role="alert">
+          Filetype not allowed, please use CSV file
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <h4 style="margin-bottom: 30px">Choose Session</h4>
+    <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="session">Session</label>
+        <select class="custom-select form-control" id="session" name="session" required>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+  <div class="col-1">
+    <h4>or</h4>
+  </div>
+  <div class="col-5">
+    <h4 style="margin-bottom: 30px">Make Session</h4>
+    <form action="{{ url_for('precompute') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="dataset">Product Dataset</label>
+        <input type="file" class="form-control-file" id="dataset" name="p_dataset" required>
+      </div>
+      <div class="form-group">
+        <label for="dataset">Customer Dataset</label>
+        <input type="file" class="form-control-file" id="dataset" name="c_dataset" required>
+      </div>
+      <div class="form-group">
+        <label for="algorithm">Algorithm</label>
+        <select class="custom-select form-control" id="algorithm" name="algorithm" required>
+          <option selected disabled>Choose Algorithm</option>
+          <option value="kmppti">k-MPPTI </option>
+          <option value="kmppti-t">k-MPPTI Parallel</option>
+          <option value="kmppti-no-rsl">k-MPPTI NoRSL</option>
+
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+
+
