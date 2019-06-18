@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  11 JUN 2019 04:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  16 JUN 2019 02:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2351,12 +2351,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
  (./abstrak/abstrak.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
-[]\EU1/TimesNewRoman(0)/bx/n/10.95 STUDI PERMASALAHAN K-MOST PROMISING
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-\EU1/TimesNewRoman(0)/bx/n/10.95 PRODUCTS BERBASIS INTERVAL WAKTU PADA
+[]\EU1/TimesNewRoman(0)/bx/n/10.95 STUDI PERMASALAHAN \EU1/TimesNewRoman(0)/bx/
+it/10.95 K-MOST PROMISING
  []
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 8.
@@ -2588,9 +2584,9 @@ Underfull \hbox (badness 1383) in paragraph at lines 16--17
  []
 
 
-Underfull \hbox (badness 3679) in paragraph at lines 18--19
-[]\EU1/TimesNewRoman(0)/m/n/10.95 Teman-teman \EU1/TimesNewRoman(0)/m/it/10.95 
-Penguasa Kosan\EU1/TimesNewRoman(0)/m/n/10.95 , Prames, Kikik, Balqis,
+Underfull \hbox (badness 5133) in paragraph at lines 18--19
+[]\EU1/TimesNewRoman(0)/m/n/10.95 Teman-teman Penguasa Kosan: Prames, Kikik, Ba
+lqis,
  []
 
 
@@ -2685,39 +2681,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [20
 
-] (./buku.lot
-Underfull \hbox (badness 7116) in paragraph at lines 8--8
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Contoh Data Multidimensi dengan Seria
-l 
- []
-
-
-Underfull \hbox (badness 7116) in paragraph at lines 9--9
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Contoh Data Multidimensi dengan Seria
-l 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--10
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Contoh \EU1/TimesNewRoman(0)/m/it/10.
-95 Dataset \EU1/TimesNewRoman(0)/m/n/10.95 (a) Produk $\OML/cmm/m/it/10.95 P$ \
-EU1/TimesNewRoman(0)/m/n/10.95 dan (b) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Contoh \EU1/TimesNewRoman(0)/m/it/10.
-95 Dataset \EU1/TimesNewRoman(0)/m/n/10.95 (a) Produk $\OML/cmm/m/it/10.95 P$ \
-EU1/TimesNewRoman(0)/m/n/10.95 dan (b) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Skenario Uji Coba Performa \EU1/Times
-NewRoman(0)/m/it/10.95 Data 
- []
-
-)
+] (./buku.lot)
 \tf@lot=\write10
 \openout10 = `buku.lot'.
 
@@ -2735,54 +2699,44 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ] (./buku.lof
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
  [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 (a) Komputasi \EU1/TimesNewRoman(0)/m
-/it/10.95 Dynamic Skyline \EU1/TimesNewRoman(0)/m/n/10.95 dari 
+/it/10.95 dynamic skyline \EU1/TimesNewRoman(0)/m/n/10.95 dari 
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 15--15
+ [][] [][]\EU1/TimesNewRoman(0)/m/it/10.95 Event \EU1/TimesNewRoman(0)/m/n/10.9
+5 dalam lini masa data produk dan 
  []
 
 [23
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 45--45
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi Halaman \EU1/TimesNewRom
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi halaman \EU1/TimesNewRom
 an(0)/m/it/10.95 Visualization 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 46--46
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi Halaman \EU1/TimesNewRom
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi halaman \EU1/TimesNewRom
 an(0)/m/it/10.95 Visualization 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 47--47
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi Halaman \EU1/TimesNewRom
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Implementasi halaman \EU1/TimesNewRom
 an(0)/m/it/10.95 Visualization 
  []
 
 
-Underfull \hbox (badness 3679) in paragraph at lines 49--49
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Hasil Uji Coba: Mengunggah Data dan 
+Underfull \hbox (badness 5050) in paragraph at lines 49--49
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Hasil uji coba: mengunggah data dan 
  []
 
 
-Underfull \hbox (badness 3679) in paragraph at lines 52--52
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Hasil Uji Coba: Melihat Pratinjau Dat
-a 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Hasil Uji Coba: Memasukkan Kueri 
- []
-
-
-Underfull \hbox (badness 4479) in paragraph at lines 56--56
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
-
- []
-
-
-Underfull \hbox (badness 4467) in paragraph at lines 56--56
- \EU1/TimesNewRoman(0)/m/n/10.95 Waktu Komputasi Algoritme pada Data 
+Underfull \hbox (badness 2582) in paragraph at lines 53--53
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Hasil uji coba: melihat visualisasi d
+ata 
  []
 
 
@@ -2792,60 +2746,84 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [24]
-Underfull \hbox (badness 4479) in paragraph at lines 57--57
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah data terhadap 
 
  []
 
 
-Underfull \hbox (badness 4467) in paragraph at lines 57--57
- \EU1/TimesNewRoman(0)/m/n/10.95 Waktu Komputasi Algoritme pada Data 
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+ \EU1/TimesNewRoman(0)/m/n/10.95 waktu komputasi algoritme pada data 
  []
 
 
-Underfull \hbox (badness 4479) in paragraph at lines 58--58
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
-
- []
-
-
-Underfull \hbox (badness 4479) in paragraph at lines 59--59
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah data terhadap 
 
  []
 
 
-Underfull \hbox (badness 1661) in paragraph at lines 60--60
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Dimensi Data Terhadap
- 
+Underfull \hbox (badness 2126) in paragraph at lines 58--58
+ \EU1/TimesNewRoman(0)/m/n/10.95 penggunaan memori algoritme pada data 
  []
 
 
-Underfull \hbox (badness 4467) in paragraph at lines 60--60
- \EU1/TimesNewRoman(0)/m/n/10.95 Waktu Komputasi Algoritme pada Data 
- []
-
-
-Underfull \hbox (badness 1661) in paragraph at lines 61--61
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Dimensi Data Terhadap
- 
- []
-
-
-Underfull \hbox (badness 4467) in paragraph at lines 61--61
- \EU1/TimesNewRoman(0)/m/n/10.95 Waktu Komputasi Algoritme pada Data 
- []
-
-
-Underfull \hbox (badness 4479) in paragraph at lines 62--62
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah data terhadap 
 
  []
 
 
-Underfull \hbox (badness 4479) in paragraph at lines 63--63
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik Pengaruh Jumlah Data Terhadap 
+Underfull \hbox (badness 2126) in paragraph at lines 59--59
+ \EU1/TimesNewRoman(0)/m/n/10.95 penggunaan memori algoritme pada data 
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah dimensi data 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah dimensi data 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah dimensi data 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+ \EU1/TimesNewRoman(0)/m/n/10.95 terhadap penggunaan memori algoritme 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Grafik pengaruh jumlah dimensi data 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+ \EU1/TimesNewRoman(0)/m/n/10.95 terhadap penggunaan memori algoritme 
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 64--64
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Pengujian akurasi hasil kueri pada da
+ta 
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 65--65
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Pengujian akurasi hasil kueri pada da
+ta 
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 66--66
+ [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Pengujian akurasi hasil kueri pada da
+ta 
  []
 
 )
@@ -2868,22 +2846,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [26
 
-] (./buku.lol
-Underfull \hbox (badness 10000) in paragraph at lines 6--6
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Kode Sumber Algoritme 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--12
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Kode Sumber Halaman Web 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--13
- [][] [][]\EU1/TimesNewRoman(0)/m/n/10.95 Kode Sumber Halaman Web 
- []
-
-)
+] (./buku.lol)
 \tf@lol=\write12
 \openout12 = `buku.lol'.
 
@@ -4661,29 +4624,28 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [69]
 File: assets/img/bab4/home.png Graphic file (type QTm)
  <use  "assets/img/bab4/home.png" >
-File: assets/img/bab4/precompute.png Graphic file (type QTm)
-
-<use  "assets/img/bab4/precompute.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 \EU1/TimesNewRoman(0)/m/it/10.95 ”Home” \EU1/TimesNewRoman(0)/m/sc/10.95 sebaga
 i halaman utama yang berisi pengenalan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 \EU1/TimesNewRoman(0)/m/sc/10.95 algoritme k-MPPTI, \EU1/TimesNewRoman(0)/m/it/
 10.95 ”Precompute” \EU1/TimesNewRoman(0)/m/sc/10.95 untuk melakukan \EU1/TimesN
 ewRoman(0)/m/it/10.95 data
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 469--470
+Underfull \hbox (badness 1314) in paragraph at lines 462--463
 \EU1/TimesNewRoman(0)/m/it/10.95 precomputing\EU1/TimesNewRoman(0)/m/sc/10.95 ,
  \EU1/TimesNewRoman(0)/m/it/10.95 ”Search” \EU1/TimesNewRoman(0)/m/sc/10.95 unt
 uk melakukan pencarian $\OML/cmm/m/it/10.95 k$\EU1/TimesNewRoman(0)/m/sc/10.95 
 -produk
  []
 
+File: assets/img/bab4/precompute.png Graphic file (type QTm)
+<use  "assets/img/bab4/precompute.png" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -4691,28 +4653,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [70]
-Underfull \hbox (badness 10000) in paragraph at lines 471--472
+File: assets/img/bab4/search.png Graphic file (type QTm)
+ <use  "assets/img/bab4/search.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 478--479
 []\EU1/TimesNewRoman(0)/m/sc/10.95 Pada menu \EU1/TimesNewRoman(0)/m/it/10.95 ”
 Precompute” \EU1/TimesNewRoman(0)/m/sc/10.95 (Gambar []4.15[]), pengguna
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 471--472
+Underfull \hbox (badness 3514) in paragraph at lines 478--479
 \EU1/TimesNewRoman(0)/m/it/10.95 session \EU1/TimesNewRoman(0)/m/sc/10.95 yang 
 sudah ada. Jika pengguna memasukkan data
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 471--472
+Underfull \hbox (badness 1769) in paragraph at lines 478--479
 \EU1/TimesNewRoman(0)/m/sc/10.95 baru, artinya pengguna membuat \EU1/TimesNewRo
 man(0)/m/it/10.95 session \EU1/TimesNewRoman(0)/m/sc/10.95 baru dan data akan
- []
-
-File: assets/img/bab4/search.png Graphic file (type QTm)
-<use  "assets/img/bab4/search.png" >
-Underfull \hbox (badness 5924) in paragraph at lines 480--481
-[]\EU1/TimesNewRoman(0)/m/sc/10.95 Setelah melalui proses \EU1/TimesNewRoman(0)
-/m/it/10.95 precomputing\EU1/TimesNewRoman(0)/m/sc/10.95 , pengguna dapat
  []
 
 
@@ -4722,14 +4679,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [71]
+Underfull \hbox (badness 5924) in paragraph at lines 480--481
+[]\EU1/TimesNewRoman(0)/m/sc/10.95 Setelah melalui proses \EU1/TimesNewRoman(0)
+/m/it/10.95 precomputing\EU1/TimesNewRoman(0)/m/sc/10.95 , pengguna dapat
+ []
+
 File: assets/img/bab4/data-info.png Graphic file (type QTm)
- <use  "assets/img/bab4/data-info.png" >
+<use  "assets/img/bab4/data-info.png" >
 File: assets/img/bab4/visual-table.png Graphic file (type QTm)
 
 <use  "assets/img/bab4/visual-table.png" >
-File: assets/img/bab4/visual-timeline.png Graphic file (type QTm)
-
-<use  "assets/img/bab4/visual-timeline.png" >)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -4737,6 +4696,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [72]
+File: assets/img/bab4/visual-timeline.png Graphic file (type QTm)
+ <use  "assets/img/bab4/visual-timeline.png" >)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5086,27 +5047,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [86]
 File: assets/img/bab5/grafik-ant-jml-time.png Graphic file (type QTm)
  <use  "assets/img/bab5/grafik-ant-jml-time.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
-[]\EU1/TimesNewRoman(0)/m/sc/10.95 Algoritme k-MPPTI paralel selalu mendapatkan
- hasil
+Underfull \hbox (badness 3713) in paragraph at lines 232--233
+[]\EU1/TimesNewRoman(0)/m/sc/10.95 Algoritme k-MPPTI paralel memiliki waktu kom
+putasi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
-\EU1/TimesNewRoman(0)/m/sc/10.95 pengujian yang paling buruk karena teknik komp
-utasi
- []
-
-
-Underfull \hbox (badness 3668) in paragraph at lines 232--233
-\EU1/TimesNewRoman(0)/m/sc/10.95 paralel diimplementasikan hanya menggunakan sa
-tu \EU1/TimesNewRoman(0)/m/it/10.95 resource
- []
-
-
-Underfull \hbox (badness 7133) in paragraph at lines 232--233
-\EU1/TimesNewRoman(0)/m/sc/10.95 harus membagi \EU1/TimesNewRoman(0)/m/it/10.95
- resource\EU1/TimesNewRoman(0)/m/sc/10.95 -nya. Lambatnya waktu eksekusi
+Underfull \hbox (badness 1142) in paragraph at lines 232--233
+\EU1/TimesNewRoman(0)/m/sc/10.95 komputasi paralel diimplementasikan hanya meng
+gunakan satu
  []
 
 
@@ -5126,6 +5075,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [87]
 File: assets/img/bab5/grafik-ant-jml-mem.png Graphic file (type QTm)
  <use  "assets/img/bab5/grafik-ant-jml-mem.png" >
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[88]
 Underfull \hbox (badness 1762) in paragraph at lines 248--250
 \EU1/TimesNewRoman(0)/m/sc/10.95 menunjukkan ketidakstabilan pada kedua data. S
 ama seperti
@@ -5137,18 +5093,19 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[88]
+[89]
 File: assets/img/bab5/grafik-ind-dim-time.png Graphic file (type QTm)
  <use  "assets/img/bab5/grafik-ind-dim-time.png" >
+File: assets/img/bab5/grafik-ant-dim-time.png Graphic file (type QTm)
+
+<use  "assets/img/bab5/grafik-ant-dim-time.png" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[89]
-File: assets/img/bab5/grafik-ant-dim-time.png Graphic file (type QTm)
- <use  "assets/img/bab5/grafik-ant-dim-time.png" >
+[90]
 Underfull \hbox (badness 1910) in paragraph at lines 271--272
 []\EU1/TimesNewRoman(0)/m/sc/10.95 Jika melihat perbandingan antar data, waktu 
 komputasi
@@ -5160,20 +5117,8 @@ Underfull \hbox (badness 1558) in paragraph at lines 271--272
 ahan jumlah
  []
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[90]
 File: assets/img/bab5/grafik-ind-dim-mem.png Graphic file (type QTm)
- <use  "assets/img/bab5/grafik-ind-dim-mem.png" >
-Underfull \hbox (badness 1803) in paragraph at lines 280--281
-\EU1/TimesNewRoman(0)/m/sc/10.95 tidak terlalu berbeda jauh dengan waktu komput
-asi k-MPPTI
- []
-
+<use  "assets/img/bab5/grafik-ind-dim-mem.png" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5181,8 +5126,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [91]
+Underfull \hbox (badness 1803) in paragraph at lines 280--281
+\EU1/TimesNewRoman(0)/m/sc/10.95 tidak terlalu berbeda jauh dengan waktu komput
+asi k-MPPTI
+ []
+
 File: assets/img/bab5/grafik-ant-dim-mem.png Graphic file (type QTm)
- <use  "assets/img/bab5/grafik-ant-dim-mem.png" >
+<use  "assets/img/bab5/grafik-ant-dim-mem.png" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5190,6 +5140,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [92]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[93]
 Underfull \hbox (badness 3471) in paragraph at lines 293--294
 \EU1/TimesNewRoman(0)/m/sc/10.95 adanya uji coba akurasi terhadap hasil kueri m
 asing-masing
@@ -5203,18 +5160,6 @@ Underfull \hbox (badness 1132) in paragraph at lines 295--296
 
 File: assets/img/bab5/pengujian-akurasi1.png Graphic file (type QTm)
 <use  "assets/img/bab5/pengujian-akurasi1.png" >
-File: assets/img/bab5/pengujian-akurasi3.png Graphic file (type QTm)
-
-<use  "assets/img/bab5/pengujian-akurasi3.png" >
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[93]
-File: assets/img/bab5/pengujian-akurasi2.png Graphic file (type QTm)
- <use  "assets/img/bab5/pengujian-akurasi2.png" >)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5222,64 +5167,107 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [94]
+File: assets/img/bab5/pengujian-akurasi3.png Graphic file (type QTm)
+ <use  "assets/img/bab5/pengujian-akurasi3.png" >
+File: assets/img/bab5/pengujian-akurasi2.png Graphic file (type QTm)
+
+<use  "assets/img/bab5/pengujian-akurasi2.png" >)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[95]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[96]
 \openout2 = `bab6/bab6.aux'.
 
  (./bab6/bab6.tex
 BAB VI.
 
-Underfull \hbox (badness 5331) in paragraph at lines 10--11
+Underfull \hbox (badness 7081) in paragraph at lines 10--11
+[]\EU1/TimesNewRoman(0)/m/sc/10.95 Desain dan implementasi struktur data dan al
+goritme
+ []
+
+
+Underfull \hbox (badness 5331) in paragraph at lines 12--14
 []\EU1/TimesNewRoman(0)/m/sc/10.95 Biaya komputasi pada algoritme k-MPPTI yang 
 tidak
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 10--11
+Underfull \hbox (badness 1442) in paragraph at lines 12--14
 \EU1/TimesNewRoman(0)/m/sc/10.95 menggunakan komputasi \EU1/TimesNewRoman(0)/m/
 it/10.95 reverse skyline \EU1/TimesNewRoman(0)/m/sc/10.95 jauh lebih baik
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
 \EU1/TimesNewRoman(0)/m/sc/10.95 dibandingkan algoritme k-MPPTI yang menggunaka
 n
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 10--11
+Underfull \hbox (badness 6332) in paragraph at lines 12--14
 \EU1/TimesNewRoman(0)/m/sc/10.95 penggunaan memori. Komputasi algoritme k-MPPTI
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
-[]\EU1/TimesNewRoman(0)/m/sc/10.95 Tugas akhir ini mengusulkan algoritme pemros
-esan
+Underfull \hbox (badness 1163) in paragraph at lines 12--14
+\EU1/TimesNewRoman(0)/m/sc/10.95 k-MPPTI biasa. Hal ini menandakan bahwa komput
+asi
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 12--13
-\EU1/TimesNewRoman(0)/m/sc/10.95 k-MPPTI tanpa menggunakan komputasi \EU1/Times
-NewRoman(0)/m/it/10.95 reverse skyline
+Underfull \hbox (badness 4608) in paragraph at lines 12--14
+\EU1/TimesNewRoman(0)/m/it/10.95 reverse skyline \EU1/TimesNewRoman(0)/m/sc/10.
+95 kurang cocok untuk diimplementasikan
  []
 
-
-Underfull \hbox (badness 3019) in paragraph at lines 14--15
-\EU1/TimesNewRoman(0)/m/sc/10.95 CPU. Jika hanya ada satu \EU1/TimesNewRoman(0)
-/m/it/10.95 resource\EU1/TimesNewRoman(0)/m/sc/10.95 , lebih efektif jika
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-| \EU1/TimesNewRoman(0)/m/sc/10.95 Berikut beberapa saran terkait pengembangan 
-lebih
- []
-
-[95
+[97
 
 
 
 ]
-Underfull \hbox (badness 1616) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+[]\EU1/TimesNewRoman(0)/m/sc/10.95 Strategi yang optimal untuk meningkatkan efi
+siensi
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 14--15
+\EU1/TimesNewRoman(0)/m/sc/10.95 komputasi \EU1/TimesNewRoman(0)/m/it/10.95 k-M
+ost Promising Products \EU1/TimesNewRoman(0)/m/sc/10.95 (k-MPP) berbasis
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 14--15
+\EU1/TimesNewRoman(0)/m/sc/10.95 memiliki satu \EU1/TimesNewRoman(0)/m/it/10.95
+ resource\EU1/TimesNewRoman(0)/m/sc/10.95 , lebih efektif jika menggunakan
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+| \EU1/TimesNewRoman(0)/m/sc/10.95 Berikut beberapa saran terkait pengembangan 
+lebih
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[98]
+Underfull \hbox (badness 1616) in paragraph at lines 27--28
 \EU1/TimesNewRoman(0)/m/sc/10.95 pasar menjadi lebih efisien pada komputasi k-M
 PP [[]],
  []
@@ -5291,10 +5279,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[96]
+[99]
 \openout2 = `daftar_pustaka/daftar_pustaka.aux'.
 
  (./daftar_pustaka/daftar_pustaka.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[100
+
+
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
 \EU1/TimesNewRoman(0)/m/sc/10.95 in \EU1/TimesNewRoman(0)/m/it/10.95 Data Wareh
 ouse Design: Modern Principles and
@@ -5306,17 +5305,13 @@ Underfull \hbox (badness 1270) in paragraph at lines 27--28
 man(0)/m/it/10.95 Highly Parallel Computing\EU1/TimesNewRoman(0)/m/sc/10.95 .
  []
 
-[97
 
-
-
-]
 Underfull \hbox (badness 5817) in paragraph at lines 30--31
 []\EU1/TimesNewRoman(0)/m/sc/10.95 Merriam-webster.com. ”Definition of DATA”. [
 Online].
  []
 
-
+[101]
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
 \EU1/TimesNewRoman(0)/m/sc/10.95 Available: https://www.python.org/doc/essays/b
 lurb/.
@@ -5335,7 +5330,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[98]
+[102]
 \openout2 = `lampiran/lampiran.aux'.
 
  (./lampiran/lampiran.tex
@@ -5344,7 +5339,7 @@ Lampiran A.
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (./assets/src/kmppti/event_queue.py) (./assets/src/kmppti/pandora_box.py
-[99
+[103
 
 
 
@@ -5361,7 +5356,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[100]
+[104]
 Overfull \hbox (6.3206pt too wide) in paragraph at lines 39--40
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5373,7 +5368,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[101]) (./assets/src/kmppti/dynamic_skyline.py
+[105]) (./assets/src/kmppti/dynamic_skyline.py
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 42--43
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5385,7 +5380,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[102]
+[106]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 58--59
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5404,7 +5399,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[103]
+[107]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 126--127
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5422,34 +5417,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[104]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[105]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[106]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[107]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [108]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -5457,14 +5424,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[109]) (./assets/src/solution.py
+[109]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[110]) (./assets/src/flask-app/app.py) (./assets/src/flask-app/app/routes.py
+[110]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5479,6 +5446,34 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [112]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[113]) (./assets/src/solution.py
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[114]) (./assets/src/flask-app/app.py) (./assets/src/flask-app/app/routes.py
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[115]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[116]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 111--113
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5497,7 +5492,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[113]
+[117]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 43--44
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
@@ -5531,7 +5526,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[114]
+[118]
 Overfull \hbox (9.92064pt too wide) in paragraph at lines 99--100
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
@@ -5558,7 +5553,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[115]
+[119]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 22--23
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][]  
@@ -5577,7 +5572,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[116]
+[120]
 Overfull \hbox (2.72057pt too wide) in paragraph at lines 58--59
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
@@ -5591,35 +5586,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[117]) (./assets/src/flask-app/app/templates/vis.html
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[118]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[119]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[120]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[121]))
+[121]) (./assets/src/flask-app/app/templates/vis.html
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -5627,6 +5594,34 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [122]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[123]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[124]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[125]))
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[126]
 \openout2 = `biodata/biodata.aux'.
 
  (./biodata/biodata.tex
@@ -5703,7 +5698,7 @@ Underfull \hbox (badness 3291) in paragraph at lines 6--264
  []
 
 Package wrapfig Info: Finish wrapping text on input line 264.
-[123
+[127
 
 
 
@@ -5732,11 +5727,11 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  58656 strings out of 493638
- 1227484 string characters out of 6146796
- 1740289 words of memory out of 5000000
- 60951 multiletter control sequences out of 15000+600000
- 12642 words of font info for 97 fonts, out of 8000000 for 9000
+ 1227529 string characters out of 6146796
+ 1740406 words of memory out of 5000000
+ 60950 multiletter control sequences out of 15000+600000
+ 12650 words of font info for 98 fonts, out of 8000000 for 9000
  1336 hyphenation exceptions out of 8191
  54i,18n,82p,10416b,2116s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on buku.pdf (151 pages).
+Output written on buku.pdf (155 pages).

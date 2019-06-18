@@ -61,7 +61,7 @@ dengan rincian dapat dilihat pada Tabel \ref{tab:atribut-fc}.
 		Wilderness\_Area & 4 \\ \hline
 		Soil\_Type & 40 \\ \hline
 		Cover\_Type & 1 \\ \hline
-	\end{tabular} \caption{Atribut pada Himpunan Data \textit{Forest Cover Type}}
+	\end{tabular} \caption{Atribut himpunan data \textit{Forest Cover Type}}
 	\label{tab:atribut-fc}
 \end{table}
 
@@ -88,7 +88,7 @@ dan rentang nilai atribut sebenarnya yang bersifat saling berkaitan.
 		4 & Pengguna dapat memilih algoritme yang digunakan untuk \textit{data precomputing}\\ \hline
 		5 & Pengguna dapat memasukkan kueri pencarian \\ \hline
 		6 & Pengguna dapat melihat hasil kueri \\ \hline
-	\end{tabular} \caption{Skenario Uji Coba Fungsionalitas}
+	\end{tabular} \caption{Skenario uji coba fungsionalitas}
 	\label{tab:uji-coba-fungsional}
 \end{table}
 
@@ -101,7 +101,7 @@ Variabel kontrol adalah variabel yang dikendalikan, biasanya dibuat konstan sehi
 Dalam pengujian ini, variabel kontrol yang digunakan adalah jenis data dan jenis algoritme, variabel manipulasinya adalah jumlah data dan jumlah dimensi data, sedangkan variabel responnya berupa waktu komputasi dan penggunaan memori. Skenario pengujian performa ditunjukkan pada Tabel \ref{tab:uji-coba-performa-precompute}.
 
 \begin{longtable}{| c | p{3cm} | p{1cm} | p{2.5cm} | p{1.5cm} |}
-	\caption{Skenario Uji Coba Performa \textit{Data Precomputing} \label{tab:uji-coba-performa-precompute}}\\
+	\caption{Skenario uji coba performa \textit{data precomputing} \label{tab:uji-coba-performa-precompute}}\\
 	\hline
 	\textbf{No.} & \textbf{Jenis Algoritme} & \textbf{Jenis Data} & \textbf{Jumlah Data ($n$)} & \textbf{Jumlah Dimensi ($d$)} \\ \hline
 	\endfirsthead
@@ -109,23 +109,23 @@ Dalam pengujian ini, variabel kontrol yang digunakan adalah jenis data dan jenis
 	\textbf{No.} & \textbf{Jenis Algoritme} & \textbf{Jenis Data} & \textbf{Jumlah Data ($n$)} & \textbf{Jumlah Dimensi ($d$)} \\ \hline
 	\endhead
 	\multirow{3}{*}{1} & k-MPPTI & \multirow{3}{1cm}{IND} & \multirow{3}{2.5cm}{100, 500, 1000, 5000, 10000} & \multirow{3}{1.5cm}{3} \\ \cline{2-2} \nopagebreak
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline
 	\multirow{3}{*}{2} & k-MPPTI & \multirow{3}{1cm}{ANT} & \multirow{3}{2.5cm}{100, 500, 1000, 5000, 10000} & \multirow{3}{1.5cm}{3}\\ \cline{2-2} \nopagebreak
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline
 	\multirow{3}{*}{3} & k-MPPTI & \multirow{3}{1cm}{FC} & \multirow{3}{2.5cm}{100, 500, 1000, 5000, 10000} & \multirow{3}{1.5cm}{3}\\ \cline{2-2} \nopagebreak
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline 
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline 
 	\multirow{3}{*}{4} & k-MPPTI & \multirow{3}{1cm}{IND} & \multirow{3}{2.5cm}{1000} & \multirow{3}{1.5cm}{2, 3, 5, 7, 10}\\ \cline{2-2}	\nopagebreak	
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline \pagebreak
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline \pagebreak
 	\multirow{3}{*}{5} & k-MPPTI & \multirow{3}{1cm}{ANT} & \multirow{3}{2.5cm}{1000} & \multirow{3}{1.5cm}{2, 3, 5, 7, 10}\\ \cline{2-2}\nopagebreak
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline 
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline 
 	\multirow{3}{*}{6} & k-MPPTI & \multirow{3}{1cm}{FC} & \multirow{3}{2.5cm}{1000} & \multirow{3}{1.5cm}{2, 3, 5, 7, 10}\\ \cline{2-2} \nopagebreak
-	& k-MPPTI RSL & & & \\ \cline{2-2} \nopagebreak
-	& k-MPPTI Paralel & & & \\ \hline
+	& k-MPPTI Paralel & & & \\ \cline{2-2} \nopagebreak
+	& k-MPPTI NoRSL & & & \\ \hline
 \end{longtable}
 
 \section{Analisis Hasil Uji Coba}
@@ -147,7 +147,7 @@ Berdasarkan hasil uji coba, aplikasi dapat memenuhi semua kebutuhan fungsional, 
 		4 & Pengguna dapat memilih algoritme yang digunakan untuk \textit{data precomputing} & Berhasil\\ \hline
 		5 & Pengguna dapat memasukkan kueri pencarian & Berhasil \\ \hline
 		6 & Pengguna dapat melihat hasil kueri & Berhasil\\ \hline
-	\end{tabular} \caption{Hasil Uji Coba Fungsionalitas}
+	\end{tabular} \caption{Hasil uji coba fungsionalitas}
 	\label{tab:hasil-uji-coba-fungsional}
 \end{table}
 
@@ -155,50 +155,50 @@ Sebagai tambahan, aplikasi juga memiliki fitur \textit{session} (Gambar \ref{fig
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil2.png}
-	\caption{Hasil Uji Coba: Mengunggah Data dan Memilih Algoritme \textit{Data Precomputing}}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil2.png}
+	\caption{Hasil uji coba: mengunggah data dan memilih algoritme untuk \textit{data precomputing}}
 	\label{fig:hasil-performa1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil1.png}
-	\caption{Hasil Uji Coba: \textit{Data Precomputing} Berhasil}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil1.png}
+	\caption{Hasil uji coba: proses \textit{data precomputing} berhasil}
 	\label{fig:hasil-performa2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil3.png}
-	\caption{Hasil Uji Coba: Melihat Informasi Data}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil3.png}
+	\caption{Hasil uji coba: melihat informasi data}
 	\label{fig:hasil-performa3}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil4.png}
-	\caption{Hasil Uji Coba: Melihat Pratinjau Data Berupa Tabel}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil4.png}
+	\caption{Hasil uji coba: melihat pratinjau data berupa tabel}
 	\label{fig:hasil-performa4}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil5.png}
-	\caption{Hasil Uji Coba: Melihat Visualisasi Data Berupa Lini Masa}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil5.png}
+	\caption{Hasil uji coba: melihat visualisasi data berupa lini masa}
 	\label{fig:hasil-performa5}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil6.png}
-	\caption{Hasil Uji Coba: Memasukkan Kueri Pencarian dan Melihat Hasil Kueri}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil6.png}
+	\caption{Hasil uji coba: memasukkan kueri pencarian dan melihat hasil kueri}
 	\label{fig:hasil-performa6}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/hasil7.png}
-	\caption{Hasil Uji Coba: Memilih \textit{Session}}
+	\includegraphics[width=10cm]{assets/img/bab5/hasil7.png}
+	\caption{Hasil uji coba: memilih \textit{session}}
 	\label{fig:hasil-performa7}
 \end{figure}
 
@@ -213,8 +213,8 @@ Hasil pengujian pada Grafik \ref{fig:grafik-ind-jml-time} dan \ref{fig:grafik-an
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ind-jml-time.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Waktu Komputasi Algoritme pada Data \textit{Independent}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ind-jml-time.png}
+	\caption{Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit{independent} (IND)}
 	\label{fig:grafik-ind-jml-time}
 \end{figure}
 
@@ -224,28 +224,28 @@ Di sisi lain, jika melihat perbandingan performa algoritme, algoritme k-MPPTI No
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ant-jml-time.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Waktu Komputasi Algoritme pada Data \textit{Anti-Correlated}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ant-jml-time.png}
+	\caption{Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit{anti-correlated} (ANT)}
 	\label{fig:grafik-ant-jml-time}
 \end{figure}
 
-Algoritme k-MPPTI paralel selalu mendapatkan hasil pengujian yang paling buruk karena teknik komputasi paralel diimplementasikan hanya menggunakan satu \textit{resource} menggunakan \textit{thread}, sehingga lebih memberatkan CPU karena harus membagi \textit{resource}-nya. Lambatnya waktu eksekusi berbanding lurus dengan jumlah data karena \textit{thread} dibentuk sejumlah data pelanggan, sehingga semakin banyak data, maka semakin banyak pula \textit{thread} yang terbentuk.
+Algoritme k-MPPTI paralel memiliki waktu komputasi paling lama dibandingkan kedua algoritme yang lain karena teknik komputasi paralel diimplementasikan hanya menggunakan satu \textit{resource} menggunakan \textit{thread}, sehingga lebih memberatkan CPU karena harus membagi \textit{resource}-nya. Lambatnya waktu eksekusi berbanding lurus dengan jumlah data karena \textit{thread} dibentuk sejumlah data pelanggan, sehingga semakin banyak data, maka semakin banyak pula \textit{thread} yang terbentuk.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ind-jml-mem.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit{Independent}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ind-jml-mem.png}
+	\caption{Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit{independent} (IND)}
 	\label{fig:grafik-ind-jml-mem}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ant-jml-mem.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit{Anti-Correlated}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ant-jml-mem.png}
+	\caption{Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit{anti-correlated} (ANT)}
 	\label{fig:grafik-ant-jml-mem}
 \end{figure}
 
-Hasil uji coba pengaruh perubahan jumlah dimensi terhadap penggunaan memori algoritme ditunjukkan oleh Grafik \ref{fig:grafik-ind-jml-mem} dan \ref{fig:grafik-ant-jml-mem}. Dalam grafik tersebut, perubahan memori terjadi secara signifikan pada kedua data IND dan ANT. Perubahan memori cenderung berbanding lurus dengan perubahan jumlah data, namun menunjukkan ketidakstabilan pada kedua data.
+Hasil uji coba pengaruh perubahan jumlah data terhadap penggunaan memori algoritme ditunjukkan oleh Grafik \ref{fig:grafik-ind-jml-mem} dan \ref{fig:grafik-ant-jml-mem}. Dalam grafik tersebut, perubahan memori terjadi secara signifikan pada kedua data IND dan ANT. Perubahan memori cenderung berbanding lurus dengan perubahan jumlah data, namun menunjukkan ketidakstabilan pada kedua data.
 Sama seperti sebelumnya, penggunaan memori pada data IND cenderung lebih banyak dibandingkan data ANT.
 
 \subsubsection{Pengaruh Jumlah Dimensi Data Terhadap Performa Algoritme}
@@ -256,15 +256,15 @@ Hasil pengujian pada Grafik \ref{fig:grafik-ind-dim-time} dan \ref{fig:grafik-an
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ind-dim-time.png}
-	\caption{Grafik Pengaruh Dimensi Data Terhadap Waktu Komputasi Algoritme pada Data \textit{Independent}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ind-dim-time.png}
+	\caption{Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit{independent} (IND)}
 	\label{fig:grafik-ind-dim-time}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ant-dim-time.png}
-	\caption{Grafik Pengaruh Dimensi Data Terhadap Waktu Komputasi Algoritme pada Data \textit{Anti-Correlated}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ant-dim-time.png}
+	\caption{Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit{anti-correlated} (ANT)}
 	\label{fig:grafik-ant-dim-time}
 \end{figure}
 
@@ -272,8 +272,8 @@ Jika melihat perbandingan antar data, waktu komputasi pada data \textit{anti-cor
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ind-dim-mem.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit{Independent}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ind-dim-mem.png}
+	\caption{Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit{independent} (IND)}
 	\label{fig:grafik-ind-dim-mem}
 \end{figure}
 
@@ -281,8 +281,8 @@ Di lain sisi, jika melihat perbandingan performa algoritme, algoritme k-MPPTI No
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/grafik-ant-dim-mem.png}
-	\caption{Grafik Pengaruh Jumlah Data Terhadap Penggunaan Memori Algoritme pada Data \textit{Anti-Correlated}}
+	\includegraphics[width=10cm]{assets/img/bab5/grafik-ant-dim-mem.png}
+	\caption{Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit{anti-correlated} (ANT)}
 	\label{fig:grafik-ant-dim-mem}
 \end{figure}
 
@@ -296,21 +296,21 @@ Hasil kueri kedua algoritme pada data \textit{independent} (IND) dengan jumlah 1
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/pengujian-akurasi1.png}
-	\caption{Pengujian Akurasi Hasil Kueri pada Data \textit{Independent}}
+	\includegraphics[width=10cm]{assets/img/bab5/pengujian-akurasi1.png}
+	\caption{Pengujian akurasi hasil kueri pada data \textit{independent} (IND)}
 	\label{fig:akurasi1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/pengujian-akurasi3.png}
-	\caption{Pengujian Akurasi Hasil Kueri pada Data \textit{Anti-Correlated}}
+	\includegraphics[width=10cm]{assets/img/bab5/pengujian-akurasi3.png}
+	\caption{Pengujian akurasi hasil kueri pada data \textit{anti-correlated} (ANT)}
 	\label{fig:akurasi3}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9cm]{assets/img/bab5/pengujian-akurasi2.png}
-	\caption{Pengujian Akurasi Hasil Kueri pada Data \textit{Forest Cover Type}}
+	\includegraphics[width=10cm]{assets/img/bab5/pengujian-akurasi2.png}
+	\caption{Pengujian akurasi hasil kueri pada data \textit{Forest Cover Type} (FC)}
 	\label{fig:akurasi2}
 \end{figure}

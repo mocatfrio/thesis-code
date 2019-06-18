@@ -5,7 +5,7 @@
 \tab Tabel \ref{tab:daftar-notasi-2} menunjukkan daftar notasi yang digunakan dalam bab ini beserta deskripsinya.
 
 \begin{longtable}{| p{3cm} | p{6cm} |} 
-	\caption{Daftar Notasi (2) \label{tab:daftar-notasi-2}}\\
+	\caption{Daftar notasi (bagian 2) \label{tab:daftar-notasi-2}}\\
 	\hline
 	\textbf{Notasi} & \textbf{Deskripsi}\\ \hline
 	\endfirsthead
@@ -85,7 +85,7 @@ Sistem ini dibangun menggunakan arsitektur \textit{client}-\textit{server}. Apli
 		F-004 & Memilih algoritme yang digunakan untuk \textit{data precomputing}\\ \hline
 		F-005 & Memasukkan kueri pencarian \\ \hline
 		F-006 & Melihat hasil kueri \\ \hline
-	\end{tabular} \caption{Kebutuhan Fungsional}
+	\end{tabular} \caption{Kebutuhan fungsional}
 	\label{tab:kebutuhan-fungsional}
 \end{table}
 
@@ -119,19 +119,19 @@ Struktur data \textit{dictionary} yang digunakan berbentuk \textit{nested dictio
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7cm]{assets/img/bab3/sd1.png}
-	\caption{Struktur Data \textit{Dictionary} Produk}
+	\caption{Struktur data \textit{dictionary} produk}
 	\label{fig:sd1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=9cm]{assets/img/bab3/sd2.png}
-	\caption{Struktur Data \textit{Dictionary} Pelanggan}
+	\caption{Struktur data \textit{dictionary} pelanggan}
 	\label{fig:sd2}
 \end{figure}
 
 \begin{longtable}{| p{2.5cm} | p{6.5cm} |}
-	\caption{\textit{Key} dari \textit{Data Storage} \label{tab:desc-key}}\\
+	\caption{\textit{Key} dari \textit{DataStorage} \label{tab:desc-key}}\\
 	\hline
 	\textbf{\textit{Key}} & \textbf{Deskripsi} \\ \hline 
 	\endfirsthead
@@ -176,7 +176,7 @@ Produk dan pelanggan disebut dengan pemilik \textit{event}, sedangkan masuk dan 
 		$ownerId$ & ID pemilik \textit{event}\\ \hline
 		$action$ & Jenis aksi yang dilakukan (masuk $= 0$, keluar $= 1$) \\ \hline
 	\end{tabular} 
-	\caption{Atribut dari \textit{Event Queue}}
+	\caption{Atribut dari \textit{EventQueue}}
 	\label{tab:attr-event-queue}
 \end{table}
 
@@ -186,7 +186,7 @@ Produk dan pelanggan disebut dengan pemilik \textit{event}, sedangkan masuk dan 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/pbox.png}
-	\caption{Contoh \textit{Pandora Box} dari \textit{Dataset} \ref{tab:dataset-2}}
+	\caption{Contoh \textit{Pandora Box} dari \textit{dataset} \ref{tab:dataset-2}}
 	\label{fig:pbox}
 \end{figure}
 
@@ -202,7 +202,7 @@ Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbas
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/flowchart.png}
-	\caption{Diagram Alur Algoritme k-MPPTI}
+	\caption{Diagram alur algoritme k-MPPTI}
 	\label{fig:diagram-alur1}
 \end{figure}
 
@@ -211,7 +211,7 @@ Untuk memudahkan interaksi antara pengguna dan sistem, dibuatlah aplikasi berbas
 	
 \newcolumntype{C}{>{\centering\arraybackslash}p{1.4em}}
 \begin{table}[H]
-	\caption{Contoh \textit{Dataset} \\ (a) Produk $P$ dan (b) Preferensi Pelanggan $C$ \label{tab:dataset-2}}
+	\caption{Contoh \textit{dataset} \\ (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset-2}}
 	\begin{subtable}{.5\linewidth}
 		\small
 		\centering
@@ -248,7 +248,7 @@ Pada Tabel \ref{tab:dataset-2}, diberikan contoh \textit{dataset} produk $P$ dan
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/timeline-polos.png}
-	\caption{Lini Masa Data Produk dan Pelanggan}
+	\caption{Lini masa data produk dan pelanggan}
 	\label{fig:timeline}
 \end{figure}
 
@@ -256,7 +256,7 @@ Lini masa atau alur waktu adalah suatu representasi kronologis urutan peristiwa 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/timeline-event.png}
-	\caption{\textit{Event} dalam Lini Masa Data Produk dan Pelanggan}
+	\caption{\textit{Event} dalam lini masa data produk dan pelanggan}
 	\label{fig:timeline-event}
 \end{figure}
 
@@ -265,7 +265,7 @@ Ada empat jenis \textit{event} di dalam lini masa, yaitu data produk masuk, prod
 
 \begin{small}
 	\begin{longtable}{|c|c|c|c|}
-		\caption{\textit{Event Queue} \label{tab:event-queue}}\\
+		\caption{\textit{EventQueue} \label{tab:event-queue}}\\
 		\hline
 		\multicolumn{1}{|c|}{\textbf{ID \textit{Event}}} & \multicolumn{1}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{1}{c}{\textbf{ID Data}} & \multicolumn{1}{|c|}{\textbf{Aksi}} \\ \hline 
 		\endfirsthead
@@ -307,7 +307,7 @@ Secara garis besar, algoritme pemrosesan disajikan dalam bentuk diagram alur pad
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=6cm]{assets/img/bab3/flowchart-pi.png}
-	\caption{Diagram Alur Proses \textit{Product Insertion}}
+	\caption{Diagram alur proses \textit{product insertion}}
 	\label{fig:flowchart-pi}
 \end{figure}
 
@@ -324,14 +324,14 @@ Proses \textit{Customer Insertion} adalah proses yang dijalankan ketika ada data
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=6cm]{assets/img/bab3/flowchart-po.png}
-	\caption{Diagram Alur Proses \textit{Product Deletion}}
+	\caption{Diagram alur proses \textit{product deletion}}
 	\label{fig:flowchart-po}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5cm]{assets/img/bab3/flowchart-ci.png}
-	\caption{Diagram Alur Proses \textit{Customer Insertion}}
+	\caption{Diagram alur proses \textit{customer insertion}}
 	\label{fig:flowchart-ci}
 \end{figure}
 
@@ -343,7 +343,7 @@ Proses \textit{Customer Deletion} adalah proses yang dijalankan ketika ada data 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4cm]{assets/img/bab3/flowchart-co.png}
-	\caption{Diagram Alur Proses \textit{Customer Deletion}}
+	\caption{Diagram alur proses \textit{customer deletion}}
 	\label{fig:flowchart-co}
 \end{figure}
 
@@ -369,7 +369,7 @@ Langkah terakhir adalah mengecek setiap pelanggan $c \in C$ apakah didominasi ol
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/flowchart-rsl.png}
-	\caption{Diagram Alur Komputasi \textit{Reverse Skyline}}
+	\caption{Diagram alur komputasi \textit{reverse skyline}}
 	\label{fig:flowchart-rsl}
 \end{figure}
 
@@ -398,21 +398,21 @@ Komputasi $DSL$ dalam k-MPPTI dibagi menjadi 3 jenis, yaitu (1) \textit{Initial}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=9cm]{assets/img/bab3/flowchart-dsl-init.png}
-	\caption{Diagram Alur Komputasi \textit{Initial Dynamic Skyline}}
+	\caption{Diagram alur komputasi \textit{initial dynamic skyline}}
 	\label{fig:flowchart-dsl-init}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=9cm]{assets/img/bab3/flowchart-dsl-pi.png}
-	\caption{Diagram Alur Komputasi \textit{Dynamic Skyline - Product  Insertion}}
+	\caption{Diagram alur komputasi \textit{dynamic skyline - product  insertion}}
 	\label{fig:flowchart-dsl-pi}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4cm]{assets/img/bab3/flowchart-dsl-pd.png}
-	\caption{Diagram Alur Komputasi \textit{Dynamic Skyline - Product Deletion}}
+	\caption{Diagram alur komputasi \textit{dynamic skyline - product deletion}}
 	\label{fig:flowchart-dsl-pd}
 \end{figure}
 
@@ -441,7 +441,7 @@ Untuk meningkatkan efisiensi waktu komputasi, algoritme k-MPPTI mengimplementasi
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm]{assets/img/bab3/paralel.png}
-	\caption{Pemrosesan Paralel}
+	\caption{Pemrosesan paralel}
 	\label{fig:paralel}
 \end{figure}
 
@@ -472,14 +472,14 @@ Misalnya, seorang pengguna ingin mencari $3$ produk yang paling menjanjikan dala
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/timeline-interval.png}
-	\caption{Ilustrasi Interval Waktu Pencarian}
+	\caption{Ilustrasi interval waktu pencarian}
 	\label{fig:timeline-kueri}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm]{assets/img/bab3/pbox-kueri.png}
-	\caption{Perhitungan Kontribusi Pasar pada \textit{Pandora Box} Berdasarkan Interval Waktu Pencarian}
+	\caption{Perhitungan kontribusi pasar pada \textit{Pandora Box} berdasarkan interval waktu pencarian}
 	\label{fig:pbox-kueri}
 \end{figure}
 
@@ -494,7 +494,7 @@ Misalnya, seorang pengguna ingin mencari $3$ produk yang paling menjanjikan dala
 		$E_{[4:14]}(CA, p_3|PA)$ & $3$ \\ \hline
 		$E_{[4:14]}(CA, p_1|PA)$ & $1.67$ \\ \hline
 	\end{tabular} 
-	\caption{Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu}
+	\caption{Kontribusi pasar (1)}
 	\label{tab:mc-ti-res}
 \end{table}
 
@@ -511,7 +511,7 @@ Interval waktu pencarian sangat mempengaruhi hasil kueri. Sebagai bukti, jika in
 		$E_{[4:14]}(CA, p_2|PA)$ & $1.33$ \\ \hline
 		$E_{[4:14]}(CA, p_3|PA)$ & $0$ \\ \hline
 	\end{tabular} 
-	\caption{Hasil Perhitungan Kontribusi Pasar Berbasis Interval Waktu (2)}
+	\caption{Kontribusi pasar (2)}
 	\label{tab:mc-ti-res2}
 \end{table}
 
@@ -528,7 +528,7 @@ Klien mengimplementasikan antarmuka pengguna grafis atau APG (Inggris: \textit{g
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=7cm]{assets/img/bab3/arsitektur.png}
-	\caption{Perancangan Arsitektur Aplikasi}
+	\caption{Perancangan arsitektur aplikasi}
 	\label{fig:arsitektur}
 \end{figure}
 

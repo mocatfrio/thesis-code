@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% set active_page = "visualization" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-10">
+    <h4 style="margin-bottom: 30px">Choose Session</h4>
+    <form action="{{ url_for('visualization') }}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="session">Choose Session First</label>
+        <select class="custom-select form-control" id="session" name="session" required>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning float-right">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

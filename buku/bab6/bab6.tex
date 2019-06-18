@@ -7,13 +7,11 @@
 \tab Dari proses perancangan hingga uji coba, dapat diambil beberapa kesimpulan sebagai berikut:
 
 \begin{enumerate}
-	\item Biaya komputasi pada algoritme k-MPPTI yang tidak menggunakan komputasi \textit{reverse skyline} jauh lebih baik dibandingkan algoritme k-MPPTI yang menggunakan komputasi \textit{reverse skyline} dari sisi waktu komputasi dan penggunaan memori. Komputasi algoritme k-MPPTI NoRSL lima kali lebih cepat dibandingkan k-MPPTI biasa. Sedangkan dari sisi penggunaan memori, algoritme k-MPPTI NoRSL hanya satu kali lebih hemat dibandingkan algoritme k-MPPTI biasa.
+	\item Desain dan implementasi struktur data dan algoritme untuk \problem adalah menggunakan struktur data \textit{array}, \textit{queue}, dan \textit{dictionary} untuk pengindeksan data, penyimpanan \textit{events}, dan penyimpanan skor kontribusi pasar. Selain itu, algoritme menggunakan dua jenis komputasi \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}
 	
-	\item  Tugas akhir ini mengusulkan algoritme pemrosesan k-MPPTI tanpa menggunakan komputasi \textit{reverse skyline} untuk menjawab kueri \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu karena komputasi \textit{reverse skyline} kurang cocok untuk digunakan dalam penyelesaian masalah ini.
-	
-	\item Teknik komputasi paralel lebih baik tidak diimplementasikan dalam satu \textit{resource} karena hanya akan memberatkan kinerja CPU. Jika hanya ada satu \textit{resource}, lebih efektif jika menggunakan algoritme k-MPPTI tanpa teknik komputasi paralel.
-	
-	
+	\item Biaya komputasi pada algoritme k-MPPTI yang tidak menggunakan komputasi \textit{reverse skyline} jauh lebih baik dibandingkan algoritme k-MPPTI yang menggunakan komputasi \textit{reverse skyline} dari sisi waktu komputasi dan penggunaan memori. Komputasi algoritme k-MPPTI NoRSL lima kali lebih cepat dibandingkan k-MPPTI biasa. Sedangkan dari sisi penggunaan memori, algoritme k-MPPTI NoRSL hanya satu kali lebih hemat dibandingkan algoritme k-MPPTI biasa. Hal ini menandakan bahwa komputasi \textit{reverse skyline} kurang cocok untuk diimplementasikan dalam penyelesaian masalah ini.
+	\pagebreak
+	\item Strategi yang optimal untuk meningkatkan efisiensi komputasi \textit{k-Most Promising Products} (k-MPP) berbasis interval waktu pada data multidimensi dengan serial waktu adalah dengan menggunakan teknik komputasi paralel yang tidak diimplementasikan menggunakan satu \textit{resource} saja karena hanya akan memberatkan kinerja CPU. Jika hanya memiliki satu \textit{resource}, lebih efektif jika menggunakan algoritme k-MPPTI tanpa menggunakan teknik komputasi paralel.
 \end{enumerate}
 
 \section{Saran}
@@ -25,6 +23,7 @@
 	\item Menemukan metode yang tepat untuk menguji akurasi hasil kueri antar algoritme supaya dapat diketahui mana algoritme yang bekerja lebih tepat.
 	\item Menemukan struktur data yang tepat sebagai pengembangan dari algoritme ini supaya penggunaan memori menjadi lebih sedikit. Selain itu, kompleksitas algoritma juga harus lebih diperhatikan lagi.
 	\item Sebagai pengembangan, algoritme k-MPPTI dapat dirancang sedemikian rupa supaya dapat memproses data \textit{streaming}.
+	\pagebreak
 	\item Komputasi \textit{reverse skyline} membuat penghitungan kontribusi pasar menjadi lebih efisien pada komputasi k-MPP \cite{kmpp}, namun, kurang cocok jika digunakan untuk menyelesaikan permasalahan yang diangkat pada Tugas Akhir ini karena hanya akan memberatkan komputasi. Diperlukan penelitian dan percobaan lebih jauh untuk mencari metode perhitungan kontribusi pasar yang lebih efisien.
 \end{enumerate}
 
