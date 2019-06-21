@@ -1,10 +1,10 @@
 import csv, sys, threading, os, time, cProfile, json
 import numpy as np
-from kmppti.pandora_box import PandoraBox
-from kmppti.event_queue import EventQueue
-from kmppti.reverse_skyline import ReverseSkyline
-from kmppti.dynamic_skyline import DynamicSkyline
-from kmppti.logger import Logger
+from pandora_box import PandoraBox
+from event_queue import EventQueue
+from reverse_skyline import ReverseSkyline
+from dynamic_skyline import DynamicSkyline
+from logger import Logger
 
 """
 Data Handling
