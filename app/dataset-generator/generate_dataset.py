@@ -1,6 +1,6 @@
 import random, sys, os, csv, math
 
-DATASET_PATH = "../dataset/"
+DATASET_PATH = os.path.join(os.getcwd(), '../deploy/dataset/')
 MAX_VALUE = 200
 DISTANCE = 5
 
@@ -67,9 +67,9 @@ if __name__ == "__main__":
         res.append(data_row)
 
     if dataset_type == 'i':
-        new_path = DATASET_PATH + "independent/"
+        new_path = DATASET_PATH + "ind/"
     elif dataset_type == 'ac':
-        new_path = DATASET_PATH + "anti_correlated/"
+        new_path = DATASET_PATH + "ant/"
         
     if not os.path.exists(new_path):
         os.mkdir(new_path)
