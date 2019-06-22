@@ -38,112 +38,40 @@
 	$k-MPP$ & \textit{k-Most Promising Products} \\ \hline
 \end{longtable}
 
-\section{Data}
-\tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Data adalah informasi faktual (seperti pengukuran atau statistik) yang digunakan sebagai dasar untuk analisis, diskusi, maupun perhitungan \cite{data}. 
-
-Meski begitu, data mentah tidaklah berarti dan harus diproses terlebih dahulu supaya menghasilkan informasi yang bermanfaat. Sehingga, dibutuhkanlah sebuah algoritme pemrosesan data yang menerima data sebagai \textit{input}, kemudian memprosesnya menjadi informasi tertentu sesuai dengan kebutuhan pengguna dan mengeluarkannya sebagai \textit{output}.
-
-\subsection{Data Multidimensi}
-\tab Model data multidimensi adalah sebuah cara pandang yang melihat data dari berbagai sudut pandang atau dimensi. Model data ini memiliki struktur yang disesuaikan untuk mengoptimalkan analisis berdasarkan data dari \textit{relational database} dan diolah sehingga informasi dapat dikategorikan. Model data multidimensi merupakan variasi dari model relasional yang mengunakan struktur multidimensi untuk menyusun data dan menjelaskan relasi antar data.
-
-Struktur multidimensi merepresentasikan dimensi-dimensi data dalam bentuk kubus. Jika sebuah data multidimensi memiliki lebih dari tiga dimensi, maka disebut dengan \textit{hypercube} \cite{multidimensional-database}. Dalam implementasinya, data multidimensi disajikan dalam bentuk \textit{array} multidimensi yang masing-masing nilai dalam selnya dapat diakses menggunakan sebuah indeks.
-
-Data multidimensi banyak digunakan untuk analisis. Selama beberapa tahun terakhir, konsep data multidimensi telah menjadi hal yang fundamental dalam sistem pengambil keputusan, seperti sistem \textit{data warehouse} \cite{multidimensional-database}.
-
-\subsection{Data Serial Waktu}
-\tab Data \textit{time series} atau serial waktu adalah nilai-nilai suatu variabel yang berurutan menurut waktu. Data \textit{time series} memiliki nilai dan \textit{timestamp}, sehingga data diurutkan berdasarkan waktu atau \textit{timestamp}-nya.
-
-\newcolumntype{C}{>{\centering\arraybackslash}p{1.5em}}
-\begin{table}[h]
-	\small
-	\centering
-	\caption{Contoh data \textit{time series} \label{tab:data-time-series}}
-	\begin{tabular}{|C|C|C|C|C|C|}
-		\hline
-		\multirow{2}{*}{\textbf{id}} & \multicolumn{5}{c|}{\textbf{timestamp}}\\
-		\cline{2-6}
-		& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline \hline		
-		$s_1$ & 8 & 2 & 5 & 10 & 12 \\ \hline
-		$s_2$ & 14 & 4 & 10 & 7 & 8 \\ \hline
-		$s_3$ & 15 & 6 & 11 & 7 & 3 \\ \hline
-		$s_4$ & 3 & 8 & 12 & 9 & 13 \\ \hline
-		$s_5$ & 15 & 9 & 10 & 2 & 7 \\ \hline
-	\end{tabular}
-\end{table}
-
-Pada Tabel \ref{tab:data-time-series}, diberikan contoh sebuah data \textit{time series} $S$. Supaya sederhana, kita asumsikan bahwa \textit{timestamp} adalah bilangan bulat positif. Nilai $s_1 \in S$ pada \textit{timestamp} $j$ dinotasikan sebagai $s_1[j]$, sehingga \textit{time series} $s_1$ jika ditulis secara berurutan menjadi $s_1[1], s_1[2],..$ , dan seterusnya \cite{time-series}.
-
-\subsection{Data Multidimensi dengan Serial Waktu}
-\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu sebagaimana contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang ditunjukkan pada Tabel \ref{tab:dataset}. Pada tabel tersebut, \textit{timestamp} ditulis sebagai interval waktu yang dinotasikan dengan $[t_i:t_e]$, dengan asumsi bahwa nilai masing-masing atribut konstan setiap waktu. 
-
-\newcolumntype{C}{>{\centering\arraybackslash}p{1.4em}}
-\begin{table}[H]
-	\caption{Contoh \textit{dataset} \\ (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}
-	\begin{subtable}{.5\linewidth}
-		\small
-		\centering
-		\caption{}
-		\begin{tabular}{|C|C|C|C|C|}
-			\hline
-			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
-			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
-			$p_1$ & 2 & 10 & 6 & 3 \\ \hline
-			$p_2$ & 6 & 13 & 4 & 12 \\ \hline
-			$p_3$ & 9 & 15 & 6 & 15 \\ \hline
-			$p_4$ & 4 & 9 & 9 & 5 \\ \hline
-			$p_5$ & 5 & 15 & 12 & 10 \\ \hline
-		\end{tabular}
-	\end{subtable}%
-	\begin{subtable}{.5\linewidth}
-		\small
-		\centering
-		\caption{}
-		\begin{tabular}{|C|C|C|C|C|}
-			\hline
-			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
-			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
-			$c_1$ & 1 & 8 & 2 & 8 \\ \hline
-			$c_2$ & 4 & 14 & 4 & 10\\ \hline
-			$c_3$ & 10 & 15 & 6 & 11\\ \hline
-			$c_4$ & 3 & 8 & 8 & 12\\ \hline
-			$c_5$ & 5 & 15 & 9 & 10\\ \hline
-		\end{tabular}
-	\end{subtable} 
-\end{table}
-
-Jenis data yang diproses pada Tugas Akhir ini adalah data multidimensi dengan serial waktu sebagaimana yang ditunjukkan pada Tabel \ref{tab:dataset}; terdiri dari dua data, yaitu data produk $P$ dan pelanggan $C$ yang memiliki atribut lebih dari satu. Sebagai ilustrasi dari data ini, setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan tidak diproduksi lagi, sedangkan setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan meninggal dunia.
-
 \section{\textit{Skyline}}
-\tab Komputasi \textit{skyline} telah menarik perhatian yang cukup besar dari peneliti sejak diperkenalkan pada komunitas basis data \cite{skyline}, terutama mengenai metode progresif yang dapat mengembalikan hasil kueri dengan cepat tanpa perlu membaca keseluruhan data \cite{dynamic-skyline}. Operasi \textit{skyline} digunakan untuk mencari data yang menarik dari suatu himpunan data, yaitu data yang tidak didominasi oleh data lain. \textit{Skyline} didefinisikan sebagai titik-titik yang tidak didominasi oleh titik lain \cite{skyline}; titik adalah representasi dari data dalam bidang $d$-dimensi.
+\tab Komputasi \textit{skyline} telah menarik perhatian yang cukup besar dari peneliti sejak diperkenalkan pada komunitas basis data \cite{skyline}, terutama mengenai metode progresif yang dapat mengembalikan hasil kueri dengan cepat tanpa perlu membaca keseluruhan data \cite{dynamic-skyline}. Operasi \textit{skyline} digunakan untuk mencari data yang menarik dari suatu himpunan data, yaitu data yang tidak didominasi oleh data lain. \textit{Skyline} didefinisikan sebagai titik-titik yang tidak didominasi oleh titik lain \cite{skyline}.
 
-Diberikan \textit{dataset} produk $P$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi. Sebuah titik $p_1$ dikatakan mendominasi titik lain $p_2$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ tidak lebih besar dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih kecil dari $p_2$ minimal pada satu dimensi. Secara matematika, relasi $p_1 \prec p_2$ dapat terbentuk jika dan hanya jika:
-\[\text{(a)} \tab p_1^i \leq p_2^i, \forall i \in [1, ..., d]\] 
-\[\text{(b)} \tab p_1^i < p_2^i, \exists i \in [1, ..., d]\]
+Diberikan \textit{dataset} produk $P$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi. Sebuah titik $p_1$ dikatakan mendominasi titik lain $p_2$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ tidak lebih besar dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih kecil dari $p_2$ minimal pada satu dimensi. Secara matematika, relasi $p_1 \prec p_2$ dapat terbentuk jika dan hanya jika memenuhi syarat dominansi pada Persamaan \ref{eq:syarat-dominansi}.
+\begin{equation}\label{eq:syarat-dominansi}
+\begin{split}
+\text{(a)} \tab p_1^i \leq p_2^i, \forall i \in [1, ..., d] \\
+\text{(b)} \tab p_1^i < p_2^i, \exists i \in [1, ..., d]
+\end{split}
+\end{equation}
 
-Sebagai ilustrasi, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan memiliki resolusi kamera terbesar. Menggunakan dataset pada Tabel \ref{tab:dataset} tanpa memperhatikan \textit{timestamp}, terdapat data produk $P$ yang memiliki atribut resolusi kamera ($d_1$) dan harga ($d_2$). Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.
+Sebagai ilustrasi, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan memiliki resolusi kamera terbesar. Menggunakan data produk $P$ pada Tabel \ref{tab:dataset}, terdapat data produk \textit{smartphone} yang memiliki atribut resolusi kamera ($dim_1$) dan harga ($dim_2$). Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=6cm]{assets/img/bab2/skyline.png}
+	\includegraphics[width=8cm]{assets/img/bab2/skyline.png}
 	\caption{Titik \textit{skyline} dari data produk pada Tabel \ref{tab:dataset}}
 	\label{fig:skyline}
 \end{figure}
 
-\pagebreak
-Berdasarkan Gambar \ref{fig:skyline}, produk \textit{smartphone} yang terbaik adalah $p_5$, $p_6$, dan $p_9$ karena tidak ada titik yang lebih baik dari titik-titik tersebut pada semua dimensi, sedangkan produk $p_{10}$ tidak dapat menjadi \textit{skyline} karena didominasi oleh produk $p_5$ pada dimensi $x$. Begitu juga produk $p_7$ yang didominasi $p_5$ pada dimensi $y$ dan produk $p_2$ yang didominasi $p_6$ pada dimensi $y$. Produk $p_5$, $p_6$, dan $p_9$ disebut dengan titik \textit{skyline} atau \textit{skyline point}.
+Berdasarkan Gambar \ref{fig:skyline}, produk \textit{smartphone} yang terbaik adalah $p_5$, $p_6$, dan $p_9$ karena tidak ada titik yang lebih baik dari titik-titik tersebut pada semua dimensi. Produk $p_5$, $p_6$, dan $p_9$ disebut sebagai titik \textit{skyline} atau \textit{skyline point}. Hubungan antar \textit{skyline point} adalah "saling mendominasi" karena masing-masing data tersebut memiliki minimal satu atribut yang lebih unggul dibanding data lainnya.
 
-Saat ini, komputasi \textit{skyline} telah banyak digunakan sebagai operator pengambil keputusan multikriteria dan perencanaan bisnis \cite{dynamic-skyline-2}. Ada beberapa pengembangan dari komputasi \textit{skyline}, seperti \textit{dynamic skyline} dan \textit{reverse skyline}.  
+Produk $p_{10}$ tidak dapat menjadi \textit{skyline} karena didominasi oleh produk $p_5$ pada atribut resolusi kamera (sumbu $x$). Sebagai ilustrasi, jika ada dua atau lebih produk \textit{smartphone} dengan harga yang sama maka orang akan lebih memilih \textit{smartphone} yang memiliki resolusi kamera paling besar. Begitu pula produk $p_7$ yang didominasi $p_5$ dan produk $p_2$ yang didominasi $p_6$ pada atribut harga (sumbu $y$). Sebagai ilustrasi, jika ada dua atau lebih produk \textit{smartphone} dengan resolusi kamera yang sama maka orang akan lebih memilih \textit{smartphone} yang memiliki harga paling murah. 
+
+Saat ini, komputasi \textit{skyline} telah banyak digunakan sebagai operator pengambil keputusan multikriteria dan perencanaan bisnis \cite{dynamic-skyline-2}. Ada beberapa pengembangan dari komputasi \textit{skyline} seperti \textit{dynamic skyline} dan \textit{reverse skyline}.  
 
 \section{Dominansi Dinamis}
 
-\tab Berdasarkan definisi "\textit{Skyline}" yang telah dijelaskan pada sub-bagian sebelumnya, jika diberikan \textit{dataset} yang sama, maka hasil \textit{skyline} dari \textit{dataset} tersebut pasti akan selalu sama. Oleh karena itu, para ahli juga menyebut \textit{original skyline} sebagai \textit{static skyline} \cite{dynamic-skyline-2}.
-
-Ada suatu kasus ketika perhitungan \textit{skyline} didasarkan pada titik kueri. Jika diberikan \textit{dataset} yang sama, namun titik kuerinya berbeda, maka hasil \textit{skyline}-nya pun berbeda tergantung pada titik kueri. \textit{Skyline} ini disebut dengan \textit{dynamic skyline} karena memiliki sifat dominansi dinamis. 
-
-Diberikan \textit{dataset} produk $P$ dan \textit{dataset} pelanggan (preferensi pelanggan) $C$ yang setiap datanya direpresentasikan sebagai objek data $d$-dimensi dan hanya dapat menyimpan nilai numerik pada setiap dimensinya. Data produk dan pelanggan pada dimensi ke-$i$ dinotasikan sebagai $p^i$ dan $c^i$, $i \leq d$. Untuk menggambarkan objek data secara umum digunakan notasi $ob$.
+\tab Para ahli menyebut \textit{original skyline} sebagai \textit{static skyline} \cite{dynamic-skyline-2} karena sifat dominansinya yang statis. Jika diberikan \textit{dataset} yang sama maka hasil \textit{skyline}-nya selalu sama. Dalam pengembangannya, hasil \textit{skyline} dapat berubah sesuai dengan posisi titik kueri (dominansi dinamis). Jika diberikan \textit{dataset} yang sama, namun titik kueri berbeda, maka hasil \textit{skyline}-nya pun berbeda. 
 
 \pagebreak
-Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis berdasarkan objek data $ob_3$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematika, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika:
+Diberikan \textit{dataset} produk $P$ dan pelanggan (preferensi pelanggan) $C$ yang setiap datanya direpresentasikan sebagai objek data $d$-dimensi dan hanya dapat menyimpan nilai numerik pada setiap dimensinya. Data produk dan pelanggan pada dimensi ke-$i$ dinotasikan sebagai $p^i$ dan $c^i$, $i \leq d$. Untuk menggambarkan objek data secara umum digunakan notasi $ob$.
+
+Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis berdasarkan objek data $ob_3$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematika, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika memenuhi syarat dominansi dinamis pada Persamaan \ref{eq:syarat-dominansi-dinamis}.
 \begin{equation}\label{eq:syarat-dominansi-dinamis}
 \begin{split}
 \text{(a)} \tab |ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d] \\
@@ -151,11 +79,52 @@ Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis b
 \end{split}
 \end{equation}
 
-Pada Tabel \ref{tab:dataset}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan preferensi pelanggan $c_1$, produk $p_1$ dikatakan mendominasi produk $p_2$, dinotasikan dengan $p_1 \prec_{c_1} p_2$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_2^1| = |5-15| = 10$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_2^2| = |2-14| = 12$.
+Pada Tabel \ref{tab:dataset}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan preferensi pelanggan $c_1$, produk $p_1$ dikatakan mendominasi produk $p_2$, dinotasikan dengan $p_1 \prec_{c_1} p_2$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_2^1| = |5-15| = 10$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_2^2| = |2-14| = 12$. Sebaliknya, jika berdasarkan preferensi pelanggan $c_6$, maka produk $p_2$-lah yang mendominasi $p_1$, dinotasikan dengan $p_2 \prec_{c_6} p_1$, karena (a) $|c_6^1 - p_2^1| = |12-15| = 3 \leq |c_6^1 - p_1^1| = |12-5| = 7$ dan (b) $|c_6^2 - p_2^2| = |14-14| = 0 < |c_6^2 - p_1^2| = |14-9| = 5$. Dalam hal ini, preferensi pelanggan disebut dengan titik kueri karena dapat mempengaruhi sifat dominansi antar produk.
 
-Sebaliknya, jika berdasarkan preferensi pelanggan $c_6$, maka produk $p_2$-lah yang mendominasi $p_1$, dinotasikan dengan $p_2 \prec_{c_6} p_1$, karena (a) $|c_6^1 - p_2^1| = |12-15| = 3 \leq |c_6^1 - p_1^1| = |12-5| = 7$ dan (b) $|c_6^2 - p_2^2| = |14-14| = 0 < |c_6^2 - p_1^2| = |14-9| = 5$. Dalam hal ini, preferensi pelanggan disebut dengan titik kueri karena dapat mempengaruhi sifat dominansi antar produk.
+\newcolumntype{C}{>{\centering\arraybackslash}p{2.5em}}	
+\begin{table}[h]	
+	\caption{Contoh \textit{dataset}\\(a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}	
+	\begin{subtable}{.5\linewidth}	
+		\small	
+		\centering	
+		\caption{}	
+		\begin{tabular}{|C|C|C|}	
+			\hline	
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline	
+			$p_1$ & 5 & 9\\ \hline	
+			$p_2$ & 15 & 14\\ \hline	
+			$p_3$ & 8 & 10\\ \hline	
+			$p_4$ & 5 & 14\\ \hline	
+			$p_5$ & 12 & 6\\ \hline	
+			$p_6$ & 15 & 11\\ \hline	
+			$p_7$ & 12 & 10\\ \hline	
+			$p_8$ & 9 & 11\\ \hline	
+			$p_9$ & 6 & 4\\ \hline	
+			$p_{10}$ & 8 & 6\\ \hline	
+		\end{tabular}	
+	\end{subtable}%	
+	\begin{subtable}{.5\linewidth}	
+		\small	
+		\centering	
+		\caption{}	
+		\begin{tabular}{|C|C|C|}	
+			\hline	
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline	
+			$c_1$ & 5 & 2\\ \hline	
+			$c_2$ & 8 & 10\\ \hline	
+			$c_3$ & 15 & 10\\ \hline	
+			$c_4$ & 9 & 7\\ \hline	
+			$c_5$ & 10 & 12\\ \hline	
+			$c_6$ & 12 & 14\\ \hline	
+			$c_7$ & 7 & 13\\ \hline	
+			$c_8$ & 15 & 8\\ \hline	
+			$c_9$ & 5 & 5\\ \hline	
+			$c_{10}$ & 10 & 5\\ \hline	
+		\end{tabular}	
+	\end{subtable} 	
+\end{table}
 
-Mengambil contoh lain, produk $p_1$ tidak mendominasi $p_2$ berdasarkan pelanggan $c_3$ karena ada salah satu syarat dominansi dinamis yang tidak terpenuhi, (a) $|c_3^1 - p_1^1| = |15-5| = 10 \nleq |c_3^1 - p_2^1| = |15-15| = 0$ dan (b) $|c_3^2 - p_1^2| = |10-9| = 1 < |c_3^2 - p_2^2| = |10-14| = 4$. Produk $p_1$ dan $p_2$ dikatakan saling mendominasi berdasarkan pelanggan $c_2$.
+Mengambil contoh lain, produk $p_1$ tidak mendominasi $p_2$ berdasarkan pelanggan $c_3$ karena ada salah satu syarat dominansi dinamis yang tidak terpenuhi, (a) $|c_3^1 - p_1^1| = |15-5| = 10 \nleq |c_3^1 - p_2^1| = |15-15| = 0$ dan (b) $|c_3^2 - p_1^2| = |10-9| = 1 < |c_3^2 - p_2^2| = |10-14| = 4$. Produk $p_1$ dan $p_2$ dikatakan "saling mendominasi" berdasarkan pelanggan $c_2$.
 
 \section{\textit{Dynamic Skyline}}
 \tab Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}, sehingga yang menjadi titik kueri adalah pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
@@ -260,6 +229,81 @@ k-MPP(P, C, k)
 \end{equation}
 
 Jika merangkum semua penjelasan di atas, langkah-langkah yang harus dilakukan untuk memproses kueri $k$-MPP adalah: (1) menghitung \textit{reverse skyline} dari setiap produk $p \in P$, (2) menghitung \textit{dynamic Skyline} dari setiap pelanggan $c \in RSL(p)$, dan (3) memilih \textit{k} produk dari $P$ yang memiliki kontribusi pasar terbesar.
+
+\section{Data}
+\tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Data adalah informasi faktual (seperti pengukuran atau statistik) yang digunakan sebagai dasar untuk analisis, diskusi, maupun perhitungan \cite{data}. 
+
+Meski begitu, data mentah tidaklah berarti dan harus diproses terlebih dahulu supaya menghasilkan informasi yang bermanfaat. Sehingga, dibutuhkanlah sebuah algoritme pemrosesan data yang menerima data sebagai \textit{input}, kemudian memprosesnya menjadi informasi tertentu sesuai dengan kebutuhan pengguna dan mengeluarkannya sebagai \textit{output}.
+
+\subsection{Data Multidimensi}
+\tab Model data multidimensi adalah sebuah cara pandang yang melihat data dari berbagai sudut pandang atau dimensi. Model data ini memiliki struktur yang disesuaikan untuk mengoptimalkan analisis berdasarkan data dari \textit{relational database} dan diolah sehingga informasi dapat dikategorikan. Model data multidimensi merupakan variasi dari model relasional yang mengunakan struktur multidimensi untuk menyusun data dan menjelaskan relasi antar data.
+
+Struktur multidimensi merepresentasikan dimensi-dimensi data dalam bentuk kubus. Jika sebuah data multidimensi memiliki lebih dari tiga dimensi, maka disebut dengan \textit{hypercube} \cite{multidimensional-database}. Dalam implementasinya, data multidimensi disajikan dalam bentuk \textit{array} multidimensi yang masing-masing nilai dalam selnya dapat diakses menggunakan sebuah indeks.
+
+Data multidimensi banyak digunakan untuk analisis. Selama beberapa tahun terakhir, konsep data multidimensi telah menjadi hal yang fundamental dalam sistem pengambil keputusan, seperti sistem \textit{data warehouse} \cite{multidimensional-database}.
+
+\subsection{Data Serial Waktu}
+\tab Data \textit{time series} atau serial waktu adalah nilai-nilai suatu variabel yang berurutan menurut waktu. Data \textit{time series} memiliki nilai dan \textit{timestamp}, sehingga data diurutkan berdasarkan waktu atau \textit{timestamp}-nya.
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.5em}}
+\begin{table}[h]
+	\small
+	\centering
+	\caption{Contoh data \textit{time series} \label{tab:data-time-series}}
+	\begin{tabular}{|C|C|C|C|C|C|}
+		\hline
+		\multirow{2}{*}{\textbf{id}} & \multicolumn{5}{c|}{\textbf{timestamp}}\\
+		\cline{2-6}
+		& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline \hline		
+		$s_1$ & 8 & 2 & 5 & 10 & 12 \\ \hline
+		$s_2$ & 14 & 4 & 10 & 7 & 8 \\ \hline
+		$s_3$ & 15 & 6 & 11 & 7 & 3 \\ \hline
+		$s_4$ & 3 & 8 & 12 & 9 & 13 \\ \hline
+		$s_5$ & 15 & 9 & 10 & 2 & 7 \\ \hline
+	\end{tabular}
+\end{table}
+
+Pada Tabel \ref{tab:data-time-series}, diberikan contoh sebuah data \textit{time series} $S$. Supaya sederhana, kita asumsikan bahwa \textit{timestamp} adalah bilangan bulat positif. Nilai $s_1 \in S$ pada \textit{timestamp} $j$ dinotasikan sebagai $s_1[j]$, sehingga \textit{time series} $s_1$ jika ditulis secara berurutan menjadi $s_1[1], s_1[2],..$ , dan seterusnya \cite{time-series}.
+
+\subsection{Data Multidimensi dengan Serial Waktu}
+\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu sebagaimana contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang ditunjukkan pada Tabel \ref{tab:dataset2}. Pada tabel tersebut, \textit{timestamp} ditulis sebagai interval waktu yang dinotasikan dengan $[t_i:t_e]$, dengan asumsi bahwa nilai masing-masing atribut konstan setiap waktu. 
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.4em}}
+\begin{table}[H]
+	\caption{Contoh data multidimensi dengan serial waktu \\ (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset2}}
+	\begin{subtable}{.5\linewidth}
+		\small
+		\centering
+		\caption{}
+		\begin{tabular}{|C|C|C|C|C|}
+			\hline
+			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
+			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
+			$p_1$ & 2 & 10 & 6 & 3 \\ \hline
+			$p_2$ & 6 & 13 & 4 & 12 \\ \hline
+			$p_3$ & 9 & 15 & 6 & 15 \\ \hline
+			$p_4$ & 4 & 9 & 9 & 5 \\ \hline
+			$p_5$ & 5 & 15 & 12 & 10 \\ \hline
+		\end{tabular}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\small
+		\centering
+		\caption{}
+		\begin{tabular}{|C|C|C|C|C|}
+			\hline
+			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
+			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
+			$c_1$ & 1 & 8 & 2 & 8 \\ \hline
+			$c_2$ & 4 & 14 & 4 & 10\\ \hline
+			$c_3$ & 10 & 15 & 6 & 11\\ \hline
+			$c_4$ & 3 & 8 & 8 & 12\\ \hline
+			$c_5$ & 5 & 15 & 9 & 10\\ \hline
+		\end{tabular}
+	\end{subtable} 
+\end{table}
+
+Jenis data yang diproses pada Tugas Akhir ini adalah data multidimensi dengan serial waktu sebagaimana yang ditunjukkan pada Tabel \ref{tab:dataset2}; terdiri dari dua data, yaitu data produk $P$ dan pelanggan $C$ yang memiliki atribut lebih dari satu. Sebagai ilustrasi dari data ini, setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan tidak diproduksi lagi, sedangkan setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan meninggal dunia.
 
 \section{Python}
 \tab Python adalah bahasa pemrograman tingkat tinggi, \textit{interpreted}, dan berorientasi objek yang didukung oleh struktur data \textit{built-in} tingkat tinggi dan semantik yang dinamis \cite{python}. Python dikembangkan oleh Guido van Rossum pada akhir 1980-an dan dikelola oleh \textit{Python Software Foundation}. Saat ini, Python sudah tersedia dalam dua versi, yakni 2.x dan 3.x.

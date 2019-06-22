@@ -3,67 +3,67 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Titik \textit {skyline} dari data produk pada Tabel \ref {tab:dataset}\relax }}{14}{figure.caption.6}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces (a) Komputasi \textit {dynamic skyline} dari pelanggan $c_{4}$ dan (b) \textit {dynamic skyline} dari pelanggan $c_{10}$\relax }}{18}{figure.caption.7}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Komputasi \textit {reverse skyline} dari produk $p_8$\relax }}{19}{figure.caption.8}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Titik \textit {skyline} dari data produk pada Tabel \ref {tab:dataset}\relax }}{11}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces (a) Komputasi \textit {dynamic skyline} dari pelanggan $c_{4}$ dan (b) \textit {dynamic skyline} dari pelanggan $c_{10}$\relax }}{15}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Komputasi \textit {reverse skyline} dari produk $p_8$\relax }}{17}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Struktur data \textit {dictionary} produk\relax }}{30}{figure.caption.9}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Struktur data \textit {dictionary} pelanggan\relax }}{31}{figure.caption.10}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh \textit {Pandora Box} dari \textit {dataset} \ref {tab:dataset-2}\relax }}{33}{figure.caption.11}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagram alur algoritme k-MPPTI\relax }}{35}{figure.caption.12}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Lini masa data produk dan pelanggan\relax }}{37}{figure.caption.13}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit {Event} dalam lini masa data produk dan pelanggan\relax }}{37}{figure.caption.14}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagram alur proses \textit {product insertion}\relax }}{40}{figure.caption.15}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagram alur proses \textit {product deletion}\relax }}{42}{figure.caption.16}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagram alur proses \textit {customer insertion}\relax }}{43}{figure.caption.17}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagram alur proses \textit {customer deletion}\relax }}{44}{figure.caption.18}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Diagram alur komputasi \textit {reverse skyline}\relax }}{46}{figure.caption.19}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Diagram alur komputasi \textit {initial dynamic skyline}\relax }}{48}{figure.caption.20}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Diagram alur komputasi \textit {dynamic skyline - product insertion}\relax }}{49}{figure.caption.21}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Diagram alur komputasi \textit {dynamic skyline - product deletion}\relax }}{50}{figure.caption.22}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Pemrosesan paralel\relax }}{52}{figure.caption.23}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Ilustrasi interval waktu pencarian\relax }}{54}{figure.caption.24}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Perhitungan kontribusi pasar pada \textit {Pandora Box} berdasarkan interval waktu pencarian\relax }}{54}{figure.caption.25}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Perancangan arsitektur aplikasi\relax }}{56}{figure.caption.26}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Struktur data \textit {dictionary} produk\relax }}{32}{figure.caption.9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Struktur data \textit {dictionary} pelanggan\relax }}{33}{figure.caption.10}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh \textit {Pandora Box} dari \textit {dataset} \ref {tab:dataset-2}\relax }}{35}{figure.caption.11}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagram alur algoritme k-MPPTI\relax }}{37}{figure.caption.12}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Lini masa data produk dan pelanggan\relax }}{39}{figure.caption.13}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit {Event} dalam lini masa data produk dan pelanggan\relax }}{39}{figure.caption.14}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagram alur proses \textit {product insertion}\relax }}{42}{figure.caption.15}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagram alur proses \textit {product deletion}\relax }}{44}{figure.caption.16}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagram alur proses \textit {customer insertion}\relax }}{45}{figure.caption.17}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagram alur proses \textit {customer deletion}\relax }}{46}{figure.caption.18}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Diagram alur komputasi \textit {reverse skyline}\relax }}{48}{figure.caption.19}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Diagram alur komputasi \textit {initial dynamic skyline}\relax }}{50}{figure.caption.20}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Diagram alur komputasi \textit {dynamic skyline - product insertion}\relax }}{51}{figure.caption.21}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Diagram alur komputasi \textit {dynamic skyline - product deletion}\relax }}{52}{figure.caption.22}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Pemrosesan paralel\relax }}{54}{figure.caption.23}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Ilustrasi interval waktu pencarian\relax }}{56}{figure.caption.24}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Perhitungan kontribusi pasar pada \textit {Pandora Box} berdasarkan interval waktu pencarian\relax }}{56}{figure.caption.25}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Perancangan arsitektur aplikasi\relax }}{58}{figure.caption.26}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Algoritme \textit {precomputing} (bagian 1) \relax }}{58}{figure.caption.27}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Algoritme \textit {precomputing} (bagian 2) \relax }}{59}{figure.caption.28}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Algoritme \textit {precomputing} (bagian 3) \relax }}{60}{figure.caption.29}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Kelas \textit {EventQueue} \relax }}{61}{figure.caption.30}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Kelas \textit {PandoraBox} (bagian 1) \relax }}{62}{figure.caption.31}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 1) \relax }}{63}{figure.caption.32}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 2) \relax }}{64}{figure.caption.33}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 3) \relax }}{65}{figure.caption.34}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Kelas \textit {DynamicSkyline} (bagian 1) \relax }}{66}{figure.caption.35}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Kelas \textit {DynamicSkyline} (bagian 2) \relax }}{67}{figure.caption.36}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Fungsi cek dominasi \relax }}{68}{figure.caption.37}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Algoritme \textit {query processing} \relax }}{69}{figure.caption.38}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Kelas \textit {PandoraBox} (bagian 2) \relax }}{69}{figure.caption.39}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Implementasi halaman \textit {Home}\relax }}{70}{figure.caption.40}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Implementasi halaman \textit {Precompute}\relax }}{71}{figure.caption.41}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Implementasi halaman \textit {Search}\relax }}{71}{figure.caption.42}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Implementasi halaman \textit {Visualization} (informasi data)\relax }}{72}{figure.caption.43}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Implementasi halaman \textit {Visualization} (pratinjau data)\relax }}{73}{figure.caption.44}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Implementasi halaman \textit {Visualization} (visualisasi data)\relax }}{73}{figure.caption.45}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Algoritme \textit {precomputing} (bagian 1) \relax }}{60}{figure.caption.27}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Algoritme \textit {precomputing} (bagian 2) \relax }}{61}{figure.caption.28}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Algoritme \textit {precomputing} (bagian 3) \relax }}{62}{figure.caption.29}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Kelas \textit {EventQueue} \relax }}{63}{figure.caption.30}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Kelas \textit {PandoraBox} (bagian 1) \relax }}{64}{figure.caption.31}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 1) \relax }}{65}{figure.caption.32}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 2) \relax }}{66}{figure.caption.33}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Kelas \textit {ReverseSkyline} (bagian 3) \relax }}{67}{figure.caption.34}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Kelas \textit {DynamicSkyline} (bagian 1) \relax }}{68}{figure.caption.35}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Kelas \textit {DynamicSkyline} (bagian 2) \relax }}{69}{figure.caption.36}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Fungsi cek dominasi \relax }}{70}{figure.caption.37}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Algoritme \textit {query processing} \relax }}{71}{figure.caption.38}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Kelas \textit {PandoraBox} (bagian 2) \relax }}{71}{figure.caption.39}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Implementasi halaman \textit {Home}\relax }}{72}{figure.caption.40}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Implementasi halaman \textit {Precompute}\relax }}{73}{figure.caption.41}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Implementasi halaman \textit {Search}\relax }}{73}{figure.caption.42}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Implementasi halaman \textit {Visualization} (informasi data)\relax }}{74}{figure.caption.43}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Implementasi halaman \textit {Visualization} (pratinjau data)\relax }}{75}{figure.caption.44}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Implementasi halaman \textit {Visualization} (visualisasi data)\relax }}{75}{figure.caption.45}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Hasil uji coba: mengunggah data dan memilih algoritme untuk \textit {data precomputing}\relax }}{82}{figure.caption.46}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Hasil uji coba: proses \textit {data precomputing} berhasil\relax }}{82}{figure.caption.47}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Hasil uji coba: melihat informasi data\relax }}{83}{figure.caption.48}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Hasil uji coba: melihat pratinjau data berupa tabel\relax }}{83}{figure.caption.49}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Hasil uji coba: melihat visualisasi data berupa lini masa\relax }}{84}{figure.caption.50}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Hasil uji coba: memasukkan kueri pencarian dan melihat hasil kueri\relax }}{84}{figure.caption.51}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil uji coba: memilih \textit {session}\relax }}{85}{figure.caption.52}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit {independent} (IND)\relax }}{86}{figure.caption.53}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit {anti-correlated} (ANT)\relax }}{87}{figure.caption.54}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit {independent} (IND)\relax }}{88}{figure.caption.55}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit {anti-correlated} (ANT)\relax }}{89}{figure.caption.56}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit {independent} (IND)\relax }}{90}{figure.caption.57}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit {anti-correlated} (ANT)\relax }}{91}{figure.caption.58}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit {independent} (IND)\relax }}{92}{figure.caption.59}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit {anti-correlated} (ANT)\relax }}{93}{figure.caption.60}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {independent} (IND)\relax }}{95}{figure.caption.61}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {anti-correlated} (ANT)\relax }}{95}{figure.caption.62}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {Forest Cover Type} (FC)\relax }}{96}{figure.caption.63}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Hasil uji coba: mengunggah data dan memilih algoritme untuk \textit {data precomputing}\relax }}{84}{figure.caption.46}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Hasil uji coba: proses \textit {data precomputing} berhasil\relax }}{84}{figure.caption.47}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Hasil uji coba: melihat informasi data\relax }}{85}{figure.caption.48}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Hasil uji coba: melihat pratinjau data berupa tabel\relax }}{85}{figure.caption.49}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Hasil uji coba: melihat visualisasi data berupa lini masa\relax }}{86}{figure.caption.50}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Hasil uji coba: memasukkan kueri pencarian dan melihat hasil kueri\relax }}{86}{figure.caption.51}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Hasil uji coba: memilih \textit {session}\relax }}{87}{figure.caption.52}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit {independent} (IND)\relax }}{88}{figure.caption.53}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Grafik pengaruh jumlah data terhadap waktu komputasi algoritme pada data \textit {anti-correlated} (ANT)\relax }}{89}{figure.caption.54}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit {independent} (IND)\relax }}{90}{figure.caption.55}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Grafik pengaruh jumlah data terhadap penggunaan memori algoritme pada data \textit {anti-correlated} (ANT)\relax }}{91}{figure.caption.56}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit {independent} (IND)\relax }}{92}{figure.caption.57}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap waktu komputasi algoritme pada data \textit {anti-correlated} (ANT)\relax }}{93}{figure.caption.58}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit {independent} (IND)\relax }}{94}{figure.caption.59}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Grafik pengaruh jumlah dimensi data terhadap penggunaan memori algoritme pada data \textit {anti-correlated} (ANT)\relax }}{95}{figure.caption.60}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {independent} (IND)\relax }}{97}{figure.caption.61}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {anti-correlated} (ANT)\relax }}{97}{figure.caption.62}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Pengujian akurasi hasil kueri pada data \textit {Forest Cover Type} (FC)\relax }}{98}{figure.caption.63}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

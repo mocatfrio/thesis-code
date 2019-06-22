@@ -4,23 +4,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Daftar notasi (bagian 1) \relax }}{9}{table.2.1}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Contoh data \textit {time series} \relax }}{12}{table.2.2}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Contoh \textit {dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{12}{table.2.3}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Contoh \textit {dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{14}{table.2.2}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Contoh data \textit {time series} \relax }}{22}{table.2.3}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Contoh data multidimensi dengan serial waktu (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{23}{table.2.4}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Daftar notasi (bagian 2) \relax }}{25}{table.3.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan fungsional\relax }}{28}{table.3.2}
-\contentsline {table}{\numberline {3.3}{\ignorespaces \textit {Key} dari \textit {DataStorage} \relax }}{31}{table.3.3}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Atribut dari \textit {EventQueue}\relax }}{33}{table.3.4}
-\contentsline {table}{\numberline {3.5}{\ignorespaces Contoh \textit {dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{36}{table.3.5}
-\contentsline {table}{\numberline {3.6}{\ignorespaces \textit {EventQueue} \relax }}{38}{table.3.6}
-\contentsline {table}{\numberline {3.7}{\ignorespaces Kontribusi pasar (1)\relax }}{53}{table.3.7}
-\contentsline {table}{\numberline {3.8}{\ignorespaces Kontribusi pasar (2)\relax }}{55}{table.3.8}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Daftar notasi (bagian 2) \relax }}{27}{table.3.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan fungsional\relax }}{30}{table.3.2}
+\contentsline {table}{\numberline {3.3}{\ignorespaces \textit {Key} dari \textit {DataStorage} \relax }}{33}{table.3.3}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Atribut dari \textit {EventQueue}\relax }}{35}{table.3.4}
+\contentsline {table}{\numberline {3.5}{\ignorespaces Contoh \textit {dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{38}{table.3.5}
+\contentsline {table}{\numberline {3.6}{\ignorespaces \textit {EventQueue} \relax }}{40}{table.3.6}
+\contentsline {table}{\numberline {3.7}{\ignorespaces Kontribusi pasar (1)\relax }}{55}{table.3.7}
+\contentsline {table}{\numberline {3.8}{\ignorespaces Kontribusi pasar (2)\relax }}{57}{table.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Atribut himpunan data \textit {Forest Cover Type}\relax }}{77}{table.5.1}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Skenario uji coba fungsionalitas\relax }}{78}{table.5.2}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Skenario uji coba performa \textit {data precomputing} \relax }}{79}{table.5.3}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Hasil uji coba fungsionalitas\relax }}{81}{table.5.4}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Atribut himpunan data \textit {Forest Cover Type}\relax }}{79}{table.5.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Skenario uji coba fungsionalitas\relax }}{80}{table.5.2}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Skenario uji coba performa \textit {data precomputing} \relax }}{81}{table.5.3}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Hasil uji coba fungsionalitas\relax }}{83}{table.5.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

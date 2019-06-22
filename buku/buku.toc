@@ -18,74 +18,74 @@
 \contentsline {section}{\numberline {1.7}Sistematika Penulisan}{7}{section.1.7}
 \contentsline {chapter}{\numberline {II}TINJAUAN PUSTAKA}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}Daftar Notasi}{9}{section.2.1}
-\contentsline {section}{\numberline {2.2}Data}{10}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Data Multidimensi}{11}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Data Serial Waktu}{11}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Data Multidimensi dengan Serial Waktu}{12}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}\textit {Skyline}}{13}{section.2.3}
-\contentsline {section}{\numberline {2.4}Dominansi Dinamis}{15}{section.2.4}
-\contentsline {section}{\numberline {2.5}\textit {Dynamic Skyline}}{17}{section.2.5}
-\contentsline {section}{\numberline {2.6}\textit {Reverse Skyline}}{17}{section.2.6}
-\contentsline {section}{\numberline {2.7}Kueri \textit {k-Most Promising Products} ($k$-MPP)}{19}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}\textit {Uniform Product Adoption} (UPA)}{19}{subsection.2.7.1}
-\contentsline {subsubsection}{\numberline {2.7.1.1}\textit {Market Contribution}}{21}{subsubsection.2.7.1.1}
-\contentsline {subsection}{\numberline {2.7.2}Strategi Pemilihan Produk}{22}{subsection.2.7.2}
-\contentsline {section}{\numberline {2.8}Python}{22}{section.2.8}
-\contentsline {section}{\numberline {2.9}Flask}{23}{section.2.9}
-\contentsline {section}{\numberline {2.10}Vis.js}{24}{section.2.10}
-\contentsline {chapter}{\numberline {III}ANALISIS DAN PERANCANGAN SISTEM}{25}{chapter.3}
-\contentsline {section}{\numberline {3.1}Daftar Notasi}{25}{section.3.1}
-\contentsline {section}{\numberline {3.2}Analisis Sistem}{27}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Analisis Permasalahan}{27}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Deskripsi Umum Sistem}{27}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Fungsi Sistem}{28}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Analisis Kebutuhan Fungsional}{28}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Perancangan Sistem}{29}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Struktur Data}{30}{subsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.1.1}\textit {Data Storage}}{30}{subsubsection.3.3.1.1}
-\contentsline {subsubsection}{\numberline {3.3.1.2}\textit {Event Queue}}{32}{subsubsection.3.3.1.2}
-\contentsline {subsubsection}{\numberline {3.3.1.3}\textit {Pandora Box}}{33}{subsubsection.3.3.1.3}
-\contentsline {subsection}{\numberline {3.3.2}Algoritme Utama}{34}{subsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.2.1}\textit {Data Precomputing}}{36}{subsubsection.3.3.2.1}
-\contentsline {paragraph}{\numberline {3.3.2.1.1}Proses \textit {Product Insertion}}{39}{paragraph.3.3.2.1.1}
-\contentsline {paragraph}{\numberline {3.3.2.1.2}Proses \textit {Product Deletion}}{41}{paragraph.3.3.2.1.2}
-\contentsline {paragraph}{\numberline {3.3.2.1.3}Proses \textit {Customer Insertion}}{41}{paragraph.3.3.2.1.3}
-\contentsline {paragraph}{\numberline {3.3.2.1.4}Proses \textit {Customer Deletion}}{44}{paragraph.3.3.2.1.4}
-\contentsline {paragraph}{\numberline {3.3.2.1.5}Komputasi \textit {Reverse Skyline}}{44}{paragraph.3.3.2.1.5}
-\contentsline {paragraph}{\numberline {3.3.2.1.6}Komputasi \textit {Dynamic Skyline}}{47}{paragraph.3.3.2.1.6}
-\contentsline {paragraph}{\numberline {3.3.2.1.7}Perhitungan Probabilitas}{51}{paragraph.3.3.2.1.7}
-\contentsline {paragraph}{\numberline {3.3.2.1.8}Pemrosesan Paralel}{51}{paragraph.3.3.2.1.8}
-\contentsline {subsubsection}{\numberline {3.3.2.2}\textit {Query Processing}}{52}{subsubsection.3.3.2.2}
-\contentsline {subsection}{\numberline {3.3.3}Algoritme Tandingan}{55}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{55}{subsection.3.3.4}
-\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{57}{chapter.4}
-\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{57}{section.4.1}
-\contentsline {section}{\numberline {4.2}Implementasi \textit {Data Precomputing}}{57}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Kelas \textit {EventQueue}}{60}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Kelas \textit {PandoraBox}}{62}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Kelas \textit {ReverseSkyline}}{63}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Kelas \textit {Dynamic Skyline}}{65}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Implementasi Algoritme \textit {Query Processing}}{68}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{70}{section.4.4}
-\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{75}{chapter.5}
-\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{75}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data Uji Coba}{75}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{76}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anti-Correlated} (ANT)}{76}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Data \textit {Forest Cover Type} (FC)}{76}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{78}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Uji Coba Fungsionalitas}{78}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Uji Coba Performa}{78}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{80}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Uji Coba Fungsionalitas}{80}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Uji Coba Performa}{85}{subsection.5.4.2}
-\contentsline {subsubsection}{\numberline {5.4.2.1}Pengaruh Jumlah Data Terhadap Performa Algoritme}{85}{subsubsection.5.4.2.1}
-\contentsline {subsubsection}{\numberline {5.4.2.2}Pengaruh Jumlah Dimensi Data Terhadap Performa Algoritme}{89}{subsubsection.5.4.2.2}
-\contentsline {subsubsection}{\numberline {5.4.2.3}Akurasi Hasil Kueri}{94}{subsubsection.5.4.2.3}
-\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{97}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kesimpulan}{97}{section.6.1}
-\contentsline {section}{\numberline {6.2}Saran}{98}{section.6.2}
-\contentsline {chapter}{DAFTAR PUSTAKA}{101}{appendix*.64}
+\contentsline {section}{\numberline {2.2}\textit {Skyline}}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Dominansi Dinamis}{12}{section.2.3}
+\contentsline {section}{\numberline {2.4}\textit {Dynamic Skyline}}{14}{section.2.4}
+\contentsline {section}{\numberline {2.5}\textit {Reverse Skyline}}{15}{section.2.5}
+\contentsline {section}{\numberline {2.6}Kueri \textit {k-Most Promising Products} ($k$-MPP)}{16}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}\textit {Uniform Product Adoption} (UPA)}{17}{subsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.1.1}\textit {Market Contribution}}{19}{subsubsection.2.6.1.1}
+\contentsline {subsection}{\numberline {2.6.2}Strategi Pemilihan Produk}{20}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Data}{20}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Data Multidimensi}{21}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Data Serial Waktu}{21}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Data Multidimensi dengan Serial Waktu}{22}{subsection.2.7.3}
+\contentsline {section}{\numberline {2.8}Python}{23}{section.2.8}
+\contentsline {section}{\numberline {2.9}Flask}{24}{section.2.9}
+\contentsline {section}{\numberline {2.10}Vis.js}{25}{section.2.10}
+\contentsline {chapter}{\numberline {III}ANALISIS DAN PERANCANGAN SISTEM}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Daftar Notasi}{27}{section.3.1}
+\contentsline {section}{\numberline {3.2}Analisis Sistem}{29}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Analisis Permasalahan}{29}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Deskripsi Umum Sistem}{29}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Fungsi Sistem}{30}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Analisis Kebutuhan Fungsional}{30}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Perancangan Sistem}{31}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Struktur Data}{32}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1.1}\textit {Data Storage}}{32}{subsubsection.3.3.1.1}
+\contentsline {subsubsection}{\numberline {3.3.1.2}\textit {Event Queue}}{34}{subsubsection.3.3.1.2}
+\contentsline {subsubsection}{\numberline {3.3.1.3}\textit {Pandora Box}}{35}{subsubsection.3.3.1.3}
+\contentsline {subsection}{\numberline {3.3.2}Algoritme Utama}{36}{subsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}\textit {Data Precomputing}}{38}{subsubsection.3.3.2.1}
+\contentsline {paragraph}{\numberline {3.3.2.1.1}Proses \textit {Product Insertion}}{41}{paragraph.3.3.2.1.1}
+\contentsline {paragraph}{\numberline {3.3.2.1.2}Proses \textit {Product Deletion}}{43}{paragraph.3.3.2.1.2}
+\contentsline {paragraph}{\numberline {3.3.2.1.3}Proses \textit {Customer Insertion}}{43}{paragraph.3.3.2.1.3}
+\contentsline {paragraph}{\numberline {3.3.2.1.4}Proses \textit {Customer Deletion}}{46}{paragraph.3.3.2.1.4}
+\contentsline {paragraph}{\numberline {3.3.2.1.5}Komputasi \textit {Reverse Skyline}}{46}{paragraph.3.3.2.1.5}
+\contentsline {paragraph}{\numberline {3.3.2.1.6}Komputasi \textit {Dynamic Skyline}}{49}{paragraph.3.3.2.1.6}
+\contentsline {paragraph}{\numberline {3.3.2.1.7}Perhitungan Probabilitas}{53}{paragraph.3.3.2.1.7}
+\contentsline {paragraph}{\numberline {3.3.2.1.8}Pemrosesan Paralel}{53}{paragraph.3.3.2.1.8}
+\contentsline {subsubsection}{\numberline {3.3.2.2}\textit {Query Processing}}{54}{subsubsection.3.3.2.2}
+\contentsline {subsection}{\numberline {3.3.3}Algoritme Tandingan}{57}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Arsitektur Aplikasi}{57}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{59}{chapter.4}
+\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{59}{section.4.1}
+\contentsline {section}{\numberline {4.2}Implementasi \textit {Data Precomputing}}{59}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Kelas \textit {EventQueue}}{62}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Kelas \textit {PandoraBox}}{64}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Kelas \textit {ReverseSkyline}}{65}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Kelas \textit {Dynamic Skyline}}{67}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Implementasi Algoritme \textit {Query Processing}}{70}{section.4.3}
+\contentsline {section}{\numberline {4.4}Implementasi Antarmuka Pengguna}{72}{section.4.4}
+\contentsline {chapter}{\numberline {V}UJI COBA DAN EVALUASI}{77}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{77}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Uji Coba}{77}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Data \textit {Independent} (IND)}{78}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Data \textit {Anti-Correlated} (ANT)}{78}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Data \textit {Forest Cover Type} (FC)}{78}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Skenario Uji Coba}{80}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Uji Coba Fungsionalitas}{80}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Uji Coba Performa}{80}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Analisis Hasil Uji Coba}{82}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Uji Coba Fungsionalitas}{82}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Uji Coba Performa}{87}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}Pengaruh Jumlah Data Terhadap Performa Algoritme}{87}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}Pengaruh Jumlah Dimensi Data Terhadap Performa Algoritme}{91}{subsubsection.5.4.2.2}
+\contentsline {subsubsection}{\numberline {5.4.2.3}Akurasi Hasil Kueri}{96}{subsubsection.5.4.2.3}
+\contentsline {chapter}{\numberline {VI}KESIMPULAN DAN SARAN}{99}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{99}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{100}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{103}{appendix*.64}
 \renewcommand {\cftchappresnum }{}
-\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{103}{Lampiran.a.A}
-\contentsline {chapter}{BIODATA PENULIS}{127}{appendix*.65}
+\contentsline {chapter}{Lampiran \numberline {A}Kode Sumber}{105}{Lampiran.a.A}
+\contentsline {chapter}{BIODATA PENULIS}{129}{appendix*.65}
