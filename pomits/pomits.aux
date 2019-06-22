@@ -10,9 +10,14 @@
 \@writefile{toc}{\contentsline {section}{\numberline {I}Pendahuluan}{1}}
 \citation{skyline}
 \citation{dynamic-skyline-2}
-\citation{surveyuncertaindata}
-\citation{effectiveprob}
-\citation{effectiveprob}
+\citation{kmpp}
+\citation{dynamic-skyline}
+\citation{skyline}
+\citation{kmpp}
+\citation{reverse-skyline}
+\citation{kmpp}
+\citation{mid-skyline}
+\citation{kmpp}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Tinjauan Pustaka}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Data Multidimensi dengan Serial Waktu}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Contoh \textit  {dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \relax }}{2}}
@@ -20,73 +25,87 @@
 \newlabel{tab:dataset}{{I}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Skyline}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Dominansi Dinamis}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}\textit  {Uncertain Data}}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}\textit  {Dynamic Skyline}}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-E}}\textit  {Reverse Skyline}}{2}}
+\newlabel{rsl}{{\unhbox \voidb@x \hbox {II-E}}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-F}}\textit  {k-Most Promising Products} (k-MPP)}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Metode}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Ringkasan notasi\relax }}{2}}
-\newlabel{tab:istilah-bab3}{{II}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Struktur Data}{2}}
-\citation{continuousdbased}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Objek\relax }}{3}}
-\newlabel{tab:objek}{{III}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Struktur data grid indeks\relax }}{3}}
-\newlabel{fig:grid}{{1}{3}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Node\relax }}{3}}
-\newlabel{tab:node}{{IV}{3}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Metadata\relax }}{3}}
-\newlabel{tab:metadata}{{V}{3}}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Edge\relax }}{3}}
-\newlabel{tab:edge}{{VI}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Metode Pemrosesan $ CSd_\varepsilon -SQ $}{3}}
-\citation{effectiveprob}
-\newlabel{algo:gsp}{{\caption@xref {algo:gsp}{ on input line 243}}{4}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces DetermineGSP\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Algoritme \textit  {DetermineGSP}\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Alur pemrosesan\relax }}{4}}
-\newlabel{fig:alur}{{3}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Objek masuk pada grid indeks\relax }}{4}}
-\newlabel{fig:alur1-2}{{4}{4}}
-\newlabel{algo:insertion}{{\caption@xref {algo:insertion}{ on input line 302}}{4}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces \textit  {Insertion}\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Algoritme \textit  {Insertion}\relax }}{4}}
-\newlabel{algo:deletion}{{\caption@xref {algo:deletion}{ on input line 326}}{4}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces \textit  {Deletion}\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Algoritme \textit  {Deletion}\relax }}{4}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Daftar notasi\relax }}{3}}
+\newlabel{tab:notasi}{{II}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Struktur Data}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}\textbf  {\textit  {Data Storage}}}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Struktur data \textit  {dictionary} produk\relax }}{3}}
+\newlabel{fig:sd1}{{1}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}\textbf  {\textit  {Event Queue}}}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Struktur data \textit  {dictionary} pelanggan\relax }}{3}}
+\newlabel{fig:sd2}{{2}{3}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Deskripsi \textit  {key} dalam \textit  {Data Storage}\relax }}{3}}
+\newlabel{tab:desc-key}{{III}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}\textbf  {\textit  {Pandora Box}}}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Algoritme Utama}{3}}
+\citation{kmpp}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Contoh \textit  {Pandora Box} dari \textit  {dataset} \ref  {tab:dataset}\relax }}{4}}
+\newlabel{fig:pbox}{{3}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}1}\textbf  {\textit  {Data Precomputing}}}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {Event} dalam lini masa data produk dan pelanggan\relax }}{4}}
+\newlabel{fig:timeline-event}{{4}{4}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1a}\textbf  {\textit  {Product Insertion}}}{4}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1b}\textbf  {\textit  {Product Deletion}}}{4}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Precomputing\relax }}{4}}
+\newlabel{algo:precompute}{{1}{4}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1c}\textbf  {\textit  {Customer Insertion}}}{4}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1d}\textbf  {\textit  {Customer Deletion}}}{4}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1e}\textbf  {Kueri \textit  {Dynamic Skyline}}}{4}}
+\citation{kmpp}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Check Domination\relax }}{5}}
+\newlabel{algo:check-dom}{{2}{5}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1f}\textbf  {Kueri \textit  {Reverse Skyline}}}{5}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1g}\textbf  {Perhitungan Probabilitas}}{5}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Dynamic Skyline Computation\relax }}{5}}
+\newlabel{algo:dsl}{{3}{5}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-B}1h}\textbf  {Perhitungan Kontribusi Pasar}}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}2}\textbf  {\textit  {Query Processing}}}{5}}
+\citation{paralel}
 \citation{ontrip}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Dengan $ d_\varepsilon $=150, $ o_2 $ hanya masuk pada \textit  {node} $ n_4 $ dan $ n_5 $\relax }}{5}}
-\newlabel{fig:alur3}{{7}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Atas: \textit  {landmark} yang didapat dari \textit  {edge}. Bawah: \textit  {turning-point} didapat dari \textit  {landmark}\relax }}{5}}
-\newlabel{fig:alur4-5}{{8}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Uji Coba}{5}}
-\newlabel{compute_turning_point}{{\caption@xref {compute_turning_point}{ on input line 360}}{5}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces ComputeTurningPoint\relax }}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Algoritme \textit  {Compute Turning Point}\relax }}{5}}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Variasi pengujian\relax }}{5}}
-\newlabel{tab:uji}{{VII}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Pengaruh jumlah sel terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{6}}
-\newlabel{fig:uji-g}{{10}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Pengaruh jumlah sel grid terhadap penggunaan memori dalam satuan megabita\relax }}{6}}
-\newlabel{fig:uji-g-mem}{{11}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Pengaruh jumlah objek terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{6}}
-\newlabel{fig:uji-n}{{12}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Pengaruh jumlah objek terhadap penggunaan memori dalam satuan megabita\relax }}{6}}
-\newlabel{fig:uji-n-mem}{{13}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Pengaruh jumlah \textit  {instance} terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{6}}
-\newlabel{fig:uji-np}{{14}{6}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Reverse Skyline Computation\relax }}{6}}
+\newlabel{algo:rsl}{{4}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Algoritme Tandingan}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-C}1}\textbf  {k-MPPTI NoRSL}}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-C}2}\textbf  {k-MPPTI Paralel}}{6}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Pandora Box\relax }}{6}}
+\newlabel{algo:pbox}{{5}{6}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Query Processing\relax }}{6}}
+\newlabel{algo:solution}{{6}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Pemrosesan paralel\relax }}{6}}
+\newlabel{fig:paralel}{{5}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Pengaruh jumlah sel terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{7}}
+\newlabel{fig:uji-g}{{6}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pengaruh jumlah sel grid terhadap penggunaan memori dalam satuan megabita\relax }}{7}}
+\newlabel{fig:uji-g-mem}{{7}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Uji Coba}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Variasi pengujian\relax }}{7}}
+\newlabel{tab:uji}{{IV}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Pengaruh jumlah objek terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{7}}
+\newlabel{fig:uji-n}{{8}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Pengaruh jumlah objek terhadap penggunaan memori dalam satuan megabita\relax }}{7}}
+\newlabel{fig:uji-n-mem}{{9}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Pengaruh jumlah \textit  {instance} terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{8}}
+\newlabel{fig:uji-np}{{10}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Pengaruh jumlah \textit  {instance} terhadap penggunaan memori dalam satuan megabita\relax }}{8}}
+\newlabel{fig:uji-np-mem}{{11}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{8}}
+\newlabel{fig:uji-d}{{12}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap penggunaan memori dalam satuan megabita\relax }}{8}}
+\newlabel{fig:uji-d-mem}{{13}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Kesimpulan}{8}}
 \bibcite{kmpp}{1}
 \bibcite{dynamic-skyline}{2}
 \bibcite{reverse-skyline}{3}
 \bibcite{time-series}{4}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Pengaruh jumlah \textit  {instance} terhadap penggunaan memori dalam satuan megabita\relax }}{7}}
-\newlabel{fig:uji-np-mem}{{15}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap waktu komputasi tiap operasi dalam satuan detik\relax }}{7}}
-\newlabel{fig:uji-d}{{16}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Pengaruh $ d_\varepsilon $ terhadap penggunaan memori dalam satuan megabita\relax }}{7}}
-\newlabel{fig:uji-d-mem}{{17}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Kesimpulan}{7}}
-\@writefile{toc}{\contentsline {section}{Pustaka}{7}}
 \bibcite{multidimensional-database}{5}
 \bibcite{skyline}{6}
 \bibcite{dynamic-skyline-2}{7}
 \bibcite{mid-skyline}{8}
 \bibcite{paralel}{9}
 \bibcite{fc}{10}
+\@writefile{toc}{\contentsline {section}{Pustaka}{9}}

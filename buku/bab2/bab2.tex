@@ -74,57 +74,53 @@ Data multidimensi banyak digunakan untuk analisis. Selama beberapa tahun terakhi
 Pada Tabel \ref{tab:data-time-series}, diberikan contoh sebuah data \textit{time series} $S$. Supaya sederhana, kita asumsikan bahwa \textit{timestamp} adalah bilangan bulat positif. Nilai $s_1 \in S$ pada \textit{timestamp} $j$ dinotasikan sebagai $s_1[j]$, sehingga \textit{time series} $s_1$ jika ditulis secara berurutan menjadi $s_1[1], s_1[2],..$ , dan seterusnya \cite{time-series}.
 
 \subsection{Data Multidimensi dengan Serial Waktu}
-\tab Untuk menjawab permasalahan yang diangkat pada Tugas Akhir ini, data yang digunakan merupakan penggabungan dari kedua jenis data di atas, yaitu data multidimensi dengan serial waktu.
+\tab Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu sebagaimana contoh \textit{dataset} produk $P$ dan preferensi pelanggan $C$ yang ditunjukkan pada Tabel \ref{tab:dataset}. Pada tabel tersebut, \textit{timestamp} ditulis sebagai interval waktu yang dinotasikan dengan $[t_i:t_e]$, dengan asumsi bahwa nilai masing-masing atribut konstan setiap waktu. 
 
-Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu. Pada Tabel \ref{tab:data-multidimensi-ts-1}, diberikan contoh sebuah data produk yang memiliki nilai atribut dan \textit{timestamp}.
-
-\newcolumntype{C}{>{\centering\arraybackslash}p{1.2em}}
-\begin{table}[h]
-	\small
-	\centering
-	\caption{Contoh data multidimensi dengan serial waktu (1) \label{tab:data-multidimensi-ts-1}}
-	\begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|}
-		\hline
-		\multirow{3}{*}{\textbf{id}} & \multicolumn{10}{c|}{\textbf{timestamp}}\\ \cline{2-11}
-		& \multicolumn{2}{c|}{\textbf{1}} & \multicolumn{2}{c|}{\textbf{2}} & \multicolumn{2}{c|}{\textbf{3}} & \multicolumn{2}{c|}{\textbf{4}} & \multicolumn{2}{c|}{\textbf{5}}\\ \cline{2-11}
-		& \textbf{$d_1$} & \textbf{$d_2$} & \textbf{$d_1$} & \textbf{$d_2$} & \textbf{$d_1$} & \textbf{$d_2$} & \textbf{$d_1$} & \textbf{$d_2$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline
-		\hline		
-		$p_1$ & 2 & 8 & 2 & 8 & 2 & 8 & 2 & 8 & 2 & 8 \\ \hline
-		$p_2$ & - & - & - & - & - & - & 4 & 10 & 4 & 10 \\ \hline
-		$p_3$ & 6 & 11 & 6 & 11 & 6 & 11 & - & - & - & - \\ \hline
-		$p_4$ & - & - & - & - & - & - & - & - & 8 & 12 \\ \hline
-		$p_5$ & 9 & 10 & 9 & 10 & 9 & 10 & 9 & 10 & - & - \\ \hline
-	\end{tabular}
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.4em}}
+\begin{table}[H]
+	\caption{Contoh \textit{dataset} \\ (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}
+	\begin{subtable}{.5\linewidth}
+		\small
+		\centering
+		\caption{}
+		\begin{tabular}{|C|C|C|C|C|}
+			\hline
+			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
+			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
+			$p_1$ & 2 & 10 & 6 & 3 \\ \hline
+			$p_2$ & 6 & 13 & 4 & 12 \\ \hline
+			$p_3$ & 9 & 15 & 6 & 15 \\ \hline
+			$p_4$ & 4 & 9 & 9 & 5 \\ \hline
+			$p_5$ & 5 & 15 & 12 & 10 \\ \hline
+		\end{tabular}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\small
+		\centering
+		\caption{}
+		\begin{tabular}{|C|C|C|C|C|}
+			\hline
+			\multirow{2}{*}{\textbf{ID}} & \multicolumn{2}{c|}{\textbf{\textit{Timestamp}}} & \multicolumn{2}{c|}{\textbf{Nilai}} \\ \cline{2-5}
+			& \textbf{$t_i$} & \textbf{$t_e$} & \textbf{$d_1$} & \textbf{$d_2$}\\ \hline \hline
+			$c_1$ & 1 & 8 & 2 & 8 \\ \hline
+			$c_2$ & 4 & 14 & 4 & 10\\ \hline
+			$c_3$ & 10 & 15 & 6 & 11\\ \hline
+			$c_4$ & 3 & 8 & 8 & 12\\ \hline
+			$c_5$ & 5 & 15 & 9 & 10\\ \hline
+		\end{tabular}
+	\end{subtable} 
 \end{table}
 
-Contoh data pada Tabel \ref{tab:data-multidimensi-ts-1} sekilas hampir sama dengan data pada Tabel \ref{tab:data-time-series}, namun memiliki atribut atau dimensi lebih dari satu. Jika asumsinya nilai pada atribut data selalu tetap, maka data pada Tabel \ref{tab:data-multidimensi-ts-1} dapat ditulis menjadi Tabel \ref{tab:data-multidimensi-ts}. Timestamp yang banyak dan berurutan dapat ditulis menjadi interval waktu (\textit{timestamp in - timestamp out}), dinotasikan dengan $[i:j]$. Interval waktu menggambarkan bahwa sebuah data memiliki waktu hidup tertentu.
-
-\newcolumntype{C}{>{\centering\arraybackslash}p{2.5em}}
-\begin{table}[h]
-	\small
-	\centering
-	\caption{Contoh data multidimensi dengan serial waktu (2) \label{tab:data-multidimensi-ts}}
-	\begin{tabular}{|C|C|C|C|C|}
-		\hline
-		\textbf{id} & \textbf{ts\_in} & \textbf{ts\_out} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline
-		$p_1$ & 1 & 8 & 2 & 8 \\ \hline
-		$p_2$ & 4 & 14 & 4 & 10\\ \hline
-		$p_3$ & 1 & 3 & 6 & 11\\ \hline
-		$p_4$ & 5 & 15 & 8 & 12\\ \hline
-		$p_5$ & 1 & 4 & 9 & 10\\ \hline
-	\end{tabular}
-\end{table}
-
-Data yang digunakan pada Tugas Akhir ini adalah dataset produk $P$ dan pelanggan $C$. Ilustrasinya, setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan kapan ia tidak diproduksi lagi, sedangkan setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan kapan ia meninggal dunia.
+Jenis data yang diproses pada Tugas Akhir ini adalah data multidimensi dengan serial waktu sebagaimana yang ditunjukkan pada Tabel \ref{tab:dataset}; terdiri dari dua data, yaitu data produk $P$ dan pelanggan $C$ yang memiliki atribut lebih dari satu. Sebagai ilustrasi dari data ini, setiap produk $p \in P$ memiliki waktu kapan ia pertama kali diproduksi dan tidak diproduksi lagi, sedangkan setiap pelanggan $c \in C$ memiliki waktu kapan ia lahir dan meninggal dunia.
 
 \section{\textit{Skyline}}
-\tab Komputasi \textit{skyline} telah menarik perhatian yang cukup besar dari peneliti sejak diperkenalkan pada komunitas basis data \cite{skyline}, terutama mengenai metode progresif yang dapat mengembalikan hasil kueri dengan cepat tanpa perlu membaca keseluruhan data \cite{dynamic-skyline}. Tujuan dari komputasi \textit{skyline} adalah mencari data yang “menarik” dari suatu himpunan data \cite{skyline}, yaitu data yang tidak didominasi oleh data lain atau data yang paling unggul.
+\tab Komputasi \textit{skyline} telah menarik perhatian yang cukup besar dari peneliti sejak diperkenalkan pada komunitas basis data \cite{skyline}, terutama mengenai metode progresif yang dapat mengembalikan hasil kueri dengan cepat tanpa perlu membaca keseluruhan data \cite{dynamic-skyline}. Operasi \textit{skyline} digunakan untuk mencari data yang menarik dari suatu himpunan data, yaitu data yang tidak didominasi oleh data lain. \textit{Skyline} didefinisikan sebagai titik-titik yang tidak didominasi oleh titik lain \cite{skyline}; titik adalah representasi dari data dalam bidang $d$-dimensi.
 
 Diberikan \textit{dataset} produk $P$ yang setiap datanya direpresentasikan sebagai titik $d$-dimensi. Sebuah titik $p_1$ dikatakan mendominasi titik lain $p_2$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ tidak lebih besar dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih kecil dari $p_2$ minimal pada satu dimensi. Secara matematika, relasi $p_1 \prec p_2$ dapat terbentuk jika dan hanya jika:
 \[\text{(a)} \tab p_1^i \leq p_2^i, \forall i \in [1, ..., d]\] 
 \[\text{(b)} \tab p_1^i < p_2^i, \exists i \in [1, ..., d]\]
 
-Misalnya, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan memiliki resolusi kamera terbesar. Pada Tabel \ref{tab:dataset}, diberikan data produk $P$ yang memiliki atribut resolusi kamera ($dim_1$) dan harga ($dim_2$). Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.
+Sebagai ilustrasi, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan memiliki resolusi kamera terbesar. Menggunakan dataset pada Tabel \ref{tab:dataset} tanpa memperhatikan \textit{timestamp}, terdapat data produk $P$ yang memiliki atribut resolusi kamera ($d_1$) dan harga ($d_2$). Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.
 
 \begin{figure}[h]
 	\centering
@@ -156,49 +152,6 @@ Suatu objek data $ob_1$ dikatakan mendominasi objek data $ob_2$ secara dinamis b
 \end{equation}
 
 Pada Tabel \ref{tab:dataset}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan preferensi pelanggan $c_1$, produk $p_1$ dikatakan mendominasi produk $p_2$, dinotasikan dengan $p_1 \prec_{c_1} p_2$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_2^1| = |5-15| = 10$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_2^2| = |2-14| = 12$.
-
-\newcolumntype{C}{>{\centering\arraybackslash}p{2.5em}}
-\begin{table}[H]
-	\caption{Contoh \textit{dataset}\\(a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}
-	\begin{subtable}{.5\linewidth}
-		\small
-		\centering
-		\caption{}
-		\begin{tabular}{|C|C|C|}
-			\hline
-			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline
-			$p_1$ & 5 & 9\\ \hline
-			$p_2$ & 15 & 14\\ \hline
-			$p_3$ & 8 & 10\\ \hline
-			$p_4$ & 5 & 14\\ \hline
-			$p_5$ & 12 & 6\\ \hline
-			$p_6$ & 15 & 11\\ \hline
-			$p_7$ & 12 & 10\\ \hline
-			$p_8$ & 9 & 11\\ \hline
-			$p_9$ & 6 & 4\\ \hline
-			$p_{10}$ & 8 & 6\\ \hline
-		\end{tabular}
-	\end{subtable}%
-	\begin{subtable}{.5\linewidth}
-		\small
-		\centering
-		\caption{}
-		\begin{tabular}{|C|C|C|}
-			\hline
-			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline
-			$c_1$ & 5 & 2\\ \hline
-			$c_2$ & 8 & 10\\ \hline
-			$c_3$ & 15 & 10\\ \hline
-			$c_4$ & 9 & 7\\ \hline
-			$c_5$ & 10 & 12\\ \hline
-			$c_6$ & 12 & 14\\ \hline
-			$c_7$ & 7 & 13\\ \hline
-			$c_8$ & 15 & 8\\ \hline
-			$c_9$ & 5 & 5\\ \hline
-			$c_{10}$ & 10 & 5\\ \hline
-		\end{tabular}
-	\end{subtable} 
-\end{table}
 
 Sebaliknya, jika berdasarkan preferensi pelanggan $c_6$, maka produk $p_2$-lah yang mendominasi $p_1$, dinotasikan dengan $p_2 \prec_{c_6} p_1$, karena (a) $|c_6^1 - p_2^1| = |12-15| = 3 \leq |c_6^1 - p_1^1| = |12-5| = 7$ dan (b) $|c_6^2 - p_2^2| = |14-14| = 0 < |c_6^2 - p_1^2| = |14-9| = 5$. Dalam hal ini, preferensi pelanggan disebut dengan titik kueri karena dapat mempengaruhi sifat dominansi antar produk.
 
