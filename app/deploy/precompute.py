@@ -148,6 +148,7 @@ def precompute_kmppti(dataset):
 
   while not event_queue.is_empty():
     event = event_queue.dequeue()
+    print(event)
     if event[1] == 0:
       if event[3] == 0:
         data['product']['active'].append(event[2])
