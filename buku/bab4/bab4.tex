@@ -6,17 +6,16 @@
 \tab Lingkungan implementasi dalam pembuatan Tugas Akhir ini meliputi perangkat keras dan perangkat lunak dengan spesifikasi sebagai berikut:
 
 \begin{enumerate}
-	\item Perangkat Keras:
+	\item Perangkat keras:
 	\begin{itemize}
 		\item Prosesor 2.6 GHz Intel Core i5 (I5-4278U)
 		\item Memori 8 GB 1600 MHz DDR3
 	\end{itemize}
-	\item Perangkat Lunak:
+	\item Perangkat lunak:
 	\begin{itemize}
 		\item Sistem operasi macOS Mojave Versi 10.14.5
 		\item \textit{Text editor} Visual Studio Code Versi 1.33.1
 		\item Bahasa Pemrograman Python 3.7.3
-		\item Flask \textit{Microframework} 1.0.2
 	\end{itemize}			
 \end{enumerate}
 
@@ -31,102 +30,80 @@ Algoritme ini diimplementasikan menggunakan paradigma pemrograman berorientasi o
 		\begin{algorithmic}[1]
 			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
 			\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
-			\State $EQ \leftarrow initEventQueue()$ 
-			\State $D \leftarrow$ Data indexing $P, C$ 
+			\State $EQ \leftarrow$ init event queue 
+			\State $D \leftarrow$ data indexing $P, C$ 
 			\ForAll {$d \in D$}
-			\For {$i \leftarrow$ 0 to 2}
-			\If {$i$ is 0} $enqueue(t_{in}, dt, id, i)$ to $EQ$
-			\Else{} $enqueue(t_{out}, dt, id, i)$ to $EQ$
-			\EndIf
+			\State $EQ \leftarrow$ enqueue $d$
 			\EndFor
-			\EndFor
-			\State $sortQueue(EQ)$
+			\State sort $EQ$
 			\State $PA \leftarrow \emptyset$ of active products
 			\State $CA \leftarrow \emptyset$ of active customers
-			\State $MaxTs \leftarrow$ get maximum timestamp 
-			\State $MaxVal \leftarrow$ get maximum value 
-			\State $PB \leftarrow$ new $initPandoraBox(Len(P), MaxTs)$ 
-			\State $RSL \leftarrow$ new $initReverseSkyline(P, C, Dim)$
-			\State $DSL \leftarrow$ new $initDynamicSkyline(P, C, Dim)$
+			\State $PB \leftarrow$ init pandora box
+			\State $RSL \leftarrow$ init reverse skyline
+			\State $DSL \leftarrow$ init dynamic skyline
 			\algstore{main1}
 		\end{algorithmic}
 	\end{algorithm}
 	\caption{Algoritme \textit{precomputing} (bagian 1) \label{algo:main-func-1}}
 \end{figure}
 
-\pagebreak
-Secara garis besar, langkah yang dilakukan selama \textit{precomputing} adalah (1) \textit{indexing} data dan pembentukan \textit{EventQueue} (baris pertama hingga ke-tujuh pada Algoritme \ref{algo:main-func-1}), (2) inisialisasi dan instansiasi objek (baris ke-delapan hingga terakhir pada Algoritme \ref{algo:main-func-1}), dan (3) pemrosesan \textit{event} (Algoritme \ref{algo:main-func-3}).
+Secara garis besar, langkah yang dilakukan selama \textit{precomputing} adalah (1) \textit{indexing} data dan pembentukan \textit{EventQueue} (\textit{psuedocode} baris 1-5 pada Algoritme \ref{algo:main-func-1}), (2) inisialisasi dan instansiasi objek (\textit{pseudocode} baris 6-10 pada Algoritme \ref{algo:main-func-1}), dan (3) pemrosesan \textit{event} (\textit{pseudocode} baris 11-36 pada Algoritme \ref{algo:main-func-2}).
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\caption{Precomputing}
 		\begin{algorithmic}[1]
 			\algrestore{main1}
-			\While {$EQ$ not $empty()$}
-			\State $e \leftarrow dequeue(EQ)$
+			\While {$EQ$ is not empty}
+			\State $e \leftarrow$ dequeue $EQ$
 			\If {$e$ role is product}
 			\If {$e$ action is insertion}  
 			\State $PA \leftarrow$ append $p \in e$
-			\State $RSL(p) \leftarrow computeRSL(p)$
-			\ForAll {$c \in RSL(p)$ \textbf{parallel}}
-			\State $DSL(c) \leftarrow computeDSL(c, ts, act, p)$
+			\State $RSL(p) \leftarrow$ compute reverse skyline
+			\ForAll {$c \in RSL(p)$}
+			\State $DSL(c) \leftarrow$ compute dynamic skyline
 			\EndFor
-			\ForAll {$c \in CA$ \textbf{parallel}}
-			\State $updatePBox(DSL(c))$
+			\ForAll {$c \in CA$}
+			\State $PB \leftarrow$ update pandora box $DSL(c)$
 			\EndFor
 			\ElsIf {$e$ act is deletion}
-			\ForAll {$c \in CA$ \textbf{parallel}}
-			\State $DSL(c) \leftarrow updatePBox(DSL(c))$
+			\ForAll {$c \in CA$}
+			\State $PB \leftarrow$ update pandora box $DSL(c)$
 			\EndFor
-			\State $RSL(p) \leftarrow computeRSL(p)$
-			\ForAll {$c \in RSL(p)$ \textbf{parallel}}
-			\State $DSL(c) \leftarrow computeDSL(c, ts, act, p)$
+			\State $RSL(p) \leftarrow$ compute reverse skyline
+			\ForAll {$c \in RSL(p)$}
+			\State $DSL(c) \leftarrow$ find active child and
+			\Statex \hspace{3.1cm} compute new dynamic skyline
 			\EndFor
 			\State $PA \leftarrow$ remove $p \in e$
 			\EndIf
-			\algstore{main2}
-		\end{algorithmic}
-	\end{algorithm}
-	\caption{Algoritme \textit{precomputing} (bagian 2) \label{algo:main-func-2}}
-\end{figure}
-			
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\caption{Precomputing}
-		\begin{algorithmic}[1]
-			\algrestore{main2}
 			\ElsIf{$e$ role is customer}
 			\If {$e$ act is insertion} 
 			\State $CA \leftarrow$ append $c \in e$ 
-			\State $DSL(c) \leftarrow computeDSL(c, ts)$
-			\State $updatePBox(DSL(c))$
+			\State $DSL(c) \leftarrow$ compute initial dynamic skyline
+			\State $PB \leftarrow$ update pandora box $DSL(c)$
 			\ElsIf {$e$ act is deletion}
-			\State $DSL(c) \leftarrow computeDSL(c, ts)$
-			\State $updatePBox(DSL(c))$
+			\State $PB \leftarrow$ update pandora box $DSL(c)$
 			\State $CA \leftarrow$ remove $c \in e$ 
 			\EndIf
 			\EndIf
 			\EndWhile
+			\State export $PB$
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Algoritme \textit{precomputing} (bagian 3) \label{algo:main-func-3}}
+	\caption{Algoritme \textit{precomputing} (bagian 2) \label{algo:main-func-2}}
 \end{figure}
 
 \subsection{Kelas \textit{EventQueue}}
-\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{Event Queue} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. \textit{EventQueue} tidak dibuat menggunakan struktur data \textit{queue} karena data yang digunakan adalah \textit{historical} dan diurutkan berdasarkan \textit{timestamp} dari data tersebut, bukan berdasarkan urutan masuknya data. Sehingga, \textit{EventQueue} diimplementasikan menggunakan \textit{array} yang bekerja seperti \textit{queue}, yakni FIFO (\textit{First In First Out}). 
-
-Ada enam fungsi yang diimplementasikan dalam kelas ini sebagaimana yang ditunjukkan oleh Algoritme \ref{algo:event-queue-class}, namun hanya ada tiga fungsi utama, yaitu $enqueue$ untuk memasukkan data ke dalam \textit{array} pada indeks pertama, $dequeue$ untuk mengeluarkan data dari \textit{array} pada indeks terakhir; dan $sortQueue$ untuk mengurutkan data di dalam array.
-
+\tab Kelas \textit{EventQueue} mendefinisikan bentuk dan perilaku dari objek \textit{EQ} yang berfungsi untuk menyimpan \textit{event-event} yang terjadi di dalam himpunan data. \textit{EventQueue} tidak dibuat menggunakan struktur data \textit{queue} asli karena data yang digunakan adalah \textit{historical} dan harus diurutkan terlebih dahulu berdasarkan \textit{timestamp} dari masing-masing data. Sehingga, \textit{EventQueue} diimplementasikan menggunakan \textit{array} yang bekerja seperti \textit{queue}, yakni FIFO (\textit{First In First Out}). 
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\caption{EventQueue Class}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} timestamp $t$, role $o$ (product/customer), data ID $oid$, action $a$ (insertion/deletion)
+			\Statex \textbf{Input \hskip1em :} timestamp $t$, role $o$ (product/customer), data ID $id$, action $a$ (insertion/deletion)
 			\Statex \textbf{Output \hskip0.3em :} event queue $E$
-			\Procedure{$initEventQueue$}{}
 			\State $E \leftarrow \emptyset$
-			\EndProcedure
 			\Procedure{$enqueue$}{$t$, $o$, $oid$, $a$}
 			\State $e \leftarrow$ [$t, o, oid, a$]
 			\State $E \leftarrow$ append $e$ 
@@ -138,52 +115,36 @@ Ada enam fungsi yang diimplementasikan dalam kelas ini sebagaimana yang ditunjuk
 			\Procedure{$sortQueue$}{}
 			\State $E \leftarrow$ sort elements in descending order based on sorting priority (timestamp, insertion act, deletion act, product, customer, data ID))
 			\EndProcedure
-			\Procedure{$getTotalQueue$}{}
-			\State \Return number of elements in $E$
-			\EndProcedure
-			\Procedure{$getMaxTimestamp$}{}
-			\State \Return timestamp in the first index of $E$ (descending order)
-			\EndProcedure
-			\Procedure{$getMinTimestamp$}{}
-			\State \Return timestamp in last first index of $E$ (descending order)
-			\EndProcedure
-			\Procedure{$empty$}{}
-			\If {$E$ is empty} \Return True
-			\Else {} \Return False
-			\EndIf
-			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
 	\caption{Kelas \textit{EventQueue} \label{algo:event-queue-class}}
 \end{figure}
 
 \pagebreak
+Ada tiga fungsi utama yang diimplementasikan, yaitu $enqueue$ untuk memasukkan data ke dalam \textit{array} pada indeks pertama, $dequeue$ untuk mengeluarkan data dari \textit{array} pada indeks terakhir; dan $sortQueue$ untuk mengurutkan data di dalam array.
+
 \subsection{Kelas \textit{PandoraBox}}
-\tab Kelas \textit{PandoraBox} mendefinisikan bentuk dan perilaku dari objek \textit{Pandora Box} yang berfungsi untuk menyimpan skor kontribusi pasar masing-masing produk $p \in P$ pada setiap waktu dalam interval hidupnya $t \in [t_i:t_e]$. \textit{PandoraBox} diimplementasikan menggunakan struktur data \textit{array} dua dimensi, yaitu ID produk dan \textit{timestamp}.
+\tab Kelas \textit{PandoraBox} mendefinisikan bentuk dan perilaku dari objek \textit{PB} yang berfungsi untuk menyimpan skor kontribusi pasar masing-masing produk $p \in P$ pada setiap waktu dalam interval hidupnya $t \in [t_i:t_e]$. \textit{PandoraBox} diimplementasikan menggunakan struktur data \textit{array} dua dimensi, yaitu ID produk dan \textit{timestamp}.
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\caption{PandoraBox Class}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp now $ts$, probability score $pr$, last timestamp $lts$, last probability score $lpr$
-			\Statex \textbf{Output \hskip0.3em :} filled pandora box $PBox$
-			\Procedure{$initPandoraBox$}{}
-			\State $PBox \leftarrow \emptyset$
-			\EndProcedure
-			\Procedure{$updatePBox$}{$DSL(c)$}
+			\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp $ts$, probability score $pr$, last updated timestamp $lastts$, last probability score $lastpr$ 
+			\Statex \textbf{Output \hskip0.3em :} filled pandora box $PB$
+			\State $PB \leftarrow \emptyset$
+			\Procedure{$updatePB$}{$DSL(c)$}
 			\ForAll {$p \in DSL(c)$}
-			\If{$ts > lts$}
-			\State $updateScore(p, ts, pr, lts, lpr)$
-			\Else
-			\State $PBox(p, ts) \leftarrow PBox(p, ts) + pr$  
+			\If{$ts > lastts$}
+			\State $UpdateScore(p, ts, pr, lastts, lastpr)$
 			\EndIf
+			\State $PB(p, ts) \leftarrow PB(p, ts) + pr$  
 			\EndFor
 			\EndProcedure
-			\Procedure{$updateScore$}{$p$, $ts$, $lts$, $pr$, $lpr$}
-			\For {$i \leftarrow lts+1$ to $ts$}
-			\State $PBox(p, i) \leftarrow PBox(p, i) + lpr$  
+			\Procedure{$updateScore$}{$p$, $ts$, $pr$, $lastts$, $lastpr$}
+			\For {$i \leftarrow lastts+1$ to $ts$}
+			\State $PB(p, i) \leftarrow PB(p, i) + lastpr$  
 			\EndFor
-			\State $PBox(p, i) \leftarrow PBox(p, i) + pr$
 			\EndProcedure
 			\algstore{pbox}
 		\end{algorithmic}
@@ -192,30 +153,105 @@ Ada enam fungsi yang diimplementasikan dalam kelas ini sebagaimana yang ditunjuk
 \end{figure}
 
 \pagebreak
-Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yaitu $updatePBox$ untuk memperbarui skor kontribusi pasar pelanggan $c$ dan $updateScore$ untuk memperbarui "kotak" sebelumnya menggunakan nilai probabilitas terakhir. Kelas \textit{Pandora Box} ditunjukkan oleh Algoritme \ref{algo:pbox-class}.
+Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yaitu $updatePB$ untuk memperbarui skor kontribusi pasar pelanggan $c$ dan $updateScore$ untuk memperbarui indeks sebelumnya, jika ada yang kosong, menggunakan nilai probabilitas terakhir. Kelas \textit{PandoraBox} ditunjukkan oleh Algoritme \ref{algo:pbox-class}.
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\caption{DynamicSkyline Class}
+		\begin{algorithmic}[1]
+			\Statex \textbf{Input \hskip1em :} customer $c$, active products $PA$, product in/out $p$
+			\Statex \textbf{Output \hskip0.3em :} $DSL(p)$
+			\Procedure{$computeDSL$}{$c$, $ts$, $act$, $p$}
+			\If{$act$ is customer insertion} call $initDSL(c)$
+			\ElsIf{$act$ is product insertion} call $productIn(c, p)$
+			\ElsIf{$act$ is product deletion} call $productOut(c, p)$
+			\EndIf
+			\EndProcedure
+			\Procedure{$productOut$}{$c$, $p$}
+			\State $ac \leftarrow$ find active childs of $p$
+			\State $DSL(c) \leftarrow$ call $productIn(c, ac)$  
+			\State \Return $DSL(c)$
+			\EndProcedure
+			\algstore{dsl}
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Kelas \textit{DynamicSkyline} (bagian 1) \label{algo:dsl1}}
+\end{figure}
+
+\subsection{Kelas \textit{Dynamic Skyline}}
+\tab Kelas \textit{DynamicSkyline} mendefinisikan bentuk dan perilaku dari objek \textit{DSL} yang berfungsi untuk menangani komputasi \textit{dynamic skyline}, memiliki 3 jenis pemrosesan \textit{event}, yaitu (1) $initDSL$ yang dijalankan ketika ada data pelanggan yang masuk, ditunjukkan oleh \textit{pseudocode} baris 8-20 pada Algoritme \ref{algo:dsl2}; (2) $DSL-PI$ yang dijalankan ketika ada data produk yang masuk, ditunjukkan oleh \textit{pseudocode} baris 21-35 pada Algoritme \ref{algo:dsl2}; (3) $DSL-PD$ yang dijalankan ketika ada data produk yang keluar, ditunjukkan oleh \textit{pseudocode} baris 36-39 pada Algoritme \ref{algo:dsl2}.
+
+\begin{figure}[H]
+	\begin{algorithm}[H]
+		\caption{DynamicSkyline Class}
+		\begin{algorithmic}[1]
+			\algrestore{dsl}
+			\Procedure{$initDSl$}{$c$, $PA$}
+			\State $CAND \leftarrow PA$
+			\State sort $CAND$
+			\For {$i \leftarrow$ 0 to length of $CAND$}
+			\For {$j \leftarrow i + 1$ to length of $CAND$}
+			\If {$p_i \prec_c p_j$} 
+			\State add $p_j$ to the child list of $p_i$
+			\State $CAND \leftarrow$ remove $p_j$
+			\ElsIf {$p_j \prec_c p_i$} 
+			\State add $p_i$ to the child list of $p_j$
+			\State $CAND \leftarrow$ remove $p_i$
+			\State \textbf{break} 
+			\EndIf
+			\EndFor
+			\State \Return $CAND$ as $DSL(c)$
+			\EndFor
+			\EndProcedure
+			\Procedure{$productIn$}{$c$, $p$}
+			\State $CAND \leftarrow p$, current $DSL(c)$
+			\State sort $CAND$
+			\State $x \leftarrow$ get index of p in $CAND$
+			\For {$i \leftarrow$ 0 to length of $CAND$}
+			\If{$i < x$}
+			\If {$p_i \prec_c p_{x}$} 
+			\State add $p_x$ to the child list of $p_i$
+			\State $CAND \leftarrow$ remove $p_x$
+			\State \textbf{break}
+			\EndIf
+			\ElsIf{$i > x$}
+			\If {$p_x \prec_c p_i$} 
+			\State add $p_i$ to the child list of $p_x$
+			\State $CAND \leftarrow$ remove $p_i$
+			\EndIf
+			\EndIf
+			\EndFor
+			\State \Return $CAND$ as $DSL(c)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	\caption{Kelas \textit{DynamicSkyline} (bagian 2) \label{algo:dsl2}}
+\end{figure}
 
 \subsection{Kelas \textit{ReverseSkyline}}
-\tab Kelas \textit{ReverseSkyline} mendefinisikan bentuk dan perilaku dari objek \textit{Reverse Skyline} yang berfungsi untuk menangani komputasi \textit{reverse skyline}, meliputi (1) pembentukan \textit{orthant} pada fungsi $defineOrthant$ dan $getOrthantId$, (2) menghitung \textit{midpoint} antara produk kueri dan produk lainnya pada fungsi $calcMidpoint$, (3) menentukan \textit{midpoint skyline} masing-masing \textit{orthant} pada fungsi $findMidSkyline$, dan (4) menentukan \textit{reverse skyline} pada fungsi $findReverseSkyline$. Kelas \textit{ReverseSkyline} ditunjukkan pada Algoritme \ref{algo:rsl-class-1}, \ref{algo:rsl-class-2}, \ref{algo:rsl-class-3}.
+\tab Kelas \textit{ReverseSkyline} mendefinisikan bentuk dan perilaku dari objek \textit{RSL} yang berfungsi untuk menangani komputasi \textit{reverse skyline}, meliputi (1) pembentukan \textit{orthant} pada fungsi $defineOrthant$ dan $getOrthantId$ yang ditunjukkan oleh \textit{pseudocode} baris 5-13 pada Algoritme \ref{algo:rsl2}, (2) menghitung semua \textit{midpoint} antara produk kueri dan setiap produk $p \in P$ pada fungsi $calcMidpoint$ yang ditunjukkan pada \textit{pseudocode} baris 14-16 pada Algoritme \ref{algo:rsl2}, (3) menentukan \textit{midpoint skyline} masing-masing \textit{orthant} pada fungsi $findMidSkyline$ yang ditunjukkan oleh \textit{pseudocode} baris 17-30 pada Algoritme \ref{algo:rsl2}, dan (4) menentukan \textit{reverse skyline} pada fungsi $findReverseSkyline$ yang ditunjukkan oleh \textit{pseudocode} baris 31-38 pada Algoritme \ref{algo:rsl3}.
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\caption{ReverseSkyline Class}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} product as query point $p_q$, active products $PA$, active customers $CA$
+			\Statex \textbf{Input \hskip1em :} product as query point $p_q$, active products $PA$, active customers $CA$, dimension of data $d$
 			\Statex \textbf{Output \hskip0.3em :} $RSL(p)$
-			\Procedure{$initReverseSkyline$}{$P$, $C$, $d$}
-			\State $PA \leftarrow$ get product active from $P$
-			\State $CA \leftarrow$ get customer active from $C$
-			\State $O \leftarrow defineOrthant(Dim)$
-			\EndProcedure
 			\Procedure{$computeRSL$}{$p_q$}
-			\State $findMidSkyline(p_q, PA)$
-			\State $RSL(p) \leftarrow findReverseSkyline(CA)$
+			\State call $defineOrthant(d)$
+			\State call $findMidSkyline(p_q, PA)$
+			\State \Return $findReverseSkyline(CA)$
+			\EndProcedure
+			\Procedure{$defineOrthant$}{$d$}
+			\For{$i \leftarrow 0$ to $2^d$}
+			\State $id \leftarrow$ binary of $i$ 
+			\State $o_{id} \leftarrow \emptyset$ 
+			\EndFor
 			\EndProcedure
 			\algstore{rsl}
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Kelas \textit{ReverseSkyline} (bagian 1) \label{algo:rsl-class-1}}
+	\caption{Kelas \textit{ReverseSkyline} (bagian 1) \label{algo:rsl1}}
 \end{figure}
 
 \begin{figure}[H]
@@ -223,178 +259,82 @@ Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yai
 		\caption{ReverseSkyline Class}
 		\begin{algorithmic}[1]
 			\algrestore{rsl}
+			\Procedure{$getOrthantId$}{$D$}
+			\For {\textbf{each} $i \in d$}
+			\If {$D^i \leq p_q^i$} $id \leftarrow$ append $0$
+			\Else {} $id \leftarrow$ append $1$
+			\EndIf
+			\EndFor
+			\State \Return $id$
+			\EndProcedure
+			\Procedure{$calcMidpoint$}{$p_q$, $p$} 
+			\For {\textbf{each} $i \in d$} $m \leftarrow$ $\frac{(p_q^i + p^i)}{2}$
+			\EndFor
+			\State \Return $m$
+			\EndProcedure
 			\Procedure{$findMidSkyline$}{$p_q, PA$}
 			\ForAll {$p \in PA$}
 			\If {$p \not= p_q$}
-			\State $m \leftarrow calcMidpoint(p_q, p)$ 
-			\State $id \leftarrow getOrthantId(p)$
-			\If {$O_{id}$ is empty} $O_{id} \leftarrow m$
+			\State $m \leftarrow CalcMidpoint(p_q, p)$ 
+			\State $id \leftarrow GetOrthantId(p)$
+			\If {$o_{id}$ is empty} $o_{id} \leftarrow m$
 			\Else{} 
-			\For {\textbf{each} $ms \in MSL(o)$}
-			\If{$m \prec ms$} 
-			\State $MSL(o) \leftarrow$ delete $ms$
-			\ElsIf{$ms \prec m$}
-			\State exit the loop 
-			\EndIf
-			\If{$m \nprec ms$}
-			\State $MSL(o) \leftarrow$ insert $m$
+			\For {\textbf{each} $mc \in MSL(o_{id})$}
+			\If{$m \prec_{p_q} mc$} 
+			\State $MSL(o_{id}) \leftarrow$ delete $mc$
+			\ElsIf{$mc \prec_{p_q} m$}
+			\State \textbf{break} 
 			\EndIf
 			\EndFor
+			\If{$\forall mc \in MSL(o_{id}) \nprec_{p_q} m$}
+			\State $MSL(o) \leftarrow$ insert $m$
+			\EndIf
 			\EndIf
 			\EndIf
 			\EndFor
 			\EndProcedure
-			\Procedure{$findReverseSkyline$}{$CA$} 
-			\State $RSL(p) \leftarrow \emptyset$
+			\Procedure{$findReverseSkyline$}{$p_q, CA$} 
 			\For {$c \in CA$}
-			\State $id \leftarrow$ $getOrthantId(c)$
-			\If {$O_{id}$ is empty} 
-			\State $RSL(p) \leftarrow$ insert $c$
+			\State $id \leftarrow$ $GetOrthantId(c)$
+			\If {$o_{id}$ is empty} $RSL(p) \leftarrow$ insert $c$
 			\Else{}  
-			\State $dom \leftarrow 0$
-			\ForAll {$m \in O_{id}$}
-			\If {$m \prec c$}
-			\State $dom \leftarrow dom + 1$						
-			\EndIf
-			\EndFor
-			\If {$dom$ is $0$}
+			\If {$\forall m \in MSL(o_{id}) \nprec_{p_q} c$}
 			\State $RSL(p) \leftarrow$ insert $c$
 			\EndIf
 			\EndIf
 			\EndFor
 			\State \Return $RSL(p)$
 			\EndProcedure
-			\algstore{rsl1}
 		\end{algorithmic}
 	\end{algorithm}
-	\caption{Kelas \textit{ReverseSkyline} (bagian 2) \label{algo:rsl-class-2}}
+	\caption{Kelas \textit{ReverseSkyline} (bagian 2) \label{algo:rsl2}}
 \end{figure}
 
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\caption{ReverseSkyline Class}
-		\begin{algorithmic}[1]
-			\algrestore{rsl1}
-			\Procedure{$calcMidpoint$}{$p_q$, $p$} 
-			\State $m \leftarrow \emptyset$
-			\For {\textbf{each} $i \in d$} $m \leftarrow$ $\frac{(p_q^i + p^i)}{2}$
-			\EndFor
-			\State \Return $m$
-			\EndProcedure
-			\Procedure{$getOrthantId$}{$D$}
-			\State $o \leftarrow \varnothing$
-			\For {\textbf{each} $i \in d$}
-			\If {$D^i \leq p_q^i$} $o \leftarrow$ append $0$
-			\Else {} $o \leftarrow$ append $1$
-			\EndIf
-			\EndFor
-			\State \Return $o$
-			\EndProcedure
-		\end{algorithmic}
-	\end{algorithm}
-	\caption{Kelas \textit{ReverseSkyline} (bagian 3) \label{algo:rsl-class-3}}
-\end{figure}
+\subsection{Metode Pengecekan Dominasi}
 
-\subsection{Kelas \textit{Dynamic Skyline}}
-\tab Kelas \textit{DynamicSkyline} mendefinisikan bentuk dan perilaku dari objek \textit{Dynamic Skyline} yang berfungsi untuk menangani komputasi \textit{dynamic skyline} yang memiliki 3 jenis pemrosesan \textit{event}, yaitu (1) \textit{Initial} $DSL$, digunakan ketika ada data pelanggan yang masuk (\textit{customer insertion}), (2) $DSL-PI$, digunakan ketika ada data produk yang masuk (\textit{product insertion}), dan (3) $DSL-PD$, digunakan ketika ada data produk yang keluar (\textit{product deletion}). Kelas \textit{DynamicSkyline} ditunjukkan pada Algoritme \ref{algo:dsl-class-1} dan \ref{algo:dsl-class-2}.
-
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\caption{DynamicSkyline Class}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} customer $c$, product data $P$ 
-			\Statex \textbf{Output \hskip0.3em :} $DSL(p)$
-			\Procedure{$initDynamicSkyline$}{$P$, $C$, $d$}
-			\State $PA \leftarrow$ get product active from $P$
-			\EndProcedure
-			\Procedure{$computeDSL$}{$c$, $ts$, $act$, $p$}
-			\If{$act$ is customer insertion}
-			\State $initDSL(c, ts)$
-			\ElsIf{$act$ is product insertion}
-			\State $productIn(c, ts, p)$
-			\ElsIf{$act$ is product deletion}
-			\State $productOut(c, ts, p)$
-			\EndIf
-			\EndProcedure
-			\Procedure{$initDSl$}{$c$}
-			\State $CAND \leftarrow PA$
-			\State sort $CAND$
-			\For {$i \leftarrow$ 0 to length of $CAND$}
-			\For {$j \leftarrow i + 1$ to length of $CAND$}
-			\If {$p_i \prec p_j$} 
-			\State add $p_j$ to the child list of $p_i$
-			\State $CAND \leftarrow$ remove $p_j$
-			\ElsIf {$p_j \prec p_i$} 
-			\State add $p_i$ to the child list of $p_j$
-			\State $CAND \leftarrow$ remove $p_i$
-			\State break the loop
-			\EndIf
-			\EndFor
-			\State \Return $CAND$ as $DSL(c)$
-			\EndFor
-			\EndProcedure
-			\algstore{dsl}
-		\end{algorithmic}
-	\end{algorithm}
-	\caption{Kelas \textit{DynamicSkyline} (bagian 1) \label{algo:dsl-class-1}}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{algorithm}[H]
-		\caption{DynamicSkyline Class}
-		\begin{algorithmic}[1]
-			\algrestore{dsl}
-			\Procedure{$productIn$}{$p$}
-			\State $CAND \leftarrow p, DSL(c)$
-			\State sort $CAND$
-			\State $index \leftarrow$ get index of p in $CAND$
-			\For {$i \leftarrow$ 0 to length of $CAND$}
-				\If{$i < index$}
-					\If {$p_i \prec p_{index}$} 
-					\State add $p_{index}$ to the child list of $p_i$
-					\State $CAND \leftarrow$ remove $p_{index}$
-					\State break the loop
-					\EndIf
-				\ElsIf{$i > index$}
-					\If {$p_{index} \prec p_i$} 
-					\State add $p_i$ to the child list of $p_{index}$
-					\State $CAND \leftarrow$ remove $p_i$
-					\EndIf
-				\EndIf
-			\EndFor
-			\State \Return $CAND$ as $DSL(c)$
-			\EndProcedure
-			\Procedure{$productOut$}{$p$}
-			\State $AC \leftarrow$ find active childs of $p$
-			\State $DSL(c) \leftarrow productIn(AC)$  
-			\State \Return $DSL(c)$
-			\EndProcedure
-		\end{algorithmic}
-	\end{algorithm}
-	\caption{Kelas \textit{DynamicSkyline} (bagian 2) \label{algo:dsl-class-2}}
-\end{figure}
+\tab Metode yang untuk pengecekan dominasi adalah dengan membandingkan selisih absolut data dengan titik kueri secara iteratif sejumlah dimensi data. Sehingga, semakin banyak dimensi data maka proses pengecekan dominasi semakin lama. Metode pengecekan dominasi ini digunakan dalam setiap komputasi \textit{dynamic skyline} dan \textit{reverse skyline}.
 
 \begin{figure}[H]
 	\begin{algorithm}[H]
 		\caption{Check Domination}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} value of subject ($val_s$), value of target ($val_t$), value of query point ($val_q$), dimension of data ($d$)
-			\Statex \textbf{Output \hskip0.3em :} is subject dominating target based on query point? ($s \prec_q t$)
-			\Procedure{$isDominating$}{$val_s, val_t, val_q$} 
-			\State $dg \leftarrow 0$ \Comment{counter of dominating}
-			\State $dd \leftarrow 0$ \Comment{counter of dominated}
+			\Statex \textbf{Input \hskip1em :} value of subject ($ob_1$), value of target ($ob_2$), value of query point ($ob_3$), dimension of data ($d$)
+			\Statex \textbf{Output \hskip0.3em :} $ob_1 \prec_{ob_3} ob_2$ is true/false
+			\Procedure{$isDominating$}{$ob_1, ob_2, ob_3$} 
+			\State $dominating \leftarrow 0$ 
+			\State $dominated \leftarrow 0$
 			\For {\textbf{each} $i \in d$}
-			\State $diff_s^i \leftarrow |val_s^i - val_q^i|$
-			\State $diff_t^i \leftarrow |val_t^i - val_q^i|$
-			\If {$diff_a^i = diff_b^i$}
-			\State \textbf{continue the loop}
-			\ElsIf{$diff_s^i < diff_t^i$}
-			\State $dg \leftarrow dg+1$
-			\ElsIf{$diff_s^i > diff_t^i$}
-			\State $dd \leftarrow dd+1$
+			\State $diff_1^i \leftarrow |ob_1^i - ob_3^i|$
+			\State $diff_2^i \leftarrow |ob_2^i - ob_3^i|$
+			\If {$diff_1^i = diff_2^i$}
+			\State \textbf{continue}
+			\ElsIf{$diff_1^i < diff_2^i$}
+			\State $domininating \leftarrow dominating + 1$
+			\ElsIf{$diff_1^i > diff_2^i$}
+			\State $dominated \leftarrow dominated + 1$
 			\EndIf
 			\EndFor
-			\If{$dd = 0$ and $dg \geq 1$} 
+			\If{$dominated = 0$ and $dominating \geq 1$} 
 			\State \Return True
 			\Else{} 
 			\State \Return False
@@ -405,26 +345,18 @@ Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yai
 	\caption{Fungsi cek dominasi \label{algo:check-dom}}
 \end{figure}
 
-\section{Implementasi Algoritme \textit{Query Processing}}
-\tab \textit{Query processing} merupakan pemrosesan tahap kedua dalam algoritme k-MPPTI yang bertujuan untuk memproses kueri yang dimasukkan oleh pengguna dengan memanfaatkan \textit{Pandora Box} dari hasil \textit{precomputing}. Proses diawali dengan mengakumulasi skor kontribusi pasar semua produk dalam interval waktu kueri, kemudian hasil akumulasi diurutkan dari yang terbesar. Langkah terakhir adalah mengembalikan hasil kueri berupa produk sejumlah $k$ beserta skor kontribusi pasarnya.
-
 \begin{figure}[H]
 	\begin{algorithm}[H]
-		\caption{Solution}
+		\caption{Query Processing}
 		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} Pandora Box $PBox$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
+			\Statex \textbf{Input \hskip1em :} Pandora Box $PB$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
 			\Statex \textbf{Output \hskip0.3em :} $k$ products
-			\Procedure{$solution$}{$PBox$, $k$, $t_i$, $t_e$}
-			\State $Res \leftarrow \emptyset$
+			\State $Q \leftarrow \emptyset$
 			\ForAll {$p \in P$}
-			\State $MC(p) \leftarrow getScore(p, t_i, t_e)$
+			\State $MC_p \leftarrow$ call $getScore(p, t_i, t_e)$
 			\EndFor
-			\State sort $MC$ in ascending order
-			\For{$i \leftarrow$ 0 to $k$}
-			\State $Res \leftarrow$ append $MC(i)$
-			\EndFor
-			\Return $Res$
-			\EndProcedure
+			\State sort $MC$ in ascending order based on market contribution score
+			\State $Q \leftarrow$ get top-k $MC$
 		\end{algorithmic}
 	\end{algorithm}
 	\caption{Algoritme \textit{query processing} \label{algo:solution}}
@@ -440,7 +372,7 @@ Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yai
 			\Procedure{$getScore$}{$p[id]$, $t_i$, $t_e$}
 			\State $MC \leftarrow 0$ 
 			\For {$i \leftarrow t_i$ to $t_e + 1$}
-			\State $MC \leftarrow MC + PBox(p, i)$
+			\State $MC \leftarrow MC + PB(p, i)$
 			\EndFor
 			\Return $MC$
 			\EndProcedure
@@ -449,31 +381,13 @@ Ada dua fungsi utama yang digunakan dalam proses \textit{data precomputing}, yai
 	\caption{Kelas \textit{PandoraBox} (bagian 2) \label{algo:pbox-class-2}}
 \end{figure}
 
+\section{Implementasi Algoritme \textit{Query Processing}}
+\tab \textit{Query processing} merupakan pemrosesan tahap kedua dalam algoritme k-MPPTI yang bertujuan untuk memproses kueri yang dimasukkan oleh pengguna dengan memanfaatkan \textit{Pandora Box} dari hasil \textit{precomputing}. Proses diawali dengan mengakumulasi skor kontribusi pasar semua produk dalam interval waktu kueri, kemudian hasil akumulasi diurutkan dari yang terbesar. Langkah terakhir adalah mengembalikan hasil kueri berupa produk sejumlah $k$ beserta skor kontribusi pasarnya.
+
 \section{Implementasi Antarmuka Pengguna}
 \tab Antarmuka pengguna diimplementasikan menggunakan bahasa pemrograman Python, HTML, CSS, dan JavaScript, serta Flask sebagai kerangka kerja \textit{back-end}, Bootstrap sebagai kerangka kerja \textit{front-end}, dan pustaka Vis.js untuk menampilkan visualisasi data. 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/home.png}
-	\caption{Implementasi halaman \textit{Home}}
-	\label{fig:home}
-\end{figure}
-
 Antarmuka pengguna memiliki empat menu utama yaitu, \textit{"Home"} sebagai halaman utama yang berisi pengenalan algoritme k-MPPTI, \textit{"Precompute"} untuk melakukan \textit{data precomputing}, \textit{"Search"} untuk melakukan pencarian $k$-produk yang paling diminati pelanggan dalam interval waktu tertentu, dan \textit{"Visualization"} untuk melihat visualisasi data.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/precompute.png}
-	\caption{Implementasi halaman \textit{Precompute}}
-	\label{fig:precompute}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/search.png}
-	\caption{Implementasi halaman \textit{Search}}
-	\label{fig:search}
-\end{figure}
 
 Pada menu \textit{"Precompute"} (Gambar \ref{fig:precompute}), pengguna diberikan opsi untuk memasukkan data baru atau menggunakan \textit{session} yang sudah ada. Jika pengguna memasukkan data baru, artinya pengguna membuat \textit{session} baru dan data akan di-\textit{precompute} terlebih dahulu. Jika pengguna memilih session yang sudah ada, data tidak perlu di-\textit{precompute} ulang.
 
@@ -481,24 +395,44 @@ Setelah melalui proses \textit{precomputing}, pengguna dapat memasukkan kueri pe
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/data-info.png}
+	\includegraphics[width=10.5cm]{assets/img/bab4/home.png}
+	\caption{Implementasi halaman \textit{Home}}
+	\label{fig:home}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10.5cm]{assets/img/bab4/precompute.png}
+	\caption{Implementasi halaman \textit{Precompute}}
+	\label{fig:precompute}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10.5cm]{assets/img/bab4/search.png}
+	\caption{Implementasi halaman \textit{Search}}
+	\label{fig:search}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10.5cm]{assets/img/bab4/data-info.png}
 	\caption{Implementasi halaman \textit{Visualization} (informasi data)}
 	\label{fig:visual-data-info}
 \end{figure}
 
-Pengguna juga dapat melihat visualisasi data pada menu \textit{"Visualization"} berupa pratinjau data dalam bentuk tabel dan lini masa. Selain itu, pengguna juga dapat melihat informasi detail dari data. Berikut adalah beberapa cuplikan tampilan visualisasi data pada Gambar \ref{fig:visual-data-info}, \ref{fig:visual-table}, dan \ref{fig:visual-timeline}.
-
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/visual-table.png}
+	\includegraphics[width=10.5cm]{assets/img/bab4/visual-table.png}
 	\caption{Implementasi halaman \textit{Visualization} (pratinjau data)}
 	\label{fig:visual-table}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{assets/img/bab4/visual-timeline.png}
+	\includegraphics[width=10.5cm]{assets/img/bab4/visual-timeline.png}
 	\caption{Implementasi halaman \textit{Visualization} (visualisasi data)}
 	\label{fig:visual-timeline}
 \end{figure}
+
+Pengguna juga dapat melihat visualisasi data pada menu \textit{"Visualization"} berupa pratinjau data dalam bentuk tabel dan lini masa. Selain itu, pengguna juga dapat melihat informasi detail dari data. Berikut adalah beberapa cuplikan tampilan visualisasi data pada Gambar \ref{fig:visual-data-info}, \ref{fig:visual-table}, dan \ref{fig:visual-timeline}.
