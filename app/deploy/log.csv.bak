@@ -1,0 +1,5 @@
+process,ts_start,ts_end,algorithm,data_type,num_of_rows,num_of_dimensions,query_info,run_time,mem_usage
+precomputing,2019-06-22__03:07:04,2019-06-22__03:07:12,kmppti,i,500,2,-,0:00:08.470326,28.270592
+precomputing,2019-06-22__03:07:13,2019-06-22__03:07:15,kmmpti-norsl,i,500,2,-,0:00:02.559272,27.025408
+precomputing,2019-06-22__03:07:15,2019-06-22__03:07:19,kmppti,ac,500,2,-,0:00:03.175316,27.19744
+precomputing,2019-06-22__03:07:19,2019-06-22__03:07:21,kmmpti-norsl,ac,500,2,-,0:00:01.866390,26.177536
