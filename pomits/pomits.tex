@@ -76,11 +76,105 @@ Sedangkan jika berdasarkan kueri dengan interval waktu Januari hingga Juli maka 
 Artikel ini membahas metode yang dapat menjawab permasalahan k-MPP berbasis interval waktu pada data multidimensi dengan serial waktu, yaitu dengan memodelkan kueri k-MPPTI \textit{(k-Most Promising Products in Time Intervals)} dan merancang kerangka kerja algoritme yang dapat memproses kueri tersebut. Ada tiga jenis algoritme pemrosesan yang dibuat dan dibandingkan: (a) k-MPPTI, yaitu algoritme yang mengadaptasi komputasi k-MPP asli (menggunakan dua tipe kueri \textit{skyline}, yaitu \textit{dynamic skyline} dan \textit{reverse skyline}); (b) k-MPPTI NoRSL, yaitu algoritme yang hanya menggunakan kueri \textit{dynamic skyline} saja; (c) k-MPPTI NoRSL-P, yaitu algoritme k-MPPTI NoRSL yang mengimplementasikan teknik komputasi paralel supaya pemrosesan data menjadi lebih cepat. Efektivitas dan efisiensi ketiga algoritme diuji menggunakan data asli dan sintetis.
 
 \section{Tinjauan Pustaka}
-\subsection{Data Multidimensi dengan Serial Waktu}
-Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu, sebagaimana contoh \textit{dataset} produk dan preferensi pelanggan yang ditunjukkan pada Tabel \ref{tab:dataset}. Pada tabel tersebut, \textit{timestamp} ditulis sebagai interval waktu yang dinotasikan dengan $[t_i:t_e]$, dengan asumsi bahwa nilai masing-masing atribut konstan setiap waktu. 
 
-\begin{table}[H]
-	\caption{Contoh \textit{dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}
+\subsection{Skyline}
+Operasi \textit{skyline} digunakan untuk mencari data yang menarik dari suatu himpunan data, yaitu data yang tidak didominasi oleh data lain. \textit{Skyline} didefinisikan sebagai titik-titik yang tidak didominasi oleh titik lain \cite{skyline}; titik adalah representasi dari data dalam bidang $d$-dimensi. Sebuah titik $p_1 \in P$ dikatakan mendominasi titik lain $p_2 \in P$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ baik atau lebih baik dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih baik dari $p_2$ setidaknya pada satu dimensi. Secara matematis, relasi $p_1 \prec p_2$ dapat terbentuk jika dan hanya jika: (a) $p_1^i \leq p_2^i, \forall i \in [1, ..., d]$ dan (b) $p_1^i < p_2^i, \exists i \in [1, ..., d]$. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=7cm]{img/bab2/skyline.png}
+	\caption{Titik \textit{skyline} dari data produk pada Tabel \ref{tab:dataset1}}
+	\label{fig:skyline}
+\end{figure}
+
+Sebagai ilustrasi, seseorang ingin mencari produk \textit{smartphone} terbaik, yaitu \textit{smartphone} yang memiliki harga termurah dan memiliki resolusi kamera terbesar. Menggunakan data produk $P$ pada Tabel \ref{tab:dataset1}, terdapat data produk \textit{smartphone} yang memiliki atribut resolusi kamera ($dim_1$) dan harga ($dim_2$). Setiap datanya direpresentasikan sebagai titik pada bidang dua dimensi, yakni sumbu $x$ adalah resolusi kamera dan sumbu $y$ adalah harga \textit{smartphone}.
+
+Berdasarkan Gambar \ref{fig:skyline}, produk \textit{smartphone} yang terbaik adalah $p_5$, $p_6$, dan $p_9$ karena tidak ada titik yang lebih baik dari titik-titik tersebut pada semua dimensi. Produk $p_{10}$ tidak dapat menjadi \textit{skyline} karena didominasi oleh produk $p_5$ pada atribut resolusi kamera (sumbu $x$). Begitu pula produk $p_7$ yang didominasi $p_5$ dan produk $p_2$ yang didominasi $p_6$ pada atribut harga (sumbu $y$). Produk $p_5$, $p_6$, dan $p_9$ disebut sebagai titik \textit{skyline} atau \textit{skyline point}.
+
+\subsection{Dominansi Dinamis}
+Para ahli menyebut \textit{original skyline} sebagai \textit{static skyline} \cite{dynamic-skyline-2} karena sifat dominansinya yang statis. Dalam pengembangannya, hasil \textit{skyline} dapat berubah bergantung pada titik kuerinya (dominansi dinamis). Suatu titik $ob_1 \in D$ dikatakan mendominasi titik $ob_2 \in D$ secara dinamis berdasarkan titik kueri $ob_3 \in D$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematis, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika: (a) $|ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d]$ dan (b) $|ob_3^i - ob_1^i| < |ob_3^i - ob_2^i|, \exists i \in [1, ..., d]$.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Contoh \textit{dataset} (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset1}}	
+	\begin{subtable}{.5\linewidth}	
+		\small	
+		\centering	
+		\caption{}	
+		\begin{tabular}{|c|c|c|}	
+			\hline	
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline	
+			$p_1$ & 5 & 9\\ \hline	
+			$p_2$ & 15 & 14\\ \hline	
+			$p_3$ & 8 & 10\\ \hline	
+			$p_4$ & 5 & 14\\ \hline	
+			$p_5$ & 12 & 6\\ \hline	
+			$p_6$ & 15 & 11\\ \hline	
+			$p_7$ & 12 & 10\\ \hline	
+			$p_8$ & 9 & 11\\ \hline	
+			$p_9$ & 6 & 4\\ \hline	
+			$p_{10}$ & 8 & 6\\ \hline	
+		\end{tabular}	
+	\end{subtable}%	
+	\begin{subtable}{.5\linewidth}	
+		\small	
+		\centering	
+		\caption{}	
+		\begin{tabular}{|c|c|c|}	
+			\hline	
+			\textbf{id} & \textbf{dim1} & \textbf{dim2}\\ \hline \hline	
+			$c_1$ & 5 & 2\\ \hline	
+			$c_2$ & 8 & 10\\ \hline	
+			$c_3$ & 15 & 10\\ \hline	
+			$c_4$ & 9 & 7\\ \hline	
+			$c_5$ & 10 & 12\\ \hline	
+			$c_6$ & 12 & 14\\ \hline	
+			$c_7$ & 7 & 13\\ \hline	
+			$c_8$ & 15 & 8\\ \hline	
+			$c_9$ & 5 & 5\\ \hline	
+			$c_{10}$ & 10 & 5\\ \hline	
+		\end{tabular}	
+	\end{subtable} 	
+\end{table}
+
+Pada Tabel \ref{tab:dataset1}, diberikan contoh \textit{dataset} produk dan preferensi pelanggan. Berdasarkan preferensi pelanggan $c_1$, produk $p_1$ dikatakan mendominasi produk $p_2$, dinotasikan dengan $p_1 \prec_{c_1} p_2$, karena memenuhi kedua syarat dominansi dinamis yakni (a) $|c_1^1 - p_1^1| = |5-5| = 0 \leq |c_1^1 - p_2^1| = |5-15| = 10$ dan (b) $|c_1^2 - p_1^2| = |2-9| = 7 < |c_1^2 - p_2^2| = |2-14| = 12$. 
+
+Sebaliknya, jika berdasarkan preferensi pelanggan $c_6$, maka produk $p_2$-lah yang mendominasi $p_1$, dinotasikan dengan $p_2 \prec_{c_6} p_1$, karena (a) $|c_6^1 - p_2^1| = |12-15| = 3 \leq |c_6^1 - p_1^1| = |12-5| = 7$ dan (b) $|c_6^2 - p_2^2| = |14-14| = 0 < |c_6^2 - p_1^2| = |14-9| = 5$. Dalam hal ini, preferensi pelanggan disebut dengan titik kueri karena dapat mempengaruhi sifat dominansi antar produk.
+
+\subsection{\textit{Dynamic Skyline}}
+Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
+
+\textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline} dengan cara mentransformasikan semua titik $p \in P$ ke ruang data baru dengan menganggap titik kueri $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan yang didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
+
+Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset1}, \textit{dynamic skyline} dari pelanggan $c_4$ adalah $DSL(c_4) = \{p_8, p_{10}\}$, karena produk tersebut tidak didominasi oleh produk lain berdasarkan preferensi pelanggan $c_4$. Berbeda halnya dengan $c_{10}$ yang memiliki hasil \textit{dynamic skyline} $DSL(c_{10}) = \{p_5, p_8, p_{10}\}$. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[height=7cm]{img/bab2/dsl-1.png}
+	\caption{Komputasi \textit{dynamic skyline} dari pelanggan $c_{4}$}
+	\label{fig:dsl-1}
+\end{figure}
+
+\subsection{\textit{Reverse Skyline}} \label{rsl}
+Kueri \textit{reverse skyline} dalam komputasi $k$-MPP digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
+P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
+
+Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}, yaitu (1) menentukan \textit{orthant}, dinotasikan dengan $O$, sejumlah $2^d$ pada data $d-$dimensi; (2) menghitung semua \textit{midpoint} atau titik tengah antara produk kueri dan setiap produk $p \in P$ menggunakan persamaan $m_2^i = \frac{(p_1^i + p_2^i)}{2}$; (3) menentukan \textit{midpoint skyline} $MSL(o)$ (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) pada setiap \textit{orthant}; (4) menentukan \textit{reverse skyline} dengan mencari semua pelanggan $c \in C$ yang tidak didominasi oleh \textit{midpoint skyline} $m \in M$ berdasarkan produk $p_1$, $c \nprec_{p_1} m$.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[height=7cm]{img/bab2/rsl.png}
+	\caption{Komputasi \textit{reverse skyline} dari produk $p_8$}
+	\label{fig:rsl}
+\end{figure}
+
+Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tab:dataset1}, \textit{reverse skyline} dari produk $p_8$ adalah pelanggan $c_4$, $c_5$, dan $c_{10}$, dinotasikan dengan $RSL(p_8) = \{c_4, c_5, c_{10}\}$ karena masing-masing pelanggan tersebut memiliki $p_8$ pada hasil \textit{dynamic skyline}-nya.
+
+\subsection{\textit{k-Most Promising Products} (k-MPP)}
+Islam et al. memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan merancang algoritme pemrosesan untuk memproses kueri tersebut \cite{kmpp}. Terdapat empat langkah pemrosesan kueri k-MPP, yaitu: (1) mencari \textit{reverse skyline} masing-masing produk  $p \in P$; (2) mencari \textit{dynamic skyline} masing-masing pelanggan $c \in RSL(p)$; (3) menghitung kontribusi pasar masing-masing produk dengan cara mengakumulasikan probabilitas produk dipilih oleh pelanggan, sebagaimana persamaan $E(C, p|P) = \sum_{\forall c \in RSL(p)} Pr(c, p|P)$; (4) memilih $k$-produk dengan kontribusi pasar terbesar.
+
+\begin{table}[htbp]
+	\caption{Contoh data multidimensi dengan serial waktu (a) produk $P$ dan (b) preferensi pelanggan $C$ \label{tab:dataset}}
 	\begin{subtable}{.5\linewidth}
 		\small
 		\centering
@@ -113,25 +207,8 @@ Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang 
 	\end{subtable} 
 \end{table}
 
-\subsection{Skyline}
-Operasi \textit{skyline} digunakan untuk mencari data yang menarik dari suatu himpunan data, yaitu data yang tidak didominasi oleh data lain. \textit{Skyline} didefinisikan sebagai titik-titik yang tidak didominasi oleh titik lain \cite{skyline}; titik adalah representasi dari data dalam bidang $d$-dimensi. Sebuah titik $p_1 \in P$ dikatakan mendominasi titik lain $p_2 \in P$, dinotasikan dengan  $p_1 \prec p_2$, jika nilai $p_1$ baik atau lebih baik dari $p_2$ pada semua dimensi dan ada nilai $p_1$ yang lebih baik dari $p_2$ setidaknya pada satu dimensi. Secara matematis, relasi $p_1 \prec p_2$ dapat terbentuk jika dan hanya jika: (a) $p_1^i \leq p_2^i, \forall i \in [1, ..., d]$ dan (b) $p_1^i < p_2^i, \exists i \in [1, ..., d]$. 
-
-\subsection{Dominansi Dinamis}
-Para ahli menyebut \textit{original skyline} sebagai \textit{static skyline} \cite{dynamic-skyline-2} karena sifat dominansinya yang statis. Dalam pengembangannya, hasil \textit{skyline} dapat berubah bergantung pada titik kuerinya (dominansi dinamis). Suatu titik $ob_1 \in D$ dikatakan mendominasi titik $ob_2 \in D$ secara dinamis berdasarkan titik kueri $ob_3 \in D$, dinotasikan dengan $ob_1 \prec_{ob_3} ob_2$, jika nilai $ob_1$ dekat dengan $ob_3$ pada semua dimensi dan ada nilai $ob_1$ yang lebih dekat dengan $ob_3$ dibandingkan nilai $ob_2$ dengan $ob_3$ minimal pada satu dimensi. Secara matematis, relasi $ob_1 \prec_{ob_3} ob_2$ terbentuk jika dan hanya jika: (a) $|ob_3^i - ob_1^i| \leq |ob_3^i - ob_2^i|, \forall i \in [1, ..., d]$ dan (b) $|ob_3^i - ob_1^i| < |ob_3^i - ob_2^i|, \exists i \in [1, ..., d]$.
-
-\subsection{\textit{Dynamic Skyline}}
-Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
-
-\textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline} dengan cara mentransformasikan semua titik $p \in P$ ke ruang data baru dengan menganggap titik kueri $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan yang didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
-
-\subsection{\textit{Reverse Skyline}} \label{rsl}
-Kueri \textit{reverse skyline} dalam komputasi $k$-MPP digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
-P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
-
-Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}, yaitu (1) menentukan \textit{orthant}, dinotasikan dengan $O$, sejumlah $2^d$ pada data $d-$dimensi; (2) menghitung semua \textit{midpoint} atau titik tengah antara produk kueri dan setiap produk $p \in P$ menggunakan persamaan $m_2^i = \frac{(p_1^i + p_2^i)}{2}$; (3) menentukan \textit{midpoint skyline} $MSL(o)$ (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) pada setiap \textit{orthant}; (4) menentukan \textit{reverse skyline} dengan mencari semua pelanggan $c \in C$ yang tidak didominasi oleh \textit{midpoint skyline} $m \in M$ berdasarkan produk $p_1$, $c \nprec_{p_1} m$.
-
-\subsection{\textit{k-Most Promising Products} (k-MPP)}
-Islam et al. memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan merancang algoritme pemrosesan untuk memproses kueri tersebut \cite{kmpp}. Terdapat empat langkah pemrosesan kueri k-MPP, yaitu: (1) mencari \textit{reverse skyline} masing-masing produk  $p \in P$; (2) mencari \textit{dynamic skyline} masing-masing pelanggan $c \in RSL(p)$; (3) menghitung kontribusi pasar masing-masing produk dengan cara mengakumulasikan probabilitas produk dipilih oleh pelanggan, sebagaimana persamaan $E(C, p|P) = \sum_{\forall c \in RSL(p)} Pr(c, p|P)$; (4) memilih $k$-produk dengan kontribusi pasar terbesar.
+\subsection{Data Multidimensi dengan Serial Waktu}
+Data multidimensi dengan serial waktu adalah data \textit{multi-attribute} yang memiliki \textit{timestamp} dan berurutan menurut waktu, sebagaimana contoh \textit{dataset} produk dan preferensi pelanggan yang ditunjukkan pada Tabel \ref{tab:dataset}. Pada tabel tersebut, \textit{timestamp} ditulis sebagai interval waktu yang dinotasikan dengan $[t_i:t_e]$, dengan asumsi bahwa nilai masing-masing atribut konstan setiap waktu. 
 
 \section{Metode}
 Bagian ini memaparkan pendekatan yang digunakan untuk menjawab kueri k-MPP berbasis interval waktu, meliputi struktur data dan algoritma pemrosesan yang digunakan.
@@ -168,6 +245,7 @@ Bagian ini memaparkan pendekatan yang digunakan untuk menjawab kueri k-MPP berba
 		$RSL(p)$ & \textit{Reverse skyline} dari produk $p$\\ \hline
 		$MSL(o)$ & \textit{Midpoint skyline} dari orthant $o$\\ \hline
 		$Pr_t(c, p|PA)$ & Probabilitas produk $p \in PA$ dibeli oleh pelanggan $c \in CA$ pada waktu $t$ \\ \hline
+		$E_t(CA, p|PA)$ & Kontribusi pasar $p$ pada waktu $t$ \\ \hline
 		$E_{[t_i:t_e]}(CA, p|PA)$ & Kontribusi pasar $p$ dalam interval waktu $[t_i:t_e]$\\ \hline
 		$k$ & Jumlah data \\ \hline
 		$k-MPPTI$ & \textit{k-Most Promising Products in Time Intervals} \\ \hline
@@ -243,66 +321,64 @@ Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, data multidimensi den
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=8cm]{img/bab3/timeline-event.png}
+	\includegraphics[width=9cm]{img/bab3/timeline-event.png}
 	\caption{\textit{Event} dalam lini masa data produk dan pelanggan}
 	\label{fig:timeline-event}
 \end{figure}
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Precomputing}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
-			\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
-			\State $EQ \leftarrow$ init event queue 
-			\State $D \leftarrow$ data indexing $P, C$ 
-			\ForAll {$d \in D$}
-			\State $EQ \leftarrow$ enqueue $d$
-			\EndFor
-			\State $PA \leftarrow \emptyset$ of active products
-			\State $CA \leftarrow \emptyset$ of active customers
-			\State $PB \leftarrow$ init pandora box
-			\State $RSL \leftarrow$ init reverse skyline
-			\State $DSL \leftarrow$ init dynamic skyline
-			\While {$EQ$ is not empty}
-			\State $e \leftarrow$ dequeue $EQ$
-			\If {$e$ role is product}
-			\If {$e$ action is insertion}  
-			\State $PA \leftarrow$ append $p \in e$
-			\State $RSL(p) \leftarrow$ compute reverse skyline
-			\ForAll {$c \in RSL(p)$}
-			\State $DSL(c) \leftarrow$ compute dynamic skyline
-			\EndFor
-			\ForAll {$c \in CA$}
-			\State $PB \leftarrow$ update pandora box $DSL(c)$
-			\EndFor
-			\ElsIf {$e$ act is deletion}
-			\ForAll {$c \in CA$}
-			\State $PB \leftarrow$ update pandora box $DSL(c)$
-			\EndFor
-			\State $RSL(p) \leftarrow$ compute reverse skyline
-			\ForAll {$c \in RSL(p)$}
-			\State $DSL(c) \leftarrow$ find active child and
-			\Statex \hspace{3.1cm} compute new dynamic skyline
-			\EndFor
-			\State $PA \leftarrow$ remove $p \in e$
-			\EndIf
-			\ElsIf{$e$ role is customer}
-			\If {$e$ act is insertion} 
-			\State $CA \leftarrow$ append $c \in e$ 
-			\State $DSL(c) \leftarrow$ compute initial dynamic skyline
-			\State $PB \leftarrow$ update pandora box $DSL(c)$
-			\ElsIf {$e$ act is deletion}
-			\State $PB \leftarrow$ update pandora box $DSL(c)$
-			\State $CA \leftarrow$ remove $c \in e$ 
-			\EndIf
-			\EndIf
-			\EndWhile
-			\State export $PB$
-		\end{algorithmic}
-		\label{algo:precompute}
-	\end{algorithm}
-\end{figure}
+\begin{algorithm}[htbp]
+	\caption{Precomputing}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} product dataset $P$, customer dataset $C$ 
+		\Statex \textbf{Output \hskip0.3em :} pandora box $PB$
+		\State $EQ \leftarrow$ init event queue 
+		\State $D \leftarrow$ data indexing $P, C$ 
+		\ForAll {$d \in D$}
+		\State $EQ \leftarrow$ enqueue $d$
+		\EndFor
+		\State $PA \leftarrow \emptyset$ of active products
+		\State $CA \leftarrow \emptyset$ of active customers
+		\State $PB \leftarrow$ init pandora box
+		\State $RSL \leftarrow$ init reverse skyline
+		\State $DSL \leftarrow$ init dynamic skyline
+		\While {$EQ$ is not empty}
+		\State $e \leftarrow$ dequeue $EQ$
+		\If {$e$ role is product}
+		\If {$e$ action is insertion}  
+		\State $PA \leftarrow$ append $p \in e$
+		\State $RSL(p) \leftarrow$ compute reverse skyline
+		\ForAll {$c \in RSL(p)$}
+		\State $DSL(c) \leftarrow$ compute dynamic skyline
+		\EndFor
+		\ForAll {$c \in CA$}
+		\State $PB \leftarrow$ update pandora box $DSL(c)$
+		\EndFor
+		\ElsIf {$e$ act is deletion}
+		\ForAll {$c \in CA$}
+		\State $PB \leftarrow$ update pandora box $DSL(c)$
+		\EndFor
+		\State $RSL(p) \leftarrow$ compute reverse skyline
+		\ForAll {$c \in RSL(p)$}
+		\State $DSL(c) \leftarrow$ find active child and
+		\Statex \hspace{3.1cm} compute new dynamic skyline
+		\EndFor
+		\State $PA \leftarrow$ remove $p \in e$
+		\EndIf
+		\ElsIf{$e$ role is customer}
+		\If {$e$ act is insertion} 
+		\State $CA \leftarrow$ append $c \in e$ 
+		\State $DSL(c) \leftarrow$ compute initial dynamic skyline
+		\State $PB \leftarrow$ update pandora box $DSL(c)$
+		\ElsIf {$e$ act is deletion}
+		\State $PB \leftarrow$ update pandora box $DSL(c)$
+		\State $CA \leftarrow$ remove $c \in e$ 
+		\EndIf
+		\EndIf
+		\EndWhile
+		\State export $PB$
+	\end{algorithmic}
+	\label{algo:precompute}
+\end{algorithm}
 
 \paragraph{\textbf{\textit{Product Insertion}}}
 Proses yang dijalankan ketika ada data produk yang masuk, dinotasikan dengan $p_{i}$. Langkah-langkah pemrosesan \textit{product insertion} dijelaskan sebagai berikut: (1) menambahkan produk $p_{i}$ ke dalam daftar produk aktif $PA$, (2) menghitung $RSL(p_{i})$, (3) menghitung $DSL(c)$ untuk setiap $c \in RSL(p_{i})$ dan menghitung probabilitas masing-masing produk $p \in DSL(c)$, dan (4) memperbarui \textit{Pandora Box}. Proses \textit{product insertion} ditunjukkan pada \textit{pseudocode} baris 13-19 pada Algoritme \ref{algo:precompute}.
@@ -311,243 +387,238 @@ Proses yang dijalankan ketika ada data produk yang masuk, dinotasikan dengan $p_
 Proses yang dijalankan ketika ada data produk yang keluar, dinotasikan dengan $p_{o}$. Langkah-langkah pemrosesan \textit{product deletion} dijelaskan sebagai berikut: (1) memperbarui \textit{Pandora Box} untuk mengisi indeks $PB$ sebelumnya jika ada yang kosong, (2) menghitung $RSL(p_{o})$, (3) menghitung $DSL(c)$ untuk setiap $c \in RSL(p_{o})$ yang dimaksudkan untuk mencari produk-produk yang pernah didominasi (\textit{child}) dan menghitung probabilitas masing-masing produk $p \in DSL(c)$, dan (4) menghapus produk $p_{o}$ dari daftar produk aktif $PA$. Proses \textit{product deletion} ditunjukkan pada \textit{pseudocode} baris 20-26 pada Algoritme \ref{algo:precompute}.
 
 \paragraph{\textbf{\textit{Customer Insertion}}}
-Proses yang dijalankan ketika ada data pelanggan yang masuk, dinotasikan dengan $c_{i}$. Langkah-langkah pemrosesan \textit{customer insertion} dijelaskan sebagai berikut: (1) menambahkan pelanggan $c_{i}$ ke dalam daftar pelanggan aktif $CA$, (2) menghitung \textit{initial} $DSL(c_{i})$ untuk mendapatkan hasil \textit{dynamic skyline} awal dan menghitung probabilitas masing-masing produk $p \in DSL(c)$, dan (4) memperbarui \textit{Pandora Box}. Proses \textit{customer insertion} ditunjukkan pada \textit{pseudocode} baris 28-31 pada Algoritme \ref{algo:precompute}.
+Proses yang dijalankan ketika ada data pelanggan yang masuk, dinotasikan dengan $c_{i}$. Langkah-langkah pemrosesan \textit{customer insertion} dijelaskan sebagai berikut: (1) menambahkan pelanggan $c_{i}$ ke dalam daftar pelanggan aktif $CA$, (2) menghitung \textit{initial} $DSL(c_{i})$ untuk mendapatkan hasil \textit{dynamic skyline} awal dan menghitung probabilitas masing-masing produk $p \in DSL(c)$, dan (3) memperbarui \textit{Pandora Box}. Proses \textit{customer insertion} ditunjukkan pada \textit{pseudocode} baris 28-31 pada Algoritme \ref{algo:precompute}.
 
 \paragraph{\textbf{\textit{Customer Deletion}}}
 Proses yang dijalankan ketika ada data pelanggan yang keluar, dinotasikan dengan $c_{o}$. Langkah-langkah pemrosesan \textit{customer deletion} dijelaskan sebagai berikut: (1) memperbarui \textit{Pandora Box} untuk mengisi indeks $PB$ sebelumnya jika ada yang kosong dan (2) menghapus pelanggan $c$ dari daftar pelanggan aktif $CA$. Proses \textit{customer deletion} ditunjukkan pada \textit{pseudocode} baris 32-34 pada Algoritme \ref{algo:precompute}.
-\paragraph{\textbf{Kueri \textit{Dynamic Skyline}}}
-Kueri yang digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. Langkah-langkah komputasi $DSL(c)$ secara umum adalah (1) menghitung selisih absolut dari nilai setiap dimensi antara produk dan pelanggan, dinotasikan dengan $diff^i = |p^i - c_1^i|$; (2) mengecek dominansi dinamis antar produk dengan membandingkan selisih absolut-nya sebagaimana yang ditunjukkan pada Algoritme \ref{algo:check-dom}. Pengecekan dominansi dinamis dilakukan secara iteratif hingga dipastikan suatu $p_1$ tidak didominasi oleh $p_2$ lain sama sekali. Jika $p_1$ tidak pernah didominasi, maka $p_1$ menjadi hasil $DSL(c)$.
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Check Domination}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} value of subject ($ob_1$), value of target ($ob_2$), value of query point ($ob_3$), dimension of data ($d$)
-			\Statex \textbf{Output \hskip0.3em :} $ob_1 \prec_{ob_3} ob_2$ is true/false
-			\Procedure{IsDominating}{$ob_1, ob_2, ob_3$} 
-			\State $dominating \leftarrow 0$ 
-			\State $dominated \leftarrow 0$
-			\For {\textbf{each} $i \in d$}
-			\State $diff_1^i \leftarrow |ob_1^i - ob_3^i|$
-			\State $diff_2^i \leftarrow |ob_2^i - ob_3^i|$
-			\If {$diff_1^i = diff_2^i$}
-			\State \textbf{continue}
-			\ElsIf{$diff_1^i < diff_2^i$}
-			\State $domininating \leftarrow dominating + 1$
-			\ElsIf{$diff_1^i > diff_2^i$}
-			\State $dominated \leftarrow dominated + 1$
-			\EndIf
-			\EndFor
-			\If{$dominated = 0$ and $dominating \geq 1$} 
-			\State \Return True
-			\Else{} 
-			\State \Return False
-			\EndIf
-			\EndProcedure
-		\end{algorithmic}
-		\label{algo:check-dom}
-	\end{algorithm}
-\end{figure}
+\paragraph{\textbf{\textit{Dynamic Skyline}}}
+Komputasi yang digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. Langkah-langkah komputasi $DSL(c)$ secara umum adalah (1) menghitung selisih absolut dari nilai setiap dimensi antara produk dan pelanggan, dinotasikan dengan $diff^i = |p^i - c_1^i|$; (2) mengecek dominansi dinamis antar produk dengan membandingkan selisih absolut-nya sebagaimana yang ditunjukkan pada Algoritme \ref{algo:check-dom}. Pengecekan dominansi dinamis dilakukan secara iteratif hingga dipastikan suatu $p_1$ tidak didominasi oleh $p_2$ lain sama sekali. Jika $p_1$ tidak pernah didominasi, maka $p_1$ menjadi hasil $DSL(c)$.
 
-Algoritme komputasi $DSL$ dalam k-MPPTI dibagi menjadi 3 jenis, yaitu: (1) \textit{InitDSL} yang dijalankan jika ada data pelanggan yang masuk (\textit{customer insertion}) sebagaimana \textit{pseudocode} baris 1-13 pada Algoritme \ref{algo:dsl}, (2) \textit{ComputeDSL} yang dijalankan jika ada data produk yang masuk (\textit{product insertion}) sebagaimana \textit{pseudocode} baris 14-28 pada Algoritme \ref{algo:dsl}, dan (3) \textit{ProductDeletion} yang dijalankan jika ada data produk yang keluar (\textit{product deletion}) sebagaimana \textit{pseudocode} baris 29-32 pada Algoritme \ref{algo:dsl}.
+Algoritme komputasi $DSL$ dalam k-MPPTI dibagi menjadi 3 jenis, yaitu: (1) \textit{InitDSL} yang dijalankan jika ada data pelanggan yang masuk (\textit{customer insertion}), ditunjukkan oleh \textit{pseudocode} baris 1-13 pada Algoritme \ref{algo:dsl}; (2) \textit{DSL-PI} yang dijalankan jika ada data produk yang masuk (\textit{product insertion}), ditunjukkan oleh \textit{pseudocode} baris 14-28 pada Algoritme \ref{algo:dsl}; (3) \textit{DSL-PD} yang dijalankan jika ada data produk yang keluar (\textit{product deletion}), ditunjukkan oleh \textit{pseudocode} baris 29-32 pada Algoritme \ref{algo:dsl}.
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Dynamic Skyline Computation}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} customer $c$, active products $PA$, product in/out $p$, timestamp $ts$
-			\Statex \textbf{Output \hskip0.3em :} $DSL(c)$
-			\Procedure{InitDSL}{$c$, $PA$} \Comment{if customer insertion}
-			\State $CAND \leftarrow PA$
-			\State sort $CAND$
-			\For {$i \leftarrow$ 0 to length of $CAND$}
-			\For {$j \leftarrow i + 1$ to length of $CAND$}
-			\If {$p_i \prec_c p_j$} 
-			\State add $p_j$ to the child list of $p_i$
-			\State $CAND \leftarrow$ remove $p_j$
-			\ElsIf {$p_j \prec_c p_i$} 
-			\State add $p_i$ to the child list of $p_j$
-			\State $CAND \leftarrow$ remove $p_i$
-			\State \textbf{break} 
-			\EndIf
-			\EndFor
-			\State \Return $CAND$ as $DSL(c)$
-			\EndFor
-			\EndProcedure
-			\Procedure{ComputeDSL}{$c$, $p$} \Comment{if product insertion}
-			\State $CAND \leftarrow p$, current $DSL(c)$
-			\State sort $CAND$
-			\State $x \leftarrow$ get index of p in $CAND$
-			\For {$i \leftarrow$ 0 to length of $CAND$}
-			\If{$i < x$}
-			\If {$p_i \prec_c p_{x}$} 
-			\State add $p_x$ to the child list of $p_i$
-			\State $CAND \leftarrow$ remove $p_x$
-			\State \textbf{break}
-			\EndIf
-			\ElsIf{$i > x$}
-			\If {$p_x \prec_c p_i$} 
-			\State add $p_i$ to the child list of $p_x$
-			\State $CAND \leftarrow$ remove $p_i$
-			\EndIf
-			\EndIf
-			\EndFor
-			\State \Return $CAND$ as $DSL(c)$
-			\EndProcedure
-			\Procedure{ProductDeletion}{$c$, $p$} \Comment{if product deletion}
-			\State $ac \leftarrow$ find active childs of $p$
-			\State $DSL(c) \leftarrow$ call $computeDSL(c, ac)$  
-			\State \Return $DSL(c)$
-			\EndProcedure
-		\end{algorithmic}
-		\label{algo:dsl}
-	\end{algorithm}
-\end{figure}
+\begin{algorithm}[htbp]
+	\caption{Dynamic Skyline Computation}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} customer $c$, active products $PA$, product in/out $p$
+		\Statex \textbf{Output \hskip0.3em :} $DSL(c)$
+		\Procedure{InitDSL}{$c$, $PA$} \Comment{if customer insertion}
+		\State $CAND \leftarrow PA$
+		\State sort $CAND$
+		\For {$i \leftarrow$ 0 to length of $CAND$}
+		\For {$j \leftarrow i + 1$ to length of $CAND$}
+		\If {$p_i \prec_c p_j$} 
+		\State add $p_j$ to the child list of $p_i$
+		\State $CAND \leftarrow$ remove $p_j$
+		\ElsIf {$p_j \prec_c p_i$} 
+		\State add $p_i$ to the child list of $p_j$
+		\State $CAND \leftarrow$ remove $p_i$
+		\State \textbf{break} 
+		\EndIf
+		\EndFor
+		\State \Return $CAND$ as $DSL(c)$
+		\EndFor
+		\EndProcedure
+		\Procedure{ProdouctIn}{$c$, $p$} \Comment{if product insertion}
+		\State $CAND \leftarrow p$, current $DSL(c)$
+		\State sort $CAND$
+		\State $x \leftarrow$ get index of p in $CAND$
+		\For {$i \leftarrow$ 0 to length of $CAND$}
+		\If{$i < x$}
+		\If {$p_i \prec_c p_{x}$} 
+		\State add $p_x$ to the child list of $p_i$
+		\State $CAND \leftarrow$ remove $p_x$
+		\State \textbf{break}
+		\EndIf
+		\ElsIf{$i > x$}
+		\If {$p_x \prec_c p_i$} 
+		\State add $p_i$ to the child list of $p_x$
+		\State $CAND \leftarrow$ remove $p_i$
+		\EndIf
+		\EndIf
+		\EndFor
+		\State \Return $CAND$ as $DSL(c)$
+		\EndProcedure
+		\Procedure{ProductOut}{$c$, $p$} \Comment{if product deletion}
+		\State $ac \leftarrow$ find active childs of $p$
+		\State $DSL(c) \leftarrow$ call $computeDSL(c, ac)$  
+		\State \Return $DSL(c)$
+		\EndProcedure
+	\end{algorithmic}
+	\label{algo:dsl}
+\end{algorithm}
 
-\paragraph{\textbf{Kueri \textit{Reverse Skyline}}}
-Kueri yang digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. Langkah-langkah komputasi $RSL(p)$ adalah (1) menentukan \textit{orthant} $O$ sejumlah $2^d$ pada data $d-$dimensi yang ditunjukkan pada \textit{pseudocode} baris 5-8 pada Algoritme \ref{algo:rsl}, (2) menghitung semua \textit{midpoint} atau titik tengah antara produk kueri dan setiap produk $p \in P$ yang ditunjukkan pada \textit{pseudocode} baris 9-12 pada Algoritme \ref{algo:rsl}, (3) menentukan \textit{midpoint skyline} $MSL(o)$ pada setiap \textit{orthant} yang ditunjukkan pada \textit{pseudocode} baris 13-26 pada Algoritme \ref{algo:rsl}, (4) menentukan \textit{reverse skyline} dengan mencari semua pelanggan $c \in C$ yang tidak didominasi oleh \textit{midpoint skyline} $m \in MSL(o)$ berdasarkan produk kueri yang ditunjukkan pada \textit{pseudocode} baris 27-34 pada Algoritme \ref{algo:rsl}.
+\paragraph{\textbf{\textit{Reverse Skyline}}}
+Komputasi yang digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. Langkah-langkah komputasi $RSL(p)$ adalah (1) menentukan \textit{orthant} $O$ sejumlah $2^d$ pada data $d-$dimensi yang ditunjukkan pada \textit{pseudocode} baris 5-8 pada Algoritme \ref{algo:rsl}, (2) menghitung semua \textit{midpoint} atau titik tengah antara produk kueri dan setiap produk $p \in P$ yang ditunjukkan pada \textit{pseudocode} baris 9-12 pada Algoritme \ref{algo:rsl}, (3) menentukan \textit{midpoint skyline} $MSL(o)$ pada setiap \textit{orthant} yang ditunjukkan pada \textit{pseudocode} baris 13-26 pada Algoritme \ref{algo:rsl}, dan (4) menentukan \textit{reverse skyline} dengan mencari semua pelanggan $c \in C$ yang tidak didominasi oleh \textit{midpoint skyline} $m \in MSL(o)$ berdasarkan produk kueri yang ditunjukkan pada \textit{pseudocode} baris 27-34 pada Algoritme \ref{algo:rsl}.
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Reverse Skyline Computation}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} product as query point $p_q$, active products $PA$, active customers $CA$, dimension of data $d$
-			\Statex \textbf{Output \hskip0.3em :} $RSL(p)$
-			\Procedure{ComputeRSL}{$p_q$}
-			\State call $DefineOrthant(d)$
-			\State call $FindMSL(p_q, PA)$
-			\State \Return $FindRSL(CA)$
-			\EndProcedure
-			\Procedure{DefineOrthant}{$d$}
-			\For{$i \leftarrow 0$ to $2^d$}
-			\State $id \leftarrow$ binary of $i$ 
-			\State $o_{id} \leftarrow \emptyset$ 
-			\EndFor
-			\EndProcedure
-			\Procedure{CalcMidpoint}{$p_q$, $p$} 
-			\For {\textbf{each} $i \in d$} 
-			\State $m \leftarrow$ $\frac{(p_q^i + p^i)}{2}$
-			\EndFor
-			\State \Return $m$
-			\EndProcedure
-			\Procedure{FindMSL}{$p_q, PA$}
-			\ForAll {$p \in PA$}
-			\If {$p \not= p_q$}
-			\State $m \leftarrow CalcMidpoint(p_q, p)$ 
-			\State $id \leftarrow GetOrthantId(p)$
-			\If {$o_{id}$ is empty} $o_{id} \leftarrow m$
-			\Else{} 
-			\For {\textbf{each} $mc \in MSL(o_{id})$}
-			\If{$m \prec_{p_q} mc$} 
-			\State $MSL(o_{id}) \leftarrow$ delete $mc$
-			\ElsIf{$mc \prec_{p_q} m$}
-			\State \textbf{break} 
-			\EndIf
-			\EndFor
-			\If{$\forall mc \in MSL(o_{id}) \nprec_{p_q} m$}
-			\State $MSL(o) \leftarrow$ insert $m$
-			\EndIf
-			\EndIf
-			\EndIf
-			\EndFor
-			\EndProcedure
-			\Procedure{FindRSL}{$p_q, CA$} 
-			\For {$c \in CA$}
-			\State $id \leftarrow$ $GetOrthantId(c)$
-			\If {$o_{id}$ is empty} $RSL(p) \leftarrow$ insert $c$
-			\Else{}  
-			\If {$\forall m \in MSL(o_{id}) \nprec_{p_q} c$}
-			\State $RSL(p) \leftarrow$ insert $c$
-			\EndIf
-			\EndIf
-			\EndFor
-			\State \Return $RSL(p)$
-			\EndProcedure
-			\Procedure{GetOrthantId}{$D$}
-			\For {\textbf{each} $i \in d$}
-			\If {$D^i \leq p_q^i$} $id \leftarrow$ append $0$
-			\Else {} $id \leftarrow$ append $1$
-			\EndIf
-			\EndFor
-			\State \Return $id$
-			\EndProcedure
-		\end{algorithmic}
-		\label{algo:rsl}
-	\end{algorithm}
-\end{figure}
+\begin{algorithm}[htbp]
+	\caption{Reverse Skyline Computation}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} product as query point $p_q$, active products $PA$, active customers $CA$, dimension of data $d$
+		\Statex \textbf{Output \hskip0.3em :} $RSL(p)$
+		\Procedure{ComputeRSL}{$p_q$}
+		\State call $DefineOrthant(d)$
+		\State call $FindMSL(p_q, PA)$
+		\State \Return $FindRSL(CA)$
+		\EndProcedure
+		\Procedure{DefineOrthant}{$d$}
+		\For{$i \leftarrow 0$ to $2^d$}
+		\State $id \leftarrow$ binary of $i$ 
+		\State $o_{id} \leftarrow \emptyset$ 
+		\EndFor
+		\EndProcedure
+		\Procedure{CalcMidpoint}{$p_q$, $p$} 
+		\For {\textbf{each} $i \in d$} 
+		\State $m \leftarrow$ $\frac{(p_q^i + p^i)}{2}$
+		\EndFor
+		\State \Return $m$
+		\EndProcedure
+		\Procedure{FindMSL}{$p_q, PA$}
+		\ForAll {$p \in PA$}
+		\If {$p \not= p_q$}
+		\State $m \leftarrow CalcMidpoint(p_q, p)$ 
+		\State $id \leftarrow GetOrthantId(p)$
+		\If {$o_{id}$ is empty} $o_{id} \leftarrow m$
+		\Else{} 
+		\For {\textbf{each} $mc \in MSL(o_{id})$}
+		\If{$m \prec_{p_q} mc$} 
+		\State $MSL(o_{id}) \leftarrow$ delete $mc$
+		\ElsIf{$mc \prec_{p_q} m$}
+		\State \textbf{break} 
+		\EndIf
+		\EndFor
+		\If{$\forall mc \in MSL(o_{id}) \nprec_{p_q} m$}
+		\State $MSL(o) \leftarrow$ insert $m$
+		\EndIf
+		\EndIf
+		\EndIf
+		\EndFor
+		\EndProcedure
+		\Procedure{FindRSL}{$p_q, CA$} 
+		\For {$c \in CA$}
+		\State $id \leftarrow$ $GetOrthantId(c)$
+		\If {$o_{id}$ is empty} $RSL(p) \leftarrow$ insert $c$
+		\Else{}  
+		\If {$\forall m \in MSL(o_{id}) \nprec_{p_q} c$}
+		\State $RSL(p) \leftarrow$ insert $c$
+		\EndIf
+		\EndIf
+		\EndFor
+		\State \Return $RSL(p)$
+		\EndProcedure
+		\Procedure{GetOrthantId}{$D$}
+		\For {\textbf{each} $i \in d$}
+		\If {$D^i \leq p_q^i$} $id \leftarrow$ append $0$
+		\Else {} $id \leftarrow$ append $1$
+		\EndIf
+		\EndFor
+		\State \Return $id$
+		\EndProcedure
+	\end{algorithmic}
+	\label{algo:rsl}
+\end{algorithm}
+
+\paragraph{\textbf{Metode Pengecekan Dominasi}}
+Metode yang digunakan untuk pengecekan dominasi adalah dengan membandingkan selisih absolut data dengan titik kueri secara iteratif sejumlah dimensi data. Sehingga, semakin banyak dimensi data maka proses pengecekan dominasi semakin lama. Metode pengecekan dominasi ini digunakan dalam setiap komputasi \textit{dynamic skyline} dan \textit{reverse skyline}.
 
 \paragraph{\textbf{Perhitungan Probabilitas}}
-Probabilitas masing-masing produk $p \in PA$ dipilih oleh pelanggan $c \in CA$ dihitung menggunakan persamaan berikut:
-\[
+Probabilitas masing-masing produk $p \in PA$ dipilih oleh pelanggan $c \in CA$ dihitung menggunakan Persamaan \ref{eq:prob-ti}.
+\begin{equation}\label{eq:prob-ti}
 Pr_t(c, p|PA) = \left\{
 \begin{array}{ll}
 \frac{1}{|DSL(c)|} & \text{if } p \in DSL(c)\\
 0 & \text{otherwise}\\
 \end{array}
 \right.
-\]
+\end{equation}
+
+\begin{algorithm}[htbp]
+	\caption{Check Domination}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} value of subject ($ob_1$), value of target ($ob_2$), value of query point ($ob_3$), dimension of data ($d$)
+		\Statex \textbf{Output \hskip0.3em :} $ob_1 \prec_{ob_3} ob_2$ is true/false
+		\Procedure{IsDominating}{$ob_1, ob_2, ob_3$} 
+		\State $dominating \leftarrow 0$ 
+		\State $dominated \leftarrow 0$
+		\For {\textbf{each} $i \in d$}
+		\State $diff_1^i \leftarrow |ob_1^i - ob_3^i|$
+		\State $diff_2^i \leftarrow |ob_2^i - ob_3^i|$
+		\If {$diff_1^i = diff_2^i$}
+		\State \textbf{continue}
+		\ElsIf{$diff_1^i < diff_2^i$}
+		\State $domininating \leftarrow dominating + 1$
+		\ElsIf{$diff_1^i > diff_2^i$}
+		\State $dominated \leftarrow dominated + 1$
+		\EndIf
+		\EndFor
+		\If{$dominated = 0$ and $dominating \geq 1$} 
+		\State \Return True
+		\Else{} 
+		\State \Return False
+		\EndIf
+		\EndProcedure
+	\end{algorithmic}
+	\label{algo:check-dom}
+\end{algorithm}
 
 \paragraph{\textbf{Perhitungan Kontribusi Pasar}}
 Kontribusi pasar produk $p$, dinotasikan dengan $E(C, p|P)$, diperoleh dengan mengakumulasikan probabilitas produk dari setiap pelanggan $c \in RSL(p)$ sebagaimana persamaan $E_t(CA, p|PA) = \sum_{\forall c \in RSL(p)} Pr_t(c, p|P)$. Skor kontribusi pasar disimpan dalam \textit{Pandora Box} sebagaimana ditunjukkan oleh \textit{pseudocode} baris 4-8 pada Algoritme \ref{algo:pbox}. Perhitungan probabilitas dan kontribusi pasar dilakukan setiap akhir pemrosesan \textit{event}.
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Pandora Box}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp $ts$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
-			\Statex \textbf{Output \hskip0.3em :} filled pandora box $PB$, total market contribution $MC_p$
-			\Statex \Comment{Data Precomputing}
-			\Procedure{CalcProbability}{$DSL(c)$} \Comment{calculate probability}
-			\ForAll{$p \in DSL(c)$}
-			\State $pr \leftarrow \frac{1}{DSL(c)}$
-			\EndFor
-			\EndProcedure
-			\Procedure{UpdatePB}{$DSL(c)$}
-			\ForAll {$p \in DSL(c)$}
-			\If{$ts > lastts$}
-			\State $UpdateScore(p, ts, pr, lastts, lastpr)$
-			\EndIf
-			\State $PB(p, ts) \leftarrow PB(p, ts) + pr$  
-			\EndFor
-			\EndProcedure
-			\Procedure{UpdateScore}{$p$, $ts$, $pr$, $lastts$, $lastpr$}
-			\For {$i \leftarrow lastts+1$ to $ts$}
-			\State $PB(p, i) \leftarrow PB(p, i) + lastpr$  
-			\EndFor
-			\EndProcedure
-			\Statex \Comment{Query Processing}
-			\Procedure{GetScore}{$p$, $t_i$, $t_e$}
-			\State $MC \leftarrow 0$ 
-			\For {$i \leftarrow t_i$ to $t_e + 1$}
-			\State $MC \leftarrow MC + PB(p, i)$
-			\EndFor
-			\State \Return $MC$
-			\EndProcedure
-		\end{algorithmic}
-		\label{algo:pbox}
-	\end{algorithm}
-\end{figure}
+\begin{algorithm}[htbp]
+	\caption{Pandora Box}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} $DSL(c)$, timestamp $ts$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
+		\Statex \textbf{Output \hskip0.3em :} filled pandora box $PB$, total market contribution $MC_p$
+		\Statex \Comment{Data Precomputing}
+		\Procedure{CalcProbability}{$DSL(c)$} \Comment{calculate probability}
+		\ForAll{$p \in DSL(c)$}
+		\State $pr \leftarrow \frac{1}{DSL(c)}$
+		\EndFor
+		\EndProcedure
+		\Procedure{UpdatePB}{$DSL(c)$}
+		\ForAll {$p \in DSL(c)$}
+		\If{$ts > lastts$}
+		\State $UpdateScore(p, ts, pr, lastts, lastpr)$
+		\EndIf
+		\State $PB(p, ts) \leftarrow PB(p, ts) + pr$  
+		\EndFor
+		\EndProcedure
+		\Procedure{UpdateScore}{$p$, $ts$, $pr$, $lastts$, $lastpr$}
+		\For {$i \leftarrow lastts+1$ to $ts$}
+		\State $PB(p, i) \leftarrow PB(p, i) + lastpr$  
+		\EndFor
+		\EndProcedure
+		\Statex \Comment{Query Processing}
+		\Procedure{GetScore}{$p$, $t_i$, $t_e$}
+		\State $MC \leftarrow 0$ 
+		\For {$i \leftarrow t_i$ to $t_e + 1$}
+		\State $MC \leftarrow MC + PB(p, i)$
+		\EndFor
+		\State \Return $MC$
+		\EndProcedure
+	\end{algorithmic}
+	\label{algo:pbox}
+\end{algorithm}
 
 \subsubsection{\textbf{\textit{Query Processing}}}
 Tahap kedua pemrosesan yang bertujuan untuk memproses kueri k-MPPTI, dinotasikan sebagai $k-MPPTI(k, [t_i:t_e])$, dengan memilih \textit{subset} $k$ produk $P'$ dari $P$ yang memiliki total kontribusi pasar lebih besar dibandingkan dengan \textit{subset} $k$ produk $P''$ dari $P$ yang lain dalam interval waktu pencarian. Perhitungan total kontribusi pasar dinotasikan dengan persamaan $E_{[t_i:t_e]}(CA, p|PA) = \sum_{t=t_i}^{t_e} \sum_{\forall c \in RSL(p)} E_t(CA, p|PA)$. Kontribusi pasar diambil dari \textit{Pandora Box} sebagai hasil dari \textit{data precomputing}.
 
-\begin{figure}[htbp]
-	\begin{algorithm}[H]
-		\caption{Query Processing}
-		\begin{algorithmic}[1]
-			\Statex \textbf{Input \hskip1em :} Pandora Box $PB$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
-			\Statex \textbf{Output \hskip0.3em :} $k$ products
-			\State $Q \leftarrow \emptyset$
-			\ForAll {$p \in P$}
-			\State $MC_p \leftarrow$ call $GetScore(p, t_i, t_e)$
-			\EndFor
-			\State sort $MC$ in ascending order based on market contribution score
-			\State $Q \leftarrow$ get top-k $MC$
-		\end{algorithmic}
-		\label{algo:solution}
-	\end{algorithm}
-\end{figure}
+\begin{algorithm}[htbp]
+	\caption{Query Processing}
+	\begin{algorithmic}[1]
+		\Statex \textbf{Input \hskip1em :} Pandora Box $PB$, number of products $k$, time interval (time init $t_i$, time end $t_e$)
+		\Statex \textbf{Output \hskip0.3em :} $k$ products
+		\State $Q \leftarrow \emptyset$
+		\ForAll {$p \in P$}
+		\State $MC_p \leftarrow$ call $GetScore(p, t_i, t_e)$
+		\EndFor
+		\State sort $MC$ in ascending order based on market contribution score
+		\State $Q \leftarrow$ get top-k $MC$
+	\end{algorithmic}
+	\label{algo:solution}
+\end{algorithm}
 
+\pagebreak
 Langkah-langkah pemrosesan dalam \textit{query processing} antara lain: (1) menghitung total kontribusi pasar setiap produk $p \in P$ dalam interval waktu pencarian, (2) mengurutkan produk dengan total skor kontribusi pasar terbesar, dan (3) mengembalikan $k$-produk teratas sebagai hasil dari kueri pencarian sebagaimana yang ditunjukkan oleh \textit{pseudocode} pada Algoritme \ref{algo:solution}.
 
 \subsection{Algoritme Tandingan}
@@ -561,7 +632,7 @@ Algoritme k-MPPTI yang mengimplementasikan teknik pemrosesan paralel, yaitu suat
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=8cm]{img/bab3/paralel.png}
+	\includegraphics[width=7cm]{img/bab3/paralel.png}
 	\caption{Pemrosesan paralel}
 	\label{fig:paralel}
 \end{figure}

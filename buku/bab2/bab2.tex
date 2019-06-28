@@ -17,24 +17,25 @@
 	\hline
 	\textbf{Notasi} & \textbf{Deskripsi}\\ \hline
 	\endhead
-	$P$ & \textit{Dataset} produk\\ \hline
-	$C$ & \textit{Dataset} pelanggan (preferensi pelanggan)\\ \hline
+	$P$ & Himpunan data produk\\ \hline
+	$C$ & Himpunan data preferensi pelanggan\\ \hline
+	$p$ & Sebuah data produk dalam $P$\\ \hline
+	$c$ & Sebuah data preferensi pelanggan dalam $C$\\ \hline
 	$D$ & $P \cup C$ \\ \hline
 	$ob$ & Sebuah objek data pada $D$\\ \hline
 	$ob_1 \prec ob_2$ & Objek data $ob_1$ mendominasi $ob_2$\\ \hline
 	$ob_1 \prec_{ob_3} ob_2$ & Objek data $ob_1$ mendominasi $ob_2$ berdasarkan $ob_3$\\ \hline
-	$p$ & Sebuah produk dalam $P$, $p \in P$\\ \hline
-	$c$ & Seorang pelanggan dalam $C$, $c \in C$\\ \hline
 	$d$ & Jumlah dimensi pada $D$\\ \hline
 	$i$ & Dimensi ke-1, ..., $d$\\ \hline
-	$j$ & Timestamp ke-1, 2, ..., dst\\ \hline
-	$O$ & \textit{Orthant} atau daerah pada komputasi \textit{reverse skyline}\\ \hline
-	$m$ & \textit{Midpoint} antar produk pada komputasi \textit{reverse skyline}\\ \hline
-	$DSL(c)$ & Hasil \textit{dynamic skyline} dari pelanggan $c$\\ \hline
-	$RSL(p)$ & Hasil \textit{reverse skyline} dari produk $p$\\ \hline
+	$O$ & \textit{Orthant}\\ \hline
+	$m$ & \textit{Midpoint} antar produk\\ \hline
+	$DSL(c)$ & \textit{Dynamic skyline} dari pelanggan $c$\\ \hline
+	$RSL(p)$ & \textit{Reverse skyline} dari produk $p$\\ \hline
+	$MSL(o)$ & \textit{Midpoint skyline} dari orthant $o$\\ \hline
 	$Pr(c, p|P)$ & Probabilitas produk $p$ dibeli oleh pelanggan $c$ \\ \hline
 	$E(C, p|P)$ & Kontribusi pasar $p$\\ \hline
 	$E(C, P'|P)$ & Kontribusi pasar subset $P'$ dari $P$ \\ \hline
+	$k$ & Jumlah data \\ \hline
 	$k-MPP$ & \textit{k-Most Promising Products} \\ \hline
 \end{longtable}
 
@@ -127,64 +128,63 @@ Pada Tabel \ref{tab:dataset}, diberikan contoh \textit{dataset} produk dan prefe
 Mengambil contoh lain, produk $p_1$ tidak mendominasi $p_2$ berdasarkan pelanggan $c_3$ karena ada salah satu syarat dominansi dinamis yang tidak terpenuhi, (a) $|c_3^1 - p_1^1| = |15-5| = 10 \nleq |c_3^1 - p_2^1| = |15-15| = 0$ dan (b) $|c_3^2 - p_1^2| = |10-9| = 1 < |c_3^2 - p_2^2| = |10-14| = 4$. Produk $p_1$ dan $p_2$ dikatakan "saling mendominasi" berdasarkan pelanggan $c_2$.
 
 \section{\textit{Dynamic Skyline}}
-\tab Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}, sehingga yang menjadi titik kueri adalah pelanggan. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
 
-\textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline}, yaitu mentransformasikan semua titik $p \in P$ ke ruang data baru dengan menganggap titik kueri $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan seperti yang ditunjukkan pada Gambar \ref{fig:dsl}. Fungsi pemetaan $f^i$ didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$.
+\tab Kueri \textit{dynamic skyline} dalam komputasi $k$-MPP digunakan untuk mencari produk terbaik dari sudut pandang pelanggan \cite{kmpp}. \textit{Dynamic skyline} \cite{dynamic-skyline} dari seorang pelanggan $c_1 \in C$, dinotasikan dengan $DSL(c_1)$, berisi semua produk $p_1 \in P$ yang tidak didominasi oleh produk lain $p_2 \in P$ berdasarkan preferensi pelanggan $c_1$, $p_2 \nprec_{c_1} p_1$.
 
-Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, \textit{dynamic skyline} dari pelanggan $c_4$ adalah $DSL(c_4) = \{p_8, p_{10}\}$, karena produk tersebut tidak didominasi oleh produk lain berdasarkan preferensi pelanggan $c_4$. Berbeda halnya dengan $c_{10}$ yang memiliki hasil \textit{dynamic skyline} $DSL(c_{10}) = \{p_5, p_8, p_{10}\}$.
+\textit{Dynamic skyline} dapat dihitung menggunakan algoritme komputasi \textit{skyline} tradisional \cite{skyline} dengan cara mentransformasikan semua titik $p \in P$ ke ruang data baru dengan menganggap titik kueri $c$ sebagai titik asal dan jarak abolut titik $p$ ke $c$ digunakan sebagai fungsi pemetaan yang didefinisikan sebagai $f^i (p^i) = |c^i-p^i|$ sebagaimana yang ditunjukkan pada Gambar \ref{fig:dsl-1} dan \ref{fig:dsl-2}.
+
+Menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, \textit{dynamic skyline} dari pelanggan $c_4$ adalah $DSL(c_4) = \{p_8, p_{10}\}$, karena produk tersebut tidak didominasi oleh produk lain berdasarkan preferensi pelanggan $c_4$. Berbeda halnya dengan $c_{10}$ yang memiliki hasil \textit{dynamic skyline} $DSL(c_{10}) = \{p_5, p_8, p_{10}\}$. 
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=5cm]{assets/img/bab2/dsl-1.png}
-		\caption{}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=5cm]{assets/img/bab2/dsl-2.png}
-		\caption{}
-	\end{subfigure}
-	\caption{(a) Komputasi \textit{dynamic skyline} dari pelanggan $c_{4}$ dan (b) \textit{dynamic skyline} dari pelanggan $c_{10}$}
-	\label{fig:dsl}
+	\includegraphics[height=8cm]{assets/img/bab2/dsl-1.png}
+	\caption{Komputasi \textit{dynamic skyline} dari pelanggan $c_{4}$}
+	\label{fig:dsl-1}
+\end{figure}
+
+Jika diilustrasikan dalam kehidupan sehari-hari, setiap pelanggan pasti memiliki preferensi yang berbeda-beda. Berdasarkan pelanggan $c_4$, produk $p_8$ dan $p_{10}$ lebih mendekati preferensinya dibandingkan produk lain sehingga produk $p_8$ dan $p_{10}$ memiliki kemungkinan terbesar dibeli oleh pelanggan $c_4$. Berbeda dengan pelanggan $c_{10}$ yang lebih menyukai produk $p_5$, $p_8$, dan $p_{10}$ daripada produk lain karena produk tersebut mendekati preferensinya.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=8cm]{assets/img/bab2/dsl-2.png}
+	\caption{Komputasi \textit{dynamic skyline} dari pelanggan $c_{10}$}
+	\label{fig:dsl-2}
 \end{figure}
 
 \section{\textit{Reverse Skyline}}
-\tab Dalam komputasi $k$-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}, sehingga yang menjadi titik kueri adalah produk. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
+\tab Dalam komputasi $k$-MPP, kueri \textit{reverse skyline} digunakan untuk mencari pelanggan potensial dari sudut pandang produsen \cite{kmpp}. \textit{Reverse skyline} \cite{reverse-skyline} dari sebuah produk $p_1 \in
 P$, dinotasikan dengan $RSL(p_1)$, berisi semua pelanggan $c \in C$ yang memiliki $p_1$ pada hasil \textit{dynamic skyline}-nya.
 
-Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}. Pertama, menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. Kedua, menghitung \textit{midpoint} atau titik tengah antara produk kueri dan produk lainnya, misalnya $p_1$ (sebagai titik kueri) dan $p_2$, dihitung menggunakan rumus berikut: 
+Ada beberapa tahapan yang harus dilakukan dalam komputasi \textit{reverse skyline} \cite{kmpp}. Pertama, menentukan \textit{orthant} dari produk, dinotasikan dengan $O$. Setiap produk $p$ memiliki $2^d$ \textit{orthant} pada data $d-$dimensi. Kedua, menghitung semua \textit{midpoint} atau titik tengah antara produk kueri dan setiap produk $p \in P$ menggunakan Persamaan \ref{eq:midpoint}, kemudian menentukan \textit{midpoint skyline} (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) $MSL(o)$ pada masing-masing \textit{orthant}.
 \begin{equation} \label{eq:midpoint}
 m_2^i = \frac{(p_1^i + p_2^i)}{2}
 \end{equation}
-Kemudian menentukan \textit{midpoint skyline} (juga dikenal sebagai \textit{mid-skyline} \cite{mid-skyline}) pada setiap \textit{orthant}.
 
-Langkah ketiga, mengecek apakah pelanggan $c \in C$ didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_1$ atau tidak. Pelanggan $c$ dikatakan didominasi oleh \textit{midpoint skyline} $m$ jika dan hanya jika:
+Langkah terakhir adalah menentukan \textit{reverse skyline} dengan mencari semua pelanggan $c \in C$ yang tidak didominasi oleh \textit{midpoint skyline} $m \in M$ berdasarkan produk $p_1$, $c \nprec_{p_1} m$. Pelanggan $c$ dikatakan didominasi oleh \textit{midpoint skyline} $m$ jika dan hanya jika:
 \begin{equation}\label{eq:mid-skyline}
 \begin{split}
 \text{(a)} \tab |p_1^i - m^i| \leq |p_1^i - c^i|, \forall i \in [1, ..., d] \\
 \text{(b)} \tab |p_1^i - m^i| < |p_1^i - c^i|, \exists i \in [1, ..., d]
 \end{split}
 \end{equation}
-
 Apabila $c$ tidak didominasi oleh \textit{midpoint skyline} $m$ berdasarkan produk $p_1$, maka $c$ menjadi hasil dari \textit{reverse skyline} $p_1$, dinotasikan dengan $RSL(p_1)$. Untuk lebih jelasnya, komputasi \textit{reverse skyline} ditunjukkan pada Gambar \ref{fig:rsl}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=6cm]{assets/img/bab2/rsl.png}
+	\includegraphics[height=8cm]{assets/img/bab2/rsl.png}
 	\caption{Komputasi \textit{reverse skyline} dari produk $p_8$}
 	\label{fig:rsl}
 \end{figure}
 
-Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tab:dataset}, \textit{reverse skyline} dari produk $p_8$ adalah pelanggan $c_4$, $c_5$, dan $c_{10}$, dinotasikan dengan $RSL(p_8) = \{c_4, c_5, c_{10}\}$ karena masing-masing pelanggan tersebut memiliki $p_8$ pada hasil \textit{dynamic skyline}-nya.
+Sebagai contoh, berdasarkan \textit{dataset} yang diberikan pada Tabel \ref{tab:dataset}, \textit{reverse skyline} dari produk $p_8$ adalah pelanggan $c_4$, $c_5$, dan $c_{10}$, dinotasikan dengan $RSL(p_8) = \{c_4, c_5, c_{10}\}$ karena masing-masing pelanggan tersebut memiliki $p_8$ pada hasil \textit{dynamic skyline}-nya. Pelanggan $c_4$, $c_5$, dan $c_{10}$ merupakana pelanggan potensial bagi produk $p_8$, yaitu pelanggan yang berpotensi besar memilih dan membeli produk tersebut dibanding produk lain.
 
 \section{Kueri \textit{k-Most Promising Products} ($k$-MPP)}
-\tab Kueri \textit{k-Most Promising Products} ($k$-MPP) adalah sebuah strategi pemilihan produk yang dikenalkan oleh Islam dan Liu dalam Tugas Akhirnya \cite{kmpp}.
+\tab Islam et al. memodelkan kueri \textit{k-Most Promising Products} (k-MPP) dan merancang algoritme pemrosesan untuk memproses kueri tersebut dalam penelitiannya \cite{kmpp}.
 
 \subsection{\textit{Uniform Product Adoption} (UPA)}
 \tab \textit{Uniform Product Adoption} (UPA) mengasumsikan bahwa semua produk $p \in P$ yang muncul pada hasil \textit{dynamic skyline} pelanggan $c \in C$ akan saling berkompetisi satu sama lain untuk menarik pelanggan $c$, sehingga produk-produk tersebut memiliki probabilitas yang sama untuk dibeli oleh pelanggan $c$.
 
-Probabilitas produk $p$ dibeli oleh pelanggan $c$, dinotasikan dengan $Pr(c, p|P)$ dapat dijelaskan oleh persamaan berikut:
+Probabilitas produk $p$ dibeli oleh pelanggan $c$, dinotasikan dengan $Pr(c, p|P)$, dijelaskan oleh Persamaan \ref{eq:probability}. Dari persamaan tersebut, dapat dipastikan bahwa setiap produk yang muncul dalam $DSL(c)$ memiliki kesempatan yang sama untuk dipilih oleh pelanggan $c$. Sebaliknya, produk yang tidak muncul dalam $DSL(c)$ tidak memiliki kesempatan sama sekali dipilih oleh $c$.
 \begin{equation}\label{eq:probability}
 Pr(c, p|P) = \left\{
 				\begin{array}{ll}
@@ -194,28 +194,21 @@ Pr(c, p|P) = \left\{
 				\right.
 \end{equation}
 
-Berdasarkan Persamaan \ref{eq:probability}, dapat dipastikan bahwa setiap produk yang muncul dalam $DSL(c)$ memiliki kesempatan yang sama untuk dipilih oleh pelanggan $c$. Sebaliknya, produk yang tidak muncul dalam $DSL(c)$ tidak memiliki kesempatan sama sekali untuk dipilih oleh $c$.
-
-\pagebreak
 Sebagai contoh menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, probabilitas produk $p_8$ dibeli oleh pelanggan $c_4$ adalah $Pr(c_4, p_8|P) = \frac{1}{|DSL(c_4)|} = \frac{1}{2}$, sedangkan probabilitas produk $p_8$ dibeli oleh pelanggan $c_{10}$ adalah $\frac{1}{|DSL(c_{10})|} = \frac{1}{3}$.
 
 \subsubsection{\textit{Market Contribution}}
-\tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$ diukur dari total jumlah pelanggan yang mungkin lebih memilih membeli produk $p$ dibandingkan produk lain $p'$.
+\tab \textit{Market contribution} atau kontribusi pasar sebuah produk $p \in P$ diukur dari total jumlah pelanggan yang mungkin lebih memilih membeli produk $p$ dibandingkan produk lain $p'$. Asumsinya, jika seorang pelanggan memiliki dua produk atau lebih dalam hasil \textit{dynamic skyline}-nya, maka ia akan memberikan bobot yang sama pada produk-produk tersebut sebagaimana yang sudah dijelaskan pada Persamaan \ref{eq:probability}. Sehingga, kontribusi pasar sebuah produk dihitung dari hasil akumulasi bobot yang didapatkan dari semua pelanggan $c \in C$.
 
-Asumsinya, jika seorang pelanggan memiliki dua produk atau lebih dalam hasil \textit{dynamic skyline}-nya, maka ia akan memberikan bobot yang sama pada produk-produk tersebut sebagaimana yang sudah dijelaskan pada Persamaan \ref{eq:probability}. Sehingga, kontribusi pasar sebuah produk dihitung dari hasil akumulasi bobot yang didapatkan dari semua pelanggan $c \in C$.
-
-Kontribusi pasar produk $p$, dinotasikan dengan $E(C, p|P)$, diperoleh dengan mengakumulasikan probabilitas produk dari setiap pelanggan $c \in C$, sebagai berikut:\\
+Kontribusi pasar produk $p$, dinotasikan dengan $E(C, p|P)$, diperoleh dengan mengakumulasikan probabilitas produk dari setiap pelanggan $c \in C$ sebagaimana yang ditunjukkan pada Persamaan \ref{eq:market-contr}.
 \begin{equation}\label{eq:market-contr}
 E(C, p|P) = \sum_{\forall c \in C} Pr(c, p|P)
 \end{equation}
-
-Karena probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pada hasil \textit{dynamic skyline}-nya adalah nol (pada Persamaan \ref{eq:probability}), maka kita hanya perlu mengakumulasikan probabilitas produk dari setiap pelanggan $c$ pada hasil $RSL(p)$. Sehingga, Persamaan \ref{eq:market-contr} dapat disederhanakan menjadi:
+Karena probabilitas produk $p$ dipilih oleh pelanggan yang tidak memiliki $p$ pada hasil \textit{dynamic skyline}-nya adalah nol (Persamaan \ref{eq:probability}), maka kita hanya perlu mengakumulasikan probabilitas produk dari setiap pelanggan $c$ pada hasil $RSL(p)$. Sehingga, Persamaan \ref{eq:market-contr} dapat disederhanakan menjadi Persamaan \ref{eq:market-contr-rsl}.
 \begin{equation}\label{eq:market-contr-rsl}
 E(C, p|P) = \sum_{\forall c \in RSL(p)} Pr(c, p|P)
 \end{equation}
 
-\pagebreak
-Sebagai contoh menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, kontribusi pasar dari produk $p_8$ adalah $E(C, p_8|P) = Pr(c_4, p_8|P) + Pr(c_5, p_8|P) + Pr(c_{10}, p_8|P) = \frac{1}{2} + 1 + \frac{1}{3} = \frac{11}{6}$ atau $1.833$.
+Sebagai contoh, menggunakan \textit{dataset} pada Tabel \ref{tab:dataset}, kontribusi pasar dari produk $p_8$ adalah $E(C, p_8|P) = Pr(c_4, p_8|P) + Pr(c_5, p_8|P) + Pr(c_{10}, p_8|P) = \frac{1}{2} + 1 + \frac{1}{3} = \frac{11}{6}$ atau $1.833$.
 
 Perhitungan kontribusi pasar juga dapat dilakukan pada sekumpulan produk atau \textit{subset} produk $P'$, dinotasikan dengan $E(C, P'|P)$, yang dijelaskan pada Persamaan \ref{eq:market-contr-subset}.
 \begin{equation}\label{eq:market-contr-subset}
@@ -228,7 +221,7 @@ E(C, P'|P) = \sum_{\forall p \in P'} E(C, p|P)
 k-MPP(P, C, k)
 \end{equation}
 
-Jika merangkum semua penjelasan di atas, langkah-langkah yang harus dilakukan untuk memproses kueri $k$-MPP adalah: (1) menghitung \textit{reverse skyline} dari setiap produk $p \in P$, (2) menghitung \textit{dynamic Skyline} dari setiap pelanggan $c \in RSL(p)$, dan (3) memilih \textit{k} produk dari $P$ yang memiliki kontribusi pasar terbesar.
+Jika merangkum semua penjelasan di atas, terdapat empat langkah pemrosesan kueri k-MPP, yaitu: (1) mencari \textit{reverse skyline} masing-masing produk  $p \in P$; (2) mencari \textit{dynamic skyline} masing-masing pelanggan $c \in RSL(p)$; (3) menghitung kontribusi pasar masing-masing produk dengan cara mengakumulasikan probabilitas produk dipilih oleh pelanggan; (4) memilih $k$-produk dengan kontribusi pasar terbesar.
 
 \section{Data}
 \tab Data merupakan elemen yang esensial dalam sebuah sistem informasi. Data adalah informasi faktual (seperti pengukuran atau statistik) yang digunakan sebagai dasar untuk analisis, diskusi, maupun perhitungan \cite{data}. 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  21 JUN 2019 16:50
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.11.7)  23 JUN 2019 18:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -877,28 +877,44 @@ Overfull \hbox (13.08487pt too wide) in paragraph at lines 50--50
 [1
 
 
-] [2]
+]
+File: img/bab2/skyline.png Graphic file (type QTm)
+ <use  "img/bab2/skyline.png" > [2]
+File: img/bab2/dsl-1.png Graphic file (type QTm)
+ <use  "img/bab2/dsl-1.png" >
+File: img/bab2/rsl.png Graphic file (type QTm)
+
+<use  "img/bab2/rsl.png" > [3]
 File: img/bab3/sd1.png Graphic file (type QTm)
  <use  "img/bab3/sd1.png" >
 File: img/bab3/sd2.png Graphic file (type QTm)
- <use  "img/bab3/sd2.png" >
-File: img/bab3/pbox.png Graphic file (type QTm)
 
-<use  "img/bab3/pbox.png" > [3]
+<use  "img/bab3/sd2.png" >
+File: img/bab3/pbox.png Graphic file (type QTm)
+ <use  "img/bab3/pbox.png" > [4]
 File: img/bab3/timeline-event.png Graphic file (type QTm)
- <use  "img/bab3/timeline-event.png" > [4]
-Underfull \hbox (badness 10000) in paragraph at lines 480--481
- \OT1/ptm/m/it/10 g) \OT1/ptm/b/it/10 Per-hi-tung-an Pro-ba-bi-li-tas\OT1/ptm/m
-/it/10 : [][] \OT1/ptm/m/n/10 Pro-ba-bi-li-tas masing-
+
+<use  "img/bab3/timeline-event.png" >
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 324--325
+ [][] 
  []
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
+ \OT1/ptm/m/it/10 h) \OT1/ptm/b/it/10 Per-hi-tung-an Pro-ba-bi-li-tas\OT1/ptm/m
+/it/10 : [][] \OT1/ptm/m/n/10 Pro-ba-bi-li-tas masing-
+ []
+
+[6]
 File: img/bab3/paralel.png Graphic file (type QTm)
  <use  "img/bab3/paralel.png" >
 
-LaTeX Warning: Citation `ontrip' on page 6 undefined on input line 570.
+LaTeX Warning: Citation `ontrip' on page 7 undefined on input line 641.
 
-[6] [7] [8]
+[7] [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
 Missing character: There is no – in font ptmr7t!
 Missing character: There is no – in font ptmr7t!
 Missing character: There is no Ö in font ptmr7t!
@@ -914,7 +930,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[9
+[10
 
 ] (./pomits.aux)
 
@@ -922,12 +938,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 25264 strings out of 493638
- 624440 string characters out of 6146796
- 805031 words of memory out of 5000000
- 28249 multiletter control sequences out of 15000+600000
+ 25275 strings out of 493638
+ 624580 string characters out of 6146796
+ 813429 words of memory out of 5000000
+ 28256 multiletter control sequences out of 15000+600000
  36195 words of font info for 96 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  55i,17n,77p,1535b,2186s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on pomits.pdf (9 pages).
+Output written on pomits.pdf (10 pages).
