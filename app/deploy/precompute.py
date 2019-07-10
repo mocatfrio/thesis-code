@@ -5,6 +5,8 @@ from event_queue import EventQueue
 from reverse_skyline import ReverseSkyline
 from dynamic_skyline import DynamicSkyline
 from logger import Logger
+import multiprocessing
+from multiprocessing import Pool
 
 """
 Data Handling
@@ -223,52 +225,52 @@ def precompute_kmppti_p(dataset):
       if event[3] == 0:
         data['product']['active'].append(event[2])
         rsl_result = rsl.compute(event[2])
-        threads = []
+        all_cust = []
         for cust_id in rsl_result:
-          t = threading.Thread(target=compute_dsl, args=(cust_id, event[0], event[3], event[2], dsl))
-          threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
-        threads = []
+          all_cust.append([cust_id, event[0], event[3], event[2], dsl])
+        if all_cust:
+          pool = Pool(multiprocessing.cpu_count())
+          pool.imap(compute_dsl, all_cust)
+          pool.close()
+          pool.join()
+        all_cust = []
         for cust_id in data['customer']['active']:
           if 'dsl' in data['customer']['data'][cust_id].keys():
-            t = threading.Thread(target=update_pbox, args=(cust_id, event[0], dsl, pandora_box, data))
-            threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+            all_cust.append([cust_id, event[0], dsl, pandora_box, data])
+        if all_cust:
+          pool = Pool(multiprocessing.cpu_count())
+          pool.imap(update_pbox, all_cust)
+          pool.close()
+          pool.join()
         
       elif event[3] == 1:
-        threads = []
+        all_cust = []
         for cust_id in data['customer']['active']:
           if 'dsl' in data['customer']['data'][cust_id].keys():
-            t = threading.Thread(target=update_pbox, args=(cust_id, event[0], dsl, pandora_box, data))
-            threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+            all_cust.append([cust_id, event[0], dsl, pandora_box, data])
+        if all_cust:
+          pool = Pool(multiprocessing.cpu_count())
+          pool.imap(update_pbox, all_cust)
+          pool.close()
+          pool.join()
         rsl_result = rsl.compute(event[2])
-        threads = []
+        all_cust = []
         for cust_id in rsl_result:
-          t = threading.Thread(target=compute_dsl, args=(cust_id, event[0], event[3], event[2], dsl))
-          threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+          all_cust.append([cust_id, event[0], event[3], event[2], dsl])
+        if all_cust:
+          pool = Pool(multiprocessing.cpu_count())
+          pool.imap(compute_dsl, all_cust)
+          pool.close()
+          pool.join()
         data['product']['active'].remove(event[2])
-        threads = []
+        all_cust = []
         for cust_id in rsl_result:
-          t = threading.Thread(target=recheck, args=(cust_id, event[0], dsl, data))
-          threads.append(t)
-        for t in threads:
-          t.start()
-        for t in threads:
-          t.join()
+          all_cust.append([cust_id, event[0], dsl, data])
+        if all_cust:
+          pool = Pool(multiprocessing.cpu_count())
+          pool.imap(recheck, all_cust)
+          pool.close()
+          pool.join()
     
     elif event[1] == 1:
       if event[3] == 0:
