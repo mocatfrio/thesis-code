@@ -150,7 +150,6 @@ def precompute_kmppti(dataset):
 
   while not event_queue.is_empty():
     event = event_queue.dequeue()
-    print(event)
     if event[1] == 0:
       if event[3] == 0:
         data['product']['active'].append(event[2])
@@ -199,105 +198,105 @@ def precompute_kmppti(dataset):
 
   return session_name
 
-def precompute_kmppti_p(dataset):
-  algorithm = 'kmppti-p'
-  logger = Logger(algorithm, 'precomputing')
-  logger.set_time(0)
-  logger.set_data_info(dataset[0].split('_'))
-  print ('Precompute started')
+# def precompute_kmppti_p(dataset):
+#   algorithm = 'kmppti-p'
+#   logger = Logger(algorithm, 'precomputing')
+#   logger.set_time(0)
+#   logger.set_data_info(dataset[0].split('_'))
+#   print ('Precompute started')
 
-  event_queue = EventQueue()
-  data = {}
-  data = input_csv(dataset, event_queue)
-  event_queue.sort_queue()
-  metadata = get_metadata(event_queue, dataset, data)
+#   event_queue = EventQueue()
+#   data = {}
+#   data = input_csv(dataset, event_queue)
+#   event_queue.sort_queue()
+#   metadata = get_metadata(event_queue, dataset, data)
 
-  data['product']['active'] = []
-  data['customer']['active'] = []
+#   data['product']['active'] = []
+#   data['customer']['active'] = []
 
-  pandora_box = PandoraBox(metadata[4] + 1, metadata[0] + 1, data['product']['data'])
-  rsl = ReverseSkyline(data['product'], data['customer'], metadata[3])
-  dsl = DynamicSkyline(data['product'], data['customer'], metadata[3])
+#   pandora_box = PandoraBox(metadata[4] + 1, metadata[0] + 1, data['product']['data'])
+#   rsl = ReverseSkyline(data['product'], data['customer'], metadata[3])
+#   dsl = DynamicSkyline(data['product'], data['customer'], metadata[3])
 
-  while not event_queue.is_empty():
-    event = event_queue.dequeue()
-    if event[1] == 0:
-      if event[3] == 0:
-        data['product']['active'].append(event[2])
-        rsl_result = rsl.compute(event[2])
-        all_cust = []
-        for cust_id in rsl_result:
-          all_cust.append([cust_id, event[0], event[3], event[2], dsl])
-        if all_cust:
-          pool = Pool(multiprocessing.cpu_count())
-          pool.imap(compute_dsl, all_cust)
-          pool.close()
-          pool.join()
-        all_cust = []
-        for cust_id in data['customer']['active']:
-          if 'dsl' in data['customer']['data'][cust_id].keys():
-            all_cust.append([cust_id, event[0], dsl, pandora_box, data])
-        if all_cust:
-          pool = Pool(multiprocessing.cpu_count())
-          pool.imap(update_pbox, all_cust)
-          pool.close()
-          pool.join()
+#   while not event_queue.is_empty():
+#     event = event_queue.dequeue()
+#     if event[1] == 0:
+#       if event[3] == 0:
+#         data['product']['active'].append(event[2])
+#         rsl_result = rsl.compute(event[2])
+#         threads = []
+#         for cust_id in rsl_result:
+#           t = threading.Thread(target=compute_dsl, args=(cust_id, event[0], event[3], event[2], dsl))
+#           threads.append(t)
+#         for t in threads:
+#           t.start()
+#         for t in threads:
+#           t.join()
+#         threads = []
+#         for cust_id in data['customer']['active']:
+#           if 'dsl' in data['customer']['data'][cust_id].keys():
+#             t = threading.Thread(target=update_pbox, args=(cust_id, event[0], dsl, pandora_box, data))
+#             threads.append(t)
+#         for t in threads:
+#           t.start()
+#         for t in threads:
+#           t.join()
         
-      elif event[3] == 1:
-        all_cust = []
-        for cust_id in data['customer']['active']:
-          if 'dsl' in data['customer']['data'][cust_id].keys():
-            all_cust.append([cust_id, event[0], dsl, pandora_box, data])
-        if all_cust:
-          pool = Pool(multiprocessing.cpu_count())
-          pool.imap(update_pbox, all_cust)
-          pool.close()
-          pool.join()
-        rsl_result = rsl.compute(event[2])
-        all_cust = []
-        for cust_id in rsl_result:
-          all_cust.append([cust_id, event[0], event[3], event[2], dsl])
-        if all_cust:
-          pool = Pool(multiprocessing.cpu_count())
-          pool.imap(compute_dsl, all_cust)
-          pool.close()
-          pool.join()
-        data['product']['active'].remove(event[2])
-        all_cust = []
-        for cust_id in rsl_result:
-          all_cust.append([cust_id, event[0], dsl, data])
-        if all_cust:
-          pool = Pool(multiprocessing.cpu_count())
-          pool.imap(recheck, all_cust)
-          pool.close()
-          pool.join()
+#       elif event[3] == 1:
+#         threads = []
+#         for cust_id in data['customer']['active']:
+#           if 'dsl' in data['customer']['data'][cust_id].keys():
+#             t = threading.Thread(target=update_pbox, args=(cust_id, event[0], dsl, pandora_box, data))
+#             threads.append(t)
+#         for t in threads:
+#           t.start()
+#         for t in threads:
+#           t.join()
+#         rsl_result = rsl.compute(event[2])
+#         threads = []
+#         for cust_id in rsl_result:
+#           t = threading.Thread(target=compute_dsl, args=(cust_id, event[0], event[3], event[2], dsl))
+#           threads.append(t)
+#         for t in threads:
+#           t.start()
+#         for t in threads:
+#           t.join()
+#         data['product']['active'].remove(event[2])
+#         threads = []
+#         for cust_id in rsl_result:
+#           t = threading.Thread(target=recheck, args=(cust_id, event[0], dsl, data))
+#           threads.append(t)
+#         for t in threads:
+#           t.start()
+#         for t in threads:
+#           t.join()
     
-    elif event[1] == 1:
-      if event[3] == 0:
-        data['customer']['active'].append(event[2])
-        dsl.customer_in(event[2], event[0])
-        if 'dsl' in data['customer']['data'][event[2]].keys():
-          pandora_box.update(data['customer']['data'][event[2]]['dsl'])
-          dsl.update_history(event[2])
+#     elif event[1] == 1:
+#       if event[3] == 0:
+#         data['customer']['active'].append(event[2])
+#         dsl.customer_in(event[2], event[0])
+#         if 'dsl' in data['customer']['data'][event[2]].keys():
+#           pandora_box.update(data['customer']['data'][event[2]]['dsl'])
+#           dsl.update_history(event[2])
 
-      elif event[3] == 1:
-        dsl.update(event[2], event[0])
-        if 'dsl' in data['customer']['data'][event[2]].keys():
-          pandora_box.update(data['customer']['data'][event[2]]['dsl'])
-          dsl.update_history(event[2])
-        data['customer']['active'].remove(event[2])
+#       elif event[3] == 1:
+#         dsl.update(event[2], event[0])
+#         if 'dsl' in data['customer']['data'][event[2]].keys():
+#           pandora_box.update(data['customer']['data'][event[2]]['dsl'])
+#           dsl.update_history(event[2])
+#         data['customer']['active'].remove(event[2])
 
-  session_name, session_file = make_session(dataset[0].split('_'), algorithm, metadata)
-  pandora_path = session_file + '/' + session_name
-  os.mkdir(pandora_path)
-  pandora_box.export_csv(pandora_path)
+#   session_name, session_file = make_session(dataset[0].split('_'), algorithm, metadata)
+#   pandora_path = session_file + '/' + session_name
+#   os.mkdir(pandora_path)
+#   pandora_box.export_csv(pandora_path)
 
-  logger.set_time(1)
-  logger.set_runtime()
-  logger.set_mem_usage()
-  logger.export_log()
+#   logger.set_time(1)
+#   logger.set_runtime()
+#   logger.set_mem_usage()
+#   logger.export_log()
 
-  return session_name
+#   return session_name
 
 def precompute_kmppti_norsl(dataset):
   algorithm = 'kmmpti-norsl'
@@ -465,5 +464,3 @@ if __name__ == "__main__":
     precompute_kmppti_norsl(dataset)
   elif algo == 3:
     precompute_kmppti_norslp(dataset)
-  elif algo == 4:
-    precompute_kmppti_p(dataset)
